@@ -1,0 +1,3607 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Monitoring%20Metrics%20Reference%20b8ca28a9fda846dbabbf70fda23b0801/">
+      
+      
+        <link rel="next" href="../Region%20Choices%203970be558ee146eb99eb116ad2b8f519/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>MaxScale Reference - SkySQL Public Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maxscale-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkySQL Public Documentation" class="md-header__button md-logo" aria-label="SkySQL Public Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkySQL Public Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MaxScale Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8v2m9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkySQL Public Documentation" class="md-nav__button md-logo" aria-label="SkySQL Public Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    SkySQL Public Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to SkySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQs%20ad991ed04d1c4c2c82774115261d3ad0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Quickstart%20da3c5848d30348b1815026b2d24219a6/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Quickstart
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Quickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quickstart%20da3c5848d30348b1815026b2d24219a6/Launch%20DB%20using%20the%20REST%20API%20cf85a5036a454ee987bb392df694dfc3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launch DB using the REST API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Quickstart%20da3c5848d30348b1815026b2d24219a6/Launch%20DB%20using%20the%20Terraform%20Provider%20ae9f036b2d7c43b3a6e162bcdd4b4c97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launch DB using the Terraform Provider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Portal%20features%20a48bd73b584b4a9db9b84ca94f958adc/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    UI Portal Features
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            UI Portal Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Portal%20features%20a48bd73b584b4a9db9b84ca94f958adc/Launch%20page%20014bc19a417c4d169df7ae3f80b5f684/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launch page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Portal%20features%20a48bd73b584b4a9db9b84ca94f958adc/Manage%20your%20Service%20a647ad5005f74122bc5fa86fa8d7fde6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage your Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Portal%20features%20a48bd73b584b4a9db9b84ca94f958adc/Service%20Details%20page%20e98710a1c3444f3388548f782ff856f9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Service Details page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Portal%20features%20a48bd73b584b4a9db9b84ca94f958adc/Notifications%2047a5af40b9ee4be4970dfde8a92ef4a2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Connecting%20to%20Sky%20DBs%20ae0bd7d47675416e9cd0bf2ba21d066c/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Connecting to Sky DBs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Connecting to Sky DBs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connecting%20to%20Sky%20DBs%20ae0bd7d47675416e9cd0bf2ba21d066c/Connect%20from%20%E2%80%98C%E2%80%99%20App%20b31c2f5880a74e198c61a60e74076cec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connect from ‘C’ App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connecting%20to%20Sky%20DBs%20ae0bd7d47675416e9cd0bf2ba21d066c/Connect%20from%20%E2%80%98C%2B%2B%E2%80%99%20App%20697a64cebee24fcf996e21450f1c32f0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connect from ‘C++’ App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connecting%20to%20Sky%20DBs%20ae0bd7d47675416e9cd0bf2ba21d066c/Connect%20from%20Java%20App%2017bf88ae787b44a0bccb8d5eaac5f8ef/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connect from Java App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connecting%20to%20Sky%20DBs%20ae0bd7d47675416e9cd0bf2ba21d066c/Connect%20from%20MongoDB%20clients%200870eb5a71ff485b88bd113e90ff571f/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connect from MongoDB clients
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connecting%20to%20Sky%20DBs%20ae0bd7d47675416e9cd0bf2ba21d066c/Connect%20from%20Node%20js%20App%20b63d489b6fbd426ab40d7f7f3be9025a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connect from Node.js App
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Connecting%20to%20Sky%20DBs%20ae0bd7d47675416e9cd0bf2ba21d066c/Connect%20using%20Connector%20R2DBC%206f657edcac0849cb8ab4be6649ca71bd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connect using Connector/R2DBC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Data%20loading%2C%20Migration%208d6075f7123a4b59bedfeaad01d8461a/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Data Loading, Migrations
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Data Loading, Migrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20loading%2C%20Migration%208d6075f7123a4b59bedfeaad01d8461a/Import%20CSV%20data%2050554477679448e6b4c8033d04f45142/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import CSV data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20loading%2C%20Migration%208d6075f7123a4b59bedfeaad01d8461a/Import%20data%20from%20external%20DB%209d0a68120e404f36b9f09a5ad71796b7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Import data from external DB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20loading%2C%20Migration%208d6075f7123a4b59bedfeaad01d8461a/Install%20Mariadb-dump%2014d92b62ce0f42cd83557aa80dd8c049/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Mariadb-dump
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20loading%2C%20Migration%208d6075f7123a4b59bedfeaad01d8461a/Install%20mariadb-import%208c0db06c9f864b6cb88ca21f265d5990/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install mariadb-import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20loading%2C%20Migration%208d6075f7123a4b59bedfeaad01d8461a/Migrating%20your%20existing%20Production%20DB%208ba80cbdb9b14f81a1df5b096d549522/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrating your existing Production DB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data loading, Migration 8d6075f7123a4b59bedfeaad01d8461a/Migrating your existing Production DB 8ba80cbdb9b14f81a1df5b096d549522/Replicating data from external DB cdf15e1cd8d24880858d6cd2f50d8fd2.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Data%20offloading%204e994ab1980845ed8015df2a15a4b05c/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Data Offloading
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Data Offloading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20offloading%204e994ab1980845ed8015df2a15a4b05c/Replicating%20data%20from%20SkySQL%20to%20external%20database%2065a9d8aa0dc040c09548c042ba6582ae/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Replicating data from SkySQL to external database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Autonomously%20scale%20Compute%2C%20Storage%20afeeaa6466614d8d905efa44201746b2/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Autonomously scale Compute/Storage
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Autonomously scale Compute/Storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Autonomously%20scale%20Compute%2C%20Storage%20afeeaa6466614d8d905efa44201746b2/Uptime%20SLA%20ea985d9f82fc48b8bc0476cd359f48ce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uptime SLA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Scaling%20horizontally%2C%20HA%201baaeba999bb4742930280184a67dcc1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scale Horizontally with High Availability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Configure%20your%20Database%20Server%28s%29%200ab9fd71eb5443fe9bfd40e7c0a5142d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure your Database Server(s)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Backup%20and%20Restore%209f59fb0f1ea34dcab24ff1c078a1c7d7/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Backup and Restore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Backup%20and%20Restore%209f59fb0f1ea34dcab24ff1c078a1c7d7/MariaDB%20Enterprise%20Backup%20c5e66a5fc2214471b8406660e09b288f/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MariaDB Enterprise Backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Backup%20and%20Restore%209f59fb0f1ea34dcab24ff1c078a1c7d7/Point-in-Time%20Recovery%20%28PITR%29%206a440a109fbe414697b0f4c2c5fd81cb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Point-in-Time Recovery (PITR)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Using%20AWS%20GCP%20private%20VPC%20connections%20e42fec2f611d45a5b8f5caaa4d3a53d2/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Using AWS/GCP Private VPC Connections
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Using AWS/GCP Private VPC Connections
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Using%20AWS%20GCP%20private%20VPC%20connections%20e42fec2f611d45a5b8f5caaa4d3a53d2/Setting%20up%20AWS%20Private%20Link%204e93fe75265c415a857e4179e08b44a6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting up AWS Private Link
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Using%20AWS%20GCP%20private%20VPC%20connections%20e42fec2f611d45a5b8f5caaa4d3a53d2/Setting%20up%20GCP%20Private%20Service%20Connect%2036f6d531c5514999bd464a80ac49919a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting up GCP Private Service Connect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Billing%20and%20Power%20Tier%203168a8895e7342aead007c253d998c8d/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Billing and Power Tier
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Billing and Power Tier
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Billing%20and%20Power%20Tier%203168a8895e7342aead007c253d998c8d/Billing%2025528e88c22a49609c1524c75aaf551c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Billing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Security%20eb573a6a5bce4b56b9743a64a4ac713c/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Security%20eb573a6a5bce4b56b9743a64a4ac713c/Configuring%20Firewall%209bca9f4e09ce4152a2fce4e68b077e2d/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Firewall
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Security%20eb573a6a5bce4b56b9743a64a4ac713c/Managing%20Portal%20Users%20c0788729e3ae4bfb80e016631610e188/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managing Portal Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Security%20eb573a6a5bce4b56b9743a64a4ac713c/Managing%20API%20keys%200a99815ccb0d4f1dbb7dea5e76d34407/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managing API keys
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Security%20eb573a6a5bce4b56b9743a64a4ac713c/Portal%20Single%20Sign-On%20e91b27d636614b8c897bebe7d61cb312/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Portal Single Sign-On
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Security%20eb573a6a5bce4b56b9743a64a4ac713c/Private%20VPC%20connections%20b470fc74435c4e11ae5865458ffb78c6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private VPC connections
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Reference Guides
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Reference Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Instance%20Size%20Choices%20332dbed99cf546be8724dacee2348e5a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instance Size Choices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring%20Metrics%20Reference%20b8ca28a9fda846dbabbf70fda23b0801/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring Metrics Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    MaxScale Reference
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Region%20Choices%203970be558ee146eb99eb116ad2b8f519/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Region Choices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../REST%20API%20Reference%20448f4a9dba524bd3a88fa7abd0649110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="maxscale-reference">MaxScale Reference</h1>
+<h1 id="mariadb-maxscale-2208-authenticators">MariaDB MaxScale 22.08 Authenticators</h1>
+<p>The following Authenticators are supported by MariaDB MaxScale 22.08:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Authenticator</th>
+<th>Enterprise Server Plugin</th>
+<th>Xpand Plugin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/authenticator/GSSAPI/</td>
+<td>GSSAPIAuth</td>
+<td>https://mariadb.com/docs/server/ref/mdb/plugins/gssapi/</td>
+<td></td>
+<td>Authenticates client connections using a GSSAPI authentication service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/authenticator/Native/</td>
+<td>MariaDBAuth</td>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mdb/plugins/mysql_native_password/</td>
+<td>https://mariadb.com/docs/xpand/security/authentication/xpand/mysql_native_password/</td>
+<td>Authenticates client connections using the native password authentication method</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/authenticator/PAM/</td>
+<td>PAMAuth</td>
+<td>https://mariadb.com/docs/server/ref/mdb/plugins/pam,auth_pam.so/</td>
+<td></td>
+<td>Authenticates client connections using a Pluggable Authentication Modules (PAM) service</td>
+</tr>
+</tbody>
+</table>
+<p>To see Authenticators supported in other versions, see <a href="https://mariadb.com/docs/skysql-dbaas/ref/mxs/authenticator/#Authenticators_by_MariaDB_MaxScale_Version">"Authenticators by MariaDB MaxScale Version"</a>.</p>
+<h1 id="mariadb-maxscale-2208-filters">MariaDB MaxScale 22.08 Filters</h1>
+<p>The following Filters are supported by MariaDB MaxScale 22.08:</p>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/binlogfilter/</td>
+<td>Special Routing</td>
+<td>Binary Log Filter can be used with the binlogrouter to selectively replicate Binary Log events to Replica Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/cache/</td>
+<td>Performance</td>
+<td>Caches the result-sets of https://mariadb.com/docs/skysql-dbaas/ref/mdb/sql-statements/SELECT/ statements to improve query performance</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/ccrfilter/</td>
+<td>Server Selection</td>
+<td>Consistent Critical Read (CCR) Filter detects when a statement modifies the database, and it attaches routing hints to any subsequent statements, so they get routed to the master</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/hintfilter/</td>
+<td>Server Selection</td>
+<td>Hint Filter allows services to interpret routing hints, which can be specified in a comment when a query is executed</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/insertstream/</td>
+<td>Performance</td>
+<td>Insert Stream Filter translates bulk https://mariadb.com/docs/skysql-dbaas/ref/mdb/sql-statements/INSERT/ statements into CSV data that is streamed to the backend server and loaded using the https://mariadb.com/docs/skysql-dbaas/ref/mdb/sql-statements/LOAD_DATA_INFILE/ statement</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/luafilter/</td>
+<td>Programmatic</td>
+<td>Lua Filter processes queries with the specified Lua scripts (experimental)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/masking/</td>
+<td>Security</td>
+<td>Masking Filter obfuscates the return values of specified columns</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/maxrows/</td>
+<td>Performance</td>
+<td>Max Rows Filter limits the number of rows that https://mariadb.com/docs/skysql-dbaas/ref/mdb/sql-statements/SELECT/ statements, prepared statements, and stored procedures can return</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/namedserverfilter/</td>
+<td>Server Selection</td>
+<td>Named Server Filter compares queries to specified Regular Expressions, and when the query matches, the filter applies the specified routing hint to the query</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/qlafilter/</td>
+<td>Security</td>
+<td>Query Log All (QLA) Filter logs matching queries to a CSV file</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/regexfilter/</td>
+<td>Programmatic</td>
+<td>Regex Filter rewrites matching queries using Regular Expressions</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/rewritefilter/</td>
+<td></td>
+<td>Rewrites queries based on a query template</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/tee/</td>
+<td>Special Routing</td>
+<td>Tee Filter copies client requests to other services</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/throttlefilter/</td>
+<td>Performance</td>
+<td>Throttle Filter limits the maximum frequency of queries per second allowed for a database session</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/topfilter/</td>
+<td>Performance</td>
+<td>Top Filter logs the top queries by execution time</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/tpmfilter/</td>
+<td>Performance</td>
+<td>Transaction Performance Monitoring (TPM) Filter logs information on committed transactions for performance analysis (experimental)</td>
+</tr>
+</tbody>
+</table>
+<p>To see Filters supported in other versions, see <a href="https://mariadb.com/docs/skysql-dbaas/ref/mxs/filter/#Filters_by_MariaDB_MaxScale_Version">"Filters by MariaDB MaxScale Version"</a>.</p>
+<h1 id="mariadb-maxscale-2208-global-parameters">MariaDB MaxScale 22.08 Global Parameters</h1>
+<p>The following Global Parameters are supported by MariaDB MaxScale 22.08:</p>
+<table>
+<thead>
+<tr>
+<th>Global Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_auth/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_auth/</td>
+<td>Enables HTTP Basic Access authentication for REST API</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_enabled/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_enabled/</td>
+<td>Enables the administrative interface for REST API</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_gui/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_gui/</td>
+<td>Enable admin GUI</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_host/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_host/</td>
+<td>Network interface the REST API listens on</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_jwt_algorithm/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_jwt_algorithm/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_jwt_algorithm/</td>
+<td>JWT signature algorithm</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_jwt_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_jwt_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_jwt_key/</td>
+<td>Encryption key ID for symmetric signature algorithms. If left empty, MaxScale will generate a random key that is used to sign the JWT.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_log_auth_failures/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_log_auth_failures/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_log_auth_failures/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_log_auth_failures/</td>
+<td>Enables logging authentication failures to the administrative interface</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_oidc_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_oidc_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_oidc_url/</td>
+<td>Extra public certificates used to validate externally signed JWTs</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readonly_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readonly_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readonly_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readonly_service/</td>
+<td>Enables PAM-based authentication served for REST API for read-only users</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readwrite_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readwrite_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readwrite_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_pam_readwrite_service/</td>
+<td>Enables PAM-based authentication service for REST API for users who can perform any REST API operation</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_port/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_port/</td>
+<td>Port on network interface the REST API listenes on</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_secure_gui/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_secure_gui/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_secure_gui/</td>
+<td>Only serve GUI over HTTPS</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_ca/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_ca/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_ca/</td>
+<td>Path to PEM file containing TLS Certificate Authority (CA) to use in HTTPS for REST API. Formerly admin_ssl_ca_cert.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_ca_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_ca_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_ca_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_ca_cert/</td>
+<td>Alias for 'admin_ssl_ca'</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_cert/</td>
+<td>Path to PEM file containing TLS certificate to use in HTTPS for REST API</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_key/</td>
+<td>Path to PEM file containing TLS key to use in HTTPS for REST API</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_version/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_version/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_ssl_version/</td>
+<td>Minimum required TLS protocol version for the REST API</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_verify_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_verify_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/admin_verify_url/</td>
+<td>URL for third-party verification of client tokens</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_connect_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_connect_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_connect_timeout/</td>
+<td>Amount of time to wait in seconds for authentication to the Server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_read_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_read_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_read_timeout/</td>
+<td>Amount of time to wait in seconds when retrieving user authentication data from the Server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_write_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_write_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auth_write_timeout/</td>
+<td>Amount of time to wait in seconds when retrieving user authentication data from the Server. MaxScale does not write authentication data to the Server.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auto_tune/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/auto_tune/</td>
+<td>Specifies whether a MaxScale parameter whose value depends on a specific global server variable, should automatically be updated to match the variable's current value</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/cachedir/</td>
+<td>Path to the directory containing cached data</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_cluster/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_cluster/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_cluster/</td>
+<td>Cluster used for configuration synchronization. If left empty (i.e., value is ""), synchronization is not done.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_db/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_db/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_db/</td>
+<td>Database where the 'maxscale_config' table is created</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_interval/</td>
+<td>How often to synchronize the configuration</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_password/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_password/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_password/</td>
+<td>Password for the user used for configuration synchronization</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_timeout/</td>
+<td>Timeout for the configuration synchronization operations</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/config_sync_user/</td>
+<td>User account used for configuration synchronization</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/connector_plugindir/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/connector_plugindir/</td>
+<td>Path to MariaDB Connector C plugin directory</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/datadir/</td>
+<td>Path to the data directory</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/debug/</td>
+<td>Debug options</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/dump_last_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/dump_last_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/dump_last_statements/</td>
+<td>Sets condition on which MariaDB MaxScale dumps the last statement sent by the client</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/execdir/</td>
+<td>Path to directory containing executable files</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/key_manager/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/key_manager/</td>
+<td>Key manager type</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/language/</td>
+<td>Path to directory containing the errmsg.sys file</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/libdir/</td>
+<td>Path to the directory searched for modules</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/load_persisted_configs/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/load_persisted_configs/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/load_persisted_configs/</td>
+<td>Enables loading persistent runtime configuration changes on startup. Persistent runtime changes are saved to the /var/lib/maxscale/maxscale.cnf.d/ directory.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/local_address/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/local_address/</td>
+<td>Sets local address or network interface to use when connecting to Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_augmentation/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_augmentation/</td>
+<td>Appends logging messages with the name of the function where the message was logged (used primarily for development purposes)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_debug/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_debug/</td>
+<td>Enables logging messages at the debug syslog priority</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_info/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_info/</td>
+<td>Enables logging messages at the info syslog priority</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_notice/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_notice/</td>
+<td>Enables logging messages at the notice syslog priority</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_throttling/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_throttling/</td>
+<td>Limit the amount of identical log messages than can be logged during a certain time period</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_warn_super_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_warn_super_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_warn_super_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_warn_super_user/</td>
+<td>Log a warning when a user with super privilege logs in</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_warning/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/log_warning/</td>
+<td>Enables logging messages at the warning syslog priority</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/logdir/</td>
+<td>Path to directory used to store log files</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_auth_errors_until_block/</td>
+<td>Maximum number of authentication failures allowed before temporarily blocking a host</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_read_amount/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_read_amount/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/max_read_amount/</td>
+<td>Maximum amount of data read before return to epoll_wait</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/maxlog/</td>
+<td>Logs messages to the log file</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/module_configdir/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/module_configdir/</td>
+<td>Path to directory containing module configurations</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/ms_timestamp/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/ms_timestamp/</td>
+<td>Enables millisecond precision in log timestamps</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/passive/</td>
+<td>Puts the MaxScale Instance on stand-by, Passive Instances monitor Servers and accept client connections, but take no action</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/persist_runtime_changes/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/persist_runtime_changes/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/persist_runtime_changes/</td>
+<td>Persist configurations changes done at runtime</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/persistdir/</td>
+<td>Path to directory containing persistent configurations</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/piddir/</td>
+<td>Path to the directory containing the PID file</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier/</td>
+<td>Sets the Query Classifier module</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier_args/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier_args/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier_args/</td>
+<td>Specifies arguments passed to the Query Classifier</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier_cache_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier_cache_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier_cache_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_classifier_cache_size/</td>
+<td>Maximum size for Query Classifier Cache</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_retries/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_retries/</td>
+<td>Number of times to retry an internal query interruped by network errors</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_retry_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_retry_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/query_retry_timeout/</td>
+<td>Amount of time in seconds to wait on retried queries</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/rebalance_period/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/rebalance_period/</td>
+<td>How often should the load of the worker threads be checked and rebalancing be made</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/rebalance_threshold/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/rebalance_threshold/</td>
+<td>If the difference in load between the thread with the maximum load and the thread with the minimum load is larger than the value of this parameter, then work will be moved from the former to the latter</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/rebalance_window/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/rebalance_window/</td>
+<td>The load of how many seconds should be taken into account when rebalancing</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/retain_last_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/retain_last_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/retain_last_statements/</td>
+<td>Number of statements stored for each session. Used in debugging.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/session_trace/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/session_trace/</td>
+<td>Number of log entries stored in the session trace log. Used in debugging.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/session_trace_match/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/session_trace_match/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/session_trace_match/</td>
+<td>Regular expression that is matched against the contents of the session trace log and if it matches the contents are logged when the session stops</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/sharedir/</td>
+<td></td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/skip_name_resolve/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/skip_name_resolve/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/skip_name_resolve/</td>
+<td>Do not resolve client IP addresses to hostnames during authentication</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/skip_permission_checks/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/skip_permission_checks/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/skip_permission_checks/</td>
+<td>Disables user permission checks for services and monitors during startup</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/sql_mode/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/sql_mode/</td>
+<td>Specifies SQL Mode for Query Classifier</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/substitute_variables/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/substitute_variables/</td>
+<td>Sets environmental variables for cofniguration files</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/syslog/</td>
+<td>Logs messages to the syslog</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/threads/</td>
+<td>This parameter specifies how many threads will be used for handling the routing</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/users_refresh_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/users_refresh_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/users_refresh_interval/</td>
+<td>How often the users will be refreshed</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/users_refresh_time/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/users_refresh_time/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/users_refresh_time/</td>
+<td>How often the users can be refreshed</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/writeq_high_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/writeq_high_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/writeq_high_water/</td>
+<td>Maximum size of client-side write queue to a given Server before MaxScale blocks traffic going to the Server to allow it to catch up</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/writeq_low_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/writeq_low_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/writeq_low_water/</td>
+<td>Size the client-side write queue must drop to before MaxScale unblocks a throttled Server</td>
+</tr>
+</tbody>
+</table>
+<p>To see Global Parameters supported in other versions, see <a href="https://mariadb.com/docs/skysql-dbaas/ref/mxs/global-parameters/#Global_Parameters_by_MariaDB_MaxScale_Version">"Global Parameters by MariaDB MaxScale Version"</a>.</p>
+<h1 id="mariadb-maxscale-2208-module-parameters">MariaDB MaxScale 22.08 Module Parameters</h1>
+<p>The Module Parameters supported by MariaDB MaxScale 22.08 are listed below.</p>
+<p>To see Module Parameters supported in other versions, see <a href="https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/#Module_Parameters_by_MariaDB_MaxScale_Version">"Module Parameters by MariaDB MaxScale Version"</a>.</p>
+<h3 id="mariadb-monitor-mariadbmon"><strong>MariaDB Monitor (mariadbmon)</strong></h3>
+<p>The parameters for mariadbmon:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/assume_unique_hostnames/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/assume_unique_hostnames/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/assume_unique_hostnames/</td>
+<td>Assume that hostnames are unique</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auto_failover/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auto_failover/</td>
+<td>Enable automatic server failover</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auto_rejoin/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auto_rejoin/</td>
+<td>Enable automatic server rejoin</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_connect_attempts,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_connect_attempts,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_connect_attempts,Monitor.mariadbmon/</td>
+<td>Number of connection attempts to make to a server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_connect_timeout,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_connect_timeout,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_connect_timeout,Monitor.mariadbmon/</td>
+<td>Connection timeout for monitor connections</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_read_timeout,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_read_timeout,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_read_timeout,Monitor.mariadbmon/</td>
+<td>Read timeout for monitor connections</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_write_timeout,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_write_timeout,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/backend_write_timeout,Monitor.mariadbmon/</td>
+<td>Write timeout for monitor connections</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cooperative_monitoring_locks/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cooperative_monitoring_locks/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cooperative_monitoring_locks/</td>
+<td>Cooperative monitoring type</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_api_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_api_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_api_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_api_key/</td>
+<td>The API key used in communication with the ColumnStore admin daemon</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_base_path/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_base_path/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_base_path/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_base_path/</td>
+<td>The base path to be used when accessing the ColumnStore administrative daemon. If, for instance, a daemon URL is https://localhost:8640/cmapi/0.4.0/node/start then the admin_base_path is "/cmapi/0.4.0".</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_port/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_port/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/cs_admin_port/</td>
+<td>Port of the ColumnStore administrative daemon</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/demotion_sql_file/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/demotion_sql_file/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/demotion_sql_file/</td>
+<td>Path to SQL file that is executed during node demotion</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_check_interval,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_check_interval,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_check_interval,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_check_interval,Monitor.mariadbmon/</td>
+<td>How often the disk space is checked</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_threshold,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_threshold,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_threshold,Monitor.mariadbmon/</td>
+<td>Disk space threshold</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_read_only_slaves/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_read_only_slaves/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_read_only_slaves/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_read_only_slaves/</td>
+<td>Enable read_only on all slave servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_simple_topology/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_simple_topology/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_simple_topology/</td>
+<td>Enforce a simple topology</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_writable_master/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_writable_master/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enforce_writable_master/</td>
+<td>Disable read_only on the current master server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/events,Monitor.mariadbmon/</td>
+<td>Events that cause the script to be called</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/failcount/</td>
+<td>Number of consecutive times MaxScale can fail to reach the Primary Server before it considers it down</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/failover_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/failover_timeout/</td>
+<td>Timeout for failover</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/handle_events/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/handle_events/</td>
+<td>Manage server-side events</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/journal_max_age,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/journal_max_age,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/journal_max_age,Monitor.mariadbmon/</td>
+<td>The time the on-disk cached server states are valid for</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/maintenance_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/maintenance_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/maintenance_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/maintenance_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/maintenance_on_low_disk_space/</td>
+<td>Put the server into maintenance mode when it runs out of disk space</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_conditions/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_conditions/</td>
+<td>Conditions that the master servers must meet</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_failure_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_failure_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_failure_timeout/</td>
+<td>Master failure timeout</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/monitor_interval,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/monitor_interval,Monitor.mariadbmon/</td>
+<td>How often the servers are monitored</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/password,Monitor.mariadbmon/</td>
+<td>Password for the user used to monitor the servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/promotion_sql_file/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/promotion_sql_file/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/promotion_sql_file/</td>
+<td>Path to SQL file that is executed during node promotion</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebuild_port/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebuild_port/</td>
+<td>Listen port used for transferring server backup</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/replication_master_ssl/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/replication_master_ssl/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/replication_master_ssl/</td>
+<td>Enable SSL when configuring replication</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/replication_password/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/replication_password/</td>
+<td>Password for the user that is used for replication</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/replication_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/replication_user/</td>
+<td>User used for replication</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/script,Monitor.mariadbmon/</td>
+<td>Script to run whenever an event occurs</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/script_max_replication_lag/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/script_max_replication_lag/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/script_max_replication_lag/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/script_max_replication_lag/</td>
+<td>Replication lag limit at which the script is run</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/script_timeout,Monitor.mariadbmon/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/script_timeout,Monitor.mariadbmon/</td>
+<td>Timeout for the script</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/servers,Monitor.mariadbmon/</td>
+<td>List of servers to use</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/servers_no_promotion/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/servers_no_promotion/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/servers_no_promotion/</td>
+<td>List of servers that are never promoted</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/slave_conditions/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/slave_conditions/</td>
+<td>Conditions that the slave servers must meet</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_check_host_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_check_host_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_check_host_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_check_host_key/</td>
+<td>Is SSH host key check enabled</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_keyfile/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_keyfile/</td>
+<td>SSH keyfile. Used for running remote commands on servers.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_port/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_port/</td>
+<td>SSH port. Used for running remote commands on servers.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_timeout/</td>
+<td>SSH connection and command timeout</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssh_user/</td>
+<td>SSH username. Used for running remote commands on servers.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/switchover_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/switchover_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/switchover_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/switchover_on_low_disk_space/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/switchover_on_low_disk_space/</td>
+<td>Perform a switchover when a server runs out of disk space</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/switchover_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/switchover_timeout/</td>
+<td>Timeout for switchover</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user,Monitor.mariadbmon/</td>
+<td>Username used to monitor the servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/verify_master_failure/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/verify_master_failure/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/verify_master_failure/</td>
+<td>Verify master failure</td>
+</tr>
+</tbody>
+</table>
+<h3 id="readwrite-split-router-readwritesplit"><strong>Read/Write Split Router (readwritesplit)</strong></h3>
+<p>The parameters for readwritesplit:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_all_servers,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_all_servers,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_all_servers,Router.readwritesplit/</td>
+<td>Retrieve users from all backend servers instead of only one</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/causal_reads/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/causal_reads/</td>
+<td>Configures read causality, reads subsequent to writes issued in manner to reduce replication lag</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/causal_reads_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/causal_reads_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/causal_reads_timeout/</td>
+<td>Timeout for synchronization of the Primary Server with a Replica Server during causal reads</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_keepalive,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_keepalive,Router.readwritesplit/</td>
+<td>How ofted idle connections are pinged</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_timeout,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_timeout,Router.readwritesplit/</td>
+<td>Connection idle timeout</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/delayed_retry/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/delayed_retry/</td>
+<td>Retry queries that fail to route due to connection issues</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/delayed_retry_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/delayed_retry_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/delayed_retry_timeout/</td>
+<td>Timeout for retrying queries that fail to route due to connection issues</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disable_sescmd_history,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disable_sescmd_history,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disable_sescmd_history,Router.readwritesplit/</td>
+<td>Disable session command history</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enable_root_user,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enable_root_user,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enable_root_user,Router.readwritesplit/</td>
+<td>Allow the root user to connect to this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/force_connection_keepalive,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/force_connection_keepalive,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/force_connection_keepalive,Router.readwritesplit/</td>
+<td>Ping connections unconditionally</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readwritesplit/</td>
+<td>Put connections into pool after session has been idle for this long</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/lazy_connect/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/lazy_connect/</td>
+<td>Create connections only when needed</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readwritesplit/</td>
+<td>Match localhost to wildcard host</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_auth_warnings,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_auth_warnings,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_auth_warnings,Router.readwritesplit/</td>
+<td>Log a warning when client authentication fails</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_debug,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_debug,Router.readwritesplit/</td>
+<td>Log debug messages for this service (debug builds only)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_info,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_info,Router.readwritesplit/</td>
+<td>Log info messages for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_notice,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_notice,Router.readwritesplit/</td>
+<td>Log notice messages for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warning,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warning,Router.readwritesplit/</td>
+<td>Log warning messages for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_accept_reads,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_accept_reads,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_accept_reads,Router.readwritesplit/</td>
+<td>Use master for reads</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_failure_mode/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_failure_mode/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_failure_mode/</td>
+<td>Master failure mode behavior</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_reconnection/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_reconnection/</td>
+<td>Reconnect to the Primary Server if it changes mid-session</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_connections,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_connections,Router.readwritesplit/</td>
+<td>Maximum number of connections</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_sescmd_history,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_sescmd_history,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_sescmd_history,Router.readwritesplit/</td>
+<td>Session command history size</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_slave_connections/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_slave_connections/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_slave_connections/</td>
+<td>Maximum number of connections the router session can use to connect to Replica Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_slave_replication_lag/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_slave_replication_lag/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_slave_replication_lag/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_slave_replication_lag/</td>
+<td>Number of seconds a Replica Server is allowed to fall behind the Primary Server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/multiplex_timeout,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/multiplex_timeout,Router.readwritesplit/</td>
+<td>How long a session can wait for a connection to become available</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/net_write_timeout,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/net_write_timeout,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/net_write_timeout,Router.readwritesplit/</td>
+<td>Network write timeout</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/optimistic_trx/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/optimistic_trx/</td>
+<td>Optimistically offload transactions to slaves</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/password,Router.readwritesplit/</td>
+<td>Password for the user used to retrieve database users</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/prune_sescmd_history,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/prune_sescmd_history,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/prune_sescmd_history,Router.readwritesplit/</td>
+<td>Prune old session command history if the limit is exceeded</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rank,Router.readwritesplit/</td>
+<td>Service rank</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,Router.readwritesplit/</td>
+<td>Number of statements kept in memory</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retry_failed_reads/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retry_failed_reads/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retry_failed_reads/</td>
+<td>Automatically retry failed reads outside of transactions</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/reuse_prepared_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/reuse_prepared_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/reuse_prepared_statements/</td>
+<td>Reuse identical prepared statements inside the same connection</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace,Router.readwritesplit/</td>
+<td>Enable session tracing for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readwritesplit/</td>
+<td>Track session state using server responses</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/slave_connections/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/slave_connections/</td>
+<td>Starting number of slave connections</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/slave_selection_criteria/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/slave_selection_criteria/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/slave_selection_criteria/</td>
+<td>Criteria the router uses to select Replica Servers in load balancing read operations</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strict_multi_stmt/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strict_multi_stmt/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strict_multi_stmt/</td>
+<td>Routes multi-statement queries to the Primary Server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strict_sp_calls/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strict_sp_calls/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strict_sp_calls/</td>
+<td>Routes https://mariadb.com/docs/skysql-dbaas/ref/mdb/sql-statements/CALL/ statements to the Primary Server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strip_db_esc,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strip_db_esc,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strip_db_esc,Router.readwritesplit/</td>
+<td>Strip escape characters from database names</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay/</td>
+<td>Replays in progress transactions that fail on a different Server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_attempts/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_attempts/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_attempts/</td>
+<td>Maximum number of times to attempt to replay failed transactions</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_checksum/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_checksum/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_checksum/</td>
+<td>Type of checksum to calculate for results</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_max_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_max_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_max_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_max_size/</td>
+<td>Maximum size in bytes permitted for transaction replays</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_deadlock/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_deadlock/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_deadlock/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_deadlock/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_deadlock/</td>
+<td>Maximum number of times the router attempts to replay transactions in the event that the transaction fails due to deadlocks</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_mismatch/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_mismatch/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_mismatch/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_mismatch/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_retry_on_mismatch/</td>
+<td>Retry transaction on checksum mismatch</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/transaction_replay_timeout/</td>
+<td>Timeout for transaction replay</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/use_sql_variables_in/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/use_sql_variables_in/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/use_sql_variables_in/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/use_sql_variables_in/</td>
+<td>Where the router sends session variable queries</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user,Router.readwritesplit/</td>
+<td>Username used to retrieve database users</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file,Router.readwritesplit/</td>
+<td>Load additional users from a file</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readwritesplit/</td>
+<td>When and how the user accounts file is used</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/version_string,Router.readwritesplit/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/version_string,Router.readwritesplit/</td>
+<td>Custom version string to use</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mariadb-protocol"><strong>MariaDB Protocol</strong></h3>
+<p>The parameters for MariaDBProtocol:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/address,Protocol.MariaDBProtocol/</td>
+<td>Listener address</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/authenticator,Protocol.MariaDBProtocol/</td>
+<td>Listener authenticator</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/authenticator_options,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/authenticator_options,Protocol.MariaDBProtocol/</td>
+<td>Authenticator options</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_init_sql_file,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_init_sql_file,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_init_sql_file,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_init_sql_file,Protocol.MariaDBProtocol/</td>
+<td>Path to connection initialization SQL</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/port,Protocol.MariaDBProtocol/</td>
+<td>Listener port</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/protocol,Protocol.MariaDBProtocol/</td>
+<td>Listener protocol to use</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/service,Protocol.MariaDBProtocol/</td>
+<td>Service to which the listener connects to</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/socket,Protocol.MariaDBProtocol/</td>
+<td>Listener UNIX socket</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/sql_mode,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/sql_mode,Protocol.MariaDBProtocol/</td>
+<td>SQL parsing mode</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl,Protocol.MariaDBProtocol/</td>
+<td>Enable TLS for server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca,Protocol.MariaDBProtocol/</td>
+<td>Path to the X.509 certificate authority chain file in PEM format. In MaxScale 6 and earlier, this parameter was named https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,Protocol.MariaDBProtocol/. In MaxScale 22.08, ssl_ca_cert was renamed to ssl_ca. For backward compatibility, ssl_ca_cert can be used as an alias, but MariaDB recommends using ssl_ca because ssl_ca_cert has been deprecated.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,Protocol.MariaDBProtocol/</td>
+<td>Alias for https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca,Protocol.MariaDBProtocol/</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert,Protocol.MariaDBProtocol/</td>
+<td>TLS public certificate</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,Protocol.MariaDBProtocol/</td>
+<td>TLS certificate verification depth</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cipher,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cipher,Protocol.MariaDBProtocol/</td>
+<td>TLS cipher list</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_crl,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_crl,Protocol.MariaDBProtocol/</td>
+<td>TLS certificate revocation list</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_key,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_key,Protocol.MariaDBProtocol/</td>
+<td>TLS private key</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,Protocol.MariaDBProtocol/</td>
+<td>Verify TLS peer certificate</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,Protocol.MariaDBProtocol/</td>
+<td>Verify TLS peer host</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_version,Protocol.MariaDBProtocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_version,Protocol.MariaDBProtocol/</td>
+<td>Minimum TLS protocol version</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_mapping_file/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_mapping_file/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_mapping_file/</td>
+<td>Path to user and group mapping file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="read-connection-router-readconnroute"><strong>Read Connection Router (readconnroute)</strong></h3>
+<p>The parameters for readconnroute:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_all_servers,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_all_servers,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_all_servers,Router.readconnroute/</td>
+<td>Retrieve users from all backend servers instead of only one</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_keepalive,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_keepalive,Router.readconnroute/</td>
+<td>How ofted idle connections are pinged</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_timeout,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/connection_timeout,Router.readconnroute/</td>
+<td>Connection idle timeout</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disable_sescmd_history,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disable_sescmd_history,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disable_sescmd_history,Router.readconnroute/</td>
+<td>Disable session command history</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enable_root_user,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enable_root_user,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/enable_root_user,Router.readconnroute/</td>
+<td>Allow the root user to connect to this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/force_connection_keepalive,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/force_connection_keepalive,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/force_connection_keepalive,Router.readconnroute/</td>
+<td>Ping connections unconditionally</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/idle_session_pool_time,Router.readconnroute/</td>
+<td>Put connections into pool after session has been idle for this long</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/localhost_match_wildcard_host,Router.readconnroute/</td>
+<td>Match localhost to wildcard host</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_auth_warnings,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_auth_warnings,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_auth_warnings,Router.readconnroute/</td>
+<td>Log a warning when client authentication fails</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_debug,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_debug,Router.readconnroute/</td>
+<td>Log debug messages for this service (debug builds only)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_info,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_info,Router.readconnroute/</td>
+<td>Log info messages for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_notice,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_notice,Router.readconnroute/</td>
+<td>Log notice messages for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warning,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warning,Router.readconnroute/</td>
+<td>Log warning messages for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_accept_reads,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_accept_reads,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/master_accept_reads,Router.readconnroute/</td>
+<td>Route read operations to the Primary Server or whether it only accepts write operations</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_connections,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_connections,Router.readconnroute/</td>
+<td>Maximum number of connections</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_replication_lag,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_replication_lag,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_replication_lag,Router.readconnroute/</td>
+<td>Maximum acceptable replication lag</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_sescmd_history,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_sescmd_history,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_sescmd_history,Router.readconnroute/</td>
+<td>Session command history size</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/multiplex_timeout,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/multiplex_timeout,Router.readconnroute/</td>
+<td>How long a session can wait for a connection to become available</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/net_write_timeout,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/net_write_timeout,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/net_write_timeout,Router.readconnroute/</td>
+<td>Network write timeout</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/password,Router.readconnroute/</td>
+<td>Password for the user used to retrieve database users</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/prune_sescmd_history,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/prune_sescmd_history,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/prune_sescmd_history,Router.readconnroute/</td>
+<td>Prune old session command history if the limit is exceeded</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rank,Router.readconnroute/</td>
+<td>Service rank</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,Router.readconnroute/</td>
+<td>Number of statements kept in memory</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/router_options,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/router_options,Router.readconnroute/</td>
+<td>A comma separated list of server roles</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace,Router.readconnroute/</td>
+<td>Enable session tracing for this service</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_track_trx_state,Router.readconnroute/</td>
+<td>Track session state using server responses</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strip_db_esc,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strip_db_esc,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/strip_db_esc,Router.readconnroute/</td>
+<td>Strip escape characters from database names</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user,Router.readconnroute/</td>
+<td>Username used to retrieve database users</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file,Router.readconnroute/</td>
+<td>Load additional users from a file</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/user_accounts_file_usage,Router.readconnroute/</td>
+<td>When and how the user accounts file is used</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/version_string,Router.readconnroute/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/version_string,Router.readconnroute/</td>
+<td>Custom version string to use</td>
+</tr>
+</tbody>
+</table>
+<h3 id="maxscale"><strong>MaxScale</strong></h3>
+<p>The parameters for maxscale:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_auth/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_auth/</td>
+<td>Admin interface authentication</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_enabled/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_enabled/</td>
+<td>Admin interface is enabled</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_gui/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_gui/</td>
+<td>Enable admin GUI</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_host/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_host/</td>
+<td>Admin interface host</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_jwt_algorithm/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_jwt_algorithm/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_jwt_algorithm/</td>
+<td>JWT signature algorithm</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_jwt_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_jwt_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_jwt_key/</td>
+<td>Encryption key ID for symmetric signature algorithms. If left empty, MaxScale will generate a random key that is used to sign the JWT.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_log_auth_failures/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_log_auth_failures/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_log_auth_failures/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_log_auth_failures/</td>
+<td>Log admin interface authentication failures</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_oidc_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_oidc_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_oidc_url/</td>
+<td>Extra public certificates used to validate externally signed JWTs</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readonly_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readonly_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readonly_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readonly_service/</td>
+<td>PAM service for read-only users</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readwrite_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readwrite_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readwrite_service/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_pam_readwrite_service/</td>
+<td>PAM service for read-write users</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_port,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_port,maxscale.maxscale/</td>
+<td>Admin interface port</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_secure_gui/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_secure_gui/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_secure_gui/</td>
+<td>Only serve GUI over HTTPS</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_ca/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_ca/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_ca/</td>
+<td>Admin SSL CA cert</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_ca_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_ca_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_ca_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_ca_cert/</td>
+<td>Alias for 'admin_ssl_ca'</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_cert/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_cert/</td>
+<td>Admin SSL cert</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_key/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_key/</td>
+<td>Admin SSL key</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_version/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_version/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_ssl_version/</td>
+<td>Minimum required TLS protocol version for the REST API</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_verify_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_verify_url/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/admin_verify_url/</td>
+<td>URL for third-party verification of client tokens</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_connect_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_connect_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_connect_timeout/</td>
+<td>Connection timeout for fetching user accounts</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_read_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_read_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_read_timeout/</td>
+<td>Read timeout for fetching user accounts (deprecated)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_write_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_write_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auth_write_timeout/</td>
+<td>Write timeout for for fetching user accounts (deprecated)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auto_tune/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/auto_tune/</td>
+<td>Specifies whether a MaxScale parameter whose value depends on a specific global server variable, should automatically be updated to match the variable's current value</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_cluster/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_cluster/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_cluster/</td>
+<td>Cluster used for configuration synchronization. If left empty (i.e., value is ""), synchronization is not done.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_db/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_db/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_db/</td>
+<td>Database where the 'maxscale_config' table is created</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_interval/</td>
+<td>How often to synchronize the configuration</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_password/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_password/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_password/</td>
+<td>Password for the user used for configuration synchronization</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_timeout/</td>
+<td>Timeout for the configuration synchronization operations</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/config_sync_user/</td>
+<td>User account used for configuration synchronization</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/debug,maxscale.maxscale/</td>
+<td>Debug options</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/dump_last_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/dump_last_statements/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/dump_last_statements/</td>
+<td>In what circumstances should the last statements that a client sent be dumped</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/key_manager/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/key_manager/</td>
+<td>Key manager type</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/load_persisted_configs/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/load_persisted_configs/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/load_persisted_configs/</td>
+<td>Specifies whether persisted configuration files should be loaded on startup</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/local_address,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/local_address,maxscale.maxscale/</td>
+<td>Local address to use when connecting</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_debug,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_debug,maxscale.maxscale/</td>
+<td>Specifies whether debug messages should be logged (meaningful only with debug builds)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_info,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_info,maxscale.maxscale/</td>
+<td>Specifies whether info messages should be logged</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_notice,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_notice,maxscale.maxscale/</td>
+<td>Specifies whether notice messages should be logged</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_throttling/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_throttling/</td>
+<td>Limit the amount of identical log messages than can be logged during a certain time period</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warn_super_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warn_super_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warn_super_user/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warn_super_user/</td>
+<td>Log a warning when a user with super privilege logs in</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warning,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/log_warning,maxscale.maxscale/</td>
+<td>Specifies whether warning messages should be logged</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_auth_errors_until_block/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_auth_errors_until_block/</td>
+<td>The maximum number of authentication failures that are tolerated before a host is temporarily blocked</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_read_amount/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_read_amount/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_read_amount/</td>
+<td>Maximum amount of data read before return to epoll_wait</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/maxlog/</td>
+<td>Log to MaxScale's own log</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ms_timestamp/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ms_timestamp/</td>
+<td>Enable or disable high precision timestamps</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/passive/</td>
+<td>True if MaxScale is in passive mode</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/persist_runtime_changes/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/persist_runtime_changes/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/persist_runtime_changes/</td>
+<td>Persist configurations changes done at runtime</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier/</td>
+<td>The name of the query classifier to load</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier_args/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier_args/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier_args/</td>
+<td>Arguments for the query classifier</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier_cache_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier_cache_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier_cache_size/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_classifier_cache_size/</td>
+<td>Type: size, default value is 15% of available memory</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_retries/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_retries/</td>
+<td>Number of times an interrupted query is retried</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_retry_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_retry_timeout/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/query_retry_timeout/</td>
+<td>The total timeout in seconds for any retried queries</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebalance_period/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebalance_period/</td>
+<td>How often should the load of the worker threads be checked and rebalancing be made</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebalance_threshold/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebalance_threshold/</td>
+<td>If the difference in load between the thread with the maximum load and the thread with the minimum load is larger than the value of this parameter, then work will be moved from the former to the latter</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebalance_window/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rebalance_window/</td>
+<td>The load of how many seconds should be taken into account when rebalancing</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/retain_last_statements,maxscale.maxscale/</td>
+<td>How many statements should be retained for each session for debugging purposes</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace,maxscale.maxscale/</td>
+<td>How many log entries are stored in the session specific trace log</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace_match/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace_match/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/session_trace_match/</td>
+<td>Regular expression that is matched against the contents of the session trace log and if it matches the contents are logged when the session stops</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/skip_name_resolve/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/skip_name_resolve/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/skip_name_resolve/</td>
+<td>Do not resolve client IP addresses to hostnames during authentication</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/skip_permission_checks/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/skip_permission_checks/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/skip_permission_checks/</td>
+<td>Skip service and monitor permission checks</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/sql_mode,maxscale.maxscale/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/sql_mode,maxscale.maxscale/</td>
+<td>The query classifier sql mode</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/syslog/</td>
+<td>Log to syslog</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/threads/</td>
+<td>Type: count, default value is based on cpu count</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/users_refresh_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/users_refresh_interval/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/users_refresh_interval/</td>
+<td>How often the users will be refreshed</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/users_refresh_time/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/users_refresh_time/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/users_refresh_time/</td>
+<td>How often the users can be refreshed</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/writeq_high_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/writeq_high_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/writeq_high_water/</td>
+<td>High water mark of dcb write queue</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/writeq_low_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/writeq_low_water/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/writeq_low_water/</td>
+<td>Low water mark of dcb write queue</td>
+</tr>
+</tbody>
+</table>
+<h3 id="server-objects"><strong>Server Objects</strong></h3>
+<p>The parameters for server objects:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/address,servers.servers/</td>
+<td>Server address</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/authenticator,servers.servers/</td>
+<td>Server authenticator (deprecated)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_threshold,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_threshold,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/disk_space_threshold,servers.servers/</td>
+<td>Server disk space threshold</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/extra_port/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/extra_port/</td>
+<td>Server extra port</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_routing_connections/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_routing_connections/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/max_routing_connections/</td>
+<td>Maximum routing connections</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/monitorpw/</td>
+<td>Monitor password</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/monitoruser/</td>
+<td>Monitor user</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/persistmaxtime/</td>
+<td>Maximum time that a connection can be in the pool</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/persistpoolmax/</td>
+<td>Maximum size of the persistent connection pool</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/port,servers.servers/</td>
+<td>Server port</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/priority/</td>
+<td>Server priority</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/protocol,servers.servers/</td>
+<td>Server protocol (deprecated)</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/proxy_protocol/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/proxy_protocol/</td>
+<td>Enable proxy protocol</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/rank,servers.servers/</td>
+<td>Server rank</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/socket,servers.servers/</td>
+<td>Server UNIX socket</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl,servers.servers/</td>
+<td>Enable TLS for server</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca,servers.servers/</td>
+<td>Path to the X.509 certificate authority chain file in PEM format. In MaxScale 6 and earlier, this parameter was named https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,servers.servers/. In MaxScale 22.08, ssl_ca_cert was renamed to ssl_ca. For backward compatibility, ssl_ca_cert can be used as an alias, but MariaDB recommends using ssl_ca because ssl_ca_cert has been deprecated.</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca_cert,servers.servers/</td>
+<td>Alias for https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_ca,servers.servers/</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert,servers.servers/</td>
+<td>TLS public certificate</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cert_verify_depth,servers.servers/</td>
+<td>TLS certificate verification depth</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cipher,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_cipher,servers.servers/</td>
+<td>TLS cipher list</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_key,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_key,servers.servers/</td>
+<td>TLS private key</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_certificate,servers.servers/</td>
+<td>Verify TLS peer certificate</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_verify_peer_host,servers.servers/</td>
+<td>Verify TLS peer host</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_version,servers.servers/https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/ssl_version,servers.servers/</td>
+<td>Minimum TLS protocol version</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/module-parameters/type,servers.servers/</td>
+<td>Object type</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mariadb-maxscale-2208-monitors">MariaDB MaxScale 22.08 Monitors</h1>
+<p>The following Monitors are supported by MariaDB MaxScale 22.08:</p>
+<table>
+<thead>
+<tr>
+<th>Monitor</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/monitor/auroramon/</td>
+<td>Tracks Servers in an Amazon Aurora deployment</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/monitor/csmon/</td>
+<td>Tracks Servers in a MariaDB ColumnStore deployment</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/monitor/galeramon/</td>
+<td>Tracks Servers in a MariaDB Enterprise Cluster deployment</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/monitor/grmon/</td>
+<td>Tracks Servers in a MySQL Group Replication deployment</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/monitor/mariadbmon/</td>
+<td>Tracks Servers in a MariaDB Replication deployment</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/monitor/xpandmon/</td>
+<td>A Xpand cluster monitor</td>
+</tr>
+</tbody>
+</table>
+<p>To see Monitors supported in other versions, see <a href="https://mariadb.com/docs/skysql-dbaas/ref/mxs/monitor/#Monitors_by_MariaDB_MaxScale_Version">"Monitors by MariaDB MaxScale Version"</a>.</p>
+<h1 id="mariadb-maxscale-2208-maxscale-protocols">MariaDB MaxScale 22.08 MaxScale Protocols</h1>
+<p>MariaDB MaxScale uses protocols to specify how it communicates with a given client, server, or back-end.</p>
+<p>The following MaxScale Protocols are supported by MariaDB MaxScale 22.08:</p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CDC</td>
+<td>Used with connections to a CDC service</td>
+</tr>
+<tr>
+<td>MariaDBProtocol</td>
+<td>The client to MaxScale MySQL protocol implementation</td>
+</tr>
+<tr>
+<td>nosqlprotocol</td>
+<td>MaxScale NoSQL client protocol implementation</td>
+</tr>
+</tbody>
+</table>
+<p>To see MaxScale Protocols supported in other versions, see <a href="https://mariadb.com/docs/skysql-dbaas/ref/mxs/protocol/#MaxScale_Protocols_by_MariaDB_MaxScale_Version">"MaxScale Protocols by MariaDB MaxScale Version"</a>.</p>
+<h1 id="mariadb-maxscale-2208-routers">MariaDB MaxScale 22.08 Routers</h1>
+<p>The following Routers are supported by MariaDB MaxScale 22.08:</p>
+<table>
+<thead>
+<tr>
+<th>Router</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/avrorouter/</td>
+<td>Replication</td>
+<td>Avro Router renders Binary Log events to JSON or Avro files and passed through the CDC Protocol to other services, like Kafka or Hadoop</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/binlogrouter/</td>
+<td>Replication</td>
+<td>Binary Log Router serves binlog events to Replica Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/cat/</td>
+<td>Query</td>
+<td>Cat Router sends queries to all Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/hintrouter/</td>
+<td>Query</td>
+<td>Hint Router uses routing hints to specify where to send queries</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/kafkacdc/</td>
+<td></td>
+<td>Replicate data changes from MariaDB to Kafka</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/kafkaimporter/</td>
+<td></td>
+<td>Stream Kafka messages into MariaDB</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/mirror/</td>
+<td></td>
+<td>Mirrors SQL statements to multiple targets</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/readconnroute/</td>
+<td>Query</td>
+<td>Read Connection Router balances the query load across the available Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/readwritesplit/</td>
+<td>Query</td>
+<td>Read/Write Splitter sends write operations to the Primary Server and balances the query load of read operations between the Replica Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/replicator/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/schemarouter/</td>
+<td>Query</td>
+<td>Schema Router provides simple sharding of data across multiple Servers</td>
+</tr>
+<tr>
+<td>https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/smartrouter/</td>
+<td></td>
+<td>Provides routing for the Smart Query feature</td>
+</tr>
+</tbody>
+</table>
+<p>To see Routers supported in other versions, see <a href="https://mariadb.com/docs/skysql-dbaas/ref/mxs/routing/#Routers_by_MariaDB_MaxScale_Version">"Routers by MariaDB MaxScale Version"</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Monitoring%20Metrics%20Reference%20b8ca28a9fda846dbabbf70fda23b0801/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Monitoring Metrics Reference">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Monitoring Metrics Reference
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Region%20Choices%203970be558ee146eb99eb116ad2b8f519/" class="md-footer__link md-footer__link--next" aria-label="Next: Region Choices">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Region Choices
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2024 SkySQL Inc
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/skysqlinc/skysql-docs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/skysql?lang=en" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/skysql" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.left", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
