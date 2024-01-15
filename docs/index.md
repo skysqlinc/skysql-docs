@@ -12,4 +12,3 @@ SkySQL is a multi-cloud, fully managed Database as a Service. It is specifically
 SkySQL brings production-grade capabilities to MariaDB – Automate complex DB configuration, augment your DB with cloud native features like VPC/auto-scaling, replicate anywhere across the globe, automate backups, manage data very securely with end-2-end encryption and compliance and much much more.
 
 ![architecture](architecture.png)
-
