@@ -10,7 +10,7 @@ Self-service [user management](https://mariadb.com/docs/skysql-dbaas/security/n
 
 *Service - Stop*
 
-https://skysql.mariadb.com/dashboard
+https://app.skysql.com/dashboard
 
 To stop a service:
 
