@@ -12,13 +12,13 @@ For users who prefer other interfaces, SkySQL offers the following alternatives:
 - Use the DBaaS API with a REST client
 - Use the [Terraform provider](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/)
 
-# Step 1: Register for SkySQL
+## Step 1: Register for SkySQL
 
 Goto [app.skysql.com](http://skysql.mariadb.com) to sign up. You can sign up using your Google, Github or LinkedIn credentials. Or, just use your Email address to sign up. 
 
 ![Untitled](Untitled.png)
 
-# Step 2: Launch a Service
+## Step 2: Launch a Service
 
 1. [Log in to the SkySQL Portal](https://skysql.mariadb.com/) and from the Dashboard, click the "+ Launch a Service" button.
 
@@ -50,7 +50,7 @@ Goto [app.skysql.com](http://skysql.mariadb.com) to sign up. You can sign up usi
 
 When the service reaches "Healthy" state, go to the next step. It typically takes about 5 mins or less to launch a new DB. 
 
-# Step 3: Try SQL using the built-in SQL Editor
+## Step 3: Try SQL using the built-in SQL Editor
 
 <aside>
 💡 SQL Editor is only available when using the Replicated topology. The editor is served from the MariaDB smart proxy - Maxscale, which is only available when running with Replicas.
@@ -62,7 +62,7 @@ When the service reaches "Healthy" state, go to the next step. It typically take
 
 </aside>
 
-### **Query Editor**
+### Query Editor
 
 SkySQL services support most MariaDB-compatible database clients and most popular programming languages (such as Python, Node.js, Java, and PHP).
 
@@ -87,9 +87,9 @@ To access the Query Editor:
 
 For additional information on this feature, see "[Query Editor](https://mariadb.com/docs/skysql-dbaas/connect/nr-query-editor/)".
 
-# Step 4: Observe, Scale
+## Step 4: Observe, Scale
 
-### **Monitoring**
+### Monitoring
 
 You can monitor all the important database and OS metrics from the dashboard. The monitoring UI also allows you to view,download any/all logs - error, info or Audit logs. 
 
@@ -108,7 +108,7 @@ To see expanded status and metrics information:
 
 Policies (alerting rules) identify "warning" and "critical" events within status and metrics data. Alerts are customer configurable, but pre-configured with sensible defaults in alignment to typical customer requirements. For additional information, see "[Alerts](https://mariadb.com/docs/skysql-dbaas/service-management/nr-alerts/)".
 
-### **Scaling**
+### Scaling
 
 SkySQL features automatic rule-based scaling (Autonomous) and manual on-demand scaling.
 
@@ -126,7 +126,7 @@ With manual scaling, you can perform horizontal scaling (In/Out), vertical scali
 
 *Self-Service Scaling of Nodes*
 
-# Step 5: **Tear-down**
+## Step 5: Tear-down
 
 When you are done with your testing session, you can stop the service. When a service is stopped, storage charges continue to accrue, but compute charges pause until the service is started again.
 

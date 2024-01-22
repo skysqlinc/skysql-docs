@@ -2,7 +2,7 @@
 
 
 !!! Note
-    SkySQL documentation is work-in-progress. Many of the links from the pages below still  reference the older version of SkySQL documentation on the [Mariadb.com](http://Mariadb.com) site. Please bear with us during this transition.
+    **SkySQL documentation is work-in-progress. Many of the links from the pages below still  reference the older version of SkySQL documentation on the [Mariadb.com](http://Mariadb.com) site. Please bear with us during this transition.**
 
 
 MariaDB is one of the most popular, mature open source relational databases in the world.

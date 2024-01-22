@@ -2,7 +2,7 @@
 
 This walkthrough explains how to launch database services and manage the lifecycle of database services using the SkySQL DBaaS REST API.
 
-# Launch a Service
+## Launch a Service
 
 ### **Step 1: Generate API Key**
 
@@ -21,29 +21,32 @@ This walkthrough explains how to launch database services and manage the lifecyc
     ```
     
     The `SKYSQL_API_KEY` environment variable will be used in the subsequent steps.
-    
 
-### Step 2: Use Swagger docs to try out the APIs
+!!! Note
+    You can use the Swagger docs site we host we try out the API OR 
+    Follow the instructions below to try the API using your command Shell    
+
+### **Step 2: Use Swagger docs to try out the APIs**
 
 You can use the API Documentation [here](https://docs.skysql.mariadb.com/) and directly try out the APIs in your browser. 
 
 All you need is to click ‘Authorize’ and type in `Bearer <supply your API key here>`
 
-Alternatively, you can follow the steps below to launch a DB … 
 
-## Pre-requisites for code below
 
-*The examples below use curl as the REST client. curl is available for Linux, macOS, and MS Windows. Of course, you can use any language client that supports invoking REST over HTTP.* 
+!!! Note
+    ** Pre-requisites for code below **
 
-*Examples below also use jq, a JSON parsing utility. [jq](https://stedolan.github.io/jq/download/) is available for Linux, macOS, and MS Windows. Install jq then proceed.*
-
-*The examples also make use of tee to save the response JSON data to a file while also allowing it to be piped to jq for output. Both Linux and macOS support tee as described in the examples. On MS Windows, Powershell has a tee command that requires the -filepath option to be inserted prior to the filename.*
-
-*The chmod command is used to make a file private to the current user. If your environment doesn't support chmod, you can set the file's permissions using other means.*
-
-*The examples also make use of exported variables and ${VARIABLE_NAME} variable references that are compatible with Bourne-like shells (such as sh, bash, and zsh). On MS Windows, you will need to adapt these instructions if you are not using a Bourne-like shell. For example, you can copy just the jq part of an export command (from inside the backticks), run that on its own, and then copy/paste the resulting string into a variable assignment for your shell.*
-
-*Finally, the examples use a backslash at the end of some of the lines to indicate to the shell that a command spans multiple lines. If your shell doesn't allow this, remove each trailing backslash character and join the following line to the end of the current line*.
+    *The examples below use curl as the REST client. curl is available for Linux, macOS, and MS Windows. Of course, you can use any language client that supports invoking REST over HTTP.* 
+    *Examples below also use jq, a JSON parsing utility. [jq](https://stedolan.github.io/jq/download/) is available for Linux, macOS, and MS Windows. Install jq then proceed.*
+    
+    *The examples also make use of tee to save the response JSON data to a file while also allowing it to be piped to jq for output. Both Linux and macOS support tee as described in the examples. On MS Windows, Powershell has a tee command that requires the -filepath option to be inserted prior to the filename.*
+    
+    *The chmod command is used to make a file private to the current user. If your environment doesn't support chmod, you can set the file's permissions using other means.*
+    
+    *The examples also make use of exported variables and ${VARIABLE_NAME} variable references that are compatible with Bourne-like shells (such as sh, bash, and zsh). On MS Windows, you will need to adapt these instructions if you are not using a Bourne-like shell. For example, you can copy just the jq part of an export command (from inside the backticks), run that on its own, and then copy/paste the resulting string into a variable assignment for your shell.*
+    
+    *Finally, the examples use a backslash at the end of some of the lines to indicate to the shell that a command spans multiple lines. If your shell doesn't allow this, remove each trailing backslash character and join the following line to the end of the current line*.
 
 ### **Step 2: Determine the Client IP Address**
 
@@ -74,7 +77,6 @@ cat > request-service.json <<EOF
   "size": "sky-2x8",
   "storage": 100,
   "nodes": 1,
-  "version": "10.6.11-6-1",
   "name": "skysql-quickstart",
   "ssl_enabled": true,
   "allow_list": [
@@ -230,7 +232,7 @@ EOF
     ```
     
 
-# Resources
+## Resources
 
 - [API Documentation](https://docs.skysql.mariadb.com/)
 - [API Reference Documentation](https://mariadb.com/docs/skysql-dbaas/ref/skynr/)

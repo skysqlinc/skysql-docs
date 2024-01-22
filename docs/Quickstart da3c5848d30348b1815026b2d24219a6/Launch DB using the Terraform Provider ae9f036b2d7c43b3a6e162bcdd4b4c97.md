@@ -9,16 +9,15 @@ For users who prefer other interfaces, SkySQL offers the following alternatives:
 
 This walkthrough demonstrates a service configuration that is suitable for a quick test. A more customized configuration should be selected for performance testing or for alignment to the needs of production workloads.
 
-<aside>
-💡 This procedure uses Terraform. HashiCorp officially supports Terraform on several Linux distributions, but HashiCorp also provides binaries for Microsoft Windows, macOS, and other operating systems.
+!!! Note
+    This procedure uses Terraform. HashiCorp officially supports Terraform on several Linux distributions, but HashiCorp also provides binaries for Microsoft Windows, macOS, and other operating systems.
+    
+    For a list of operating systems that are officially supported for Terraform, see "[HashiCorp Terraform Documentation: Supported Operating Systems](https://developer.hashicorp.com/terraform/enterprise/requirements/os-specific/supported-os)".
+    
+    For a list of operating systems that have binaries available for Terraform, see "[HashiCorp Terraform Documentation: Install Terraform](https://developer.hashicorp.com/terraform/downloads)".
 
-For a list of operating systems that are officially supported for Terraform, see "[HashiCorp Terraform Documentation: Supported Operating Systems](https://developer.hashicorp.com/terraform/enterprise/requirements/os-specific/supported-os)".
 
-For a list of operating systems that have binaries available for Terraform, see "[HashiCorp Terraform Documentation: Install Terraform](https://developer.hashicorp.com/terraform/downloads)".
-
-</aside>
-
-# Dependencies
+## Dependencies
 
 - This procedure requires Terraform to be installed. For information about how to install Terraform, see "[HashiCorp Terraform Documentation: Install Terraform](https://developer.hashicorp.com/terraform/downloads)".
 - The examples in this procedure also use `jq`, a JSON parsing utility. [jq](https://stedolan.github.io/jq/download/) is available for Linux, macOS, and MS Windows. Install `jq` then proceed.
@@ -26,7 +25,7 @@ For a list of operating systems that have binaries available for Terraform, see 
 - The examples in this procedure also use `wget`, a file download utility. [GNU Wget](https://www.gnu.org/software/wget/) is available for Linux, macOS, and MS Windows. Install `wget` then proceed.
 - The examples in this procedure also use exported environment variables that are compatible with Bourne-like shells (such as `sh`, `bash`, and `zsh`).
 
-# Launch a Service
+## Launch a Service
 
 ### **Step 1: Generate API Key**
 
@@ -481,7 +480,7 @@ skysql_service.default: Destruction complete after 2m38s
 Destroy complete! Resources: 1 destroyed.
 ```
 
-# Manually Install Provider from Binary Distribution
+## Manually Install Provider from Binary Distribution
 
 The SkySQL New Release Terraform provider can be downloaded from the [GitHub releases page](https://github.com/mariadb-corporation/terraform-provider-skysql/releases) as a binary distribution and manually installed.
 
@@ -557,7 +556,7 @@ With **macOS**, manually install the provider on the target system by performin
     `$ ls -l ~/.terraform.d/plugins/registry.terraform.io/mariadb-corporation/skysql/`
     
 
-# Resources
+## Resources
 
 - [GitHub Project](https://github.com/mariadb-corporation/terraform-provider-skysql)
 - [Example Terraform Configuration Files](https://github.com/mariadb-corporation/terraform-provider-skysql/tree/main/examples)

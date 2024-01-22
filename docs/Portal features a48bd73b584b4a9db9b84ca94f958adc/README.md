@@ -4,17 +4,14 @@ From the SkySQL Portal, you can launch, query, monitor, and manage your SkySQL s
 
 ## Access the Portal
 
-To access MariaDB SkySQL go to [https://skysql.mariadb.com/](https://skysql.mariadb.com/)
+You can access the Portal [here](https://app.skysql.com/dashboard)
 
 ## Dashboard
 
 ![https://mariadb.com/docs/_images/screenshots/services-tx-xpand-healthy.png](https://mariadb.com/docs/_images/screenshots/services-tx-xpand-healthy.png)
 
-*Portal Dashboard*
 
-https://skysql.mariadb.com/dashboard
-
-The default Portal view is the Dashboard. From the Dashboard, you can see a list of your SkySQL services and status information for each service.
+From the Dashboard, you can see a list of your SkySQL services and status information for each service.
 
 From a different view, the Dashboard can be accessed by clicking the "Dashboard" link in the main menu (left navigation in the Portal).
 
