@@ -64,7 +64,7 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/skysqlinc/skysql-docs
+      link: https://github.com/skysqlinc
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/skysql
     - icon: fontawesome/brands/linkedin
