@@ -3,7 +3,7 @@
 The MariaDB SkySQL DBaaS API is a REST API that can perform operations in MariaDB SkySQL using automation.
 
 !!! Note
-    The easiest way to get started with the API is to use [this swagger Docs](https://docs.skysql.mariadb.com). Just generate your API key as described on this page, Click ‘Authorize’ and enter ‘Bearer <yourAPI Key> and try out any of the APIs.**
+    The easiest way to get started with the API is to use [this swagger Docs](https://apidocs.skysql.com). Just generate your API key as described on this page, Click ‘Authorize’ and enter ‘Bearer <yourAPI Key> and try out any of the APIs.**
 
 
 ## **Supported Endpoints**

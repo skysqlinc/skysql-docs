@@ -561,5 +561,5 @@ With **macOS**, manually install the provider on the target system by performin
 - [GitHub Project](https://github.com/mariadb-corporation/terraform-provider-skysql)
 - [Example Terraform Configuration Files](https://github.com/mariadb-corporation/terraform-provider-skysql/tree/main/examples)
 - [Terraform Registry](https://registry.terraform.io/providers/mariadb-corporation/skysql)
-- [API Documentation](https://docs.skysql.mariadb.com/)
+- [API Documentation](https://apidocs.skysql.com/)
 - [API Reference Documentation](https://mariadb.com/docs/skysql-dbaas/ref/skynr/)

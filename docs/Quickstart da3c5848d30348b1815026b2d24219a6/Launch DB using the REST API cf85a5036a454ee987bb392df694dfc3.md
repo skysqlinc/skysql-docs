@@ -28,7 +28,7 @@ This walkthrough explains how to launch database services and manage the lifecyc
 
 ### **Step 2: Use Swagger docs to try out the APIs**
 
-You can use the API Documentation [here](https://docs.skysql.mariadb.com/) and directly try out the APIs in your browser. 
+You can use the API Documentation [here](https://apidocs.skysql.com/) and directly try out the APIs in your browser. 
 
 All you need is to click ‘Authorize’ and type in `Bearer <supply your API key here>`
 
@@ -234,5 +234,5 @@ EOF
 
 ## Resources
 
-- [API Documentation](https://docs.skysql.mariadb.com/)
+- [API Documentation](https://apidocs.skysql.com/)
 - [API Reference Documentation](https://mariadb.com/docs/skysql-dbaas/ref/skynr/)
