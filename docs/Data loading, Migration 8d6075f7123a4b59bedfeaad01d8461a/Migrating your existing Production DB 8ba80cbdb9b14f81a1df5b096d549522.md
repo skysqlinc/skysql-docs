@@ -62,5 +62,3 @@ For assistance with a migration:
 
 - Existing customers can submit a [support case](https://mariadb.com/docs/skysql-previous-release/service-management/support/) to request assistance with a migration
 - New customers can [contact us](https://mariadb.com/docs/skysql-previous-release/contact/) to begin the migration planning process
-
-[Replicating data from external DB](Migrating%20your%20existing%20Production%20DB%208ba80cbdb9b14f81a1df5b096d549522/Replicating%20data%20from%20external%20DB%20cdf15e1cd8d24880858d6cd2f50d8fd2.md)
