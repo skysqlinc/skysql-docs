@@ -57,7 +57,7 @@ This blog article details how to [Migrate RDS MySQL to SkySQL MariaDB Using AWS 
 ---
 
 # Replicating data from an External DB
-Click [here](Migrating%20your%20existing%20Production%20DB%208ba80cbdb9b14f81a1df5b096d549522/Replicating%20data%20from%20external%20DB%20cdf15e1cd8d24880858d6cd2f50d8fd2.md) for a detailed walk through of the steps involved. 
+Click [here](../Migrating%20your%20existing%20Production%20DB%208ba80cbdb9b14f81a1df5b096d549522/Replicating%20data%20from%20external%20DB%20cdf15e1cd8d24880858d6cd2f50d8fd2.md) for a detailed walk through of the steps involved. 
 
 
 For assistance with a migration:
