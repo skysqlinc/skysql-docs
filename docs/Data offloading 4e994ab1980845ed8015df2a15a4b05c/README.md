@@ -53,4 +53,6 @@ you can use the **`SELECT INTO OUTFILE`** statement to export query results dire
     Note that this file system export is not directly accessible to SkySQL users. To generate CSV files, you should contact SkySQL support.
 
 
-## [Replicating data from SkySQL to a compatible external DB](Data offloading 4e994ab1980845ed8015df2a15a4b05c/Replicating data from SkySQL to external database 65a9d8aa0dc040c09548c042ba6582ae.md)
+## Replicating data from SkySQL to a compatible external DB
+
+Click [here](Replicating data from SkySQL to external database 65a9d8aa0dc040c09548c042ba6582ae.md)
