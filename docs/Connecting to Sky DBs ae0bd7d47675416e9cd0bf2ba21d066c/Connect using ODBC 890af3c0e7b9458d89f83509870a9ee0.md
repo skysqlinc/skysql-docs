@@ -245,7 +245,7 @@ you created |
 | PASSWORD | Default password in the Service Credentials view, the password
 you set on the default user, or the password for the user you
 created |
-| SSLVERUFY | Set to 1 to connect with SSL |
+| SSLVERIFY | Set to 1 to connect with SSL |
 | FORCETLS | Set to 1 to enable TLS |
 | FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY,
 so they can only move forward. Starting in Connector/ODBC 3.2, cursors
