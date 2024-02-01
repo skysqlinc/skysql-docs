@@ -2,48 +2,47 @@
 
 ## Overview
 
-Application developers can use MariaDB Connector/ODBC to establish a
-data source for client connections with MariaDB database products.
+Application developers can use MariaDB Connector/ODBC to establish a data source for client connections with MariaDB database products.
 
-The method for configuring the data source varies between operating
-systems.
+The method for configuring the data source varies between operating systems.
 
-## Configuring a Data Source on
-Linux
+## Configuring a Data Source on Linux
 
-1. Configure unixODBC to recognize the driver by creating a file
-called `MariaDB_odbc_driver_template.ini`
-with the relevant driver definition.
+1. Configure `unixODBC` to recognize the driver by creating a file called `MariaDB_odbc_driver_template.ini`with the relevant driver definition.
     
     For example, on CentOS / RHEL / Rocky Linux:
     
-    `[MariaDB ODBC 3.1 Driver]
+    ```
+    [MariaDB ODBC 3.1 Driver]
     Description = MariaDB Connector/ODBC v.3.1
-    Driver      = /usr/lib64/libmaodbc.so`
+    Driver      = /usr/lib64/libmaodbc.so
+    ```
     
     On Debian / Ubuntu:
     
-    `[MariaDB ODBC 3.1 Driver]
+    ```
+    [MariaDB ODBC 3.1 Driver]
     Description = MariaDB Connector/ODBC v.3.1
-    Driver      = /usr/lib/libmaodbc.so`
+    Driver      = /usr/lib/libmaodbc.so
+    ```
     
 2. Install the driver using the `odbcinst` command.
     
     For example:
     
-    `$ sudo odbcinst -i -d -f MariaDB_odbc_driver_template.ini
+    ```bash
+    $ sudo odbcinst -i -d -f MariaDB_odbc_driver_template.ini
     odbcinst: Driver installed. Usage count increased to 1.
-    Target directory is /etc`
+    Target directory is /etc
+    ```
     
-3. Determine the [connection
-parameters](about:blank#Connection_Parameters) for your database.
-4. Configure unixODBC to connect to the data source by creating a
-file called `MariaDB_odbc_data_source_template.ini`
-with the relevant data source parameters.
+3. Determine the connection parameters for your database.
+4. Configure `unixODBC` to connect to the data source by creating a file called `MariaDB_odbc_data_source_template.ini`with the relevant data source parameters.
     
     For example:
     
-    `# Data Source for unixODBC
+    ```
+    # Data Source for unixODBC
     [My-Test-Server]
     Description = Describe your database setup here
     Driver      = MariaDB ODBC 3.1 Driver
@@ -53,52 +52,53 @@ with the relevant data source parameters.
     SOCKET      = /var/run/mysqld/mysqld.sock
     USER        = db_user
     PASSWORD    = db_user_password
-    DATABASE    = test`
+    DATABASE    = test
+    ```
     
-    `# Data Source for unixODBC
+    ```
+    # Data Source for unixODBC
     [My-Test-Server]
     Description = Describe your database setup here
     Driver      = MariaDB ODBC 3.1 Driver
     Trace       = Yes
     TraceFile   = /tmp/trace.log
-    SERVER      = example.skysql.net
-    PORT        = 5001
+    SERVER      = example.skysql.com
+    PORT        = 3306
     SSLVERIFY   = 1
     USER        = db_user
     PASSWORD    = db_user_password
-    DATABASE    = test`
+    DATABASE    = test
+    ```
     
-    - Customize the values of the parameters with the relevant
-    information for your environment.
-5. Install the unixODBC data source template file:
+    - Customize the values of the parameters with the relevant information for your environment.
+5. Install the `unixODBC` data source template file:
     
-    `$ sudo odbcinst -i -s -h -f MariaDB_odbc_data_source_template.ini`
+    ```bash
+    $ sudo odbcinst -i -s -h -f MariaDB_odbc_data_source_template.ini
+    ```
     
-6. Test the data source `My-Test-Server`
-configured in the `MariaDB_odbc_data_source_template.ini`
+6. Test the data source `My-Test-Server`configured in the `MariaDB_odbc_data_source_template.ini`
 file using the `isql` command:
     
-    `$ isql My-Test-Server
+    ```
+    $ isql My-Test-Server
     +-------------------------+
     | Connected!              |
     | sql-statement           |
     | help[tablename]         |
     | quit                    |
     +-------------------------+
-    SQL>`
+    SQL>
+    ```
     
-7. To select your new data source in your application, select the
-data source with the name that you configured, which is `My-Test-Server` in the
-above example.
+7. To select your new data source in your application, select the data source with the name that you configured, which is `My-Test-Server` in the above example.
 
-## Configuring a Data Source on
-macOS
+## Configuring a Data Source on macOS
 
-1. Confirm that MariaDB Connector/ODBC has been registered with
-iODBC by confirming that the following options are set in the iODBC
-configuration file at `/Library/ODBC/odbcinst.ini`:
+1. Confirm that MariaDB Connector/ODBC has been registered with`iODBC` by confirming that the following options are set in the `iODBC`configuration file at `/Library/ODBC/odbcinst.ini`:
     
-    `[ODBC]
+    ```
+    [ODBC]
     Trace     = no
     TraceFile = /tmp/iodbc_trace.log
     
@@ -108,14 +108,14 @@ configuration file at `/Library/ODBC/odbcinst.ini`:
     [MariaDB ODBC 3.1 Unicode Driver]
     Driver      = /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib
     Description = MariaDB Connector/ODBC(Unicode) 3.1 64bit
-    Threading   = 0`
+    Threading   = 0
+    ```
     
-2. Determine the [connection
-parameters](about:blank#Connection_Parameters) for your database.
-3. Add a data source for your database to iODBC by adding the
-following options to the iODBC configuration file at `/Library/ODBC/odbc.ini`:
+2. Determine the connection parameters for your database.
+3. Add a data source for your database to `iODBC` by adding the following options to the `iODBC` configuration file at `/Library/ODBC/odbc.ini`:
     
-    `[ODBC Data Sources]
+    ```
+    [ODBC Data Sources]
     My-Test-Server = MariaDB ODBC 3.1 Unicode Driver
     
     [My-Test-Server]
@@ -123,92 +123,64 @@ following options to the iODBC configuration file at `/Library/ODBC/odbc.ini`:
     SERVER   = 192.0.2.1
     DATABASE = test
     USER     = db_user
-    PASSWORD = db_user_password`
+    PASSWORD = db_user_password
+    ```
     
-    - Substitute the values of the `SERVER`, `SOCKET`, `DATABASE`, `PORT`, `USER`, and `PASSWORD` parameters
-    with the relevant value for your environment.
-4. Test the data source using the `iodbctest`
-command:
+    - Substitute the values of the `SERVER`, `SOCKET`, `DATABASE`, `PORT`, `USER`, and `PASSWORD` parameters with the relevant value for your environment.
+4. Test the data source using the `iodbctest`command:
     
-    `$ iodbctest "DSN=My-Test-Server"`
+    ```
+    $ iodbctest "DSN=My-Test-Server"
+    ```
     
-5. To select your new data source in your application, select the
-data source with the name that you configured, which is `My-Test-Server` in the
-above example.
+5. To select your new data source in your application, select the data source with the name that you configured, which is `My-Test-Server` in the above example.
 
-## Configuring a Data Source
-on Windows
+## Configuring a Data Source on Windows
 
 MariaDB Connector/ODBC requires at least Windows 8.
 
-Windows 10 was used to prepare these instructions. When using other
-versions of Windows, these instructions may require adjustment.
+Windows 10 was used to prepare these instructions. When using other versions of Windows, these instructions may require adjustment.
 
 1. In the start menu, search for "ODBC Data Sources".
-2. In the search results, open the application called "ODBC Data
-Sources (32-bit)" or "ODBC Data Sources (64-bit)", depending on whether
-you need a data source for a 32-bit or 64-bit application.
-3. In the [ODBC Data Source Administrator](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/open-the-odbc-data-source-administrator), click the
-"Add" button on the right side.
+2. In the search results, open the application called "ODBC Data Sources (32-bit)" or "ODBC Data Sources (64-bit)", depending on whether you need a data source for a 32-bit or 64-bit application.
+3. In the [ODBC Data Source Administrator](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/open-the-odbc-data-source-administrator), click the "Add" button on the right side.
 4. In the "Create New Data Source" window:
     - Click on "MariaDB ODBC 3.1 Driver" in the list.
     - Click the "Finish" button.
 5. In the "Create a new Data Source to MariaDB" window:
-    - In the "Name" text box, enter a name for the data
-    source.
-    - In the "Description" test box, enter a description for the data
-    source.
+    - In the "Name" text box, enter a name for the data source.
+    - In the "Description" test box, enter a description for the data source.
     - Click the "Next" button.
 6. In the next window, provide the connection credentials:
-    - In the "Server Name" field, provide the IP address or domain name
-    for the Server.
-    - In the "User name" field, provide the username for the database
-    user account.
-    - In the "Password" field, provide the password for that
-    user.
-    - In the "Database" field, provide the the default database to
-    use.
+    - In the "Server Name" field, provide the IP address or domain name for the Server.
+    - In the "User name" field, provide the username for the database user account.
+    - In the "Password" field, provide the password for that user.
+    - In the "Database" field, provide the the default database to use.
     - Then, click the "Next" button.
 7. Continue configuring the data source using the wizard:
-    - The wizard provides a series of windows for configuring various
-    aspects of the connection, such as enabling TLS encryption. Enable
-    settings you want to use.
-    - Click the "Next" button to move onto the next window in the
-    wizard.
-    - Click the "Finish" on the last window to exit the wizard and save
-    your data source.
-8. To select your new data source in your application, select the
-data source with the name that you configured for the "Name"
-field.
+    - The wizard provides a series of windows for configuring various aspects of the connection, such as enabling TLS encryption. Enable settings you want to use.
+    - Click the "Next" button to move onto the next window in the wizard.
+    - Click the "Finish" on the last window to exit the wizard and save your data source.
+8. To select your new data source in your application, select the data source with the name that you configured for the "Name" field.
 
 ## Failover
 
-MariaDB Connector/ODBC supports failover in case one or more hosts
-are not available.
+MariaDB Connector/ODBC supports failover in case one or more hosts are not available.
 
-The failover feature requires using MariaDB Connector/ODBC 3.1.16 or
-greater with MariaDB Connector/C 3.3 or greater.
+The failover feature requires using MariaDB Connector/ODBC 3.1.16 or greater with MariaDB Connector/C 3.3 or greater.
 
-MariaDB Connector/ODBC 3.1.16 and greater is statically linked for
-Windows and macOS with MariaDB Connector/C 3.3.1. MariaDB Connector/ODBC
-3.1.16 and greater is dynamically linked for Linux with MariaDB
-Connector/C.
+MariaDB Connector/ODBC 3.1.16 and greater is statically linked for Windows and macOS with MariaDB Connector/C 3.3.1. MariaDB Connector/ODBC 3.1.16 and greater is dynamically linked for Linux with MariaDB Connector/C.
 
-The failover feature is enabled by providing a comma separated list
-of hosts as a server name.
+The failover feature is enabled by providing a comma separated list of hosts as a server name.
 
-The failover host string is the `SERVER` string. If the
-`SERVER` string does
-not include a port, the default port will be used.
+The failover host string is the `SERVER` string. If the `SERVER` string does not include a port, the default port will be used.
 
 The following syntax is required:
 
 - IPv6 addresses must be enclosed within square brackets `"[]"`
 - hostname and port must be separated by a colon `":"`
-- `hostname:port` pairs
-must be be separated by a comma `","`
-- If only one `hostname:port` is
-specified, the host string must end with a comma
+- `hostname:port` pairs must be be separated by a comma `","`
+- If only one `hostname:port` is specified, the host string must end with a comma
 - If no port is specified, the default port will be used
 
 An example of a failover host string:

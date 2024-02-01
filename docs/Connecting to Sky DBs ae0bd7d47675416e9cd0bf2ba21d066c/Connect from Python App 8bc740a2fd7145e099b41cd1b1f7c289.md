@@ -2,8 +2,7 @@
 
 ## Overview
 
-Python developers can use MariaDB Connector/Python to establish
-client connections with MariaDB database products.
+Python developers can use MariaDB Connector/Python to establish client connections with SkySQL database products.
 
 ## Connections
 
@@ -13,8 +12,7 @@ Connections are managed using the following Python class:
 | --- | --- |
 | Connection | Represents a connection to a MariaDB database product. |
 
-Connections are created, used, and managed using the following `Connection` class
-functions:
+Connections are created, used, and managed using the following `Connection` class functions:
 
 | Function | Description |
 | --- | --- |
@@ -28,8 +26,7 @@ the server using the same credentials which were specified in connect()
 method. |
 | close() | Closes the connection. |
 
-Determine the [connection
-information](../../../connection-parameters-portal/) for your MariaDB SkySQL database service:
+Determine the connection information for your SkySQL database service:
 
 | connect()
 parameter | Where to find it |
@@ -45,11 +42,12 @@ created |
 
 ## Code Example: Connect
 
-The following code example connects to an example server using the
-configuration mentioned in [Setup for
-Examples](../example-setup/):
+The following code example connects to an example server.
 
-`# Module Import
+Examples:
+
+```python
+# Module Import
 import mariadb
 import sys
 
@@ -68,16 +66,18 @@ except mariadb.Error as e:
 # ...
 
 # Close Connection
-conn.close()`
+conn.close()
+```
 
-`# Module Import
+```python
+# Module Import
 import mariadb
 import sys
 
 # Instantiate Connection
 try:
    conn = mariadb.connect(
-      host="SKYSQL_SERVICE.mdb0000001.db.skysql.net",
+      host="SKYSQL_SERVICE.mdb0000001.db.skysql.com",
       port=5009,
       ssl_verify_cert=True,
       user="DB00000001",
@@ -90,67 +90,41 @@ except mariadb.Error as e:
 # ...
 
 # Close Connection
-conn.close()`
+conn.close()
+```
 
-- The `connect()` function
-returns an instance of the `Connection` class,
-which is assigned to the `conn`
-variable.
-- The connection attributes are passed as keyword arguments to the
-`connect()`
-function.
-- When you are done with a connection, close it to free resources.
-Close the connection using the `close()`
-method.
+- The `connect()` function returns an instance of the `Connection` class, which is assigned to the `conn` variable.
+- The connection attributes are passed as keyword arguments to the`connect()`function.
+- When you are done with a connection, close it to free resources. Close the connection using the `close()`method.
 
 ## Multiple Connections
 
-Instantiating the `Connection` class
-creates a single connection to MariaDB database products. Applications
-that require multiple connections may benefit from [pooling connections](../connection-pools/).
+Instantiating the `Connection` class creates a single connection to MariaDB database products. Applications that require multiple connections may benefit from pooling connections.
 
 ## Close a Connection
 
-MariaDB Connector/Python closes the connection as part of the class's
-destructor, which is executed when an instance of the class goes out of
-scope. This can happen in many cases, such as:
+MariaDB Connector/Python closes the connection as part of the class's destructor, which is executed when an instance of the class goes out of scope. This can happen in many cases, such as:
 
 - When the program exits
-- When the instance of the `Connection` class is
-defined in the local scope of a function, and the function
-returns
-- When the instance of the `Connection` class is
-defined as an attribute of a custom class's instance, and the custom
-class's instance goes out of scope
+- When the instance of the `Connection` class is defined in the local scope of a function, and the function returns
+- When the instance of the `Connection` class is defined as an attribute of a custom class's instance, and the custom class's instance goes out of scope.
 
-Connections can also be explicitly closed using the `close()` method, which
-is helpful when the connection is no longer needed, but the variable is
-still in scope.
+Connections can also be explicitly closed using the `close()` method, which is helpful when the connection is no longer needed, but the variable is still in scope.
 
 ## Connection Failover
 
-Starting with [MariaDB Connector/Python 1.1](../../../../release-notes/mariadb-connector-python-1-1/)[MariaDB Connector/Python 1.1](../../../../../server/release-notes/mariadb-connector-python-1-1/), when MariaDB
-Connector/Python is built with MariaDB Connector/C 3.3, the connector
-supports connection failover when `auto_reconnect` is
-enabled and the connection string contains a comma-separated list of
-multiple server addresses.
+Starting with MariaDB Connector/Python 1.1 when MariaDB Connector/Python is built with MariaDB Connector/C 3.3, the connector supports connection failover when `auto_reconnect` is
+enabled and the connection string contains a comma-separated list of multiple server addresses.
 
 To enable connection failover:
 
-- Call the `mariadb.connect`
-function with the `host` argument
-specified as a comma-separated list containing multiple server
-addresses. The connector attempts to connect to the addresses in the
-order specified in the list.
-- Set `auto_reconnect` to
-`True`. If the
-connection fails, the connector will attempt to reconnect to the
-addresses in the order specified in the list.
+- Call the `mariadb.connect` function with the `host` argument specified as a comma-separated list containing multiple server addresses. The connector attempts to connect to the addresses in the order specified in the list.
+- Set `auto_reconnect` to `True`. If the connection fails, the connector will attempt to reconnect to the addresses in the order specified in the list.
 
-The following code example connects with connection failover
-enabled:
+The following code example connects with connection failover enabled:
 
-`# Module Import
+```python
+# Module Import
 import mariadb
 import sys
 
@@ -170,16 +144,18 @@ except mariadb.Error as e:
 # ...
 
 # Close Connection
-conn.close()`
+conn.close()
+```
 
-`# Module Import
+```python
+# Module Import
 import mariadb
 import sys
 
 # Instantiate Connection
 try:
    conn = mariadb.connect(
-      host="SKYSQL_SERVICE.mdb0000001.db.skysql.net,SKYSQL_SERVICE.mdb0000002.db.skysql.net",
+      host="SKYSQL_SERVICE.mdb0000001.db.skysql.com,SKYSQL_SERVICE.mdb0000002.db.skysql.com",
       port=5009,
       ssl_verify_cert=True,
       user="DB00000001",
@@ -193,4 +169,5 @@ except mariadb.Error as e:
 # ...
 
 # Close Connection
-conn.close()`
+conn.close()
+```
