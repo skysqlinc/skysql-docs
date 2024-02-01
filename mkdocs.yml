@@ -89,9 +89,11 @@ nav:
       - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect from ‘C’ App b31c2f5880a74e198c61a60e74076cec.md'
       - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect from ‘C++’ App 697a64cebee24fcf996e21450f1c32f0.md'
       - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect from Java App 17bf88ae787b44a0bccb8d5eaac5f8ef.md'
+      - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect from Python App 8bc740a2fd7145e099b41cd1b1f7c289.md'
       - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect from MongoDB clients 0870eb5a71ff485b88bd113e90ff571f.md'
       - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect from Node js App b63d489b6fbd426ab40d7f7f3be9025a.md'
       - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect using Connector R2DBC 6f657edcac0849cb8ab4be6649ca71bd.md'
+      - 'Connecting to Sky DBs ae0bd7d47675416e9cd0bf2ba21d066c/Connect using ODBC 890af3c0e7b9458d89f83509870a9ee0.md'
   - 'Data Loading, Migrations' :
       - 'Data loading, Migration 8d6075f7123a4b59bedfeaad01d8461a/README.md'
       - 'Data loading, Migration 8d6075f7123a4b59bedfeaad01d8461a/Import CSV data 50554477679448e6b4c8033d04f45142.md'

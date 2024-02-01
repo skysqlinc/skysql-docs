@@ -58,8 +58,8 @@ Applications can connect to MariaDB SkySQL DBs using any of the below MariaDB su
 - [Java](Connect%20from%20Java%20App%2017bf88ae787b44a0bccb8d5eaac5f8ef.md)
 - [Java R2DBC](Connect%20using%20Connector%20R2DBC%206f657edcac0849cb8ab4be6649ca71bd.md)
 - [Node.js (JavaScript)](Connect%20from%20Node%20js%20App%20b63d489b6fbd426ab40d7f7f3be9025a.md)
-- [ODBC API](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/odbc-api/)
-- [Python](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/python/)
+- [ODBC API](Connect%20using%20ODBC%20890af3c0e7b9458d89f83509870a9ee0.md)
+- [Python](Connect%20from%20Python%20App%208bc740a2fd7145e099b41cd1b1f7c289.md)
 
 ## Connecting from SQL tools
 
