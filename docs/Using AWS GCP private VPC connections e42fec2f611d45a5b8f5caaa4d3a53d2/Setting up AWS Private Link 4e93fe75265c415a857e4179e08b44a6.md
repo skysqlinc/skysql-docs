@@ -33,7 +33,7 @@ To enable AWS PrivateLink when launching a new service via the SkySQL Portal:
 1. Initiate service launch using the procedure at [Service Launch](https://mariadb.com/docs/skysql-dbaas/service-management/nr-launch/).
 2. When you get to the final "Security" section, select "Enable Private Link".
 
-For the next step, see the [AWS Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#AWS_Endpoint_Setup) sections on this page.
+For the next step, see the [AWS Endpoint Setup](#aws-endpoint-setup) section on this page.
 
 ### **Enable AWS PrivateLink on Existing SkySQL Service**
 
@@ -45,7 +45,7 @@ To enable AWS PrivateLink for an existing service via the SkySQL Portal:
 4. In the popup window, add one or more AWS account IDs.
 5. Click the "OK" button to confirm this operation.
 
-For the next step, see the [AWS Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#AWS_Endpoint_Setup) sections on this page.
+For the next step, see the [AWS Endpoint Setup](#aws-endpoint-setup) section on this page.
 
 ### **Disabling AWS PrivateLink**
 
