@@ -14,13 +14,13 @@ For users who prefer other interfaces, SkySQL offers the following alternatives:
 
 ## Step 1: Register for SkySQL
 
-Goto [app.skysql.com](http://skysql.mariadb.com) to sign up. You can sign up using your Google, Github or LinkedIn credentials. Or, just use your Email address to sign up. 
+Goto [app.skysql.com](http://app.skysql.com) to sign up. You can sign up using your Google, Github or LinkedIn credentials. Or, just use your Email address to sign up. 
 
 ![Untitled](Untitled.png)
 
 ## Step 2: Launch a Service
 
-1. [Log in to the SkySQL Portal](https://skysql.mariadb.com/) and from the Dashboard, click the "+ Launch a Service" button.
+1. [Log in to the SkySQL Portal](https://app.skysql.com/) and from the Dashboard, click the "+ Launch a Service" button.
 
 *Log in to the SkySQL Portal with your MariaDB ID and launch a service.*
 
@@ -118,7 +118,7 @@ With automatic scaling, node count (horizontal) and node count (vertical) change
 
 *Autonomous*
 
-https://skysql.mariadb.com/dashboard
+https://app.skysql.com/
 
 With manual scaling, you can perform horizontal scaling (In/Out), vertical scaling (Up/Down), and storage expansion on-demand using Self-Service Operations. For additional information, see "[Self-Service Operations](https://mariadb.com/docs/skysql-dbaas/service-management/nr-self-service/)".
 
