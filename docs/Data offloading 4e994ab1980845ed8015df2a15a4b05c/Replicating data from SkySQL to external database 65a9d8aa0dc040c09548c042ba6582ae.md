@@ -21,16 +21,12 @@ To configure outbound replication from your Replicated Transactions service in S
     - MariaDB Server 10.5
     - MariaDB Server 10.6
 
-# Request User for Outbound Replication
+# Create User for Outbound Replication
 
-**On the SkySQL Customer Portal**, [create a support case](https://mariadb.com/docs/skysql-previous-release/service-management/support/) to request a user account with sufficient privileges for outbound replication to the external replica server.
+With the default database admin user provided, create an external_replication user as seen below.
 
-SkySQL customers do not have sufficient privileges to create a user account that supports replication, so the user account must be created by SkySQL Support.
-
-<aside>
-💡 TODO - this above step should no longer be required. Needs to be confirmed
-
-</aside>
+CREATE USER 'replication_user'@'%' IDENTIFIED BY 'bigs3cret';
+GRANT REPLICATION SLAVE ON *.* TO ‘external_replication’@'hostname';
 
 # Check User Account
 
@@ -41,7 +37,7 @@ SkySQL customers do not have sufficient privileges to create a user account that
 `+------------------------------------------------------------------------------------------------------------------------------------------------+
 | Grants for external_replication@%                                                                                                              |
 +------------------------------------------------------------------------------------------------------------------------------------------------+
-| GRANT REPLICATION SLAVE, SLAVE MONITOR ON *.* TO `external_replication`@`%` IDENTIFIED BY PASSWORD '*CCD3A959D6A004B9C3807B728BC2E55B67E10518' |
+| GRANT REPLICATION SLAVE ON *.* TO `external_replication`@`%` IDENTIFIED BY PASSWORD '*CCD3A959D6A004B9C3807B728BC2E55B67E10518' |
 +------------------------------------------------------------------------------------------------------------------------------------------------+`
 
 # Add External Replica to Allowlist
