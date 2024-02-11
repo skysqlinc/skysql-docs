@@ -6,6 +6,6 @@ Some customers have regulatory requirements or information security policies tha
 
 SkySQL cloud databases can optionally be configured for private connections between your VPC (virtual private clouds) and SkySQL cloud databases:
 
-- [AWS PrivateLink](Setting%20up%20AWS%20Private%20Link%204e93fe75265c415a857e4179e08b44a6.md) is supported for SkySQL cloud databases on AWS
+- [AWS PrivateLink]((https://github.com/skysqlinc/skysql-docs/blob/main/docs/Using%20AWS%20GCP%20private%20VPC%20connections/Setting%20up%20AWS%20Private%20Link.md)) is supported for SkySQL cloud databases on AWS
 - [Private Service Connect](Setting%20up%20GCP%20Private%20Service%20Connect%2036f6d531c5514999bd464a80ac49919a.md) is supported for SkySQL cloud databases on GCP
 
