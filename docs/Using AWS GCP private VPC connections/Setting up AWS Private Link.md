@@ -80,7 +80,7 @@ In addition to switching the SkySQL service to the `privateconnect` endpoint m
     - Click on the "Create security group" button.
     - Fill in the group's name and (optionally) its description.
     - Under "Inbound rules" click the "Add rule" button.
-    - Set the value for the "Port range" to be the port number that the API revealed for the "`readwrite`" endpoint.
+    - Set the value for the "Port range" to be the port number of the "Read-write port" in the "Connect" window of the SkySQL portal.
     - Set the Source to either a list of private (internal) IPv4 addresses that you want to authorize (adding a "/32" suffix to each one), or set it to an existing security group name that can be used to authorize all instances that have that security group in their configuration.
     - Press the "Create security group" button.
 13. Back on the endpoint tab, click the refresh button on the "Security Groups" section and choose the newly created security group.
