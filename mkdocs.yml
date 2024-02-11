@@ -137,6 +137,7 @@ nav:
       - 'Reference Guide/MaxScale Reference.md'
       - 'Reference Guide/Region Choices.md'
       - 'Reference Guide/REST API Reference.md'
+      - 'Reference Guide/Sky Stored Procedures.md'
 
 
 #  - Quickstart : 
