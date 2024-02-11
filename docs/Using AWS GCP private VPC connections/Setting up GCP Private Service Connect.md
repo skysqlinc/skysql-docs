@@ -92,7 +92,7 @@ We recommend use of a subnet dedicated to Private Service Connect endpoints in t
 
 2. Configure the endpoint connection:
     ◦ Target: Published service
-    ◦ Target service: the `endpoint_service` value from the SkySQL DBaaS API
+    ◦ Target service: the value of the "Fully Qualified Domain Name" in the "Connect" window from SkySQL portal.
     ◦ Endpoint name: set to the Database ID from SkySQL (dbxxxxxxxx)
     ◦ Network: select the VPC network where the application is running
     ◦ Subnetwork: select the subnet where the static internal IP address is reserved
