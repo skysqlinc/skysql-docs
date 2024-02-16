@@ -84,6 +84,7 @@ nav:
       - 'Portal features/Manage your Service.md'
       - 'Portal features/Service Details page.md'
       - 'Portal features/Notifications.md'
+      - 'Portal features/Service Monitoring Panels.md'
   - 'Connecting to Sky DBs' :
       - 'Connecting to Sky DBs/README.md'
       - 'Connecting to Sky DBs/Connect from ‘C’ App.md'
