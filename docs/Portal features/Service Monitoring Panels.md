@@ -8,6 +8,10 @@ The available panels are :
 
 This panel shows the ratio between the types of SQL statements executed by the service during the selected time interval.
 
+## Current SQL Commands (server)
+
+This panel shows the ratio between the types of SQL statements executed by the ES node during the selected time interval.
+
 ## CPU Load (service,status)
 
 This panel shows the CPU usage for each ES node during the selected time interval.
@@ -23,6 +27,10 @@ This panel shows the queries per second (QPS) executed by the ES node during the
 ## Connections (service)
 
 This panel shows the number of used and aborted connections for each ES node along with the max_connections value.
+
+## Connections (server,cluster)
+
+This panel shows the number of clients connected to the MaxScale node.
 
 ## Replicas status
 
@@ -60,10 +68,6 @@ This panel shows the current binary log position of the replica SQL thread for e
 
 This panel shows the current binary log position of the replica I/O thread for each ES node during the selected time interval.
 
-## MariaDB Slow Queries (service,queries)
-
-This panel shows the number of slow queries executed by all ES nodes during the selected time interval.
-
 ## Top Command Counters (service,queries)
 
 This panel shows the top 30 statement types that were most frequently executed by all ES nodes during the selected time interval.
@@ -76,6 +80,10 @@ This panel shows the top 30 statement types that were most frequently executed b
 
 This panel shows the top 30 statement types that were most frequently executed by all ES and Xpand nodes in 1 hour intervals over the past 24 hours.
 
+## Top Command Counters Hourly (server)
+
+This panel shows the top 30 statement types that were most frequently executed by the ES node in 1 hour intervals over the past 24 hours.
+
 ## MariaDB QPS
 
 This panel shows the number of queries per second (QPS) executed by all ES nodes during the selected time interval.
@@ -83,6 +91,14 @@ This panel shows the number of queries per second (QPS) executed by all ES nodes
 ## MariaDB Slow Queries (service,queries)
 
 This panel shows the number of slow queries executed by all ES nodes during the selected time interval.
+
+## MariaDB Slow Queries (server)
+
+This panel shows the number of slow queries executed by the ES node during the selected time interval.
+
+## MariaDB QPS and Questions
+
+This panel shows the number of queries and questions per second executed by the ES node during the selected time interval.
 
 ## MariaDB Client Thread Activity (service)
 
@@ -99,6 +115,10 @@ This panel shows the number of clients connected to all MaxScale nodes during th
 ## MaxScale Server Connections
 
 This panel shows the number of client connections open between the MaxScale node and each ES node during the selected time interval.
+
+## MariaDB Service Connections
+
+This panel shows the number of clients connected to the ES node during the selected time interval.
 
 ## MariaDB Aborted Connections
 
@@ -124,13 +144,17 @@ This panel shows the number of tables opened by the database server on the ES no
 
 This panel shows the number of tables that have been opened by all ES nodes during the selected time interval.
 
+## MariaDB Select Types
+
+This panel shows the number of times the ES node has used certain execution strategies to execute SELECT statements during the selected time interval.
+
+## MariaDB Sorts
+
+This panel shows the number of times the ES node has used certain algorithms to sort data during the selected time interval.
+
 ## Memory Usage
 
 This panel shows memory usage details for all ES nodes during the selected time interval.
-
-## Disk Size by Partition (service,system)
-
-This panel shows the amount of storage space used by all ES nodes during the selected time interval.
 
 ## I/O Activity - Page In
 
@@ -240,6 +264,10 @@ This panel shows the number of files opened per second by the database server on
 
 This panel shows the number of files opened by the database server on the ES node during the selected time interval.
 
+## MariaDB Transaction Handlers / sec
+
+This panel shows the number of transaction-related handlers created by the ES node during the selected time interval.
+
 ## Temporary Objects Created
 
 This panel shows the number of temporary tables created by the ES node during the selected time interval.
@@ -283,6 +311,10 @@ This panel lists the modules installed on the MaxScale node.
 ## MaxScale Hangups (server,performance)
 
 This panel shows the number of client connections closed by the MaxScale node during the selected time interval.
+
+## Errors (server,performance)
+
+This panel shows the number of errors encountered by threads on the MaxScale node during the selected time interval.
 
 ## Event Queue Length (server,performance)
 
