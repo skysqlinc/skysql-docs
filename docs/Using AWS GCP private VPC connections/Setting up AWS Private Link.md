@@ -70,7 +70,7 @@ In addition to switching the SkySQL service to the `privateconnect` endpoint m
 4. Click the "Create Endpoint" button.
 5. Fill in the name to help you to identify it. (This is optional.)
 6. Set the Service category to "Other endpoint services".
-7. The value for the "Service name" field must be set to the value of the `endpoint_service` that was queried from the SkySQL DBaaS API (as detailed earlier).
+7. The value for the "Service name" field must be set to the value of the "Fully Qualified Domain Name" in the "Connect" window from SkySQL portal.
 8. Click "Verify service". AWS should find the service and auto-populate the rest of the form.
 9. In the VPC search field, find the VPC that you want to use for the interconnect between the clients and the SkySQL service.
 10. In the Subnets section, it is suggested that you select all the Availability Zones in the list, entering the proper subnet ID for each one. If you are unsure, view the details of your running instances to see the Subnet ID that they have configured.
@@ -80,7 +80,7 @@ In addition to switching the SkySQL service to the `privateconnect` endpoint m
     - Click on the "Create security group" button.
     - Fill in the group's name and (optionally) its description.
     - Under "Inbound rules" click the "Add rule" button.
-    - Set the value for the "Port range" to be the port number that the API revealed for the "`readwrite`" endpoint.
+    - Set the value for the "Port range" to be the port number of the "Read-write port" in the "Connect" window of the SkySQL portal.
     - Set the Source to either a list of private (internal) IPv4 addresses that you want to authorize (adding a "/32" suffix to each one), or set it to an existing security group name that can be used to authorize all instances that have that security group in their configuration.
     - Press the "Create security group" button.
 13. Back on the endpoint tab, click the refresh button on the "Security Groups" section and choose the newly created security group.
