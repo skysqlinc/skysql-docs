@@ -3,6 +3,7 @@
 The SkySQL Backup service provides comprehensive Backup and Restore features through a secure API. We extend the automated nightly backups with a number of self service features. You can automatically create and store backups of your databases to ensure additional data safety or provide a robust disaster recovery solution. The backups are stored on reliable and secure cloud storage, ensuring they are readily available when needed. The backup process is seamless and does not affect the performance of your databases. SkySQL also offers the flexibility to customize your backup schedule according to your specific needs. 
 
 Here is the list of features offered:
+
 - **Automatic nightly backups** : Automated nightly backups include a full backup of every database in the service. 
   
 - **Secure On-demand or scheduled backups**
@@ -25,6 +26,11 @@ Here is the list of features offered:
 while the daily automated backups are included the use of this API will incur nominal additional charges. Please contact info@skysql.com for details. 
 
 The following documentation describes the API for the SkySQL Backup Service. This can be used directly with any HTTP client.
+
+!!! Note
+    Please refer to the API docs (swagger) for the latest API. 
+    The information below might be slightly outdated. 
+
 
 ## Authentication
 
