@@ -28,10 +28,7 @@ AWS PrivateLink can be enabled using the SkySQL Portal, SkySQL DBaaS API, or Sky
 
 ### **Enable AWS PrivateLink on Service Launch**
 
-To enable AWS PrivateLink when launching a new service via the SkySQL Portal:
-
-1. Initiate service launch using the procedure at [Service Launch](https://mariadb.com/docs/skysql-dbaas/service-management/nr-launch/).
-2. When you get to the final "Security" section, select "Enable Private Link".
+To enable AWS PrivateLink when launching a new service via the SkySQL Portal all you need to do is select the 'Enable Private link' option in the 'Security' section. 
 
 For the next step, see the [AWS Endpoint Setup](#aws-endpoint-setup) section on this page.
 
@@ -39,7 +36,7 @@ For the next step, see the [AWS Endpoint Setup](#aws-endpoint-setup) section o
 
 To enable AWS PrivateLink for an existing service via the SkySQL Portal:
 
-1. Log in to the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/).
+1. Log in to the SkySQL Portal
 2. Click the "MANAGE" button (at right) for the desired service.
 3. In the context menu, choose the "Set up Private Link" menu item.
 4. In the popup window, add one or more AWS account IDs.
@@ -58,7 +55,7 @@ To disable AWS PrivateLink via the SkySQL Portal:
 5. In the popup window, click "I want to disconnect my Private Link".
 6. In the popup window, select "Disconnect".
 7. After the service restarts, PrivateLink is disabled.
-8. Since the service's allowlist was cleared when AWS PrivateLink was previously enabled, you will need to [update the allowlist](https://mariadb.com/docs/skysql-dbaas/security/nr-firewall/#Add_to_the_Allowlist) to allow clients to connect after disabling PrivateLink.
+8. Since the service's allowlist was cleared when AWS PrivateLink was previously enabled, you will need to [update the allowlist](../Security/Configuring%20Firewall.md) to allow clients to connect after disabling PrivateLink.
 
 ## AWS Endpoint Setup
 
@@ -96,7 +93,7 @@ The newly created endpoint now authorizes the internal IPs or security groups th
 
 To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API:
 
-1. Initiate service launch using the procedure at "[DBaaS API Launch Walkthrough](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/dbaas-api-launch-walkthrough/)".
+1. Initiate service launch using the procedure at "[DBaaS API Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20REST%20API.md). 
 2. When you are creating the request, add the `"endpoint_mechanism"` and `"endpoint_allowed_accounts"` attributes to the JSON payload:
     1. 
     
@@ -111,7 +108,7 @@ To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API:
     - Set `"endpoint_mechanism"` to `"privateconnect"`
     - Set `"endpoint_allowed_accounts"` to a JSON array of one or more customer account IDs in AWS that will be allowed to establish a private connection to the SkySQL service
 
-For the next step, see the [Connectivity](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#Connectivity), [Controls](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#Controls), & [AWS Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#AWS_Endpoint_Setup) sections on this page.
+For the next step, go through the AWS Endpoint setup section. 
 
 ### **Enable AWS PrivateLink on Existing SkySQL Service**
 
@@ -175,7 +172,7 @@ The output will look something like this, though your values will vary:
 
 If you are not using `jq`, scan (or parse) the full returned JSON data to ensure the service status is "ready" and find the associated values described above.
 
-For the next step, see the [Connectivity](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#Connectivity), [Controls](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#Controls), & [AWS Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#AWS_Endpoint_Setup) sections on this page.
+For the next step, go through the AWS Endpoint Setup section. 
 
 ### **Disable AWS PrivateLink**
 
@@ -253,15 +250,16 @@ curl -H "Authorization: Bearer ${API_KEY}" \
 
 ## Setup AWS Private link using Terraform Provider
 
-For general instructions on using the SkySQL Terraform Provider, see "[Terraform Launch Walkthrough](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/)".
+For general instructions on using the SkySQL Terraform Provider, see "[Terraform Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md) 
 
-For an example Terraform configuration that enables AWS PrivateLink, see "[https://github.com/mariadb-corporation/terraform-provider-skysql/tree/main/examples/privateconnect](https://github.com/mariadb-corporation/terraform-provider-skysql/tree/main/examples/privateconnect)".
+For an example Terraform configuration that enables AWS PrivateLink, see Resources section [here](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md). 
+
 
 ### **Enable AWS PrivateLink on Service Launch**
 
 To enable AWS PrivateLink when launching a new service via the SkySQL Terraform provider:
 
-1. Initiate service launch using the procedure at "[Terraform Launch Walkthrough](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/)".
+1. Initiate service launch using the procedure at "[Terraform Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md) .
 2. When you are configuring the `skysql_service` resource, add the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes.
     
     For example, the attributes can be placed after `ssl_enabled`:
@@ -276,7 +274,7 @@ To enable AWS PrivateLink when launching a new service via the SkySQL Terraform 
     - Set `endpoint_allowed_accounts` to a comma-separated list of one or more customer account IDs in AWS that will be allowed to establish a private connection to the SkySQL service
 3. Continue the rest of the procedure.
 
-For the next step, see the [AWS Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#AWS_Endpoint_Setup) sections on this page.
+For the next step, see the AWS Endpoint Setup section on this page.
 
 ### **Enable AWS PrivateLink on Existing SkySQL Service**
 
@@ -293,7 +291,7 @@ To enable AWS PrivateLink for an existing service via the SkySQL Terraform provi
     ```
     
 
-For the next step, see the [AWS Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-aws-privatelink/#AWS_Endpoint_Setup) sections on this page.
+For the next step, see the AWS Endpoint Setup section on this page.
 
 ### **Disable AWS PrivateLink**
 

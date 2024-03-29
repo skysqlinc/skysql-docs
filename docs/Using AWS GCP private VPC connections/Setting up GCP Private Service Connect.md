@@ -29,32 +29,33 @@ To enable GCP Private Service Connect when launching a new service via the SkySQ
 
 - When you get to the final "Security" section, select "Enable Private Service Connect".
 
-For the next step, see the [GCP Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#GCP_Endpoint_Setup) sections on this page.
+For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
+
 
 ### **Enable GCP Private Service Connect on Existing SkySQL Service**
 
 To enable GCP Private Service Connect for an existing service via the SkySQL Portal:
 
-1. Log in to the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/).
+1. Log in to the SkySQL Portal.
 2. Click the "MANAGE" button (at right) for the desired service.
 3. In the context menu, choose the "Set up Private Service Connect" menu item.
 4. In the popup window, add one or more GCP project IDs.
 5. Click the "OK" button to confirm this operation.
 
-For the next step, see the [GCP Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#GCP_Endpoint_Setup) sections on this page.
+For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
 
 ### **Disable GCP Private Service Connect**
 
 To disable GCP Private Service Connect via the SkySQL Portal:
 
-1. Visit the [SkySQL Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/)
+1. Visit the SkySQL Portal.
 2. Find the service that you would like to modify.
 3. Click "MANAGE" on the far right side of the service listing.
 4. In the context menu, select "Manage Private Service Connect".
 5. In the popup window, click "I want to disconnect my Private Service Connect".
 6. In the popup window, select "Disconnect".
 7. After the service restarts, Private Service Connect is disabled.
-8. Since the service's allowlist was cleared when GCP Private Service Connect was previously enabled, you will need to [update the allowlist](https://mariadb.com/docs/skysql-dbaas/security/nr-firewall/#Add_to_the_Allowlist) to allow clients to connect after disabling Private Service Connect.
+8. Since the service's allowlist was cleared when GCP Private Service Connect was previously enabled, you will need to [update the allowlist](../Security/Configuring%20Firewall.md) to allow clients to connect after disabling Private Service Connect.
 
 ## GCP Endpoint Setup
 
@@ -91,13 +92,13 @@ We recommend use of a subnet dedicated to Private Service Connect endpoints in t
 1. In the GCP console, navigate Network services → Private Service Connect → CONNECTED ENDPOINTS → CONNECT ENDPOINT.
 
 2. Configure the endpoint connection:
-    ◦ Target: Published service
-    ◦ Target service: the value of the "Fully Qualified Domain Name" in the "Connect" window from SkySQL portal.
-    ◦ Endpoint name: set to the Database ID from SkySQL (dbxxxxxxxx)
-    ◦ Network: select the VPC network where the application is running
-    ◦ Subnetwork: select the subnet where the static internal IP address is reserved
-    ◦ IP address: select the reserved internal IP address from the prior step
-    ◦ Click "ADD ENDPOINT".
+    - Target: Published service
+    - Target service: the value of the "Fully Qualified Domain Name" in the "Connect" window from SkySQL portal.
+    - Endpoint name: set to the Database ID from SkySQL (dbxxxxxxxx)
+    - Network: select the VPC network where the application is running
+    - Subnetwork: select the subnet where the static internal IP address is reserved
+    - IP address: select the reserved internal IP address from the prior step
+    - Click "ADD ENDPOINT".
 
 ## Setting up GCP PSC using SkySQL REST API
 
@@ -105,7 +106,7 @@ We recommend use of a subnet dedicated to Private Service Connect endpoints in t
 
 To enable GCP Private Service Connect when launching a new service via the SkySQL DBaaS API:
 
-1. Initiate service launch using the procedure at "[DBaaS API Launch Walkthrough](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/dbaas-api-launch-walkthrough/)".
+1. Initiate service launch using the procedure at "[DBaaS API Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20REST%20API.md)".
 2. When you are creating the request, add the `"endpoint_mechanism"` and `"endpoint_allowed_accounts"` attributes to the JSON payload:
     
     ```json
@@ -119,7 +120,7 @@ To enable GCP Private Service Connect when launching a new service via the SkySQ
     - Set `"endpoint_mechanism"` to `"privateconnect"`
     - Set `"endpoint_allowed_accounts"` to a JSON array of one or more customer project IDs in GCP that will be allowed to establish a private connection to the SkySQL service
 
-For the next step, see the [GCP Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#GCP_Endpoint_Setup) sections on this page.
+For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
 
 ### **Enable GCP Private Service Connect on Existing SkySQL Service**
 
@@ -183,7 +184,7 @@ The output will look something like this, though your values will vary:
 
 If you are not using `jq`, scan (or parse) the full returned JSON data to ensure the service status is "ready" and find the associated values described above.
 
-For the next step, see the [GCP Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#GCP_Endpoint_Setup) sections on this page.
+For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
 
 ### **Disable GCP PSC**
 
@@ -263,15 +264,15 @@ curl -H "Authorization: Bearer ${API_KEY}" \
 
 GCP Private Service Connect can be enabled with Terraform using the SkySQL Terraform provider. 
 
-For general instructions on using the SkySQL Terraform Provider, see "[Terraform Launch Walkthrough](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/)".
+For general instructions on using the SkySQL Terraform Provider, see "[Terraform Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md) .
 
-For an example Terraform configuration that enables GCP Private Service Connect, see "[https://github.com/mariadb-corporation/terraform-provider-skysql/tree/main/examples/private-service-connect](https://github.com/mariadb-corporation/terraform-provider-skysql/tree/main/examples/private-service-connect)".
+For an example Terraform configuration that enables GCP Private Service Connect, see Resources section [here](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md) .
 
 ### **Enable GCP Private Service Connect on Service Launch**
 
 To enable GCP Private Service Connect when launching a new service via the SkySQL Terraform provider:
 
-1. Initiate service launch using the procedure at "[Terraform Launch Walkthrough](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/)".
+1. Initiate service launch using the procedure at "[Terraform Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md).
 2. When you are configuring the `skysql_service` resource, add the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes:
     
     For example, the attributes can be placed after `ssl_enabled`:
