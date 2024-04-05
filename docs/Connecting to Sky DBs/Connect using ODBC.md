@@ -37,7 +37,7 @@ The method for configuring the data source varies between operating systems.
     ```
     
 3. Determine the connection parameters for your database.
-4. Configure `unixODBC` to connect to the data source by creating a file called `MariaDB_odbc_data_source_template.ini`with the relevant data source parameters.
+4. Configure `unixODBC` to connect to the data source by creating a file called `MariaDB_odbc_data_source_template.ini`with the relevant data source parameters. Be sure to specify `SSLVERIFY = 1` for your SkySQL database.
     
     For example:
     
@@ -71,6 +71,14 @@ The method for configuring the data source varies between operating systems.
     ```
     
     - Customize the values of the parameters with the relevant information for your environment.
+    - If you have SSL certificate files, you can add the following parameters to your data source file:
+  
+    ```
+    SSLCA = /path/to/ca-cert.pem
+    SSLKEY = /path/to/client-key.pem
+    SSL_CERT = /path/to/client-cert.pem
+    ```
+    
 5. Install the `unixODBC` data source template file:
     
     ```bash
@@ -78,10 +86,10 @@ The method for configuring the data source varies between operating systems.
     ```
     
 6. Test the data source `My-Test-Server`configured in the `MariaDB_odbc_data_source_template.ini`
-file using the `isql` command:
+file using the `isql` command. If you see the output below, you have successfully connected to your Sky database.
     
     ```
-    $ isql My-Test-Server
+    $ isql -v My-Test-Server
     +-------------------------+
     | Connected!              |
     | sql-statement           |
@@ -158,9 +166,11 @@ Windows 10 was used to prepare these instructions. When using other versions of 
     - In the "Database" field, provide the the default database to use.
     - Then, click the "Next" button.
 7. Continue configuring the data source using the wizard:
-    - The wizard provides a series of windows for configuring various aspects of the connection, such as enabling TLS encryption. Enable settings you want to use.
+    - The wizard provides a series of windows for configuring various aspects of the connection. Enable settings you want to use.
     - Click the "Next" button to move onto the next window in the wizard.
+    - In the "TLS Settings" window, make sure that "Verify Certificate" is checked. You can also add your certificate information here.
     - Click the "Finish" on the last window to exit the wizard and save your data source.
+    - To test your connection, double-click the data source you have created to open the configuration window again. Click "Next" to reach the window titled "How do you want to connect to MariaDB" and click the button labeled "Test DSN".
 8. To select your new data source in your application, select the data source with the name that you configured for the "Name" field.
 
 ## Failover
