@@ -24,7 +24,6 @@ Use [MariaDB Client](https://mariadb.com/docs/skysql-previous-release/connect/c
 mariadb --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
       --user DATABASE_USER --password \
       --ssl-verify-server-cert \
-      --ssl-ca ~/PATH_TO_PEM_FILE \
       --default-character-set=utf8 \
       --batch \
       --skip-column-names \
