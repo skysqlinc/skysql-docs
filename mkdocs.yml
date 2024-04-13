@@ -3,7 +3,7 @@ theme:
   name: material
   logo: assets/sky_logo2.png
   favicon: assets/favicon.png
-#  custom_dir: docs/stylesheets/extra.css  # TODO - path not found ? 
+  custom_dir: docs/stylesheets  # TODO - path not found ? 
   features:
   - announce.dismiss
   - content.action.edit

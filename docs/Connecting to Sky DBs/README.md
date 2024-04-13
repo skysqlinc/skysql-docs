@@ -2,11 +2,6 @@
 
 This page describes how to connect to a SkySQL database using a MariaDB-compatible client.
 
-
-## Connection Parameters
-
-Once your DB service is launched, click on the ‘Connect’ option for your service on the dashboard. This pops up all the required attributes to connect from any SQL client. 
-
 ### **Important - Whitelist your IP address first**
 
 !!! Note
@@ -17,6 +12,12 @@ Once your DB service is launched, click on the ‘Connect’ option for your ser
 
 
 For more details go to the [Firewall](/docs/Security/Configuring%20Firewall.md) settings page. 
+
+
+
+## Connecting using the MariaDB Client CLI
+
+Once your DB service is launched, click on the ‘Connect’ option for your service on the dashboard. This pops up all the required attributes to connect from any SQL client. 
 
 Connection parameters include:
 
@@ -30,8 +31,7 @@ Connection parameters include:
 ![Connect window example](connect_window.png)
 
 
-
-## Connecting using the MariaDB client
+### Install and Connect using the MariaDB client
 
 If using a mac, install MariaDB using `brew install mariadb`.  Go through [MariaDB Client](Connect%20using%20MariaDB%20CLI.md) for details on how to connect from Linux or Windows. 
 
@@ -65,7 +65,7 @@ Clients listed here have been tested to properly connect with MariaDB SkySQL and
 Most of the SQL clients and editors natively support MariaDB. Most often you can also just select 'MySQL' and connect to your SkySQL DB service. 
 
 - [Connecting using Java clients like Squirrel SQL](https://squirrel-sql.sourceforge.io/)  
-All you need to do is to make sure the "useSsl" property is set to 'true' if SSL is ON. 
+    - All you need to do is to make sure the "useSsl" property is set to 'true' if SSL is ON. 
 - [TablePlus](https://tableplus.com/download) 
     - If SSL was configured, you should set the SSL Mode option to 'ENFORCE' and not 'VERIFY-SERVER-CERT'. 
     - When using the "ENFORCE" SSL mode in TablePlus or any MySQL client, the client will still verify that the SSL certificate presented by the server is valid and trusted. This includes verifying that the certificate is issued by a trusted Certificate Authority (CA) and that it has not expired or been revoked.
@@ -75,6 +75,12 @@ All you need to do is to make sure the "useSsl" property is set to 'true' if SSL
     - Certificate Revocation: The client may also check if the certificate has been revoked by the issuing CA.
     - If any of these checks fail, the client will not establish the SSL connection and may display an error indicating that the certificate is not valid or trusted.
 - [MariaDB CLI](Connect%20using%20MariaDB%20CLI.md) 
+- [DBGate](https://dbgate.org/) 
+    - When using SSL, you only have to switch to the SSL Tab in the Connection window and select 'use SSL' and click Connect. 
+- [Sequel Ace](https://sequel-ace.com/) - Connect to MariaDB from MacOS
+    - In the connection window, you should select 'Require SSL' if your SkySQL database has SSL turned ON (the default). 
+
+
 
 !!! Note
     💡  The links below point to the older version of Docs. In all cases you DO NOT need to pass any Certificates. Just set 'use SSL' where available to true when using SSL. 

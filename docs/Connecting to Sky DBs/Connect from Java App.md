@@ -60,7 +60,6 @@ public class App {
         connConfig.setProperty("user", "db_user");
         connConfig.setProperty("password", "db_user_password");
         **connConfig.setProperty("sslMode", "verify-full");**
-        connConfig.setProperty("serverSslCert", "/path/to/skysql_chain.pem");
 
         try (Connection conn = DriverManager.getConnection("jdbc:mariadb://HOST:PORT", connConfig)) {
             try (Statement stmt = conn.createStatement()) {
@@ -94,7 +93,6 @@ public class App {
         connConfig.setProperty("user", "db_user");
         connConfig.setProperty("password", "db_user_password");
         **connConfig.setProperty("useSsl", "true");**
-        connConfig.setProperty("serverSslCert", "/path/to/skysql_chain.pem");
 
         try (Connection conn = DriverManager.getConnection("jdbc:mariadb://HOST:PORT", connConfig)) {
             try (Statement stmt = conn.createStatement()) {

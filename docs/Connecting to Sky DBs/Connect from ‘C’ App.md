@@ -49,11 +49,6 @@ int main (int argc, char* argv[])
       exit(1);
    }
 
-   char* cafile = "/path/to/skysql_chain.pem";
-
-   // Configure the TLS Certificate Authority. This may vary by hosting provider!
-   mysql_optionsv(conn, MYSQL_OPT_SSL_CA, cafile);
-
    // Connect to the database
    if (!mysql_real_connect(
          conn,                 // Connection
