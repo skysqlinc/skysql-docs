@@ -4,9 +4,10 @@ MariaDB SkySQL customers can configure outbound replication from a Replicated Tr
 
 SkySQL uses stored procedures to configure replication to other MariaDB or MySQL database servers. 
 
-For additional information about the stored procedures used to configure replication with Replicated Transactions services, see "[SkySQL Replication Helper Procedures for Replicated Transactions](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/)".
+For additional information about the stored procedures used to configure replication with Replicated Transactions services, see [SkySQL Replication Helper Procedures for Replicated Transactions](../Reference%20Guide/Sky%20Stored%20Procedures.md)
 
-# Requirements
+
+## Requirements
 
 To configure outbound replication from your Replicated Transactions service in SkySQL to an external replica server using MariaDB Server, the following requirements must be met:
 
@@ -21,65 +22,75 @@ To configure outbound replication from your Replicated Transactions service in S
     - MariaDB Server 10.5
     - MariaDB Server 10.6
 
-# Create User for Outbound Replication
+## Create User for Outbound Replication
 
 With the default database admin user provided, create an external_replication user as seen below.
 
+```sql
 CREATE USER 'replication_user'@'%' IDENTIFIED BY 'bigs3cret';
 GRANT REPLICATION SLAVE ON *.* TO ‘external_replication’@'hostname';
+```
 
-# Check User Account
+## Check User Account
 
-**On the SkySQL service**, confirm that the new user has sufficient privileges by executing `[SHOW GRANTS](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/SHOW_GRANTS/)`:
+**On the SkySQL service**, confirm that the new user has sufficient privileges by executing 
 
-**`SHOW** GRANTS **FOR** 'external_replication'@'%'**;**`
+```sql
+SHOW GRANTS FOR 'external_replication'@'%';
 
-`+------------------------------------------------------------------------------------------------------------------------------------------------+
+```
+```text
++-------------+
 | Grants for external_replication@%                                                                                                              |
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-| GRANT REPLICATION SLAVE ON *.* TO `external_replication`@`%` IDENTIFIED BY PASSWORD '*CCD3A959D6A004B9C3807B728BC2E55B67E10518' |
-+------------------------------------------------------------------------------------------------------------------------------------------------+`
++-------------+
+| GRANT REPLICATION SLAVE, SLAVE MONITOR ON *.* TO `external_replication`@`%` IDENTIFIED BY PASSWORD '*CCD3A959D6A004B9C3807B728BC2E55B67E10518' |
++-------------+
+```
 
-# Add External Replica to Allowlist
+## Add External Replica to Allowlist
 
-**On the SkySQL Customer Portal**, add the IP address of the external replica server to the SkySQL service's [allowlist](https://mariadb.com/docs/skysql-previous-release/security/firewalls/ip-allowlist-services/).  Click ‘Manage’→ ‘Manage Allowlist’ to add the IP address to the allowed list. 
+**On the SkySQL Customer Portal**, add the IP address of the external replica server to the SkySQL service's [allowlist](../Security/Configuring%20Firewall.md)
+- Click ‘Manage’→ ‘Manage Allowlist’ to add the IP address to the allowed list. 
 
 <aside>
 💡 Note that if your ‘external replica server’ is also running on SkySQL (say for DR), you can find the outbound IP address from the ‘Details’ tab (Select on the Service name on the dashboard, then click ‘Details’)
-
 </aside>
 
-# Obtain GTID Position
+## Obtain GTID Position
 
 **On the SkySQL service**, obtain the GTID position from which to start replication.
 
-When you want to start replication from the most recent transaction, the current GTID position can be obtained by querying the value of the `[gtid_current_pos](https://mariadb.com/docs/skysql-previous-release/ref/mdb/system-variables/gtid_current_pos/)` system variable with the `[SHOW GLOBAL VARIABLES](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/SHOW_VARIABLES/)` statement:
+When you want to start replication from the most recent transaction, the current GTID position can be obtained by querying the value of the 'gtid_current_pos:
 
-**`SHOW** **GLOBAL** VARIABLES   **LIKE** 'gtid_current_pos'**;**`
+```sql
+SHOW GLOBAL VARIABLES
+   LIKE 'gtid_current_pos';
+```
 
+```text
 `+------------------+-------------------+
 | Variable_name    | Value             |
 +------------------+-------------------+
 | gtid_current_pos | 435700-435700-124 |
 +------------------+-------------------+`
+```
 
-# Configure GTID Position
+## Configure GTID Position
 
 **On the external replica server**, configure the GTID position from which to start replication.
 
-The GTID position can be configured by setting the `[gtid_slave_pos](https://mariadb.com/docs/skysql-previous-release/ref/mdb/system-variables/gtid_slave_pos/)` system variable with the `[SET GLOBAL](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/SET/)` statement:
+The GTID position can be configured by setting the 'gtid_slave_pos':
 
-**`SET** **GLOBAL** gtid_slave_pos='435700-435700-124'**;**`
+```sql
+SET GLOBAL gtid_slave_pos='435700-435700-124';
 
-# Download SkySQL CA Chain
+```
 
-If you have enabled SSL (default), **on the external replica server**, download the [SkySQL CA chain](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/#Certificate_Authority_Chain).  This is available in the Connect popup window on the portal dashboard. 
+## Configure Replication
 
-# Configure Replication
+**On the external replica server**, configure replication using the connection parameters for your MariaDB SkySQL service.
 
-**On the external replica server**, configure replication using the [connection parameters](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/) for your MariaDB SkySQL service.
-
-Replication can be configured using the `[CHANGE MASTER TO](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/CHANGE_MASTER_TO/)` statement:
+Replication can be configured using the 'CHANGE MASTER TO' SQL statement:
 
 ```sql
 CHANGE MASTER TO
@@ -96,23 +107,26 @@ CHANGE MASTER TO
 - Replace `TCP_PORT` with the read-write or read-only port of your service
 - Replace `~/PATH_TO_PEM_FILE` with the path to the certificate authority chain (.pem) file
 
-# Start Replication
+## Start Replication
 
 **On the external replica server**, start replication.
 
-Replication can be started using the `[START REPLICA](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/START_REPLICA/)` statement:
+Replication can be started using the 'START REPLICA' SQL statement:
 
-**`START** REPLICA**;**`
+```sql
+START REPLICA;
 
-# Check Replication Status
+```
+
+## Finally, Check Replication Status
 
 **On the external replica server**, check replication status.
 
-Replication status can be checked using the `[SHOW REPLICA STATUS](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/SHOW_REPLICA_STATUS/)` statement:
-
-**`SHOW** REPLICA STATUS**\G**`
+Replication status can be checked using the 'SHOW REPLICA STATUS' SQL statement:
 
 ```
+SHOW REPLICA STATUS \G
+
 *************************** 1. row ***************************
                 Slave_IO_State: Waiting for master to send event
                    Master_Host: my-service.mdb0002147.db.skysql.net
