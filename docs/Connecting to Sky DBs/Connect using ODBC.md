@@ -165,13 +165,22 @@ Windows 10 was used to prepare these instructions. When using other versions of 
     - In the "Password" field, provide the password for that user.
     - In the "Database" field, provide the the default database to use.
     - Then, click the "Next" button.
+    
+![wodbc2](https://github.com/skysqlinc/skysql-docs/assets/164920395/a31181a5-efc9-47c1-83ea-2a3fe8da73dd)
+
 7. Continue configuring the data source using the wizard:
     - The wizard provides a series of windows for configuring various aspects of the connection. Enable settings you want to use.
     - Click the "Next" button to move onto the next window in the wizard.
     - In the "TLS Settings" window, make sure that "Verify Certificate" is checked. You can also add your certificate information here.
-    - Click the "Finish" on the last window to exit the wizard and save your data source.
-    - To test your connection, double-click the data source you have created to open the configuration window again. Click "Next" to reach the window titled "How do you want to connect to MariaDB" and click the button labeled "Test DSN".
-8. To select your new data source in your application, select the data source with the name that you configured for the "Name" field.
+      
+ ![wodbc1](https://github.com/skysqlinc/skysql-docs/assets/164920395/29e40cdd-95e1-4313-8b33-d031858bad1e)
+
+8. Click the "Finish" on the last window to exit the wizard and save your data source.
+    - To test your connection, double-click the data source you have created to open the configuration window again. Click "Next" to reach the window titled "How do you want to connect to MariaDB" and click the button labeled "Test DSN". If you see the message below, you have successfully connected.
+
+![wodbc3](https://github.com/skysqlinc/skysql-docs/assets/164920395/1b74da33-1459-469a-ad54-a4702b3b4c56)
+
+9. To select your new data source in your application, select the data source with the name that you configured for the "Name" field.
 
 ## Failover
 
