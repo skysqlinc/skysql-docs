@@ -49,22 +49,14 @@ To manage Autonomous settings:
 
 Automatic scaling occurs based on rules.
 
-| Policy | Condition | Action |
-| --- | --- | --- |
-| Auto-Scale Disk | • Disk utilization > 90% sustained for 5 minutes
-The disk is expected to run out of capacity in the next 24 hours (predicted based on the last 6 hours of service usage) | • Upgrade storage to the next available size in 100GB increments
-• Note: you cannot downgrade storage, the upgrade is irreversible |
-| Auto-Scale Nodes Out | • CPU utilization > 75% over all replicas sustained for 30 minutes
-• Number of concurrent sessions > 90% over all replicas sustained for 1 hour
-• Number of concurrent sessions is expected to hit the maximum within 4 hours (predicted based on the last 2 hours of service usage) | • Add new replica or node
-• Additional nodes will be of the same size and configuration as existing nodes |
-| Auto-Scale Nodes In | • CPU utilization < 50% over all replicas sustained for 1 hour
-• Number of concurrent sessions < 50% over all replicas sustained for 1 hour | • Remove replica or node
-• Node count will not decrease below the initial count set at launch |
-| Auto-Scale Nodes Up | • Number of concurrent sessions is expected to hit the maximum within 4 hours (predicted based on the last 2 hours of service usage) | • Upgrade all nodes to the next available size |
-| Auto-Scale Nodes Down | • CPU utilization < 50% over all replicas sustained for 1 hour
-• Number of concurrent sessions < 50% over all replicas sustained for 1 hour | • Downgrade nodes
-• Node size will not decrease below the initial node size set at launch |
+| Policy             | Condition                                                          | Action                                                                                             |
+|--------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Auto-Scale Disk   | Disk utilization > 90% sustained for 5 minutes                     | The disk is expected to run out of capacity in the next 24 hours (predicted based on the last 6 hours of service usage). Upgrade storage to the next available size in 100GB increments Note: you cannot downgrade storage, the upgrade is irreversible |
+| Auto-Scale Nodes Out | CPU utilization > 75% over all replicas sustained for 30 minutes. <br> Number of concurrent sessions > 90% over all replicas sustained for 1 hour. <br> Number of concurrent sessions is expected to hit the maximum within 4 hours (predicted based on the last 2 hours of service usage) | Add new replica or node Additional nodes will be of the same size and configuration as existing nodes |
+| Auto-Scale Nodes In | CPU utilization < 50% over all replicas sustained for 1 hour. <br> Number of concurrent sessions < 50% over all replicas sustained for 1 hour | Remove replica or node Node count will not decrease below the initial count set at launch |
+| Auto-Scale Nodes Up | Number of concurrent sessions is expected to hit the maximum within 4 hours (predicted based on the last 2 hours of service usage) | Upgrade all nodes to the next available size |
+| Auto-Scale Nodes Down | CPU utilization < 50% over all replicas sustained for 1 hour. <br> Number of concurrent sessions < 50% over all replicas sustained for 1 hour | Downgrade nodes Node size will not decrease below the initial node size set at launch |
+
 
 Autonomous actions are not instantaneous.
 
