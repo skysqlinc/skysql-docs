@@ -4,11 +4,11 @@ It only takes a few minutes to launch a standalone or clustered database on SkyS
 
 You have three choices to provision a DB on SkySQL :
 
-This Quickstart explains how to launch database services and manage the lifecycle of database services using the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/) in a web browser.
+This Quickstart explains how to launch database services and manage the lifecycle of database services using the [Portal](<Portal features>) in a web browser.
 
 For users who prefer other interfaces, SkySQL offers the following alternatives:
 
-- Use the SkySQL web [Portal](Portal%20features%20a48bd73b584b4a9db9b84ca94f958adc.md). Make your choices with a few clicks and hit Launch.
+- Use the SkySQL web [Portal](<Portal features>). Make your choices with a few clicks and hit Launch.
 - Use the DBaaS API with a REST client
 - Use the [Terraform provider](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/)
 
