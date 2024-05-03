@@ -136,6 +136,6 @@ Stopping, starting, and deleting a service are examples of Self-Service Operatio
 
 For additional information, see "[Self-Service Operations](https://mariadb.com/docs/skysql-dbaas/service-management/nr-self-service/)".
 
-[Launch DB using the REST API](Quickstart%20da3c5848d30348b1815026b2d24219a6/Launch%20DB%20using%20the%20REST%20API%20cf85a5036a454ee987bb392df694dfc3.md)
+[Launch DB using the REST API](<Launch DB using the REST API>)
 
-[Launch DB using the Terraform Provider]
+[Launch DB using the Terraform Provider](<Launch DB using the Terraform Provider>)
