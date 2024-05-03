@@ -4,17 +4,17 @@ It only takes a few minutes to launch a standalone or clustered database on SkyS
 
 You have three choices to provision a DB on SkySQL :
 
-This Quickstart explains how to launch database services and manage the lifecycle of database services using the [Portal](<Portal features>) in a web browser.
+This Quickstart explains how to launch database services and manage the lifecycle of database services using the [Portal](<../Portal features>) in a web browser.
 
 For users who prefer other interfaces, SkySQL offers the following alternatives:
 
-- Use the SkySQL web [Portal](<Portal features>). Make your choices with a few clicks and hit Launch.
+- Use the SkySQL web [Portal](<../Portal features>). Make your choices with a few clicks and hit Launch.
 - Use the DBaaS API with a REST client
-- Use the [Terraform provider](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/)
+- Use the [Terraform provider](<Launch DB using the Terraform Provider>)
 
 ## Step 1: Register for SkySQL
 
-Goto [app.skysql.com](http://app.skysql.com) to sign up. You can sign up using your Google, Github or LinkedIn credentials. Or, just use your Email address to sign up. 
+Goto [app.skysql.com](https://app.skysql.com) to sign up. You can sign up using your Google, Github or LinkedIn credentials. Or, just use your Email address to sign up. 
 
 ![Untitled](Untitled.png)
 
@@ -30,7 +30,7 @@ Goto [app.skysql.com](http://app.skysql.com) to sign up. You can sign up using y
     
     *Click the configuration choices detailed below.*
     
-    https://app.skysql.com/launch-service
+    [https://app.skysql.com/launch-service](https://app.skysql.com/launch-service)
     
     Select:
     
