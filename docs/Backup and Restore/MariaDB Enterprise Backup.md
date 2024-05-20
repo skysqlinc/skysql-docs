@@ -1,8 +1,5 @@
 # MariaDB Enterprise Backup
 
-!!! Note
-    TODO - rough draft below .. needs to be cleaned up
-
 
 Regular and reliable backups are essential to successful recovery of mission critical applications. [MariaDB Enterprise Server](https://mariadb.com/docs/server/products/mariadb-enterprise-server/) backup and restore operations are performed using [MariaDB Enterprise Backup](https://mariadb.com/docs/server/ref/mdb/cli/mariadb-backup/), an [enterprise-build](https://mariadb.com/docs/server/products/mariadb-enterprise-server/lifecycle/) of [MariaDB Backup](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/).
 
