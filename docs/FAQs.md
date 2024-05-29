@@ -1,5 +1,7 @@
 # FAQs
 
+## About
+
 ### **What is the history of SkySQL?**
 
 SkySQL is a database-as-a-service (DBaaS) that was originally developed and managed by MariaDB Corporation. The cloud division (SkySQL) was later spun out of MariaDB into a independent company -  [SkySQL Inc](https://skysql.com).  The team that developed SkySQL transitioned over to the new company.
@@ -20,7 +22,7 @@ And if you need ultimate control, and have the necessary skills and resources to
 
 ### **How long do deployments on SkySQL take?**
 
-In Foundation Tier smaller databases launch in 2-4 mins. Power Tier deployments with isolated, dedicated Kubernetes environments can take up to 25 minutes. Subsequent database deployments will use the same Kubernetes environment and usually launch in 2-4 minutes. 
+In Foundation Tier smaller databases launch in 2-4 mins. Power Tier deployments with isolated, dedicated Kubernetes environments can take up to 25 minutes. Subsequent database deployments will use the same Kubernetes environment and usually launch in 2-4 minutes.
 
 The real time benefits come every day after, when you're operating at scale. A failed database node can recover in a matter of seconds using Kubernetes self-healing, or instantly failover to alternate replicated server. Instead of an eight-hour bare metal rebuild as you might see on-premises or on other cloud platforms.
 
@@ -42,7 +44,7 @@ We offer “fractional DBAs” - expert-maintained multi-cloud databases. We're 
 
 ### **What hardware does SkySQL run on?**
 
- SkySQL is multi-cloud and as a full-featured DBaaS we handle all of the hardware and infrastructure needs.
+SkySQL is multi-cloud and as a full-featured DBaaS we handle all of the hardware and infrastructure needs.
 
 Services are currently available with a range of [instance sizes](<../Reference Guide/Instance Size Choices>) running on:
 
@@ -56,7 +58,7 @@ Transactional services (such as our Replicated Transactions topology) operate on
 
 ### **What software stack does SkySQL run on?**
 
-SkySQL runs on Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine (GKE), and MariaDB database products - Enterprise Server, Maxscale. MariaDB Enterprise Server enables a predictable development and operations experience through optimized builds, predictable release behavior, and vendor support.
+SkySQL runs on Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine (GKE), and MariaDB database products - Enterprise Server, MaxScale. MariaDB Enterprise Server enables a predictable development and operations experience through optimized builds, predictable release behavior, and vendor support.
 
 ### **How long has SkySQL existed?**
 
@@ -70,7 +72,7 @@ Yes. SkySQL delivers enterprise-grade cloud database services for mission-critic
 
 ### **What services are available on SkySQL?**
 
-SkySQL is primarily designed for online applications and offers two topologies - 
+SkySQL is primarily designed for online applications and offers two topologies -
 
 [Replicated Transactions](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/services/replicated-transactions/), [Single Node Transactions](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/services/single-node-transactions/)
 
@@ -80,7 +82,7 @@ You can choose [topologies to match your workload requirements, cloud regions t
 
 Our platform features:
 
-- Services optimized for transactional (OLTP) and analytical(Future)
+- Services optimized for transactional (OLTP) and analytical (Future)
 - Availability in a range of database instance sizes and storage sizes
 - Availability from multiple AWS (Amazon Web Services) and GCP (Google Cloud Platform) [regions](<../Reference Guide/Region Choices>).
 - Load Balancing features included with Replicated Transactions topologies allow for read-scaling through read-write splitting.
@@ -127,7 +129,7 @@ Our platform features:
 
 ### **What does SkySQL cost? How is SkySQL priced?**
 
-Estimated SkySQL pricing is available from the SkySQL portal. SkySQL pricing is very competitive and starts at about $100 per month for production grade databases. 
+Estimated SkySQL pricing is available from the SkySQL portal. SkySQL pricing is very competitive and starts at about $100 per month for production grade databases.
 
 SkySQL pricing varies based on the selections made when you [launch a service](<../Portal features/Launch page>). Examples of selections include provider, topology, instance and storage size, and region.
 
@@ -159,7 +161,7 @@ Estimated SkySQL pricing information is shown when you [create a service](https
 
 ### **What is included in SkySQL pricing?**
 
-SkySQL pricing includes instances for a specific service topology, and monitoring, and also includes management features, e.g., backups, upgrades, patch installs, etc. [Some factors](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/pricing/), such as object storage and network egress which are variable and usage-dependent, are not included in estimated pricing. We typically pass-thru the cloud provider costs with no additional markup. 
+SkySQL pricing includes instances for a specific service topology, and monitoring, and also includes management features, e.g., backups, upgrades, patch installs, etc. [Some factors](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/pricing/), such as object storage and network egress which are variable and usage-dependent, are not included in estimated pricing. We typically pass-thru the cloud provider costs with no additional markup.
 
 ### **What is optional in SkySQL pricing?**
 
@@ -181,7 +183,7 @@ SkySQL accepts payment by [major credit card and through remittance accounts](<
 
 ### **Which credit cards does SkySQL accept?**
 
-SkySQL accepts all major credit cards. Specifically, we accept Visa, Mastercard, American Express, Discover, and Diners Club payments from customers worldwide. 
+SkySQL accepts all major credit cards. Specifically, we accept Visa, Mastercard, American Express, Discover, and Diners Club payments from customers worldwide.
 
 !!! Note
     SkySQL does not store any of your credit card information. We use Stripe to manage all credit card transactions. [Stripe](https://stripe.com) is a widely used payment processing platform that enables businesses to accept credit card payments securely
@@ -197,7 +199,6 @@ SkySQL contract customers can pre-fund their account. [Contact us](https://skys
 ### **How do I pay my bill?**
 
 SkySQL charges are paid using a credit card, or via wire transfer/ACH upon invoice in the case of remittance accounts.
-
 
 ### **Can I buy SkySQL in the AWS Marketplace?**
 
@@ -239,7 +240,7 @@ If you stop a SkySQL service, you will continue to be charged for storage, sinc
 
 ### **How can I see my current charges?**
 
-Current month's estimated charges can be viewed on the SkySQL portal dashboard. Detailed information is also available under ‘Billing’ where you can see the breakdown for all your current charges - you can see resource usage by Service Name (your individual DB clusters) or by resource type. Variable charges such as object storage and network egress are updated the day prior to the last day of the month and are available in the invoice. You can also use the SkySQL REST API to fetch usage and billing data. 
+Current month's estimated charges can be viewed on the SkySQL portal dashboard. Detailed information is also available under ‘Billing’ where you can see the breakdown for all your current charges - you can see resource usage by Service Name (your individual DB clusters) or by resource type. Variable charges such as object storage and network egress are updated the day prior to the last day of the month and are available in the invoice. You can also use the SkySQL REST API to fetch usage and billing data.
 
 ### **How can I see detailed billing reports?**
 
@@ -267,7 +268,7 @@ Instances can be stopped to save money. While stopped, additional instance and
 
 Contact [info@skysql.com](mailto:info@skysql.com) with billing questions.
 
-# Backup and Restore
+## Backup and Restore
 
 ### **How do I backup my data on SkySQL?**
 
@@ -279,7 +280,7 @@ No. Backup frequency and schedule are not customer configurable. SkySQL Power Ti
 
 ### **Are automated backups sent offsite? Will my data be sent to another country?**
 
-No. Data is not sent to another country. All data is managed within the same region where your database is running for data sovereignty. 
+No. Data is not sent to another country. All data is managed within the same region where your database is running for data sovereignty.
 
 ### **Does SkySQL guarantee an RTO and RPO?**
 
@@ -293,7 +294,7 @@ MariaDB Enterprise Backup (mariabackup) is used for Replicated Transactions and 
 
 ### **Are incremental backups available?**
 
-The backup service provides support for incremental backups. It is in preview state (Dec 2023). 
+The backup service provides support for incremental backups. It is in preview state (Dec 2023).
 
 ### **How long are backups retained?**
 
@@ -350,7 +351,7 @@ Yes. By default, SkySQL requires client connections via TLS (TLS 1.2, TLS 1.3).
 
 ### **Does SkySQL support unencrypted client connections?**
 
-SkySQL supports disabling SSL/TLS via the Portal or using the API. 
+SkySQL supports disabling SSL/TLS via the Portal or using the API.
 
 ### **What encryption algorithms are used for on-disk encryption?**
 
@@ -427,13 +428,13 @@ You can SkySQL Monitoring after launching a service, then clicking the "Monitori
 
 ### **What is monitored?**
 
-SkySQL Monitoring covers status and metrics specific to a service and its servers. A [complete list of charts](https://mariadb.com/docs/skysql-previous-release/service-management/monitoring/) is provided. 
+SkySQL Monitoring covers status and metrics specific to a service and its servers. A [complete list of charts](https://mariadb.com/docs/skysql-previous-release/service-management/monitoring/) is provided.
 
 ### **Who is alerted if a service goes down?**
 
-SkySQL Inc’s Support and SRE teams are alerted if a SkySQL service becomes unavailable or when serious issues are detected (e.g. disk is 90% utilized). 
+SkySQL Inc’s Support and SRE teams are alerted if a SkySQL service becomes unavailable or when serious issues are detected (e.g. disk is 90% utilized).
 
-Additionally, SkySQL automatically turns on several sensible alerting rules so the customer can also be alerted. 
+Additionally, SkySQL automatically turns on several sensible alerting rules so the customer can also be alerted.
 
 ### **How can I get Alerted on DB events?**
 
