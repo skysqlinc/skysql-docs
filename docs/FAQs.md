@@ -46,10 +46,10 @@ We offer “fractional DBAs” - expert-maintained multi-cloud databases. We're 
 
 SkySQL is multi-cloud and as a full-featured DBaaS we handle all of the hardware and infrastructure needs.
 
-Services are currently available with a range of [instance sizes](<../Reference Guide/Instance Size Choices>) running on:
+Services are currently available with a range of [instance sizes](<../Reference Guide/Instance Size Choices>) running on the following cloud service providers:
 
-- Amazon AWS (Amazon Web Services) and Amazon EKS (Elastic Kubernetes Service)
-- Google GCP (Google Cloud Platform) and Google GKE (Google Kubernetes Engine)
+- Amazon AWS (Amazon Web Services)
+- Google GCP (Google Cloud Platform)
 
 Transactional services (such as our Replicated Transactions topology) operate on:
 
