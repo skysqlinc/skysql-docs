@@ -33,8 +33,8 @@ SkySQL provides services backed by:
 - MariaDB Enterprise Server 10.4
 - MariaDB Enterprise Server 10.5
 - MariaDB Enterprise Server 10.6
+- MariaDB Community Server 10.11
 - MariaDB MaxScale
-- 
 
 ### **Are other databases supported?**
 
@@ -484,7 +484,7 @@ SkySQL offers a full range of professional services, including:
 
 ### **Who do I contact if I have questions about SkySQL?**
 
-[Contact SkySQL Inc](https://skysql.com/contact/) or email us at info@skysql.ai
+[Contact SkySQL Inc](https://skysql.com/contact/) or email us at [info@skysql.com](mailto:info@skysql.com)
 
 ### **How can I keep up-to-date on changes to SkySQL?**
 
@@ -496,13 +496,13 @@ SkySQL is available for immediate use. [Sign up](https://mariadb.com/docs/skysq
 
 ### **Who do I contact with billing questions?**
 
-Billing questions can be directed to accounts receivable at [billing@mariadb.com](mailto:billing%40mariadb.com)
+Billing questions can be directed to [info@skysql.com](mailto:info@skysql.com).
 
 ### **How do I provide feedback about SkySQL Documentation?**
 
 To aid our continuous improvement efforts, we encourage you to provide feedback on our documentation and your experiences using it via the following:
 
-- Email info@skysql.com
+- Email [info@skysql.com](mailto:info@skysql.com)
 
 ### **I am a SkySQL customer. How do I get support?**
 
