@@ -21,6 +21,16 @@ CALL sky.change_external_primary(
 +------------------------------+
 ```
 
+## change_connect_retry
+
+Sets the connection retry interval for the external replication master.
+
+```sql
+CALL change_connect_retry(connect_retry INT);
+```
+
+If the value is NULL, a default retry interval of 60 seconds will be used.
+
 ## change_external_primary_gtid
 
 Executes the [CHANGE MASTER TO](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/CHANGE_MASTER_TO/) statement to configures inbound replication from an external primary server based on the provided GTID.
@@ -41,6 +51,36 @@ CALL sky.change_external_primary_gtid(
 | GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
 +------------------------------+
 ```
+
+## change_heartbeat_period
+
+Sets the heartbeat period for the external replication master.
+
+```sql
+CALL change_heartbeat_period(heartbeat_period DECIMAL(10,3));
+```
+
+If the value is NULL, a default heartbeat period of 5 seconds will be used.
+
+## change_replica_delay
+
+Sets the replication delay for the external replication master.
+
+```sql
+CALL change_replica_delay(replica_delay INT);
+```
+
+If the value is NULL, a default delay of 1 second will be used.
+
+## change_use_ssl_encryption
+
+Toggles the SSL encryption setting for the external replication master.
+
+```sql
+CALL change_use_ssl_encryption(use_ssl_encryption BOOLEAN);
+```
+
+If the value is NULL, SSL encryption will be enabled by default.
 
 ## gtid_status
 
@@ -202,6 +242,22 @@ CALL sky.start_replication();
 +----------------------------------------+
 | External replication running normally. |
 +----------------------------------------+
+```
+
+## start_replication_until
+
+Start the external replication until a specified relay log file and position. It checks if the replication threads are running and starts the replication if they are not. It also provides feedback on the replication status.
+
+```sql
+CALL start_replication_until(relay_log_file TEXT, relay_log_pos LONG);
+```
+
+## start_replication_until_gtid
+
+Starts the external replication until the specified GTID position. It checks if the replication threads are running and starts the replication if they are not. It also provides feedback on the replication status.
+
+```sql
+CALL start_replication_until_gtid(master_gtid_pos TEXT);
 ```
 
 ## stop_replication
