@@ -2337,14 +2337,14 @@
 <li>Set <code>"allowed_accounts"</code> to a JSON array of one or more customer project IDs in GCP that will be allowed to establish a private connection to the SkySQL service</li>
 </ul>
 <p>And then use the API to update the <code>endpoints</code> information of the service. The following example of using <code>curl</code> expects the above payload to be in a file named <code>data.json</code> and also expects the variables <code>API_KEY</code> and <code>SERVICE_ID</code> to be set:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">       </span>-X<span class="w"> </span>PATCH<span class="w"> </span>-d<span class="w"> </span>@data.json<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>https://api.mariadb.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span>/endpoints<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>https://api.skysql.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span>/endpoints<span class="w"> </span><span class="se">\</span>
 <span class="w">       </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <p>We will need the endpoint's service name later on in the setup, so use the API to query the endpoint once the service has finished its modifications and is back to "ready":</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>https://api.mariadb.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>https://api.skysql.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">       </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.status,.endpoints[0].ports,.endpoints[0].endpoint_service&#39;</span>
 </code></pre></div>
 <p>Note that the <code>jq</code> command is filtering the returned JSON data to extract three things (which are separated by commas in the command above):</p>
@@ -2386,14 +2386,14 @@
 <li>Set <code>"mechanism"</code> to <code>"nlb"</code></li>
 </ul>
 <p>And then use the API to update the <code>endpoints</code> information of the service. The following example of using <code>curl</code> expects the above payload to be in a file named <code>data.json</code> and also expects the variables <code>API_KEY</code> and <code>SERVICE_ID</code> to be set:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">       </span>-X<span class="w"> </span>PATCH<span class="w"> </span>-d<span class="w"> </span>@data.json<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>https://api.mariadb.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span>/endpoints<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>https://api.skysql.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span>/endpoints<span class="w"> </span><span class="se">\</span>
 <span class="w">       </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <p>We will need the endpoint's service name later on in the setup, so use the API to query the endpoint once the service has finished its modifications and is back to "ready":</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>https://api.mariadb.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>https://api.skysql.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">       </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.status,.endpoints[0].ports,.endpoints[0].endpoint_service&#39;</span>
 </code></pre></div>
 <p>Note that the <code>jq</code> command is filtering the returned JSON data to extract three things (which are separated by commas in the command above):</p>
@@ -2427,9 +2427,9 @@
 <div class="highlight"><pre><span></span><code><span class="err">**</span><span class="p">{</span><span class="err">**</span><span class="w">  </span><span class="err">**</span><span class="nt">&quot;ip_address&quot;</span><span class="p">:</span><span class="err">**</span><span class="w"> </span><span class="s2">&quot;192.0.2.10/32&quot;</span><span class="err">**</span><span class="p">}</span><span class="err">**</span>
 </code></pre></div>
 <p>And then use the API to update the <code>allowlist</code> information of the service. The following example of using <code>curl</code> expects the above payload to be in a file named <code>data.json</code> and also expects the variables <code>API_KEY</code> and <code>SERVICE_ID</code> to be set:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">       </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span>@data.json<span class="w"> </span><span class="se">\</span>
-<span class="w">       </span>https://api.mariadb.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span>/security/allowlist<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>https://api.skysql.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SERVICE_ID</span><span class="si">}</span>/security/allowlist<span class="w"> </span><span class="se">\</span>
 <span class="w">       </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <h2 id="terraform-provider"><strong>Terraform Provider</strong></h2>

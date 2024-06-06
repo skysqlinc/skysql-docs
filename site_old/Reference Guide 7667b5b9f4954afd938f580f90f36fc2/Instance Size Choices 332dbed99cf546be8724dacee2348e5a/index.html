@@ -2291,8 +2291,8 @@
 <p>A REST client can query the SkySQL DBaaS API for the database node instance size selections for a specific cloud provider, architecture, and topology.</p>
 <p>To see the available database node instance sizes for a topology, use <code>curl</code> to call the <code>[/provisioning/v1/sizes</code> API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_sizes/) with <code>type=server</code> set:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>--location<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span><span class="s1">&#39;https://api.mariadb.com/provisioning/v1/sizes?architecture=amd64&amp;service_type=transactional&amp;provider=gcp&amp;topology=es-replica&amp;type=server&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="s1">&#39;https://api.skysql.com/provisioning/v1/sizes?architecture=amd64&amp;service_type=transactional&amp;provider=gcp&amp;topology=es-replica&amp;type=server&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
@@ -2338,8 +2338,8 @@
 <p>A REST client can query the SkySQL DBaaS API for the MaxScale node instance size selections for a specific cloud provider, architecture, and topology.</p>
 <p>To see the default MaxScale instance size for a topology, cloud, and architecture, use <code>curl</code> to call the <code>[/provisioning/v1/sizes</code> API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_sizes/):</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>--location<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span><span class="s1">&#39;https://api.mariadb.com/provisioning/v1/sizes?provider=gcp&amp;architecture=amd64&amp;topology=es-replica&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="s1">&#39;https://api.skysql.com/provisioning/v1/sizes?provider=gcp&amp;architecture=amd64&amp;topology=es-replica&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">[</span>
@@ -2365,8 +2365,8 @@
 <p>The <code>default_maxscale_size_name</code> attribute shows the default MaxScale instance size.</p>
 <p>To see the available MaxScale node instance sizes for a topology, use <code>curl</code> to call the <code>[/provisioning/v1/sizes</code> API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_sizes/) with <code>type=proxy</code> set:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>--location<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span><span class="s1">&#39;https://api.mariadb.com/provisioning/v1/sizes?architecture=amd64&amp;service_type=transactional&amp;provider=gcp&amp;topology=es-replica&amp;type=proxy&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="s1">&#39;https://api.skysql.com/provisioning/v1/sizes?architecture=amd64&amp;service_type=transactional&amp;provider=gcp&amp;topology=es-replica&amp;type=proxy&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <p>The output can show different instance sizes, depending on whether your SkySQL account is Foundation tier or Power tier.</p>

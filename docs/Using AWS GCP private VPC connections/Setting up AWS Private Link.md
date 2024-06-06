@@ -132,17 +132,17 @@ To enable AWS PrivateLink on an existing service via the SkySQL DBaaS API, creat
 And then use the API to update the `endpoints` information of the service. The following example of using `curl` expects the above payload to be in a file named `data.json` and also expects the variables `API_KEY` and `SERVICE_ID` to be set:
 
 ```json
-curl -H "Authorization: Bearer ${API_KEY}" \
+curl -H "X-API-Key:  ${API_KEY}" \
        -X PATCH -d @data.json \
-       https://api.mariadb.com/provisioning/v1/services/${SERVICE_ID}/endpoints \
+       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID}/endpoints \
        | jq .
 ```
 
 We will need the endpoint's service name later on in the setup, so use the API to query the endpoint once the service has finished its modifications and is back to "ready":
 
 ```json
-curl -H "Authorization: Bearer ${API_KEY}" -X GET \
-       https://api.mariadb.com/provisioning/v1/services/${SERVICE_ID} \
+curl -H "X-API-Key:  ${API_KEY}" -X GET \
+       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID} \
        | jq '.status,.endpoints[0].ports,.endpoints[0].endpoint_service'
 ```
 
@@ -191,17 +191,17 @@ Set `"mechanism"` to `"nlb"`
 And then use the API to update the `endpoints` information of the service. The following example of using `curl` expects the above payload to be in a file named `data.json` and also expects the variables `API_KEY` and `SERVICE_ID` to be set:
 
 ```json
-curl -H "Authorization: Bearer ${API_KEY}" \
+curl -H "X-API-Key:  ${API_KEY}" \
        -X PATCH -d @data.json \
-       https://api.mariadb.com/provisioning/v1/services/${SERVICE_ID}/endpoints \
+       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID}/endpoints \
        | jq .
 ```
 
 We will need the endpoint's service name later on in the setup, so use the API to query the endpoint once the service has finished its modifications and is back to "ready":
 
 ```json
-curl -H "Authorization: Bearer ${API_KEY}" -X GET \
-       https://api.mariadb.com/provisioning/v1/services/${SERVICE_ID} \
+curl -H "X-API-Key:  ${API_KEY}" -X GET \
+       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID} \
        | jq '.status,.endpoints[0].ports,.endpoints[0].endpoint_service'
 ```
 
@@ -242,9 +242,9 @@ To add an address to the allowlist via the SkySQL DBaaS API, create a JSON paylo
 And then use the API to update the `allowlist` information of the service. The following example of using `curl` expects the above payload to be in a file named `data.json` and also expects the variables `API_KEY` and `SERVICE_ID` to be set:
 
 ```bash
-curl -H "Authorization: Bearer ${API_KEY}" \
+curl -H "X-API-Key:  ${API_KEY}" \
        -X POST -d @data.json \
-       https://api.mariadb.com/provisioning/v1/services/${SERVICE_ID}/security/allowlist \
+       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID}/security/allowlist \
        | jq .
 ```
 

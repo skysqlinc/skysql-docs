@@ -6,21 +6,21 @@ This walkthrough explains how to launch database services and manage the lifecyc
 
 ### **Step 1: Generate API Key**
 
-1. Go to the [Generate API Key](https://id.mariadb.com/account/api/generate-key) page.
-2. Fill out the API key details:
-    - In the "Description" field, describe the purpose of the API key.
-    - In the "Expiration" field, specify how long this key will be valid. If you need to revoke the key before it expires, you can revoke it from the [API Keys](https://id.mariadb.com/account/api) page.
-    - In the "Scopes" field, select the "read" and "write" scopes under `SkySQL API: Databases`.
-3. Click the "Generate API Key" button.
-4. After the page refreshes, click the "Copy to clipboard" button to copy the API key.
-5. Paste the API key somewhere safe and do not lose it.
-6. Set the `SKYSQL_API_KEY` environment variable to the new API key value:
+1. Go to SkySQL API Key management page: https://app.skysql.com/user-profile/api-keys and generate an API key
+
+2. Export the value from the token field to an environment variable $API_KEY
     
     ```bash
-    $ export SKYSQL_API_KEY='... key data ...'
+    $ export API_KEY='... key data ...'
     ```
     
-    The `SKYSQL_API_KEY` environment variable will be used in the subsequent steps.
+    The `API_KEY` environment variable will be used in the subsequent steps.
+
+Use it on subsequent request, e.g:
+```bash 
+ curl --request GET 'https://api.skysql.com/provisioning/v1/services' \\
+ --header "X-API-Key: $API_KEY"
+```
 
 !!! Note
     You can use the Swagger docs site we host we try out the API OR 
@@ -30,7 +30,7 @@ This walkthrough explains how to launch database services and manage the lifecyc
 
 You can use the API Documentation [here](https://apidocs.skysql.com/) and directly try out the APIs in your browser. 
 
-All you need is to click ‘Authorize’ and type in `Bearer <supply your API key here>`
+All you need is to click ‘Authorize’ and type in `<supply your API key here>`
 
 
 
@@ -107,7 +107,7 @@ This configuration is suitable for a quick test, but a more customized configura
 
 ```bash
 curl -sS --location --request POST \
-   --header "Authorization: Bearer ${SKYSQL_API_KEY}" \
+   --header "X-API-Key: ${API_KEY}" \
    --header "Accept: application/json" \
    --header "Content-type: application/json" \
    --data '@request-service.json' \
@@ -130,7 +130,7 @@ Before advancing, check the service state using the `[/provisioning/v1/services
 
 ```bash
 curl -sS --location --request GET \
-   --header "Authorization: Bearer ${SKYSQL_API_KEY}" \
+   --header "X-API-Key: ${API_KEY}" \
    --header "Accept: application/json" \
    https://api.skysql.com/provisioning/v1/services/${SKYSQL_SERVICE} \
    | tee response-state.json | jq .status
@@ -167,7 +167,7 @@ Obtain the connection credentials for the new SkySQL service by executing the fo
 
 ```bash
 curl -sS --location --request GET \
-   --header "Authorization: Bearer ${SKYSQL_API_KEY}" \
+   --header "X-API-Key: ${API_KEY}" \
    --header "Accept: application/json" \
    --header "Content-type: application/json" \
    https://api.skysql.com/provisioning/v1/services/${SKYSQL_SERVICE}/security/credentials \
@@ -192,15 +192,15 @@ The default username and password will not be available until the service state 
 
 ### **Step 6: Connect**
 
-Connect to the database using the host, port, and default credentials using the `[mariadb` client](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb/):
+Connect to the database using the host, port, and default credentials using the [mariadb client](https://mariadb.com/docs/server/connect/clients/mariadb-client/):
 
 ```bash
 mariadb --host ${SKYSQL_FQDN} --port ${SKYSQL_PORT} \
    --user ${SKYSQL_USERNAME} --password="${SKYSQL_PASSWORD}" \
-   --ssl-ca ~/Downloads/skysql_chain_2022.pem
+   --ssl-verify-server-cert 
 ```
 
-If you don't want the password to appear on the command-line, specify the `[--password` command-line option](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb/password/) without an argument to be prompted for a password.
+If you don't want the password to appear on the command-line, specify the [--password command-line option](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb/password/) without an argument to be prompted for a password.
 
 ### **Step 7: Save Connection Information (Optional)**
 
@@ -215,7 +215,6 @@ host=${SKYSQL_FQDN}
 port=${SKYSQL_PORT}
 user=${SKYSQL_USERNAME}
 password="${SKYSQL_PASSWORD}"
-ssl-ca=${HOME}/Downloads/skysql_chain_2022.pem
 EOF
 ```
 
@@ -225,7 +224,7 @@ EOF
     $ chmod 600 ~/.my.cnf
     ```
     
-2. When all the connection parameters are in your `~/.my.cnf` file, the `[mariadb` client](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb/) can connect without specifying any command-line options:
+2. When all the connection parameters are in your `~/.my.cnf` file, the mariadb client can connect without specifying any command-line options:
     
     ```bash
     $ mariadb
@@ -235,4 +234,4 @@ EOF
 ## Resources
 
 - [API Documentation](https://apidocs.skysql.com/)
-- [API Reference Documentation](https://mariadb.com/docs/skysql-dbaas/ref/skynr/)
+- [API Reference Documentation](../Reference%20Guide/REST%20API%20Reference.md)

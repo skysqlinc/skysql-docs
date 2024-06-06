@@ -83,8 +83,8 @@ To see the available database node instance sizes for a topology, use `curl` t
 
 ```bash
 curl -sS --location \
-   --header "Authorization: Bearer ${SKYSQL_API_KEY}" \
-   'https://api.mariadb.com/provisioning/v1/sizes?architecture=amd64&service_type=transactional&provider=gcp&topology=es-replica&type=server' \
+   --header "X-API-Key: ${API_KEY}" \
+   'https://api.skysql.com/provisioning/v1/sizes?architecture=amd64&service_type=transactional&provider=gcp&topology=es-replica&type=server' \
    | jq .
 ```
 
@@ -137,8 +137,8 @@ To see the default MaxScale instance size for a topology, cloud, and architectur
 
 ```bash
 curl -sS --location \
-   --header "Authorization: Bearer ${SKYSQL_API_KEY}" \
-   'https://api.mariadb.com/provisioning/v1/sizes?provider=gcp&architecture=amd64&topology=es-replica' \
+   --header "X-API-Key: ${API_KEY}" \
+   'https://api.skysql.com/provisioning/v1/sizes?provider=gcp&architecture=amd64&topology=es-replica' \
    | jq .
 ```
 
@@ -170,8 +170,8 @@ To see the available MaxScale node instance sizes for a topology, use `curl` t
 
 ```bash
 curl -sS --location \
-   --header "Authorization: Bearer ${SKYSQL_API_KEY}" \
-   'https://api.mariadb.com/provisioning/v1/sizes?architecture=amd64&service_type=transactional&provider=gcp&topology=es-replica&type=proxy' \
+   --header "X-API-Key: ${API_KEY}" \
+   'https://api.skysql.com/provisioning/v1/sizes?architecture=amd64&service_type=transactional&provider=gcp&topology=es-replica&type=proxy' \
    | jq .
 ```
 

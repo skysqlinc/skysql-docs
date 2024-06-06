@@ -1913,7 +1913,7 @@
 </li>
 </ul>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>--location<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Content-type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--data<span class="w"> </span><span class="s1">&#39;@request-service.json&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -1931,7 +1931,7 @@
 <h3 id="step-4-check-service-state"><strong>Step 4: Check Service State</strong></h3>
 <p>Before advancing, check the service state using the <code>[/provisioning/v1/services/${SKYSQL_SERVICE}</code> API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_services_slash_ocb_service_id_ccb_,GET/):</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>--location<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>https://api.skysql.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SKYSQL_SERVICE</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>response-state.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.status
@@ -1966,7 +1966,7 @@
 </li>
 </ol>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>--location<span class="w"> </span>--request<span class="w"> </span>GET<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;X-API-Key:  </span><span class="si">${</span><span class="nv">SKYSQL_API_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Accept: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>--header<span class="w"> </span><span class="s2">&quot;Content-type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">   </span>https://api.skysql.com/provisioning/v1/services/<span class="si">${</span><span class="nv">SKYSQL_SERVICE</span><span class="si">}</span>/security/credentials<span class="w"> </span><span class="se">\</span>

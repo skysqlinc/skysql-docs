@@ -36,13 +36,15 @@ The following documentation describes the API for the SkySQL Backup Service. Thi
 
 To authenticate with the API, do the following:
 
-1. Go to MariaDB ID: <https://id.mariadb.com/account/api/> and generate an API key
-2. Add the value from the token field to an environment variable $JWT_TOKEN
+1. Go to SkySQL API Key management page: https://app.skysql.com/user-profile/api-keys and generate an API key
+
+2. Export the value from the token field to an environment variable $API_KEY
+
 3. Use it on subsequent request, e.g:
 
    ```bash
     curl --request GET 'https://api.skysql.com/skybackup/v1/backups/schedules' \\
-    --header "Authorization: Bearer $JWT_TOKEN"
+    --header "X-API-Key: ${API_KEY}"
    ```
 
 ## Scheduling backups
@@ -63,7 +65,7 @@ To create a *full* backup you need to make the following API call:
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "full",
     "schedule": "once",
@@ -96,7 +98,7 @@ To set up an automatic periodic *full* backup at 3 am UTC, you need to make the 
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "full",
     "schedule": "0 3 * * *",
@@ -118,7 +120,7 @@ To set up an one-time *incremental* backup, you need to make the following API c
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "incremental",
     "schedule": "once",
@@ -134,7 +136,7 @@ To set up an cron *incremental* backup, you need to make the following API call:
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "incremental",
     "schedule": "0 3 * * *",
@@ -152,7 +154,7 @@ To set up an one-time *binarylog* backup:
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "binarylog",
     "schedule": "once",
@@ -168,7 +170,7 @@ To set up an cron *incremental* backup:
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "binarylog",
     "schedule": "0 3 * * *",
@@ -186,7 +188,7 @@ To set up an one-time *dump* backup:
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "dump",
     "schedule": "once",
@@ -202,7 +204,7 @@ To set up an cron *dump* backup:
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
     "backup_type": "dump",
     "schedule": "0 3 * * *",
@@ -220,7 +222,7 @@ To set up an external storage backup, you need to make the following API call:
     curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
     --header 'Content-Type: application/json' \
     --header 'Accept: application/json' \
-    --header 'Authorization: Bearer $JWT_TOKEN' \
+    --header 'X-API-Key: ${API_KEY}' \
     --data '{
         "backup_type": "full",
         "schedule": "0 2 * * *",
@@ -268,7 +270,7 @@ To set up an external storage backup, you need to make the following API call:
     curl --location '<https://api.skysql.com/skybackup/v1/backups/schedules>' \
     --header 'Content-Type: application/json' \
     --header 'Accept: application/json' \
-    --header 'Authorization: Bearer $JWT_TOKEN' \
+    --header 'X-API-Key: ${API_KEY}' \
     --data '{
         "backup_type": "full",
         "schedule": "0 2 ** *",
@@ -289,7 +291,7 @@ To get backup schedules inside the Organization :
 ```bash
 curl --location '<https://api.skysql.com/skybackup/v1/backups/schedules>' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 #### Get all Backup Schedules per service
@@ -299,7 +301,7 @@ To get backup schedules for specific service :
 ```bash
 curl --location '<https://api.skysql.com/skybackup/v1/backups/schedules?service_id=dbtgf28044362>' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 #### Get Backup Schedule by ID
@@ -309,7 +311,7 @@ To get specific backup schedule by id :
 ```bash
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules/200' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 #### Update Backup Schedule
@@ -321,7 +323,7 @@ To update specific backup schedule you need to make the following API call:
 curl --location --request PATCH '<https://api.skysql.com/skybackup/v1/backups/schedules/215>' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
   "schedule": "0 9 ** *"
 }'
@@ -334,7 +336,7 @@ To delete a backup schedule you need to provide the backup schedule id. Example 
 ```bash
 curl --location --request DELETE 'https://api.skysql.com/skybackup/v1/backups/schedules/215' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 ## Backup Status 
@@ -348,7 +350,7 @@ Here is an example to fetch all the available Backups in your org:
 ```bash
 curl --location 'https://api.skysql.com/skybackup/v1/backups' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 ### List all backups by service
@@ -358,7 +360,7 @@ To list all backups available for your service :
 ```bash
 curl --location 'https://api.skysql.com/skybackup/v1/backups?service_id=dbtgf28216706' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 The typical response of either of two calls should look like:
@@ -402,7 +404,7 @@ You can restore your database from the backup located in the default SkySQL mana
 curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN' \
+--header 'X-API-Key: ${API_KEY}' \
 --data '{
   "key": "eda3b72460c8c0d9d61a7f01b6a22e32:dbtgf28216706:tx-filip-mdb-ms-0",
   "service_id": "dbtgf28044362"
@@ -421,7 +423,7 @@ You can restore your data from external storage. Your external storage bucket da
     curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
     --header 'Content-Type: application/json' \
     --header 'Accept: application/json' \
-    --header 'Authorization: Bearer $JWT_TOKEN' \
+    --header 'X-API-Key: ${API_KEY}' \
     --data '{
         "backup_type": "full",
         "schedule": "0 2 * * *",
@@ -502,7 +504,7 @@ In order to get all Restores scheduled in the past you need to make api call:
 ```bash
 curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 #### Get Restore by ID
@@ -510,7 +512,7 @@ curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 ```bash
 curl --location 'https://api.skysql.com/skybackup/v1/restores/12' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
 
 Typical response of those two apis should look like:
@@ -555,5 +557,5 @@ You can delete older completed restore schedules. To clean up your auditing hist
 ```bash
 curl --location --request DELETE 'https://api.skysql.com/skybackup/v1/restores/12' \
 --header 'Accept: application/json' \
---header 'Authorization: Bearer $JWT_TOKEN'
+--header 'X-API-Key: ${API_KEY}'
 ```
