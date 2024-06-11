@@ -36,6 +36,11 @@ The binary log file and position can be configured using the [`sky.change_exter
 ```sql
 CALL sky.change_external_primary('mysql1.example.com', 3306, 'mysql-bin.000001', 154, false);
 
++--------------------------------------------------------------------------------------------------------------+
+| Run_this_grant_on_your_external_primary                                                                      |
++--------------------------------------------------------------------------------------------------------------+
+| GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
++--------------------------------------------------------------------------------------------------------------+
 ```
 
 This procedure will return the GRANT COMMAND you must run on the source DB.          
@@ -130,6 +135,7 @@ Slave_Non_Transactional_Groups: 0
 ```
 
 
+
 # From a MariaDB Database
 
 When replicating from another MariaDB database, you can use GTID based replication. The first two steps are different from MySQL. 
@@ -159,7 +165,7 @@ The GTID position can be configured using the [`sky.change_external_primary_gti
 ```sql
 CALL sky.change_external_primary_gtid('mariadb1.example.com', 3306, '0-100-1', false);
 
-`+--------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------+
 | Run_this_grant_on_your_external_primary                                                                      |
 +--------------------------------------------------------------------------------------------------------------+
 | GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
