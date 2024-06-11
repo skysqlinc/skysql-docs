@@ -17,7 +17,7 @@ For additional information about the stored procedures used to configure replica
 
 When you want to start replication from the most recent transaction, the current binary log file position can be obtained by executing the `SHOW MASTER STATUS` statement:
 
-**`SHOW** MASTER STATUS**;**`
+`SHOW MASTER STATUS;`
 
 `+------------------+----------+--------------+------------------+-------------------+
 | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
@@ -68,7 +68,7 @@ CALL sky.start_replication();
 Replication status can be checked using the [`sky.replication_status()` stored procedure](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#replication_status):
 
 ```sql
-**CALL** sky**.**replication_status**()\G**
+CALL sky.replication_status()\G
 ```
 
 ```
@@ -140,7 +140,7 @@ When replicating from another MariaDB database, you can use GTID based replicati
 
 When you want to start replication from the most recent transaction, the current GTID position can be obtained by querying the value of the [`gtid_current_pos`](https://mariadb.com/docs/skysql-previous-release/ref/mdb/system-variables/gtid_current_pos/) system variable with the [`SHOW GLOBAL VARIABLES`](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/SHOW_VARIABLES/) statement:
 
-**`SHOW** **GLOBAL** VARIABLES   **LIKE** 'gtid_current_pos'**;**`
+`SHOW GLOBAL VARIABLES LIKE 'gtid_current_pos';`
 
 `+------------------+---------+
 | Variable_name    | Value   |
@@ -154,7 +154,7 @@ When you want to start replication from the most recent transaction, the current
 
 The GTID position can be configured using the [`sky.change_external_primary_gtid()` stored procedure](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#change_external_primary_gtid):
 
-**`CALL** sky**.**change_external_primary_gtid**(**'mariadb1.example.com'**,** 3306**,** '0-100-1'**,** **false);**`
+`CALL sky.change_external_primary_gtid('mariadb1.example.com', 3306, '0-100-1', false);`
 
 `+--------------------------------------------------------------------------------------------------------------+
 | Run_this_grant_on_your_external_primary                                                                      |
