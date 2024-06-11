@@ -43,7 +43,7 @@ CALL sky.change_external_primary('mysql1.example.com', 3306, 'mysql-bin.000001',
 +--------------------------------------------------------------------------------------------------------------+
 ```
 
-This procedure will return the GRANT COMMAND you must run on the source DB.          
+This procedure will return the [`GRANT`](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/GRANT/) statement you must run on the source DB.          
 
 ## 3) Grant Replication Privileges
 
