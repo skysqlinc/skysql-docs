@@ -77,7 +77,7 @@ function main() {
 
    try {
       conn = mariadb.createConnection({
-         host: "example.skysql.net",
+         host: "example.skysql.com",
          port: 5009,
          ssl: { ca: serverCert },
          user: "db_user",
@@ -149,7 +149,7 @@ MDB_HOST = 192.0.2.50
 MDB_PORT = 3306
 MDB_USER = db_user
 MDB_PASS = db_user_password
-MDB_HOST = example.skysql.net
+MDB_HOST = example.skysql.com
 MDB_PORT = 5001
 MDB_CA_PEM = /path/to/skysql_chain.pem
 MDB_USER = db_user
