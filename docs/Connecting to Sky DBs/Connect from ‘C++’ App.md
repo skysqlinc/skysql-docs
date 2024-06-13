@@ -104,7 +104,7 @@ While MariaDB Connector/C++ supports several connection styles, we are going to 
 
 The base URL is specified as follows:
 
-`jdbc:mariadb://example.skysql.net:5001/dbname`
+`jdbc:mariadb://example.skysql.com:5001/dbname`
 
 If the trailing database name is left off of the URL, the connection will start without selecting a database.
 
@@ -160,7 +160,7 @@ For example:
 sql::Driver* driver = sql::mariadb::get_driver_instance();
 
 // Configure Connection, including an optional initial database name "places":
-sql::SQLString url("jdbc:mariadb://example.skysql.net:5009/places");
+sql::SQLString url("jdbc:mariadb://example.skysql.com:5009/places");
 
 // Use a properties map for the other connection options
 sql::Properties properties({
@@ -201,7 +201,7 @@ For example:
 ```cpp
 try {
     // Configure Connection, including an optional initial database name "places":
-    sql::SQLString url("jdbc:mariadb://example.skysql.net:5009/places");
+    sql::SQLString url("jdbc:mariadb://example.skysql.com:5009/places");
 
     // Use a properties map for the other connection options
     sql::Properties properties({
@@ -238,7 +238,7 @@ int main(int argc, char **argv)
       sql::Driver* driver = sql::mariadb::get_driver_instance();
 
       // Configure Connection, including initial database name "test":
-      sql::SQLString url("jdbc:mariadb://example.skysql.net:5009/test");
+      sql::SQLString url("jdbc:mariadb://example.skysql.com:5009/test");
 
       // Use a properties map for the other connection options
       sql::Properties properties({
