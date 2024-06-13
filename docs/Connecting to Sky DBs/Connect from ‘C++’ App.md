@@ -1,6 +1,6 @@
 # Connect from ‘C++’ App
 
-MariaDB Connector/C++ enables C++ applications to establish client connections to MariaDB database over TLS.
+MariaDB Connector/C++ enables C++ applications to establish client connections to SkySQL and MariaDB databases over TLS.
 
 # Requirement
 
