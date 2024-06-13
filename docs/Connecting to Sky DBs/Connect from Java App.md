@@ -1,6 +1,6 @@
 # Connect from Java App
 
-MariaDB Connector/J enables Java applications to connect to MariaDB database products using a native MariaDB connector.
+MariaDB Connector/J enables Java applications to connect to SkySQL and MariaDB database products using a native MariaDB connector.
 
 # Download the connector ..
 
