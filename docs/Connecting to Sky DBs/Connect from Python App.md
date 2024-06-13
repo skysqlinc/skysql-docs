@@ -30,11 +30,8 @@ Determine the connection information for your SkySQL database service:
 
 | connect() parameter | Where to find it |
 | --- | --- |
-| user | Default username in the Service Credentials view, or the username
-you created |
-| passwd | Default password in the Service Credentials view, the password
-you set on the default user, or the password for the user you
-created |
+| user | Default username in the Service Credentials view, or the username you created |
+| passwd | Default password in the Service Credentials view, the password you set on the default user, or the password for the user you created |
 | host | Fully Qualified Domain Name in the Connection Parameters Portal |
 | ssl_verify_cert | Set to True to support SSL |
 | port | Read-Write Port or Read-Only Port in the Connection Parameters Portal |
