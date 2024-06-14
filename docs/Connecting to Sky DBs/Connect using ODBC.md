@@ -210,12 +210,9 @@ An example of a failover host string:
 
 | Connection Parameter | Description | Default Value |
 | --- | --- | --- |
-| DRIVER | • On Linux, the name of the driver, which is configured in the unixODBC driver template file.
-• On macOS, the path to the driver's shared library, which is installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default. |  |
+| DRIVER | • On Linux, the name of the driver, which is configured in the unixODBC driver template file. On macOS, the path to the driver's shared library, which is installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default. |  |
 | SERVER | Host name, IPv4 address, or IPv6 address of the database server. | localhost |
-| SOCKET | • The path to the socket file. On Linux, MariaDB Enterprise Server uses different default socket files on different Linux distributions.
-• On Debian / Ubuntu, the default socket file is /var/run/mysqld/mysqld.sock or /run/mysqld/mysqld.sock.
-• On CentOS / RHEL / Rocky Linux, the default socket file is /var/lib/mysql/mysql.sock. | /tmp/mysql.sock |
+| SOCKET | The path to the socket file. On Linux, MariaDB Enterprise Server uses different default socket files on different Linux distributions. On Debian / Ubuntu, the default socket file is /var/run/mysqld/mysqld.sock or /run/mysqld/mysqld.sock. On CentOS / RHEL / Rocky Linux, the default socket file is /var/lib/mysql/mysql.sock. | /tmp/mysql.sock |
 | DATABASE | Database name to select upon successful connection. The database must already exist, and the user account must have privileges to select it. |  |
 | PORT | TCP port of the database server. | 3306 |
 | USER | The username to use for authentication. |  |
@@ -225,13 +222,11 @@ An example of a failover host string:
 | STREAMRS | Alias for the NO_CACHE connection parameter. |  |
 | OPTIONS | See about:blank#OPTIONS_Bitmaskabout:blank#OPTIONS_Bitmask. |  |
 | PREPONCLIENT | When enabled, the SQLPrepare ODBC API function uses the text protocol and client-side prepared statements (CSPS). |  |
-| ATTR | Sets connection attributes that can be queried via the https://www.notion.so../../../../ref/mdb/performance-schema/session_account_connect_attrs/https://www.notion.so../../../../../server/ref/mdb/performance-schema/session_account_connect_attrs/ and https://www.notion.so../../../../ref/mdb/performance-schema/session_connect_attrs/https://www.notion.so../../../../../server/ref/mdb/performance-schema/session_connect_attrs/tables when https://www.notion.so../../../../ref/mdb/system-variables/performance_schema/https://www.notion.so../../../../../server/ref/mdb/system-variables/performance_schema/ is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |  |
+| ATTR | Sets connection attributes that can be queried via the Performance Schema session_connect_attrs Table when the Performance Schema is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |  |
 
 | What | Where to find it |
 | --- | --- |
-| DRIVER | • On Linux, the name of the driver, which is configured in the unixODBC driver template file.
-• On macOS, the path to the driver's shared library, which is
-installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default. |
+| DRIVER | • On Linux, the name of the driver, which is configured in the unixODBC driver template file. On macOS, the path to the driver's shared library, which is installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default. |
 | SERVER | Fully Qualified Domain Name in the https://www.notion.so../../../connection-parameters-portal/ |
 | PORT | Read-Write Port or Read-Only Port in the https://www.notion.so../../../connection-parameters-portal/ |
 | USER | Default username in the Service Credentials view, or the username you created |
@@ -243,9 +238,7 @@ installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default.
 | STREAMRS | Alias for the NO_CACHE connection parameter. |
 | OPTIONS | See about:blank#OPTIONS_Bitmaskabout:blank#OPTIONS_Bitmask. |
 | PREPONCLIENT | When enabled, the SQLPrepare ODBC API function uses the text protocol and client-side prepared statements (CSPS). |
-| ATTR | Sets connection attributes that can be queried via the https://www.notion.so../../../../ref/mdb/performance-schema/session_account_connect_attrs/
-and https://www.notion.so../../../../ref/mdb/performance-schema/session_connect_attrs/
-tables when https://www.notion.so../../../../ref/mdb/system-variables/performance_schema/ is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |
+| ATTR | Sets connection attributes that can be queried via the Performance Schema session_connect_attrs Table when the Performance Schema is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |
 
 ## `OPTIONS` Bitmask
 
