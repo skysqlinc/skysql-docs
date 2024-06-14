@@ -2,7 +2,7 @@
 
 ## Overview
 
-Application developers can use MariaDB Connector/ODBC to establish a data source for client connections with MariaDB database products.
+Application developers can use MariaDB Connector/ODBC to establish a data source for client connections with SkySQL.
 
 The method for configuring the data source varies between operating systems.
 
@@ -210,82 +210,42 @@ An example of a failover host string:
 
 | Connection Parameter | Description | Default Value |
 | --- | --- | --- |
-| DRIVER | • On Linux, the name of the driver, which is configured in the
-unixODBC driver template file.
-• On macOS, the path to the driver's shared library, which is
-installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib
-by default. |  |
-| SERVER | Host name, IPv4 address, or IPv6 address of the database
-server. | localhost |
-| SOCKET | • The path to the socket file. On Linux, MariaDB Enterprise Server
-uses different default socket files on different Linux
-distributions.
-• On Debian / Ubuntu, the default socket file is /var/run/mysqld/mysqld.sock
-or /run/mysqld/mysqld.sock.
+| DRIVER | • On Linux, the name of the driver, which is configured in the unixODBC driver template file.
+• On macOS, the path to the driver's shared library, which is installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default. |  |
+| SERVER | Host name, IPv4 address, or IPv6 address of the database server. | localhost |
+| SOCKET | • The path to the socket file. On Linux, MariaDB Enterprise Server uses different default socket files on different Linux distributions.
+• On Debian / Ubuntu, the default socket file is /var/run/mysqld/mysqld.sock or /run/mysqld/mysqld.sock.
 • On CentOS / RHEL / Rocky Linux, the default socket file is /var/lib/mysql/mysql.sock. | /tmp/mysql.sock |
-| DATABASE | Database name to select upon successful connection. The database
-must already exist, and the user account must have privileges to select
-it. |  |
+| DATABASE | Database name to select upon successful connection. The database must already exist, and the user account must have privileges to select it. |  |
 | PORT | TCP port of the database server. | 3306 |
 | USER | The username to use for authentication. |  |
 | PASSWORD | User password. |  |
-| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY,
-so they can only move forward. Starting in Connector/ODBC 3.2, cursors
-are SQL_CURSOR_FORWARD_ONLY
-by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by
-default. |  |
-| NO_CACHE | When enabled, result set streaming is enabled, which enables the
-application to fetch result sets from the server row-by-row instead of
-caching the entire result set on the client side. Since the application
-is not caching the entire result set, the application is less likely to
-run out of memory when working with large result sets. |  |
-| STREAMRS | Alias for the NO_CACHE connection
-parameter. |  |
+| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by default. |  |
+| NO_CACHE | When enabled, result set streaming is enabled, which enables the application to fetch result sets from the server row-by-row instead of caching the entire result set on the client side. Since the application is not caching the entire result set, the application is less likely to run out of memory when working with large result sets. |  |
+| STREAMRS | Alias for the NO_CACHE connection parameter. |  |
 | OPTIONS | See about:blank#OPTIONS_Bitmaskabout:blank#OPTIONS_Bitmask. |  |
-| PREPONCLIENT | When enabled, the SQLPrepare ODBC API
-function uses the text protocol and client-side prepared statements
-(CSPS). |  |
-| ATTR | Sets connection attributes that can be queried via the https://www.notion.so../../../../ref/mdb/performance-schema/session_account_connect_attrs/https://www.notion.so../../../../../server/ref/mdb/performance-schema/session_account_connect_attrs/
-and https://www.notion.so../../../../ref/mdb/performance-schema/session_connect_attrs/https://www.notion.so../../../../../server/ref/mdb/performance-schema/session_connect_attrs/
-tables when https://www.notion.so../../../../ref/mdb/system-variables/performance_schema/https://www.notion.so../../../../../server/ref/mdb/system-variables/performance_schema/
-is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |  |
+| PREPONCLIENT | When enabled, the SQLPrepare ODBC API function uses the text protocol and client-side prepared statements (CSPS). |  |
+| ATTR | Sets connection attributes that can be queried via the https://www.notion.so../../../../ref/mdb/performance-schema/session_account_connect_attrs/https://www.notion.so../../../../../server/ref/mdb/performance-schema/session_account_connect_attrs/ and https://www.notion.so../../../../ref/mdb/performance-schema/session_connect_attrs/https://www.notion.so../../../../../server/ref/mdb/performance-schema/session_connect_attrs/tables when https://www.notion.so../../../../ref/mdb/system-variables/performance_schema/https://www.notion.so../../../../../server/ref/mdb/system-variables/performance_schema/ is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |  |
 
 | What | Where to find it |
 | --- | --- |
-| DRIVER | • On Linux, the name of the driver, which is configured in the
-unixODBC driver template file.
+| DRIVER | • On Linux, the name of the driver, which is configured in the unixODBC driver template file.
 • On macOS, the path to the driver's shared library, which is
-installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib
-by default. |
+installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default. |
 | SERVER | Fully Qualified Domain Name in the https://www.notion.so../../../connection-parameters-portal/ |
 | PORT | Read-Write Port or Read-Only Port in the https://www.notion.so../../../connection-parameters-portal/ |
-| USER | Default username in the Service Credentials view, or the username
-you created |
-| PASSWORD | Default password in the Service Credentials view, the password
-you set on the default user, or the password for the user you
-created |
+| USER | Default username in the Service Credentials view, or the username you created |
+| PASSWORD | Default password in the Service Credentials view, the password you set on the default user, or the password for the user you created |
 | SSLVERIFY | Set to 1 to connect with SSL |
 | FORCETLS | Set to 1 to enable TLS |
-| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY,
-so they can only move forward. Starting in Connector/ODBC 3.2, cursors
-are SQL_CURSOR_FORWARD_ONLY
-by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by
-default. |
-| NO_CACHE | When enabled, result set streaming is enabled, which enables the
-application to fetch result sets from the server row-by-row instead of
-caching the entire result set on the client side. Since the application
-is not caching the entire result set, the application is less likely to
-run out of memory when working with large result sets. |
-| STREAMRS | Alias for the NO_CACHE connection
-parameter. |
+| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by default. |
+| NO_CACHE | When enabled, result set streaming is enabled, which enables the application to fetch result sets from the server row-by-row instead of caching the entire result set on the client side. Since the application is not caching the entire result set, the application is less likely to run out of memory when working with large result sets. |
+| STREAMRS | Alias for the NO_CACHE connection parameter. |
 | OPTIONS | See about:blank#OPTIONS_Bitmaskabout:blank#OPTIONS_Bitmask. |
-| PREPONCLIENT | When enabled, the SQLPrepare ODBC API
-function uses the text protocol and client-side prepared statements
-(CSPS). |
+| PREPONCLIENT | When enabled, the SQLPrepare ODBC API function uses the text protocol and client-side prepared statements (CSPS). |
 | ATTR | Sets connection attributes that can be queried via the https://www.notion.so../../../../ref/mdb/performance-schema/session_account_connect_attrs/
 and https://www.notion.so../../../../ref/mdb/performance-schema/session_connect_attrs/
-tables when https://www.notion.so../../../../ref/mdb/system-variables/performance_schema/
-is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |
+tables when https://www.notion.so../../../../ref/mdb/system-variables/performance_schema/ is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |
 
 ## `OPTIONS` Bitmask
 
@@ -295,22 +255,14 @@ contains the following bits:
 | Bit Number | Bit Value | Description |
 | --- | --- | --- |
 | 0 | 1 | Unused |
-| 1 | 2 | Tells connector to return the number of matched rows instead of
-number of changed rows |
-| 4 | 16 | Same as NO_PROMPT connection
-parameter |
+| 1 | 2 | Tells connector to return the number of matched rows instead of number of changed rows |
+| 4 | 16 | Same as NO_PROMPT connection parameter |
 | 5 | 32 | Forces all cursors to be dynamic |
-| 6 | 64 | Forbids the DATABASE_NAME.TABLE_NAME.COLUMN_NAME
-syntax |
+| 6 | 64 | Forbids the DATABASE_NAME.TABLE_NAME.COLUMN_NAME syntax |
 | 11 | 2048 | Enables compression in the protocol |
-| 13 | 8192 | Same as the NAMEDPIPE connection
-parameter |
-| 16 | 65536 | Same as the USE_MYCNF connection
-parameter |
-| 20 | 1048576 | Same as the NO_CACHE connection
-parameter |
-| 21 | 2097152 | Same as the FORWARDONLY
-connection parameter |
-| 22 | 4194304 | Same as the AUTO_RECONNECT
-connection parameter |
+| 13 | 8192 | Same as the NAMEDPIPE connection parameter |
+| 16 | 65536 | Same as the USE_MYCNF connection parameter |
+| 20 | 1048576 | Same as the NO_CACHE connection parameter |
+| 21 | 2097152 | Same as the FORWARDONLY connection parameter |
+| 22 | 4194304 | Same as the AUTO_RECONNECT connection parameter |
 | 26 | 67108864 | Enables multi-statement queries |
