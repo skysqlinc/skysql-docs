@@ -2,13 +2,6 @@
 
 MariaDB Connector/C enables C and C++ applications to establish client connections to SkySQL over TLS. MariaDB Connector/C is a native connector that is written in C.
 
-# Compatibility
-
-MariaDB Connector/C is compatible with:
-
-- SkySQL
-- MariaDB database products (including MariaDB Enterprise Server and MariaDB MaxScale)
-
 ## First [Install MariaDB Connector/C](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/c/install/)
 
 MariaDB Connector/C enables C and C++ applications to establish client connections to SkySQL and MariaDB database products over TLS.
@@ -31,7 +24,7 @@ The connection is configured via the information that is initially acquired from
 
 # Code Example
 
-The following code demonstrates how to use MariaDB Connector/C to connect to MariaDB database products. This example uses the [example database and user account](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/c/example-setup/):
+The following code demonstrates how to use MariaDB Connector/C to connect to SkySQL. This example uses the [example database and user account](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/c/example-setup/):
 
 ```c
 #include <stdio.h>
