@@ -1,6 +1,6 @@
 # Setting up GCP Private Service Connect
 
-!!! Note
+!!! Note:
     GCP Private Service Connect (PSC) is used for private connections within the same GCP region.
     
     Prior to configuring PSC on a SkySQL service, you must have created a VPC with a private subnet that will be used to communicate with private IP addresses. 
@@ -47,6 +47,9 @@ For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections 
 ### **Disable GCP Private Service Connect**
 
 To disable GCP Private Service Connect via the SkySQL Portal:
+
+!!! Note:
+    Adding a new PSC will fail unless existing PSC to deleted projects are deleted.
 
 1. Visit the SkySQL Portal.
 2. Find the service that you would like to modify.
