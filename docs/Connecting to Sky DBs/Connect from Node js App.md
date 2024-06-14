@@ -1,6 +1,6 @@
 # Connect from Node.js App
 
-Node.js developers can connect to MariaDB database products through a native MariaDB Connector. Using MariaDB Connector/Node.js you can connect to MariaDB database products to use and administer databases from within your Node.js application.
+Node.js developers can connect to SkySQL through a native MariaDB Connector. Using MariaDB Connector/Node.js you can connect to SkySQL to use and administer databases from within your Node.js application.
 
 # Install MariaDB Connector/Node.js
 
@@ -33,7 +33,7 @@ NPM untars the download and installs MariaDB Connector/Node.js in the `node_mod
 
 # Connect with MariaDB Connector/Node.js (Callback API)
 
-Node.js developers can use MariaDB Connector/Node.js to establish client connections with MariaDB database products.
+Node.js developers can use MariaDB Connector/Node.js to establish client connections with SkySQL.
 
 # Require Callback API
 
@@ -49,7 +49,7 @@ To use the Callback API, use the following module:
 
 The `createConnection(options)` function returns a `Connection` object.
 
-Determine the [connection information](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/) for your MariaDB SkySQL database service:
+Determine the [connection information](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/) for your SkySQL database service:
 
 | Option | Description |
 | --- | --- |
@@ -111,7 +111,7 @@ main();
 
 # Connect with MariaDB Connector/Node.js (Promise API)
 
-Node.js developers can use MariaDB Connector/Node.js to establish client connections with MariaDB database products.
+Node.js developers can use MariaDB Connector/Node.js to establish client connections with SkySQL.
 
 # Require Promise API
 
@@ -127,7 +127,7 @@ To use the Promise API, use the `mariadb` module:
 
 The `createConnection(options)` returns a `Promise` that resolves to a `Connection` object if no error occurs, and rejects with an `Error` object if an error occurs.
 
-Determine the [connection information](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/) for your MariaDB SkySQL database service:
+Determine the [connection information](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/) for your SkySQL database service:
 
 | Option | Description |
 | --- | --- |
