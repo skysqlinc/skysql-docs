@@ -4,23 +4,45 @@ The SkySQL Backup service provides comprehensive Backup and Restore features thr
 
 Here is the list of features offered:
 
-- **Automatic nightly backups** : Automated nightly backups include a full backup of every database in the service. 
-  
-- **Secure On-demand or scheduled backups**
-  
--  **Full (physical) backups** : Full backups create a complete backup of the database server into a new backup folder. It uses [mariabackup](https://mariadb.com/kb/en/full-backup-and-restore-with-mariabackup/) under the hood. Physical backups are performed by copying the individual data files or directories and the fastest way to do a backup.
-  
-- **Incremental backups** : Incremental backups update a previous backup with whatever changes to the data have occurred since the backup.
-  
-- **Logical backups** : Logical backups consist of the SQL statements necessary to restore the data, such as CREATE DATABASE, CREATE TABLE and INSERT. This is done using mariadb-dump(https://mariadb.com/kb/en/mariadb-dump/) and is the most flexible way to perform a backup and restore, and a good choice when the data size is relatively small.
+- **On-demand or scheduled Snapshot backups**: Snapshots allows you to create a point-in-time copy of a database persistent volume of your database. Compared to full backups, snapshots provide a faster method for restoring your database with the same data. Snapshots are incremental in nature. This means that after the initial full snapshot of a database persistent volumes, subsequent snapshots only capture and store the changes made since the last snapshot. This approach saves a lot storage space and reduce the time it takes to create a snapshot and the overall total cost. You have the flexibility to trigger a snapshot as per your requirements - either on-demand or according to a pre-established schedule. The snapshots use backup stages to create a consistent backup of the database without requiring a global read lock for the entire duration of the backup, while allowing the database to continue processing transactions. Instead, the server read lock is only needed briefly during the BACKUP STAGE FLUSH stage, which flushes the tables to ensure that all of them are in a consistent state at the exact same point in time, independent of storage engine. The database lock temporarily suspends write operations and replication, the duration of the lock is typically just a few seconds. In a Primary/Replica topology, backups are prioritized and performed on the replica node. This approach ensures that the primary server can continue to operate in read/write mode, as the backup process is carried out on the replica node. After the backup process on the replica is completed, replication resumes automatically.
+  References:
+- <https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html>
+- <https://cloud.google.com/kubernetes-engine/multi-cloud/docs/aws/how-to/snapshot-persistentvolume>
+- <https://kubernetes.io/docs/concepts/storage/volume-snapshots/>
+- <https://mariadb.com/kb/en/how-mariabackup-works/#create-a-consistent-backup-point>
 
-- **Bring your own Bucket (BYOB)** : you can backup or restore data to/from your own bucket in either GCP or AWS.
+  **Note** : Backups created by snapshots are deleted immedatily upon serivce deletion.
+  
+- **Full (physical) backups** : Full backups create a complete backup of the database server into a new backup folder. It uses [mariabackup](https://mariadb.com/kb/en/full-backup-and-restore-with-mariabackup/) under the hood. Physical backups are performed by copying the individual data files or directories.The physican backup uses backup stages to create a consistent backup of the database without requiring a global read lock for the entire duration of the backup, while allowing the database to continue processing transactions. Instead, the server read lock is only needed briefly during the BACKUP STAGE FLUSH stage, which flushes the tables to ensure that all of them are in a consistent state at the exact same point in time, independent of storage engine. The database lock temporarily suspends write operations and replication, the duration of the lock is typically just a few seconds. In a Primary/Replica topology, backups are prioritized and performed on the replica node. This approach ensures that the primary server can continue to operate in read/write mode, as the backup process is carried out on the replica node. After the backup process on the replica is completed, replication resumes automatically.
+- References:
+- https://mariadb.com/kb/en/full-backup-and-restore-with-mariabackup/
+
+- **Incremental backups** : Incremental backups update a previous backup with any changes to the data that have occurred since the inital backup was taken.
+- InnoDB pages contain log sequence numbers, or LSN's. Whenever you modify a row on any InnoDB table on the database, the storage engine increments this number. When performing an incremental backup, Mariabackup checks the most recent LSN for the backup against the LSN's contained in the database. It then updates any of the backup files that have fallen behind.
+- References: 
+- https://mariadb.com/kb/en/incremental-backup-and-restore-with-mariabackup/
+
+- **Logical backups** : Logical backups consist of the SQL statements necessary to restore the data, such as CREATE DATABASE, CREATE TABLE and INSERT. This is done using mariadb-dump(<https://mariadb.com/kb/en/mariadb-dump/>) and is the most flexible way to perform a backup and restore, and a good choice when the data size is relatively small.
+
+- **Replication as Backup** : In situations where the service cannot be locked or stopped, or is under heavy load, performing backups directly on a primary server may not be the preferred option. Using a replica database instace for backups allows the replica to be shut down or locked, enabling backup operations without impacting the primary server. 
+    
+    The approach is commonly implemented in the following manner:
+    - The primary server replicates data to a replica.
+    - Backups are then initiated from the replica, ensuring no disruption to the primary server.
+  
+    Detail on how to setup replicaion with you SkySQL instance can be found [here](https://github.com/skysqlinc/skysql-docs/blob/main/docs/Data%20loading%2C%20Migration/Replicating%20data%20from%20external%20DB.md)
 
 - **Backup your binlogs** : Binlogs record database changes (data modifications, table structure changes) in a sequential, binary format. You can preserve binlogs for setting up replication or to recover to a certain point-in-time.
+  
+- **Automatic nightly backups**: Automated nightly backups include a full backup of every database in the service to ensure that your SkySQL Database service is backed up regularly.
+
+- **On-demand or scheduled backups** : you can initiate backups whenever needed - on demand or based on you pre-defined schedule.
+  
+- **Bring your own Bucket (BYOB)** : you can backup or restore data to/from your own bucket in either GCP or AWS.
 
 - **Point-in-time recovery** : you can restore from a full or a logical backup and then use a binlog backup to restore to a point-in-time.
-
--  **Secure backup/restores** : Control backup/restore privileges by granting roles to users in SkySQL. 
+  
+- **Secure backup/restores** : Control backup/restore privileges by granting roles to users in SkySQL.
 
 ## Pricing 
 while the daily automated backups are included the use of this API will incur nominal additional charges. Please contact info@skysql.com for details. 
@@ -30,7 +52,6 @@ The following documentation describes the API for the SkySQL Backup Service. Thi
 !!! Note
     Please refer to the API docs (swagger) for the latest API. 
     The information below might be slightly outdated. 
-
 
 ## Authentication
 
