@@ -4,6 +4,11 @@
     SkySQL, unlike hyperscalers, deploy replicas in a active-active configuration. When primary crashes our intelligent proxy allows us to failover near instantly to an alternate replica. Or, failback when the original primary recovers. Ensuring data consistency even when replicas have a replication lag through “causal reads”, or transaction replay. Our underlying k8s based operator has smarts to rebuild replicas that lag a lot using cloud native snapshots.
 
 ----
+
+For HA and Load balancing client requests there is no configuration required. Just launch a "replicated topology" DB service. SkySQL automatically starts a intelligent proxy that does all the heavy lifting. Detecting failures and replaying transactions, awareness of who the primary is at all times, balancing load and much more. 
+
+You should be aware of the 'causal_reads' configuration as outlined below. The sections below provide a more detailed description of how SkySQL delivers on HA and scaling across replicas. 
+
 ## **Level 1 Resiliency - container health checks, compute-storage isolation**
 To provide high resiliency we try to protect every layer of the stack – disks, compute, Zones/cloud regions, network and even the load balancer accepting incoming DB connections. The graphic below depicts this architecture. Letʼs peel the onion a bit.
 
@@ -31,6 +36,7 @@ This model functions optimally when application clients utilize sticky SQL conne
 ### Configuring Causal Read in SkySQL 
 Causal consistency is configured in the SkySQL Configuration Manager, maxscale settings (applies to Replicated clusters only)
 You can configure [causal reads](./Configure%20your%20Database%20Server(s).md) using the SkySQL configuration Manager. Look for maxscale properties and search for causal_reads. 
+
 - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'local' to achieve consistency at a connection/session level. 
 - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'global' for strict consistency across all connections. 
 - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'fast' to achieve consistency at a connection/session level but is faster than 'local' but at the cost of load balancing. 
@@ -47,6 +53,7 @@ A notable feature enhancing performance is the ‘Read-Write Splitting,’ allow
 The implementation of these routing strategies is straightforward, primarily through the use of “Hint Filters.” Standard SQL comments are utilized to customize routing to the appropriate server. Additional details on Hint Filters and Read-Write Splitting can be found in the MariaDB documentation.
 
 In SkySQL you can control routing using 2 strategies:
+
 - Using the 'read port' for the service: Typically this will be port 3307. When using this port the request (read_only) will be load balanced only across the available replicas. 
 - Using the ['hint filter'](https://mariadb.com/kb/en/mariadb-maxscale-24-hintfilter/)  (TODO: provide detailed example using SkySQL node names)
 
