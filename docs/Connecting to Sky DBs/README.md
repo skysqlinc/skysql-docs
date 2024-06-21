@@ -39,7 +39,7 @@ Finally, simply copy/paste the MariaDB CLI command as displayed in the Connect w
 
 ## Connecting from your Application
 
-Applications can connect to MariaDB SkySQL DBs using any of the below MariaDB supported connectors. There are several other connectors from the community too. 
+Applications can connect to SkySQL using any of the below MariaDB supported connectors. There are several other connectors from the community too. 
 
 - [C](Connect%20from%20‘C’%20App.md)
 - [C++](Connect%20from%20‘C++’%20App.md)
@@ -57,10 +57,10 @@ Applications can connect to MariaDB SkySQL DBs using any of the below MariaDB su
 
 ## Connecting from SQL tools
 
-Clients listed here have been tested to properly connect with MariaDB SkySQL and execute queries.
+Clients listed here have been tested to properly connect with SkySQL and execute queries.
 
 !!! Note
-    💡 Unlike previous SkySQL versions, the current version no longer requires clients to supply the Server SSL Certificate for SSL connections. Customers who migrated from MariaDB corporation to SkySQL Inc can continue to use provided certificates (when using the previous SkySQL method for connecting). But, we strongly recommend moving to the connection properties as shown in the Connect window for your service
+    💡 Unlike previous SkySQL versions, the current version no longer requires clients to supply the Server SSL Certificate for SSL connections. Customers who migrated from MariaDB corporation to SkySQL Inc can continue to use provided certificates (when using the previous SkySQL method for connecting). But, we strongly recommend moving to the connection properties as shown in the Connect window for your service.
 
 Most of the SQL clients and editors natively support MariaDB. Most often you can also just select 'MySQL' and connect to your SkySQL DB service. 
 
