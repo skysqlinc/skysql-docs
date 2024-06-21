@@ -11,7 +11,7 @@ This page describes how to connect to a SkySQL database using a MariaDB-compatib
     💡 **If you are not sure or unable to obtain the IP address, you can use 0.0.0.0/0 to effectively disable the firewall. Goes without saying — don’t do this for your production DBs.**
 
 
-For more details go to the [Firewall](/docs/Security/Configuring%20Firewall.md) settings page. 
+For more details go to the [Firewall](https://mariadb.com/docs/skysql-dbaas/security/nr-firewall/) settings page. 
 
 
 
