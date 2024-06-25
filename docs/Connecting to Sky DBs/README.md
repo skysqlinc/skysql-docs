@@ -27,6 +27,8 @@ Connection parameters include:
 - TCP port (3306 or 3307)
 - ssl-verify-server-cert (if SSL is ON)
 
+!!! Note
+    💡 **There is a default config change in the 11.4.2 MariaDB client that requires SSL. This needs to be disabled by setting ```--ssl-verify-server-cert=0```.**
 
 ![Connect window example](connect_window.png)
 
