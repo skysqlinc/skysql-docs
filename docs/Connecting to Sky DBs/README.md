@@ -33,9 +33,7 @@ Connection parameters include:
 
 ### Install and Connect using the MariaDB client
 
-If using a mac, install MariaDB using `brew install mariadb`.  Go through [MariaDB Client](Connect%20using%20MariaDB%20CLI.md) for details on how to connect from Linux or Windows. 
-
-Finally, simply copy/paste the MariaDB CLI command as displayed in the Connect window. 
+After [installing the MariaDB client](https://mariadb.com/docs/server/connect/clients/mariadb-client/) according to your operating system, simply copy/paste the MariaDB CLI command as displayed in the Connect window. 
 
 ## Connecting from your Application
 
@@ -74,7 +72,7 @@ Most of the SQL clients and editors natively support MariaDB. Most often you can
     - Certificate Expiry: The client will verify that the server's SSL certificate has not expired.
     - Certificate Revocation: The client may also check if the certificate has been revoked by the issuing CA.
     - If any of these checks fail, the client will not establish the SSL connection and may display an error indicating that the certificate is not valid or trusted.
-- [MariaDB CLI](Connect%20using%20MariaDB%20CLI.md) 
+- MariaDB CLI
 - [DBGate](https://dbgate.org/) 
     - When using SSL, you only have to switch to the SSL Tab in the Connection window and select 'use SSL' and click Connect. 
 - [Sequel Ace](https://sequel-ace.com/) - Connect to MariaDB from MacOS
