@@ -18,18 +18,21 @@ For detailed information about AWS PrivateLink, see ["AWS PrivateLink" (Amazon 
 ### **Enable AWS PrivateLink on Service Launch**
 
 <details>
-<summary>**SkySQL Portal**</summary>
+<summary>Enable Privatelink via the SkySQL Portal</summary>
 <br>
+
 To enable AWS PrivateLink when launching a new service via the SkySQL Portal select the 'Enable Private link' option in the 'Security' section.
 After the service completes provisioning, you will see a new option to "Set up Private Link" in the service's context menu. Click this option to add one or more AWS account IDs to the allowlist.
 
 For the next step, see the [AWS Endpoint Setup](#aws-endpoint-setup) section on this page.
+
 </details>
 
 <details>
-<summary>**SkySQL DBaaS API**</summary>
+<summary>Enable Privatelink via the SkySQL DBaaS API</summary>
 <br>
-To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API, add the `"endpoint_mechanism"` and `"endpoint_allowed_accounts"` attributes to the JSON payload.  The `endpoint_mechanism` field must be set to `privateconnect` to enable PrivateLink:
+
+To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API, add the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes to the JSON payload.  The `endpoint_mechanism` field must be set to `privateconnect` to enable PrivateLink:
 
 ```json
 {
@@ -46,9 +49,10 @@ For more information on using the SkySQL DBaaS API, see ["SkySQL DBaaS API"](ht
 </details>
 
 <details>
-<summary>**Terraform Provider**</summary>
+<summary>Enable Privatelink via the SkySQL Terraform Provider</summary>
 <br>
-To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API, set the `"endpoint_mechanism"` and `"endpoint_allowed_accounts"` attributes on the `skysql_service` resource.  The `endpoint_mechanism` field must be set to `privateconnect` to enable PrivateLink:
+
+To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API, set the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes on the `skysql_service` resource.  The `endpoint_mechanism` field must be set to `privateconnect` to enable PrivateLink:
 
 ```hcl
 resource "skysql_service" "example" {
@@ -63,7 +67,6 @@ A complete example Terraform template that creates a new SkySQL service with AWS
 
 
 For more information on using the SkySQL Terraform Provider, see ["SkySQL Terraform Provider"](https://registry.terraform.io/providers/skysqlinc/skysql/latest/docs).
-
 
 </details>
 
