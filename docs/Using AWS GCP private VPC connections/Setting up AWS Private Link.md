@@ -1,36 +1,73 @@
 # Setting up AWS Private Link
 
-!!! Note
-    AWS PrivateLink is used for private connections within the same AWS region. 
-    
-    Prior to configuring AWS PrivateLink on a SkySQL service, you must have created a VPC with a private subnet that will be used to communicate with private IP addresses. 
-    
-    For detailed information about AWS PrivateLink, see ["AWS PrivateLink" (Amazon documentation)](https://aws.amazon.com/privatelink/).
+
+AWS PrivateLink is an AWS service that enables secure and private connectivity between Virtual Private Clouds (VPCs) and third-party services. By using PrivateLink with SkySQL services, traffic does not traverse the public internet, which enhances security and reduces exposure to potential threats.
+For detailed information about AWS PrivateLink, see ["AWS PrivateLink" (Amazon documentation)](https://aws.amazon.com/privatelink/).
 
 
-The default endpoint mechanism is "`nlb`", which supports accessing the SkySQL service via the public internet. Use of AWS PrivateLink occurs when the endpoint mechanism is changed to "`privateconnect`".
+## **Considerations**
 
-AWS PrivateLink can be enabled using the SkySQL Portal, SkySQL DBaaS API, or SkySQL Terraform Provider.
-
-## **Note the following**
-
-- When a SkySQL service has the `privateconnect` endpoint mechanism, all connections occur through private endpoints. SkySQL does offer users to setup a “secondary” public IP endpoint also (available in the Portal UI when you provision a new service).
-- Client connections can originate from private IP addresses in the linked VPC.
-- AWS PrivateLink supports DNS propagation which can be configured to resolve the Database FQDN to the private IP for an internal DNS request. The private DNS names feature must be enabled on the customer's VPC.
-
-- The SkySQL IP Allowlist is not used with the `privateconnect` endpoint mechanism.
-- With AWS PrivateLink, connections are restricted to the list of allowed accounts that were specified when configuring the SkySQL endpoint.
-- Further restrictions are controlled through the customer's AWS account. VPC security group policies apply. For detailed information, see ["Control traffic to resources using security groups"](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) (Amazon documentation).
-- Some customers using AWS PrivateLink may choose to disable TLS, but MariaDB recommends keeping TLS enabled for extra security.
-- Endpoint changes can be destructive, resulting in downtime. When you change the connection type from private to public, or public to private, the endpoint must be destroyed and recreated. Changing the SkySQL endpoint between `nlb` and `privateconnect` will result in a service interruption.
+- AWS PrivateLink is used for private connections within the same AWS region.  The SkySQL service and the connection VPC must be in the same region.
+- When using SkySQL with AWS PrivateLink, all connections occur through private endpoints.  If you need to connect to the service from outside your VPC, you will need to use a VPN or other mechanism to go through the connected VPC.  Alternatively, SkySQL can be configured to provide a second, public endpoint for an additional fee.
+- A list of AWS Account IDs that will be allowed to connect to the SkySQL service must be provided when enabling AWS PrivateLink.  This list can be updated at any time.
+- The SkySQL IP Allowlist is not used with AWS PrivateLink connections.  Access to the SkySQL service will be controlled by Security Groups in the connecting VPC. For detailed information, see ["Control traffic to resources using security groups"](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) (Amazon documentation).
 - Connections to SkySQL services by features such as SkySQL backups, and monitoring do not depend on AWS PrivateLink.
 - Query Editor is not supported when AWS PrivateLink is enabled.
 
+
 ### **Enable AWS PrivateLink on Service Launch**
 
-To enable AWS PrivateLink when launching a new service via the SkySQL Portal all you need to do is select the 'Enable Private link' option in the 'Security' section. 
+<details>
+<summary>**SkySQL Portal**</summary>
+<br>
+To enable AWS PrivateLink when launching a new service via the SkySQL Portal select the 'Enable Private link' option in the 'Security' section.
+After the service completes provisioning, you will see a new option to "Set up Private Link" in the service's context menu. Click this option to add one or more AWS account IDs to the allowlist.
 
 For the next step, see the [AWS Endpoint Setup](#aws-endpoint-setup) section on this page.
+</details>
+
+<details>
+<summary>**SkySQL DBaaS API**</summary>
+<br>
+To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API, add the `"endpoint_mechanism"` and `"endpoint_allowed_accounts"` attributes to the JSON payload.  The `endpoint_mechanism` field must be set to `privateconnect` to enable PrivateLink:
+
+```json
+{
+  "name": "my-skysql-service",
+  ...
+  "endpoint_mechanism": "privateconnect",
+  "allowed_accounts": [
+    "123456789012"
+  ]
+}
+```
+
+For more information on using the SkySQL DBaaS API, see ["SkySQL DBaaS API"](https://apidocs-test.skysql.com/#/Services/post_provisioning_v1_services).
+</details>
+
+<details>
+<summary>**Terraform Provider**</summary>
+<br>
+To enable AWS PrivateLink when launching a new service via the SkySQL DBaaS API, set the `"endpoint_mechanism"` and `"endpoint_allowed_accounts"` attributes on the `skysql_service` resource.  The `endpoint_mechanism` field must be set to `privateconnect` to enable PrivateLink:
+
+```hcl
+resource "skysql_service" "example" {
+  name                      = "my-skysql-service"
+  ...
+  endpoint_mechanism        = "privateconnect"
+  endpoint_allowed_accounts = ["123456789012"]
+}
+```
+
+A complete example Terraform template that creates a new SkySQL service with AWS PrivateLink enabled can be found in the [terraform provider examples](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples/privateconnect).
+
+
+For more information on using the SkySQL Terraform Provider, see ["SkySQL Terraform Provider"](https://registry.terraform.io/providers/skysqlinc/skysql/latest/docs).
+
+
+</details>
+
+
 
 ### **Enable AWS PrivateLink on Existing SkySQL Service**
 
