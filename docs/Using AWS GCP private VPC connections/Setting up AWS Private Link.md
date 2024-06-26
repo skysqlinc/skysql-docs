@@ -2,6 +2,7 @@
 
 
 AWS PrivateLink is an AWS service that enables secure and private connectivity between Virtual Private Clouds (VPCs) and third-party services. By using PrivateLink with SkySQL services, traffic does not traverse the public internet, which enhances security and reduces exposure to potential threats.
+
 For detailed information about AWS PrivateLink, see ["AWS PrivateLink" (Amazon documentation)](https://aws.amazon.com/privatelink/).
 
 
@@ -117,6 +118,8 @@ For more information on using the SkySQL DBaaS API, see ["SkySQL DBaaS API"](ht
 
 </details>
 
+**For the next step, see the [AWS Endpoint Setup](#aws-endpoint-setup) section on this page.**
+
 
 ## AWS Endpoint Setup
 
@@ -196,7 +199,7 @@ After a short period of time, the service name provided in the SkySQL portal sho
 <summary>Disable AWS PrivateLink via the SkySQL Portal</summary>
 <br>
 
-1. Visit the [SkySQL Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/)
+1. Visit the [SkySQL Portal](https://app.skysql.com/)
 2. Find the service that you would like to modify.
 3. Click "MANAGE" on the far right side of the service listing.
 4. In the context menu, select "Manage PrivateLink".
