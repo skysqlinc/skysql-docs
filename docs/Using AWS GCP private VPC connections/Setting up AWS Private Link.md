@@ -125,7 +125,7 @@ For more information on using the SkySQL DBaaS API, see ["SkySQL DBaaS API"](ht
 
 To connect to a SkySQL service using AWS PrivateLink, you must create an endpoint in your VPC that connects to the SkySQL service. The endpoint will be used by clients in your VPC to connect to the SkySQL service.
 
-#### Pre-requisites
+### Pre-requisites
 - You must have a VPC in the same region as the SkySQL service.
 - You must create a security group that will be used to control access to the SkySQL service endpoint.
     - This security group should contain rules to allow traffic from your client instances to the port of the SkySQL service (usually 3306).
@@ -138,7 +138,7 @@ To connect to a SkySQL service using AWS PrivateLink, you must create an endpoin
     curl https://api.skysql.com/provisioning/v1/services/{SERVICE_ID} | jq ".endpoints[0].endpoint_service"
     ```
 
-#### VPC Endpoint Creation Steps
+### VPC Endpoint Creation Steps
 
 1. Log in to the AWS console.
 2. Confirm the correct region is selected.
@@ -158,7 +158,7 @@ After creation, the Endpoint will be in `Pending` status while AWS provisions th
 The newly created endpoint now authorizes the internal IPs or security groups that you specified in the Source values to access the SkySQL service's connection port. When testing a client connection, ensure that the client host is authorized by the security group's Source settings and that you're using the "`readwrite`" port plus the appropriate username and password (either the default values or the value for any user you have created).
 
 
-#### Connecting to your SkySQL Service
+### Connecting to your SkySQL Service
 
 After creating your VPC endpoint, AWS will create a number of DNS records that will resolve to the private IP addresses of your Privatelink Endpoint.
 - The first DNS name in the list can be used from any availability zone in your VPC and will resolve to the private IP address of the endpoint in the same availability zone.
@@ -170,7 +170,7 @@ After creating your VPC endpoint, AWS will create a number of DNS records that w
 > The DNS names provided by AWS will always be in the domain `amazonaws.com`.  If connecting to your SkySQL service using SSL/TLS, the database certificate will not match the VPC endpoint name.  Due to this, we recommend [Enabling Private DNS for AWS PrivateLink](#enabling-private-dns-for-aws-privatelink).
 
 
-#### Enabling Private DNS for AWS PrivateLink
+### Enabling Private DNS for AWS PrivateLink
 
 In order to connect to your SkySQL service using the skysql.com service name provided in the SkySQL portal, you must enable Private DNS for the VPC endpoint.  This will allow the service name to resolve to the private IP address of the SkySQL service.
 
