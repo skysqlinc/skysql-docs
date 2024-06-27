@@ -205,8 +205,7 @@ After a short period of time, the service name provided in the SkySQL portal sho
 4. In the context menu, select "Manage PrivateLink".
 5. In the popup window, click "I want to disconnect my Private Link".
 6. In the popup window, select "Disconnect".
-7. After the service restarts, PrivateLink is disabled.
-8. Since the service's allowlist was cleared when AWS PrivateLink was previously enabled, you will need to [update the allowlist](../Security/Configuring%20Firewall.md) to allow clients to connect after disabling PrivateLink.
+7. Since the service's allowlist was cleared when AWS PrivateLink was previously enabled, you will need to [update the allowlist](../Security/Configuring%20Firewall.md) to allow clients to connect after disabling PrivateLink.
 
 </details>
 
