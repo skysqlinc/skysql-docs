@@ -1,7 +1,7 @@
 site_name: SkySQL Public Documentation
 theme:
   name: material
-  logo: assets/sky_logo2.png
+  logo: assets/skysqllogo.png
   favicon: assets/favicon.png
   custom_dir: docs/stylesheets  # TODO - path not found ? 
   features:
