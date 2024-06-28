@@ -58,3 +58,100 @@ By following these steps, you will be able to export data from your MySQL/MariaD
 - [mariadb-dump Options for 10.6 ES](https://mariadb.com/docs/skysql-dbaas/ref/es10.6/cli/mariadb-dump/)
 - [mariadb-dump Options for 10.5 ES](https://mariadb.com/docs/skysql-dbaas/ref/es10.5/cli/mariadb-dump/)
 - [mariadb-dump Options for 10.4 ES](https://mariadb.com/docs/skysql-dbaas/ref/es10.4/cli/mysqldump/)
+
+## Advanced Options and Best Practices
+
+### Parallel Data Export and Import
+
+For large databases, consider using tools that support parallel processing to speed up the export and import process.
+
+- **mysqlpump**: This utility performs parallel processing and includes features to help with consistent backups.
+
+    ```bash
+    mysqlpump -u [username] -p --default-parallelism=4 --add-drop-database --databases [database_name] > dump.sql
+    ```
+
+- **mariadb-backup**: This tool allows for non-blocking backups and can be used to parallelize the backup process.
+
+    ```bash
+    mariadb-backup --backup --target-dir=/path/to/backup --parallel=4
+    ```
+
+### Compression for Efficient Storage and Transfer
+
+Use compression to reduce the size of your backup files, making them faster to transfer and store.
+
+- **Using gzip**:
+
+    ```bash
+    mysqldump -u [username] -p [database_name] | gzip > dump.sql.gz
+    ```
+
+- **Using mariadb-backup with compression**:
+
+    ```bash
+    mariadb-backup --backup --target-dir=/path/to/backup --compress
+    ```
+
+### Incremental Backups
+
+For very large datasets, consider using incremental backups to minimize the amount of data to be transferred and imported.
+
+- **mariadb-backup incremental backup**:
+
+    ```bash
+    mariadb-backup --backup --target-dir=/path/to/backup --incremental-basedir=/path/to/previous/backup
+    ```
+
+### Best Practices for Data Consistency and Integrity
+
+- **Consistent Snapshots**: Use filesystem snapshots (e.g., LVM snapshots) to ensure data consistency during the backup process.
+
+    ```bash
+    lvcreate --size 1G --snapshot --name db-snapshot /dev/vg0/db
+    ```
+
+- **Data Integrity Checks**: Validate your backups by performing regular restores and checksums.
+
+    ```bash
+    md5sum dump.sql
+    ```
+
+### Advanced Import Techniques
+
+- **Batch Inserts**: Optimize the import process by using batch inserts to reduce the overhead of individual insert operations.
+
+    ```sql
+    LOAD DATA LOCAL INFILE 'data.csv' INTO TABLE my_table
+    FIELDS TERMINATED BY ','
+    LINES TERMINATED BY '\n'
+    (column1, column2, column3);
+    ```
+
+- **Adjusting Buffer Sizes**: Increase the buffer sizes temporarily to enhance the import performance.
+
+    ```sql
+    SET GLOBAL innodb_buffer_pool_size = 2G;
+    SET GLOBAL innodb_log_file_size = 512M;
+    ```
+
+### Monitoring and Logging
+
+- **Enable Detailed Logging**: Enable detailed logging to monitor the import process and troubleshoot issues effectively.
+
+    ```sql
+    SET GLOBAL general_log = 'ON';
+    ```
+
+- **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the import process to ensure system stability.
+
+    ```bash
+    top
+    iostat -x 5
+    ```
+
+### Additional Resources
+
+- [Parallel Processing with mysqlpump](https://dev.mysql.com/doc/mysqlpump/en/)
+- [MariaDB Backup Documentation](https://mariadb.com/kb/en/mariadb-backup-overview/)
+- [Advanced Backup Techniques](https://mariadb.com/kb/en/backup-and-restore-overview/)
