@@ -78,6 +78,7 @@ nav:
       - 'Quickstart/README.md'
       - 'Quickstart/Launch DB using the REST API.md'
       - 'Quickstart/Launch DB using the Terraform Provider.md'
+      - 'Quickstart/Architecture.md'
   - 'UI Portal Features' : 
       - 'Portal features/README.md'
       - 'Portal features/Launch page.md'
