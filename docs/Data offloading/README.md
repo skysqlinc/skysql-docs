@@ -4,7 +4,7 @@ There are multiple options to copy/offload data from a SkySQL DB. You can do a l
 
 You can then use the offloaded data to resurrect the DB elsewhere. You can also optionally setup "outbound replication" to keep the new DB in sync with SkySQL. 
 
-## ** (1) Offload your Database using `mariadb-dump`**
+## **(1) Offload your Database using `mariadb-dump`**
 
 The [`mariadb-dump`](https://mariadb.com/kb/en/mariadb-dump/) utility is a powerful command-line tool that allows you to export databases, tables, or specific data from your MariaDB instance in SkySQL. 
 
@@ -214,6 +214,6 @@ curl --location 'https://api.skysql.com/skybackup/v1/backups/status' \
 This API call will return the status of the backups, including whether they are in progress, completed, or failed.
 
 
-## [** (4) Replicating changes from SkySQL to a compatible external DB**](./Replicating%20data%20from%20SkySQL%20to%20external%20database.md)
+## [**(4) Replicating changes from SkySQL to a compatible external DB**](./Replicating%20data%20from%20SkySQL%20to%20external%20database.md)
 
 
