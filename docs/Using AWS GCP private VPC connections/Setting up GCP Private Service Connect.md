@@ -1,70 +1,142 @@
 # Setting up GCP Private Service Connect
 
-!!! Note:
-    GCP Private Service Connect (PSC) is used for private connections within the same GCP region.
-    
-    Prior to configuring PSC on a SkySQL service, you must have created a VPC with a private subnet that will be used to communicate with private IP addresses. 
-    
-    For detailed information about GCP PSC, see ["Private Service Connect" (Google documentation)](https://cloud.google.com/vpc/docs/private-service-connect).
+
+Google Private Service Connect (PSC) is a Google Cloud service that enables secure and private connectivity between Virtual Private Clouds (VPCs) and third-party services. By using PSC with SkySQL services, traffic does not traverse the public internet, which enhances security and reduces exposure to potential threats.
+
+For detailed information about Google PSC, see ["Private Service Connect" (Google documentation)](https://cloud.google.com/vpc/docs/private-service-connect).
 
 
-The default endpoint mechanism is "`nlb`", which supports accessing the SkySQL service via the public internet. Use of GCP PSC occurs when the endpoint mechanism is changed to "`privateconnect`".
+## **Considerations**
 
-GCP PSC can be enabled using the SkySQL Portal, SkySQL DBaaS API, or SkySQL Terraform Provider.
-
-## **Note the following**
-
-- When a SkySQL service has the `privateconnect` endpoint mechanism, all connections occur through private endpoints. SkySQL does offer users to setup a “secondary” public IP endpoint also (available in the Portal UI when you provision a new service).
-- With Private Service Connect, projects are allowlisted and auto-accept of connections from any account is disabled.
-- Access restrictions are controlled through the customer's GCP account. VPC firewall rules apply. For detailed information, see ["Cloud Firewall overview" (Google documentation)](https://cloud.google.com/vpc/docs/firewalls).
-- Some customers using Private Service Connect may choose to disable TLS, but MariaDB recommends keeping TLS enabled for extra security.
-- Database connection limits are independent from PSC connection limits. The limit for PSC connections is 10.
-- Endpoint changes can be destructive, resulting in downtime. When you change the connection type from private to public, or public to private, the endpoint must be destroyed and recreated. Changing the SkySQL endpoint between `nlb` and `privateconnect` will result in a service interruption.
-- Connections to SkySQL services by features such as SkySQL backups, and monitoring do not depend on Private Service Connect.
-- Query Editor is not supported when Private Service Connect is enabled.
-
-### **Enable GCP Private Service Connect on Service Launch**
-
-To enable GCP Private Service Connect when launching a new service via the SkySQL Portal:
-
-- When you get to the final "Security" section, select "Enable Private Service Connect".
-
-For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
+- PSC is used for private connections within the same Google Cloud region.  The SkySQL service and the connection VPC must be in the same region.
+- When using SkySQL with PSC, all connections occur through private endpoints.  If you need to connect to the service from outside your VPC, you will need to use a VPN or other mechanism to go through the connected VPC.  Alternatively, SkySQL can be configured to provide a second, public endpoint for an additional fee.
+- A list of Google Cloud project IDs that will be allowed to connect to the SkySQL service must be provided when enabling PSC.  This list can be updated at any time.
+- The SkySQL IP Allowlist is not used with PSC connections.  Access to the SkySQL service can be controlled by setting up firewall rules inside the connecting VPC.
+- Connections to SkySQL services by features such as SkySQL backups, and monitoring do not depend on PSC.
+- Query Editor is not supported when PSC is enabled.
+- PSC has connection limits which refer to the number of endpoints that can be created to a single PSC service within Google Cloud. Database connection limits are independent from PSC connection limits. The limit for PSC connections is 10.
 
 
-### **Enable GCP Private Service Connect on Existing SkySQL Service**
+### **Enable Private Service Connect on Service Launch**
 
-To enable GCP Private Service Connect for an existing service via the SkySQL Portal:
+<details>
+<summary>Enable Google PSC via the SkySQL Portal</summary>
+<br>
 
-1. Log in to the SkySQL Portal.
-2. Click the "MANAGE" button (at right) for the desired service.
-3. In the context menu, choose the "Set up Private Service Connect" menu item.
+To enable PSC when launching a new service via the SkySQL Portal select the 'Google Private Service Connect' option in the 'Security' section.
+After the service completes provisioning, you will see a new option to "Manage Google Private Service Connect" in the service's context menu. Click this option to add one or more Google project IDs to the allowlist.
+
+</details>
+
+<details>
+<summary>Enable Google PSC via the SkySQL DBaaS API</summary>
+<br>
+
+To enable Google PSC when launching a new service via the SkySQL DBaaS API, add the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes to service creation JSON payload.
+
+```
+{
+  "name": "my-skysql-service",
+  ...
+  "endpoint_mechanism": "privateconnect",
+  "allowed_accounts": [
+    "GCP-PROJECT-ID-1",
+    "GCP-PROJECT-ID-2"
+  ]
+}
+```
+- The `endpoint_mechanism` field must be set to `privateconnect`
+- The `endpoint_allowed_accounts` field must be set to a JSON array of one or more client project IDs in Google Cloud that will be allowed to establish a private connection to the SkySQL service.
+
+For more information on using the SkySQL DBaaS API, see ["SkySQL DBaaS API"](https://apidocs.skysql.com/#/Services/post_provisioning_v1_services).
+</details>
+
+<details>
+<summary>Enable Google PSC via the SkySQL Terraform Provider</summary>
+<br>
+
+To enable Google PSC when launching a new service via the SkySQL DBaaS API, set the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes on the `skysql_service` resource.
+
+```hcl
+resource "skysql_service" "example" {
+  name                      = "my-skysql-service"
+  ...
+  endpoint_mechanism        = "privateconnect"
+  endpoint_allowed_accounts = ["GCP-PROJECT-ID-1", "GCP-PROJECT-ID-2"]
+}
+```
+
+- The `endpoint_mechanism` field must be set to `privateconnect`
+- The `endpoint_allowed_accounts` field must be set to a list of one or more customer project IDs in Google Cloud that will be allowed to establish a private connection to the SkySQL service.
+
+A complete example Terraform template that creates a new SkySQL service with Google PSC enabled can be found in the [terraform provider examples](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples/private-service-connect).
+
+
+For more information on using the SkySQL Terraform Provider, see ["SkySQL Terraform Provider"](https://registry.terraform.io/providers/skysqlinc/skysql/latest/docs).
+
+</details>
+
+**For the next step, see the [PSC Endpoint Setup](#private-service-connect-endpoint-setup) section on this page.**
+
+
+### **Enable Google PSC on an Existing SkySQL Service**
+
+> [!CAUTION]
+> Enabling PSC on an existing service will cause all existing connections to be dropped.  The service will be unavailable for a short period of time while the public endpoint is replaced with the new PSC endpoint.
+
+<details>
+<summary>Enable Google PSC on an existing service via the SkySQL Portal:</summary>
+<br>
+
+1. Log in to the SkySQL Portal
+2. Click the "MANAGE" button (on the right) for the desired service.
+3. In the context menu, choose the "Set up Google Private Service Connect" menu item.
 4. In the popup window, add one or more GCP project IDs.
 5. Click the "OK" button to confirm this operation.
 
-For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
+</details>
 
-### **Disable GCP Private Service Connect**
+<details>
+<summary>Enable Google PSC on an existing service via the SkySQL DBaaS API:</summary>
+<br>
 
-To disable GCP Private Service Connect via the SkySQL Portal:
+To enable Google PSC on an existing service, you will need to update the service endpoints with a payload similar to the following:
 
-!!! Note:
-    Adding a new PSC will fail unless existing PSC to deleted projects are deleted.
+```json
+[
+  {
+    "mechanism": "privateconnect",
+    "allowed_accounts": [
+      "GOOGLE-PROJECT-ID-1",
+      "GOOGLE-PROJECT-ID-2"
+    ]
+  }
+]
+```
 
-1. Visit the SkySQL Portal.
-2. Find the service that you would like to modify.
-3. Click "MANAGE" on the far right side of the service listing.
-4. In the context menu, select "Manage Private Service Connect".
-5. In the popup window, click "I want to disconnect my Private Service Connect".
-6. In the popup window, select "Disconnect".
-7. After the service restarts, Private Service Connect is disabled.
-8. Since the service's allowlist was cleared when GCP Private Service Connect was previously enabled, you will need to [update the allowlist](../Security/Configuring%20Firewall.md) to allow clients to connect after disabling Private Service Connect.
+This payload should then be sent to the API `PATCH` https://api.skysql.com/provisioning/v1/services/{SERVICE_ID}/endpoints where `{SERVICE_ID}` is the ID of the service you are updating.
+For more information on using the SkySQL DBaaS API, see ["SkySQL DBaaS API"](https://apidocs.skysql.com/#/Services/patch_provisioning_v1_services__service_id__endpoints).
 
-## GCP Endpoint Setup
+</details>
 
-Endpoint setup is performed using the customer's GCP account.
+**For the next step, see the [PSC Endpoint Setup](#private-service-connect-endpoint-setup) section on this page.**
 
-### **Create a Subnet (optional)**
+
+## Private Service Connect Endpoint Setup
+
+To connect to a SkySQL service using Google PSC, you must create an endpoint in your VPC that connects to the SkySQL service. The endpoint will be used by clients in your VPC to connect to the SkySQL service.
+
+
+### Pre-requisites
+- You must have a VPC in the same region as the SkySQL service.
+- You will need to lookup the Endpoint Service ID that SkySQL provisioned for you when you created your SkySQL Service.
+    - This ID can be found in the "Connect" window of the SkySQL portal.
+    - If using the SkySQL DBaaS API, the ID can be found in the response of the service details API call.
+    ```
+    curl https://api.skysql.com/provisioning/v1/services/{SERVICE_ID} | jq ".endpoints[0].endpoint_service"
+    ```
+
+### Create a Subnet (optional)
 
 We recommend use of a subnet dedicated to Private Service Connect endpoints in the same VPC where the application is running.
 
@@ -79,7 +151,8 @@ We recommend use of a subnet dedicated to Private Service Connect endpoints in t
     - Optionally configure Flow logs
     - Click "ADD".
 
-### **Create a Static Internal IP Address**
+
+### Create a Static Internal IP Address
 
 1. In the GCP console, navigate VPC network → VPC networks → <application VPC> → STATIC INTERNAL IP ADDRESSES → RESERVE STATIC ADDRESS.
     - Replace <application VPC> with the name of the VPC where the application is running.
@@ -90,108 +163,59 @@ We recommend use of a subnet dedicated to Private Service Connect endpoints in t
     - Purpose: Non-shared
     - Click "RESERVE".
 
-### ****Connect to the Published Service****
+
+### VPC Endpoint Creation Steps
+
 
 1. In the GCP console, navigate Network services → Private Service Connect → CONNECTED ENDPOINTS → CONNECT ENDPOINT.
 
 2. Configure the endpoint connection:
     - Target: Published service
-    - Target service: the value of the "Fully Qualified Domain Name" in the "Connect" window from SkySQL portal.
+    - Target service: the value of the Endpoint Service ID. See [Pre-requisites](#pre-requisites) for more information on how to find this ID.
     - Endpoint name: set to the Database ID from SkySQL (dbxxxxxxxx)
     - Network: select the VPC network where the application is running
     - Subnetwork: select the subnet where the static internal IP address is reserved
     - IP address: select the reserved internal IP address from the prior step
     - Click "ADD ENDPOINT".
 
-## Setting up GCP PSC using SkySQL REST API
+After creation, the Endpoint should have a status of `Accepted`.  If this status is not present, please ensure your Google Project ID is added to the list of allowed accounts in the SkySQL portal for this service.
 
-### **Enable GCP PSC on Service Launch**
 
-To enable GCP Private Service Connect when launching a new service via the SkySQL DBaaS API:
+### Connecting to your SkySQL Service
 
-1. Initiate service launch using the procedure at "[DBaaS API Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20REST%20API.md)".
-2. When you are creating the request, add the `"endpoint_mechanism"` and `"endpoint_allowed_accounts"` attributes to the JSON payload:
-    
-    ```json
-    "endpoint_mechanism": "privateconnect",
-    "endpoint_allowed_accounts": [
-        "GCP-PROJECT-ID-1",
-        "GCP-PROJECT-ID-2"
-    ]
-    ```
-    
-    - Set `"endpoint_mechanism"` to `"privateconnect"`
-    - Set `"endpoint_allowed_accounts"` to a JSON array of one or more customer project IDs in GCP that will be allowed to establish a private connection to the SkySQL service
+After creating your PSC endpoint, your service should be available within your VPC at the Private IP Address you assigned to the endpoint.
+- DNS propagation from SkySQL to the Private IP address is not supported when using PSC.
+- The hostname when connecting to your SkySQL service should always be the Private IP address of the PSC endpoint.
 
-For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
 
-### **Enable GCP Private Service Connect on Existing SkySQL Service**
+> [!NOTE]
+> When using PSC with SSL/TLS, there will be a hostname mismatch since the hostname provisioned by SkySQL will not match your internal IP Address.  This can be ignored as the connection is still secure.
 
-To enable GCP Private Service Connect on an existing service via the SkySQL DBaaS API, create a JSON payload such as:
 
-```json
-[
-  {
-    "mechanism": "privateconnect",
-    "allowed_accounts": [
-      "GCP-PROJECT-ID-1",
-      "GCP-PROJECT-ID-2"
-    ]
-  }
-]
-```
+### **Disabling Google PSC**
 
-- Set `"mechanism"` to `"privateconnect"`
-- Set `"allowed_accounts"` to a JSON array of one or more customer project IDs in GCP that will be allowed to establish a private connection to the SkySQL service
+> [!CAUTION]
+> Disabling PSC on an existing service will cause all existing connections to be dropped.  The service will be unavailable for a short period of time while the private endpoint is replaced with the new public endpoint.
 
-And then use the API to update the `endpoints` information of the service. The following example of using `curl` expects the above payload to be in a file named `data.json` and also expects the variables `API_KEY` and `SERVICE_ID` to be set:
+<details>
+<summary>Disable Google PSC via the SkySQL Portal</summary>
+<br>
 
-```bash
-curl -H "X-API-Key:  ${API_KEY}" \
-       -X PATCH -d @data.json \
-       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID}/endpoints \
-       | jq .
-```
+1. Visit the [SkySQL Portal](https://app.skysql.com/)
+2. Find the service that you would like to modify.
+3. Click "MANAGE" on the far right side of the service listing.
+4. In the context menu, select "Manage your Private Service Connect".
+5. In the popup window, click "I want to disconnect my Private Service Connect".
+6. In the popup window, select "Disconnect".
+7. Since the service's allowlist was cleared when Goolge PSC was previously enabled, you will need to [update the allowlist](../Security/Configuring%20Firewall.md) to allow clients to connect after disabling PSC.
 
-We will need the endpoint's service name later on in the setup, so use the API to query the endpoint once the service has finished its modifications and is back to "ready":
+</details>
 
-```bash
-curl -H "X-API-Key:  ${API_KEY}" -X GET \
-       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID} \
-       | jq '.status,.endpoints[0].ports,.endpoints[0].endpoint_service'
-```
+<details>
+<summary>Disable Google PSC via the SkySQL DBaaS API</summary>
+<br>
 
-Note that the `jq` command is filtering the returned JSON data to extract three things (which are separated by commas in the command above):
-
-- The status of the service, which must be "ready" for the other values to be available.
-    - The "`ready`" status means that the Private Service Connect endpoint setup is complete.
-    - A status of "`pending_upgrade`" is reflected while Private Service Connect endpoint setup is in-progress.
-- The "ports" data for the first item in the `endpoints` array.
-    - Some topologies include multiple port options, including ports for read/write and read-only connections, or for connections to the NoSQL listener.
-    - Choose the desired port, such as "`readwrite`".
-- The `endpoint_service` value for the first item in the `endpoints` array.
-
-The output will look something like this, though your values will vary:
-
-```json
-"ready"
-[
-  {
-    "name": "readwrite",
-    "port": 3306,
-    "purpose": "readwrite"
-  }
-]
-"GCP_ENDPOINT_HOSTNAME"
-```
-
-If you are not using `jq`, scan (or parse) the full returned JSON data to ensure the service status is "ready" and find the associated values described above.
-
-For the next step, see the [GCP Endpoint Setup](#gcp-endpoint-setup) sections on this page.
-
-### **Disable GCP PSC**
-
-To disable GCP Private Service Connect via the SkySQL DBaaS API, create a JSON payload such as:
+To disable Google PSC on an existing service, you will need to update the service endpoints with a payload similar to the following:
 
 ```json
 [
@@ -201,157 +225,7 @@ To disable GCP Private Service Connect via the SkySQL DBaaS API, create a JSON p
 ]
 ```
 
-- Set `"mechanism"` to `"nlb"`
+This payload should then be sent to the API `PATCH` https://api.skysql.com/provisioning/v1/services/{SERVICE_ID}/endpoints where `{SERVICE_ID}` is the ID of the service you are updating.
+For more information on using the SkySQL DBaaS API, see ["SkySQL DBaaS API"](https://apidocs.skysql.com/#/Services/patch_provisioning_v1_services__service_id__endpoints).
 
-And then use the API to update the `endpoints` information of the service. The following example of using `curl` expects the above payload to be in a file named `data.json` and also expects the variables `API_KEY` and `SERVICE_ID` to be set:
-
-```bash
-curl -H "X-API-Key:  ${API_KEY}" \
-       -X PATCH -d @data.json \
-       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID}/endpoints \
-       | jq .
-```
-
-We will need the endpoint's service name later on in the setup, so use the API to query the endpoint once the service has finished its modifications and is back to "ready":
-
-```bash
-curl -H "X-API-Key:  ${API_KEY}" -X GET \
-       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID} \
-       | jq '.status,.endpoints[0].ports,.endpoints[0].endpoint_service'
-```
-
-Note that the `jq` command is filtering the returned JSON data to extract three things (which are separated by commas in the command above):
-
-- The status of the service, which must be "ready" for the other values to be available.
-    - The "`ready`" status means that the endpoint modification is complete.
-    - A status of "`pending_upgrade`" is reflected while Private Service Connect is being disabled.
-- The "ports" data for the first item in the `endpoints` array.
-    - Some topologies include multiple port options, including ports for read/write and read-only connections, or for connections to the NoSQL listener.
-    - Choose the desired port, such as "`readwrite`".
-- The `endpoint_service` value for the first item in the `endpoints` array.
-
-The output will look something like this, though your values will vary:
-
-```json
-"ready"
-[
-  {
-    "name": "readwrite",
-    "port": 3306,
-    "purpose": "readwrite"
-  }
-]
-"GCP_ENDPOINT_HOSTNAME"
-```
-
-If you are not using `jq`, scan (or parse) the full returned JSON data to ensure the service status is "ready" and find the associated values described above.
-
-Since the service's allowlist was cleared when GCP Private Service Connect was previously enabled, you will need to update the allowlist to allow clients to connect after disabling Private Service Connect.
-
-To add an address to the allowlist via the SkySQL DBaaS API, create a JSON payload such as:
-
-```json
-**{**  **"ip_address":** "192.0.2.10/32"**}**
-```
-
-And then use the API to update the `allowlist` information of the service. The following example of using `curl` expects the above payload to be in a file named `data.json` and also expects the variables `API_KEY` and `SERVICE_ID` to be set:
-
-```bash
-curl -H "X-API-Key:  ${API_KEY}" \
-       -X POST -d @data.json \
-       https://api.skysql.com/provisioning/v1/services/${SERVICE_ID}/security/allowlist \
-       | jq .
-```
-
-## **Terraform Provider**
-
-GCP Private Service Connect can be enabled with Terraform using the SkySQL Terraform provider. 
-
-For general instructions on using the SkySQL Terraform Provider, see "[Terraform Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md) .
-
-For an example Terraform configuration that enables GCP Private Service Connect, see Resources section [here](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md) .
-
-### **Enable GCP Private Service Connect on Service Launch**
-
-To enable GCP Private Service Connect when launching a new service via the SkySQL Terraform provider:
-
-1. Initiate service launch using the procedure at "[Terraform Launch Walkthrough](../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider.md).
-2. When you are configuring the `skysql_service` resource, add the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes:
-    
-    For example, the attributes can be placed after `ssl_enabled`:
-    
-    ```bash
-    ssl_enabled = var.ssl_enabled
-    endpoint_mechanism = "privateconnect"
-    endpoint_allowed_accounts = ["GCP-PROJECT-ID-1","GCP-PROJECT-ID-2"]
-    ```
-    
-    - Set `endpoint_mechanism` to `"privateconnect"`
-    - Set `endpoint_allowed_accounts` to a comma-separated list of one or more customer project IDs in GCP that will be allowed to establish a private connection to the SkySQL service
-3. Continue the rest of the procedure.
-
-For the next step, see the [Connectivity](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#Connectivity), [Controls](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#Controls), & [GCP Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#GCP_Endpoint_Setup) sections on this page.
-
-### **Enable GCP Private Service Connect on Existing SkySQL Service**
-
-To enable GCP Private Service Connect for an existing service via the SkySQL Terraform provider:
-
-1. Alter the `skysql_service` resource configuration by adding the `endpoint_mechanism` and `endpoint_allowed_accounts` attributes.
-    
-    For example, the attributes can be placed after `ssl_enabled`:
-    
-    ```bash
-    ssl_enabled = var.ssl_enabled
-    endpoint_mechanism = "privateconnect"
-    endpoint_allowed_accounts = ["GCP-PROJECT-ID-1","GCP-PROJECT-ID-2"]
-    ```
-    
-    - Set `endpoint_mechanism` to `"privateconnect"`
-    - Set `endpoint_allowed_accounts` to a comma-separated list of one or more customer project IDs in GCP that will be allowed to establish a private connection to the SkySQL service
-2. Execute the `[terraform apply` command](https://developer.hashicorp.com/terraform/cli/commands/apply):
-    
-    ```bash
-    $ terraform apply -var-file="skysql-nr-quickstart.tfvars"
-    ```
-    
-
-For the next step, see the [GCP Endpoint Setup](https://mariadb.com/docs/skysql-dbaas/security/nr-private-connections/nr-gcp-private-service-connect/#GCP_Endpoint_Setup) sections on this page.
-
-### **Disable GCP Private Service Connect**
-
-To disable GCP Private Service Connect via the SkySQL Terraform provider:
-
-1. Alter the `skysql_service` resource configuration by doing the following:
-    - Changing the `endpoint_mechanism` attribute to `"nlb"`
-    - Removing the `endpoint_allowed_accounts` attribute
-    - Adding the `allow_list` attribute
-    
-    For example, if you started with the following attributes after `ssl_enabled`:
-    
-    ```json
-    ssl_enabled = var.ssl_enabled
-    endpoint_mechanism = "privateconnect"
-    endpoint_allowed_accounts = ["GCP-PROJECT-ID-1","GCP-PROJECT-ID-2"]
-    ```
-    
-    You could disable GCP Private Service Connect by changing the attributes to the following:
-    
-    ```json
-    ssl_enabled = var.ssl_enabled
-    endpoint_mechanism = "nlb"
-    allow_list          = [
-      {
-         "ip"          : var.ip_address,
-         "comment"     : var.ip_address_comment
-      }
-    ]
-    ```
-    
-2. Execute the `[terraform apply` command](https://developer.hashicorp.com/terraform/cli/commands/apply):
-    
-    ```json
-    $ terraform apply -var-file="skysql-nr-quickstart.tfvars"
-    ```
-    
-
----
+</details>
