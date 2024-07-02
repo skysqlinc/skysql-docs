@@ -78,32 +78,33 @@ To minimize downtime during migration, set up live replication from your source 
     SHOW MASTER STATUS;
     ```
 
-2. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`.
+2. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`, ensuring to skip the `mysql` table and handle the user dump separately to avoid issues with the default SkySQL user. Also, include triggers, procedures, views, and schedules in the dump.
 
     ```bash
-    mysqldump -u [username] -p --all-databases --master-data > dump.sql
+    mysqldump -u [username] -p --all-databases --ignore-table=mysql.user --routines --triggers --events --skip-lock-tables > dump.sql
     ```
 
-3. **Import the Dump into SkySQL**: Import the logical dump (SQL file) into your SkySQL database.
+3. **Dump the User Table Separately**: Dump the `mysql.user` table separately to handle user data without affecting the default SkySQL user.
+
+    ```bash
+    mysqldump -u [username] -p mysql user > mysql_user_dump.sql
+    ```
+
+4. **Import the Dumps into SkySQL**: Import the logical dumps (SQL files) into your SkySQL database, ensuring to load the user dump after the main dump.
 
     ```bash
     mariadb -u [username] -p [database_name] < dump.sql
+    mariadb -u [username] -p mysql < mysql_user_dump.sql
     ```
 
-4. **Start Replication**: Turn on replication using the SkySQL `start_replication` procedure.
+5. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](https://skysqlinc.github.io/skysql-docs/Reference%20Guide/Sky%20Stored%20Procedures/) for details.
 
     ```sql
-    CALL mysql.rds_start_replication;
+    CALL sky.replication_grants();
+    CALL sky.start_replication();
     ```
 
 ### Performance Optimization During Migration
-
-- **Adjust Buffer Sizes**: Temporarily increase buffer sizes to optimize the import performance.
-
-    ```sql
-    SET GLOBAL innodb_buffer_pool_size = 2G;
-    SET GLOBAL innodb_log_file_size = 512M;
-    ```
 
 - **Disable Foreign Key Checks**: Temporarily disable foreign key checks during import to speed up the process.
 
@@ -111,15 +112,11 @@ To minimize downtime during migration, set up live replication from your source 
     SET foreign_key_checks = 0;
     ```
 
-- **Disable Binary Logging**: If binary logging is not required during the import process, disable it to improve performance.
-
-    ```sql
-    SET sql_log_bin = 0;
-    ```
+- **Disable Binary Logging**: If binary logging is not required during the import process, and you are using a standalone instance, it can potentially be disabled to improve performance. SkyDBA Services can assist with this as part of a detailed migration plan.
 
 ### Data Integrity and Validation
 
-- **Consistency Checks**: Perform consistency checks on the source database before migration.
+- **Consistency Checks**: Perform consistency checks on the source database before migration. Use a [supported SQL client](https://skysqlinc.github.io/skysql-docs/Connecting%20to%20Sky%20DBs/) to connect to your SkySQL instance and run the following.
 
     ```sql
     CHECK TABLE [table_name] FOR UPGRADE;
@@ -133,32 +130,33 @@ To minimize downtime during migration, set up live replication from your source 
 
 ### Advanced Migration Techniques
 
+- **Adjust Buffer Sizes**: Temporarily increase buffer sizes to optimize the import performance. This can be done via the Configuration Manager in the portal.
+
+    ```sql
+    innodb_buffer_pool_size = 2G
+    innodb_log_file_size = 512M
+    ```
+
 - **Parallel Dump and Import**: Use tools that support parallel processing for dumping and importing data.
 
     ```bash
     mysqlpump -u [username] -p --default-parallelism=4 --add-drop-database --databases [database_name] > dump.sql
     ```
 
-- **Incremental Backups**: For large datasets, use incremental backups to minimize the amount of data to be transferred.
-
-    ```bash
-    mariadb-backup --backup --target-dir=/path/to/backup --incremental-basedir=/path/to/previous/backup
-    ```
+- **Incremental Backups**: For large datasets, incremental backups can be used to minimize the amount of data to be transferred. SkyDBA Services can assist you with setting these up as part of a custom migration plan.
 
 ### Monitoring and Logging
 
-- **Enable Detailed Logging**: Enable detailed logging during the migration process to monitor and troubleshoot effectively.
+- **Enable Detailed Logging**: Enable detailed logging while testing the migration process to monitor and troubleshoot effectively.
 
     ```sql
     SET GLOBAL general_log = 'ON';
     ```
 
-- **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability.
+!!! Note
+    💡 **Enabling the general log can cause performance issues. It is recommended to enable it only during testing pre-migration, not on a production instance.**
 
-    ```bash
-    top
-    iostat -x 5
-    ```
+- **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability. See our [monitoring documentation](https://skysqlinc.github.io/skysql-docs/Portal%20features/Service%20Monitoring%20Panels/) for details.
 
 ### Additional Resources
 
