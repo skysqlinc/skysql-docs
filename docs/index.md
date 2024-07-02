@@ -1,11 +1,7 @@
 # Introduction to SkySQL 
 
 
-!!! Note
-    **SkySQL documentation is work-in-progress. Many of the links from the pages below still  reference the older version of SkySQL documentation on the [Mariadb](http://Mariadb.com) site. Please bear with us during this transition.**
-
-
-MariaDB is one of the most popular, mature open source relational databases in the world.
+MariaDB is one of the most popular, mature open source relational databases in the world. MariaDB is designed to be highly compatible with MySQL, as it was originally forked from MySQL. 
 
 SkySQL is a multi-cloud, fully managed Database as a Service. It is specifically designed to manage MariaDB across data centers, regions and even across cloud providers. 
 SkySQL was originally developed at [MariaDB](http://mariadb.com) with the goal to be the most comprehensive cloud platform for MariaDB. Its practical feature set was based on many years of insights gleamed from hundreds of customers running mission critical workloads. The core team that built SkySQL is now part of a new independent company called SkySQL (Established in late 2023). 
