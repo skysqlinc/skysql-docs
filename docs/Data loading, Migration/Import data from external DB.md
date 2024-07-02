@@ -8,9 +8,9 @@ Instructions are provided for the following data import methods:
 
 | Data Import Method | Use Case |
 | --- | --- |
-| https://mariadb.com/docs/skysql-dbaas/data-operations/data-import/nr-support-assisted/ | Coordinate data import with SkySQL Support |
-| https://mariadb.com/docs/skysql-dbaas/data-operations/data-import/nr-load-data-local-infile/ | Import TSV (tab-delimited) or CSV (comma-delimited) file data using the LOAD DATA LOCAL INFILE statement with your database client |
-| https://mariadb.com/docs/skysql-dbaas/data-operations/data-import/nr-mariadb-import/ | Import TSV (tab-delimited) or CSV (comma-delimited) file data using the mariadb-import utility |
+| [Support-Assisted Data Import](nr-support-assisted.md) | Coordinate data import with SkySQL Support |
+| [Import Data with LOAD DATA LOCAL INFILE](Import-CSV-data.md) | Import TSV (tab-delimited) or CSV (comma-delimited) file data using the LOAD DATA LOCAL INFILE statement with your database client |
+| [Import Data with `mariadb-import`](Install-mariadb-import.md) | Import TSV (tab-delimited) or CSV (comma-delimited) file data using the mariadb-import utility |
 
 ## Loading using mariadb-dump output
 
