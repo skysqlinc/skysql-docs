@@ -97,10 +97,10 @@ nav:
       - 'Connecting to Sky DBs/Connect using ODBC.md'
   - 'Data Loading, Migrations' :
       - 'Data loading, Migration/README.md'
-      - 'Data loading, Migration/Import CSV data.md'
+      - 'Data loading, Migration/Import-CSV-data.md'
       - 'Data loading, Migration/Import data from external DB.md'
       - 'Data loading, Migration/Install Mariadb-dump.md'
-      - 'Data loading, Migration/Install mariadb-import.md'
+      - 'Data loading, Migration/Install-mariadb-import.md'
       - 'Data loading, Migration/Migrating your existing Production DB.md'
       - 'Data loading, Migration/Migrating your existing Production DB.md'
       - 'Data loading, Migration/Replicating data from external DB.md'
