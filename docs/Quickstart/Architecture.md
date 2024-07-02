@@ -1,21 +1,9 @@
 # SkySQL Architecture
 
-SkySQL cloud infrastructure is composed of a Control plane and a Data plane. The Control Plane is built using event driven micro-services architecture 
-and provides a RESTful API for managing the lifecycle of databases as well as performs orchestration tasks on behalf of the RESTful APIs. The Data Plane is an isolated 
-enviromnment where the databases are deployed via the orchestrator. All the components use managed kubernetes from the cloud provider.
-
-The following diagram shows the architecture of SkySQL.
+The SkySQL architecture is designed to provide a robust, scalable, and secure database management solution. At its core, users interact with the system through the Application Portal, which serves as the interface for deploying and managing database instances. This portal connects to the SkySQL Core Services, a suite of components responsible for handling user requests, orchestrating deployments, and monitoring system performance via RESTful APIs.
 
 ![SkySQL Architecture](skysql-architecture.png)
 
-The major components of the SkySQL architecture are:
+The SkySQL Core Services operate within a Virtual Private Cloud (VPC) to ensure security and isolation. Key components within this core include APIs and microservices that manage database operations and user interactions, a monitoring and metrics infrastructure that tracks the health and performance of the databases, and an orchestration engine that deploys and configures database instances as needed.
 
-## SkySQL Core Services
-
-Core services cluster runs all the necessary control plane services and the orchestrator. The orchestrator consists of workflow engine that invokes various workflows
-to manage the database lifecycle actions. The Monitoring infrastructure provides the metrics that drive the dashboards in the customer portal. This cluster is deployed in an isolated environment with a very strict security perimeter.
-
-## Customer Clusters
-
-The databases are deployed in the customer clusters. The orchestrator engine is responsible for building and maintaining the databases. Each cluster runs in its own VPC with
-a strict role-based access controls. The SkySQL Kubernetes Operator builds and maintains the desired database state and takes remediation actions when needed.
+Customer clusters are deployed in their own VPCs, providing complete security and isolation. Each cluster houses multiple MariaDB server instances managed by Kubernetes, which ensures performance and high availability. This architecture allows SkySQL to seamlessly integrate with major cloud providers like AWS, GCP, and Azure, offering flexible multi-cloud and scalable deployment options to meet varying customer needs.
