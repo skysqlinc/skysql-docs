@@ -64,3 +64,105 @@ For assistance with a migration:
 
 - Existing customers can submit a [support case](https://mariadb.com/docs/skysql-previous-release/service-management/support/) to request assistance with a migration
 - New customers can [contact us](https://mariadb.com/docs/skysql-previous-release/contact/) to begin the migration planning process
+
+## Best Practices
+
+
+### Live Replication for Minimal Downtime
+
+To minimize downtime during migration, set up live replication from your source database to the SkySQL database. Follow these steps:
+
+1. **Obtain Binlog File and Position**: On the source database (MySQL or MariaDB), obtain the Binlog file name and its current position to track all database changes from a specific point in time.
+
+    ```sql
+    SHOW MASTER STATUS;
+    ```
+
+2. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`.
+
+    ```bash
+    mysqldump -u [username] -p --all-databases --master-data > dump.sql
+    ```
+
+3. **Import the Dump into SkySQL**: Import the logical dump (SQL file) into your SkySQL database.
+
+    ```bash
+    mariadb -u [username] -p [database_name] < dump.sql
+    ```
+
+4. **Start Replication**: Turn on replication using the SkySQL `start_replication` procedure.
+
+    ```sql
+    CALL mysql.rds_start_replication;
+    ```
+
+### Performance Optimization During Migration
+
+- **Adjust Buffer Sizes**: Temporarily increase buffer sizes to optimize the import performance.
+
+    ```sql
+    SET GLOBAL innodb_buffer_pool_size = 2G;
+    SET GLOBAL innodb_log_file_size = 512M;
+    ```
+
+- **Disable Foreign Key Checks**: Temporarily disable foreign key checks during import to speed up the process.
+
+    ```sql
+    SET foreign_key_checks = 0;
+    ```
+
+- **Disable Binary Logging**: If binary logging is not required during the import process, disable it to improve performance.
+
+    ```sql
+    SET sql_log_bin = 0;
+    ```
+
+### Data Integrity and Validation
+
+- **Consistency Checks**: Perform consistency checks on the source database before migration.
+
+    ```sql
+    CHECK TABLE [table_name] FOR UPGRADE;
+    ```
+
+- **Post-Import Validation**: Validate the data integrity and consistency after the import.
+
+    ```sql
+    CHECKSUM TABLE [table_name];
+    ```
+
+### Advanced Migration Techniques
+
+- **Parallel Dump and Import**: Use tools that support parallel processing for dumping and importing data.
+
+    ```bash
+    mysqlpump -u [username] -p --default-parallelism=4 --add-drop-database --databases [database_name] > dump.sql
+    ```
+
+- **Incremental Backups**: For large datasets, use incremental backups to minimize the amount of data to be transferred.
+
+    ```bash
+    mariadb-backup --backup --target-dir=/path/to/backup --incremental-basedir=/path/to/previous/backup
+    ```
+
+### Monitoring and Logging
+
+- **Enable Detailed Logging**: Enable detailed logging during the migration process to monitor and troubleshoot effectively.
+
+    ```sql
+    SET GLOBAL general_log = 'ON';
+    ```
+
+- **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability.
+
+    ```bash
+    top
+    iostat -x 5
+    ```
+
+### Additional Resources
+
+- [Parallel Processing with mysqlpump](https://dev.mysql.com/doc/mysqlpump/en/)
+- [MariaDB Backup Documentation](https://mariadb.com/kb/en/mariadb-backup-overview/)
+- [Advanced Backup Techniques](https://mariadb.com/kb/en/backup-and-restore-overview/)
+
