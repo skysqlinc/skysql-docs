@@ -14,7 +14,7 @@ Power level support expands the Standard level offering with Problem Resolution 
 | Engineering Support | Yes | Yes |
 | Active Monitoring | Yes | Yes |
 | Consultative Support | No  | Yes  |
-| [SkyDBA Add-on](skydba/) Available | No  | Yes |
+| [SkyDBA Add-on](FractionalDBA.md) Available | No  | Yes |
 | Real-Time Chat | No  | Yes, with SkyDBA Add-on Option |
 | SLA Response Time | * P3, 4 hours (24x5)<br>* P4, 8 hours (24x5) | * P1, 30 minutes (24x7)<br> * P2, 2 hours (24x5)<br>* P3, 4 hours (24x5)<br>* P4, 8 hours (24x5) |
 
