@@ -66,7 +66,7 @@ SkySQL [officially launched](https://mariadb.com/newsroom/press-releases/mariad
 
 ### **Is SkySQL ready for production use?**
 
-Yes. SkySQL delivers enterprise-grade cloud database services for mission-critical applications. SkySQL is built to make MariaDB Enterprise ready - optimized for security, stability, and reliability in demanding production environments. Multi-node database deployments feature a comprehensive [SLA](<../Autonomously scale Compute, Storage/Uptime SLA>), High Availability (HA) features, and operations features. [Enterprise support](https://mariadb.com/docs/skysql-previous-release/service-management/support/) options extend support to 24x7, with the additional option of [SkyDBA](../FractionalDBA) for reactive and proactive assistance from a team of expert DBAs. [Security features](../Security) are designed to meet the GRC and infosec challenges faced by modern applications, and [DPA (GDPR) and BAA (HIPAA)](https://mariadb.com/trust/) are available.
+Yes. SkySQL delivers enterprise-grade cloud database services for mission-critical applications. SkySQL is built to make MariaDB Enterprise ready - optimized for security, stability, and reliability in demanding production environments. Multi-node database deployments feature a comprehensive [SLA](<../Autonomously scale Compute, Storage/Uptime SLA>), High Availability (HA) features, and operations features. [Enterprise support](https://skysql.com/support-policy/) options extend support to 24x7, with the additional option of [SkyDBA](../FractionalDBA) for reactive and proactive assistance from a team of expert DBAs. [Security features](../Security) are designed to meet the GRC and infosec challenges faced by modern applications. [//]: # , and [DPA (GDPR) and BAA (HIPAA)](https://mariadb.com/trust/) are available.
 
 ## **SkySQL Features**
 
@@ -74,26 +74,26 @@ Yes. SkySQL delivers enterprise-grade cloud database services for mission-critic
 
 SkySQL is primarily designed for online applications and offers two topologies -
 
-[Replicated Transactions](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/services/replicated-transactions/), [Single Node Transactions](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/services/single-node-transactions/)
+- Replicated: Useful for mission-critical, production workloads requiring read scaling. Replicated services feature 1 primary and up to 4 replicas and uses MariaDB MaxScale for load balancing and automatic zero-interruption failover.
+- Single Node: Useful for low-cost development and test transactional workloads. Single Node services cannot be scaled to Replicated topologies.
 
 ### **What options are available for scaling and right-sizing SkySQL?**
 
-You can choose [topologies to match your workload requirements, cloud regions to match your latency and operating requirements, instance sizes](<../Portal features/Launch page>), and [support plan](https://mariadb.com/docs/skysql-previous-release/service-management/support/).
+You can choose [topologies to match your workload requirements, cloud regions to match your latency and operating requirements, instance sizes](<../Portal features/Launch page>), and [support plan](Support.md).
 
 Our platform features:
 
-- Services optimized for transactional (OLTP) and analytical (Future)
 - Availability in a range of database instance sizes and storage sizes
 - Availability from multiple AWS (Amazon Web Services) and GCP (Google Cloud Platform) [regions](<../Reference Guide/Region Choices>).
 - Load Balancing features included with Replicated Transactions topologies allow for read-scaling through read-write splitting.
 - Custom instance sizes (for [Power Tier](<../Billing and Power Tier>) customers)
-- Range of [support options](https://mariadb.com/docs/skysql-previous-release/service-management/support/)
+- Range of [support options](Support.md)
 
 ### **What reliability features are available on SkySQL?**
 
 - SkySQL is operated by a global team of Site Reliability Engineers (SRE), expert DBAs, and MariaDB software engineers. Platform problems are escalated to our team 24x7.
 - Support from MariaDB Corporation, including Enterprise and Platinum tiers optionally with SkyDBA for reactive and proactive assistance
-- [Service Level Agreement](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/service-availability/), including an elevated SLA for [Power Tier](<../Billing and Power Tier>) customers
+- [Service Level Agreement](https://skysql.com/sla/), including an elevated SLA for [Power Tier](<../Billing and Power Tier>) customers
 - Kubernetes self-healing - Databases run in containers in kubernetes clusters and auto-heal.
 - Load balancing for multi-node configurations using MariaDB MaxScale
 - High Availability (HA) for multi-node configurations
@@ -137,7 +137,7 @@ The pricing shown is not a quote and does not guarantee the cost for your actual
 
 ### **Do I need to purchase a MariaDB Server license or subscription to use SkySQL?**
 
-No. Purchase of SkySQL service includes [support](https://mariadb.com/docs/skysql-previous-release/service-management/support/) and access to MariaDB database products on SkySQL.
+No. Purchase of SkySQL service includes [support](Support.md) and access to MariaDB database products on SkySQL.
 
 ### **I have an existing contract with Google. Can I leverage this for SkySQL?**
 
@@ -145,7 +145,7 @@ Yes. SkySQL is listed in the Google Cloud Marketplace. Customers have the abilit
 
 [See the Marketplace listing](https://console.cloud.google.com/marketplace/details/mariadb-public/mariadb-for-gcp).
 
-[Contact us](https://mariadb.com/contact/) if you have further questions.
+[Contact us](mailto:info@skysql.com) if you have further questions.
 
 ### **I have an existing contract with AWS. Can I leverage this for SkySQL?**
 
@@ -153,11 +153,11 @@ Yes. SkySQL is an AWS partner network. Customers can retire their AWS commitment
 
 [See the AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-uaoi4womvi6la?qid=1625063138420&sr=0-1&ref_=srh_res_product_title)
 
-[Contact us](https://mariadb.com/contact/) if you have further questions.
+[Contact us](mailto:info@skysql.com) if you have further questions.
 
 ### **Do you have a pricing calculator?**
 
-Estimated SkySQL pricing information is shown when you [create a service](https://mariadb.com/docs/skysql-previous-release/service-management/launch/) based on the selections you make at launch time, such as topology, region, and instance size. Please [contact us](https://skysql.com/contact/) for assistance in cost estimation, including [support](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/support/) and [Power Tier](<../Billing and Power Tier>).
+Estimated SkySQL pricing information is shown when you [create a service](./Portal%20features/Launch%20page.md) based on the selections you make at launch time, such as topology, region, and instance size. Please [contact us](mailto:info@skysql.com) for assistance in cost estimation, including [support](Support.md) and [Power Tier](<../Billing and Power Tier>).
 
 ### **What is included in SkySQL pricing?**
 
@@ -168,7 +168,7 @@ SkySQL pricing includes instances for a specific service topology, and monitorin
 Add-ons are available to optimize your SkySQL experience:
 
 - [SkySQL Power Tier](<../Billing and Power Tier>) is a premium service offering for SkySQL customers who have the most critical requirements for uptime, availability, performance, and support.
-- While all Foundation Tier services include Standard Support, Power Tier customers are offered the  [Enterprise support plan](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/support/).
+- While all Foundation Tier services include Standard Support, Power Tier customers are offered the  [Enterprise support plan](Support.md).
 - An optional add-on, [SkyDBA](../FractionalDBA), further extends the premium support experience and the capabilities of your in-house DBAs with the backing from a global team of expert MariaDB DBAs, available 24/7 for the most severe (P1) issues. SkySQL's SkyDBAs manage your  SkySQL databases both proactively and reactively so you can focus on your core business.
 
 ### **Is discounted pricing available for a longer-term commitment?**
@@ -258,7 +258,7 @@ MariaDB will bill for VAT and/or taxes in applicable jurisdictions. Customers ar
 
 Current month's estimated charges, including coupons and service credits, can be viewed on the Account Information page and are updated six times per day.
 
-In the event of service credits issued based on [SLA](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/service-availability/), service credits will be included in coupons and service credits on the Account Information page.
+In the event of service credits issued based on [SLA]https://skysql.com/sla/), service credits will be included in coupons and service credits on the Account Information page.
 
 ### **Can I stop or pause my instance to save money?**
 
@@ -343,7 +343,7 @@ By default,  SkySQL services feature data-in-transit encryption for client conne
 
 By default, server-to-server communications between the nodes of a SkySQL service are protected with data-in-transit encryption.
 
-For additional information, see "[Data-in-Transit Encryption](https://mariadb.com/docs/skysql-previous-release/security/data-in-transit-encryption/)".
+For additional information, see "[Data-in-Transit Encryption](./Security/Encryption.md)".
 
 ### **Does SkySQL support encrypted client connections?**
 
@@ -458,11 +458,11 @@ Available to Power Tier customers:
 
 - Enterprise Support, 24x7
 
-See [full details of our support options](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/support/).
+See [full details of our support options](./Support.md).
 
 ### **Is 24x7x365 support available for mission-critical applications?**
 
-Yes. [Enterprise](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/support/) support levels are available for customers requiring 24x7x365 support (24 hours per day, 7 days per week, 365 (or 366) days per year).
+Yes. [Enterprise Support](./Support.md) levels are available for customers requiring 24x7x365 support (24 hours per day, 7 days per week, 365 (or 366) days per year).
 
 ### **Is SkySQL fully managed?**
 
@@ -470,13 +470,13 @@ Yes. SkySQL infrastructure is fully managed, including many typical operations f
 
 Standard support is included with Foundation Tier services. Activities like performance tuning and assistance with schema change is not included in standard support. Power Tier customers choose between Enterprise and Platinum support options, which include consultative support.
 
-Our optional [SkyDBA](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/support/skydba/) service is available for Enterprise and Platinum support customers, and SkyDBA customers receive both reactive (break/fix) and proactive (analyze/enhance) assistance.
+Our optional [SkyDBA](FractionalDBA.md) service is available for Enterprise and Platinum support customers, and SkyDBA customers receive both reactive (break/fix) and proactive (analyze/enhance) assistance.
 
 ### **What professional services are available for SkySQL?**
 
 SkySQL offers a full range of professional services, including:
 
-- [SkyDBA](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/support/skydba/) for proactive and reactive support
+- [SkyDBA](./FractionalDBA.md) for proactive and reactive support
 - [Migration](https://mariadb.com/docs/skysql-previous-release/migration/) assistance
 - Assistance with your SkySQL proof-of-concept ([contact us for more information](https://skysql.com/contact/))
 
@@ -486,17 +486,13 @@ SkySQL offers a full range of professional services, including:
 
 [Contact SkySQL Inc](https://skysql.com/contact/) or email us at [info@skysql.com](mailto:info@skysql.com)
 
-### **How can I keep up-to-date on changes to SkySQL?**
-
-[Release notes](https://mariadb.com/docs/server/release-notes/) are provided to show changes to SkySQL services, features, interfaces, and documentation.
-
 ### **How do I contact sales to buy services on SkySQL?**
 
-SkySQL is available for immediate use. [Sign up](https://mariadb.com/docs/skysql-previous-release/signup/) today and [get started](https://mariadb.com/docs/skysql-previous-release/quickstart/). If you would like assistance from sales, [contact us](https://skysql.com/contact/).
+SkySQL is available for immediate use. [Get started now](https://app.skysql.com). If you would like assistance from sales, [contact us](https://skysql.com/contact/).
 
 ### **Who do I contact with billing questions?**
 
-Billing questions can be directed to [info@skysql.com](mailto:info@skysql.com).
+Billing questions can be directed to [Billing Team](mailto:billing@skysql.com).
 
 ### **How do I provide feedback about SkySQL Documentation?**
 
@@ -506,4 +502,4 @@ To aid our continuous improvement efforts, we encourage you to provide feedback 
 
 ### **I am a SkySQL customer. How do I get support?**
 
-SkySQL customers can contact us via the [Customer Support Portal](https://support.skysql.com/)
+SkySQL customers can contact us via the [Support Portal](https://support.skysql.com/). Customers can also use the [Support email](mailto:support@skysql.com).

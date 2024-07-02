@@ -1,4 +1,4 @@
-site_name: SkySQL Public Documentation
+site_name: SkySQL Documentation
 theme:
   name: material
   logo: assets/skysqllogo.png
@@ -21,11 +21,12 @@ theme:
   # - navigation.instant.prefetch
   # - navigation.instant.progress
   # - navigation.prune
-  # - navigation.sections
+  - navigation.sections
   # - navigation.tabs
   # - navigation.tabs.sticky
   - navigation.left
   - navigation.tracking
+  - navigation.path
   - search.highlight
   - search.share
   - search.suggest
