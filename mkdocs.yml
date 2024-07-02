@@ -127,6 +127,7 @@ nav:
   - 'Security' :
       - 'Security/README.md'
       - 'Security/Configuring Firewall.md'
+      - 'Security/Encryption.md'
       - 'Security/Managing Portal Users.md'
       - 'Security/Managing API keys.md'
       - 'Security/Portal Single Sign-On.md'
