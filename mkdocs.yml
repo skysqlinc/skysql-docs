@@ -112,7 +112,11 @@ nav:
       - 'Autonomously scale Compute, Storage/README.md'
       - 'Autonomously scale Compute, Storage/Uptime SLA.md'
   - 'Scale Horizontally with High Availability' : 'Scaling horizontally, HA.md'
-  - 'Configure your Database Server(s)' : 'Configure your Database Server(s).md'
+  - 'Configure your Database Server(s)' :
+      - 'config/README.md'
+      - 'config/Enterprise-Server-Single-Node.md'
+      - 'config/Enterprise-Server-with-Replica(s).md'
+      - 'config/Maxscale-Configuration.md'
   - 'Backup and Restore' :
       - 'Backup and Restore/README.md'
       - 'Backup and Restore/MariaDB Enterprise Backup.md'
