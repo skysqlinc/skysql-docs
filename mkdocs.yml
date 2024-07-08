@@ -21,7 +21,7 @@ theme:
   # - navigation.instant.prefetch
   # - navigation.instant.progress
   # - navigation.prune
-  - navigation.sections
+  # - navigation.sections
   # - navigation.tabs
   # - navigation.tabs.sticky
   - navigation.left
@@ -70,7 +70,6 @@ extra:
       link: https://twitter.com/skysql
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/skysql
-
 
 nav:
   - 'index.md'
