@@ -35,7 +35,7 @@ Below are examples of how to schedule a snapshot backup using the SkySQL API.
 
 - [Examples](Snapshot Backup Examples.md)
 
-***Important:*** Database snapshots are deleted immediately upon service deletion.
+***Important:*** Database snapshots are deleted immediately upon service deletion. 
 
 <details>
 <summary>
