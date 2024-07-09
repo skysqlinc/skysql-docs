@@ -1,40 +1,30 @@
+<details>
+<summary>
+Authentication
+</summary>
+<h3>
+<ol>
+<li>
+Go to the SkySQL <a href="https://app.skysql.com/user-profile/api-keys">API Key management page</a>  and generate an API key
+</li>
+<li>
+Export the value from the token field to an environment variable $API_KEY
 
-## Authentication
-
-To authenticate with the API, do the following:
-
-1. Go to SkySQL API Key management page: https://app.skysql.com/user-profile/api-keys and generate an API key
-
-2. Export the value from the token field to an environment variable $API_KEY
-
-  ```bash
+  ```
   export API_KEY='... key data ...'
   ```
-3. Use it on subsequent request, e.g:
+</li>
+<li>
+Use it on subsequent request, e.g:
 
-   ```bash
-    curl --request GET 'https://api.skysql.com/skybackup/v1/backups/schedules' \\
-    --header "X-API-Key: ${API_KEY}"
-   ```
+        ```bash
+        curl --request GET 'https://api.skysql.com/skybackup/v1/backups/schedules' --header "X-API-Key: ${API_KEY}"
+        ```
+</li>
+</ol>
+</details>   
+
 ## Snapshot Backup Scheduling
-
-
-
-1. Go to SkySQL API Key management page: https://app.skysql.com/user-profile/api-keys and generate an API key
-
-2. Export the value from the token field to an environment variable $API_KEY
-    
-  ```bash
-  export API_KEY='... key data ...'
-  ```
-    
-  The `API_KEY` environment variable will be used in the subsequent steps.
-
-3. Use it on subsequent request, e.g:
-  ```bash 
-  curl --request GET 'https://api.skysql.com/provisioning/v1/services' \\
-  --header "X-API-Key: $API_KEY"
-  ```
 
 #### One-time Snapshot Example
 
@@ -50,7 +40,7 @@ To authenticate with the API, do the following:
 
     
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
-- SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx
+- SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx. You can fetch the service ID from the Fully qualified domain name(FQDN) of your service. E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID.You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
 
 #### Cron Snapshot Example
 
@@ -68,3 +58,8 @@ To authenticate with the API, do the following:
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
 - SCHEDULE : Cron schedule, see [Cron](https://en.wikipedia.org/wiki/Cron)
 - SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx
+
+
+##### Backup status can be fetch using 'https://api.skysql.com/skybackup/v1/backups'. See the 'Backup Status' section for an example.
+
+

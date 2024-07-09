@@ -114,6 +114,16 @@ nav:
   - 'Configure your Database Server(s)' : 'Configure your Database Server(s).md'
   - 'Backup and Restore' :
       - 'Backup and Restore/README.md'
+      - 'Backup and Restore/Snapshot Backup Examples.md'
+      - 'Backup and Restore/Physical Backup Examples.md'
+      - 'Backup and Restore/Logical Backup Examples.md'
+      - 'Backup and Restore/Incremental Backup Examples.md'
+      - 'Backup and Restore/Binarylog Backup Examples.md'
+      - 'Backup and Restore/Bring Your Own Bucket Examples.md'
+      - 'Backup and Restore/Other backup API examples.md'
+      - 'Backup and Restore/List Restore Examples.md'
+      - 'Backup and Restore/Database Restore Examples.md'
+      - 'Backup and Restore/Delete Restore Examples.md'
       - 'Backup and Restore/MariaDB Enterprise Backup.md'
   - 'Using AWS/GCP Private VPC Connections' :
       - 'Using AWS GCP private VPC connections/README.md'
