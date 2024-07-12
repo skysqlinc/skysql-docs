@@ -147,14 +147,7 @@ To minimize downtime during migration, set up live replication from your source 
 
 ### Monitoring and Logging
 
-- **Enable Detailed Logging**: Enable detailed logging while testing the migration process to monitor and troubleshoot effectively.
-
-    ```sql
-    SET GLOBAL general_log = 'ON';
-    ```
-
-!!! Note
-    💡 **Enabling the general log can cause performance issues. It is recommended to enable it only during testing pre-migration, not on a production instance.**
+- **Enable Detailed Logging**: Enable detailed logging while testing the migration process to monitor and troubleshoot effectively. The slow_log can be enabled in the SkySQL configuration manager.
 
 - **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability. See our [monitoring documentation](https://skysqlinc.github.io/skysql-docs/Portal%20features/Service%20Monitoring%20Panels/) for details.
 
