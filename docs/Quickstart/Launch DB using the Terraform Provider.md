@@ -4,8 +4,8 @@ This walkthrough explains how to launch database services and manage the lifecyc
 
 For users who prefer other interfaces, SkySQL offers the following alternatives:
 
-- Use the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/) in a web browser
-- Use the [DBaaS API](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/dbaas-api-launch-walkthrough/) with a REST client
+- Use the [Portal](<../../Portal features>) in a web browser
+- Use the [DBaaS API](<./Launch DB using the REST API.md>) with a REST client
 
 This walkthrough demonstrates a service configuration that is suitable for a quick test. A more customized configuration should be selected for performance testing or for alignment to the needs of production workloads.
 
@@ -29,14 +29,11 @@ This walkthrough demonstrates a service configuration that is suitable for a qui
 
 ### **Step 1: Generate API Key**
 
-1. Go to the [Generate API Key](https://id.mariadb.com/account/api/generate-key) page.
-2. Fill out the API key details:
-    - In the "Description" field, describe the purpose of the API key.
-    - In the "Expiration" field, specify how long this key will be valid. If you need to revoke the key before it expires, you can revoke it from the [API Keys](https://id.mariadb.com/account/api) page.
-    - In the "Scopes" field, select the "read" and "write" scopes under `SkySQL API: Databases`.
-3. Click the "Generate API Key" button.
-4. After the page refreshes, click the "Copy to clipboard" button to copy the API key.
-5. Paste the API key somewhere safe and do not lose it.
+1. Go to the [Generate API Key](https://app.skysql.com/user-profile/api-keys) page.
+2. Fill out a name for the API key
+3. Click the "Create" button.
+4. Click the copy button to copy the API key.
+5. Store the API key somewhere safe as it is showed only once during the creation. SkySQL platform does not store it anywhere.
 
 ### **Step 2: Create Terraform Project Directory**
 
@@ -63,7 +60,7 @@ In the Terraform project directory, create a `main.tf` file that contains the 
 terraform {
   required_providers {
     skysql = {
-      source          = "registry.terraform.io/mariadb-corporation/skysql"
+      source          = "registry.terraform.io/skysqlinc/skysql"
     }
   }
 }
@@ -166,7 +163,7 @@ output "skysql_credentials" {
 
 # Example how you can generate a command line for the database connection
 output "skysql_cmd" {
-  value = "mariadb --host ${data.skysql_service.default.fqdn} --port 3306 --user ${data.skysql_service.default.service_id} -p --ssl-ca ~/Downloads/skysql_chain_2022.pem"
+  value = "mariadb --host ${data.skysql_service.default.fqdn} --port 3306 --user ${data.skysql_service.default.service_id} -p --ssl-verify-server-cert"
 }
 
 output "availability_zones" {
@@ -187,79 +184,79 @@ In the Terraform project directory, create a `variables.tf` file that contains
 variable "api_key" {
    type                 = string
    sensitive            = true
-   description          = "The SkySQL API Key generated at: https://id.mariadb.com/account/api/generate-key"
+   description          = "The SkySQL API Key generated at: https://app.skysql.com/user-profile/api-keys"
 }
 
 variable "service_type" {
    type                 = string
    default              = "transactional"
-   description          = "Specify \"transactional\" or \"analytical\". For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/service-types/"
+   description          = "Specify \"transactional\" or \"analytical\". For additiona information, See https://apidocs.skysql.com/#/Offering/get_provisioning_v1_service_types"
 }
 
 variable "topology" {
    type                 = string
    default              = "es-single"
-   description          = "Specify a topology. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/topologies/"
+   description          = "Specify a topology. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_topologies"
 }
 
 variable "cloud_provider" {
     type                 = string
     default              = "gcp"
-    description          = "Specify the cloud provider. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/providers/"
+    description          = "Specify the cloud provider. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_providers"
 }
 
 variable "region" {
    type                 = string
    default              = "us-central1"
-   description          = "Specify the region. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/regions/"
+   description          = "Specify the region. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_regions"
 }
 
 variable "availability_zone" {
    type                 = string
    default              = null
-   description          = "Specify the availability zone for the cloud provider and region. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/availability-zones/"
+   description          = "Specify the availability zone for the cloud provider and region. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_providers__provider_name__zones"
 }
 
 variable "architecture" {
    type                 = string
    default              = "amd64"
-   description          = "Specify a hardware architecture. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/architectures/"
+   description          = "Specify a hardware architecture. For additional information, see: https://apidocs.skysql.com/#/CPU-Architectures/get_provisioning_v1_cpu_architectures"
 }
 
 variable "size" {
    type                 = string
    default              = "sky-2x8"
-   description          = "Specify the database node instance size. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/instance-sizes/"
+   description          = "Specify the database node instance size. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_sizes"
 }
 
 variable "storage" {
    type                 = number
    default              = 100
-   description          = "Specify a transactional storage size. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/storage-sizes/"
+   description          = "Specify a transactional storage size. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_topologies__topology_name__storage_sizes"
 }
 
 variable "nodes" {
    type                 = number
    default              = 1
-   description          = "Specify a node count. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/node-count/"
+   description          = "Specify a node count. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_topologies__topology_name__nodes"
 }
 
 variable "sw_version" {
    type                 = string
    default              = null
-   description          = "Specify a software version. For additional information, see: https://mariadb.com/docs/skysql/ref/skynr/selections/versions/"
+   description          = "Specify a software version. For additional information, see: https://apidocs.skysql.com/#/Offering/get_provisioning_v1_versions"
 }
 
 variable "name" {
    type                 = string
-   default              = "skysql-nr-quickstart"
-   description          = "Specify a name for the service. For additional information, see: https://mariadb.com/docs/skysql/selections/nr-launch-time-service-name/"
+   default              = "skysql-quickstart"
+   description          = "Specify a name for the service 4-24 characters in length."
 }
 
 variable "ssl_enabled" {
    type                 = bool
    default              = true
-   description          = "Specify whether TLS should be enabled for the service. For additional information, see: https://mariadb.com/docs/skysql/selections/nr-launch-time-disable-ssltls/"
+   description          = "Specify whether TLS should be enabled for the service."
 }
 
 variable "deletion_protection" {
@@ -270,12 +267,12 @@ variable "deletion_protection" {
 
 variable "ip_address" {
    type                 = string
-   description          = "Specify an IP address in CIDR format to add to the service's IP allowlist. For additional information, see: https://mariadb.com/docs/skysql/security/nr-firewall/"
+   description          = "Specify an IP address in CIDR format to add to the service's IP allowlist."
 }
 
 variable "ip_address_comment" {
    type                 = string
-   description          = "Specify a comment describing the IP address. For additional information, see: https://mariadb.com/docs/skysql/security/nr-firewall/"
+   description          = "Specify a comment describing the IP address."
 }
 ```
 
@@ -308,31 +305,31 @@ ip_address_comment  = "Describe the IP address"
 
 The input variables should be customized for your own needs:
 
-- For `api_key`, set it to the API key previously created in "[Step 1: Generate API Key](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/#Step_1:_Generate_API_Key)".
-- For `service_type`, choose a [Service Type Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/service-types/)
-- For `topology`, choose a [Topology Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/topologies/)
-- For `cloud_provider`, choose a [Cloud Provider Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/providers/)
-- For `region`, choose a [Region Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/regions/)
-- For `availability_zone`, choose a [Availability Zone Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/availability-zones/) or leave it `null` to use the default availability zone for the cloud provider and region
-- For `architecture`, choose a [Hardware Architecture Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/architectures/)
-- For `size`, choose an [Instance Size Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/instance-sizes/)
-- For `storage`, choose a [Transactional Storage Size Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/storage-sizes/)
-- For `nodes`, choose a [Node Count Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/node-count/)
-- For `sw_version`, choose the [Software Version Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/versions/) or leave it `null` to use the default version for the topology
-- For `name`, choose a [Service Name](https://mariadb.com/docs/skysql-dbaas/selections/nr-launch-time-service-name/) for the new service
+- For `api_key`, set it to the API key previously created in "[Step 1: Generate API Key](https://app.skysql.com/user-profile/api-keys)"
+- For `service_type`, choose a [Service Type Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_service_types)
+- For `topology`, choose a [Topology Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_topologies)
+- For `cloud_provider`, choose a [Cloud Provider Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_providers)
+- For `region`, choose a [Region Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_regions)
+- For `availability_zone`, choose a [Availability Zone Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_providers__provider_name__zones) or leave it `null` to use the default availability zone for the cloud provider and region
+- For `architecture`, choose a [Hardware Architecture Selection](https://apidocs.skysql.com/#/CPU-Architectures/get_provisioning_v1_cpu_architectures)
+- For `size`, choose an [Instance Size Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_sizes)
+- For `storage`, choose a [Transactional Storage Size Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_topologies__topology_name__storage_sizes)
+- For `nodes`, choose a node count
+- For `sw_version`, choose the [Software Version Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_versions) or leave it `null` to use the default version for the topology
+- For `name`, choose a name between 4-24 characters for the new service
 - For `deletion_protection`, choose whether the service can be deleted via Terraform (`false`) or whether trying to do so raises an error (`true`)
-- For `ip_address`, choose an IP address to allow through the [Firewall](https://mariadb.com/docs/skysql-dbaas/security/nr-firewall/)
+- For `ip_address`, choose an IP address to allow through the firewall
 - For `ip_address_comment`, provide a description for the IP address
 
 The following steps assume that the file is called `skysql-nr-quickstart.tfvars`.
 
 ### **Step 7: Run `terraform init`**
 
-Initialize the Terraform project directory and download the Terraform provider from the [Terraform Registry](https://registry.terraform.io/providers/mariadb-corporation/skysql) by executing the `[terraform init` command](https://developer.hashicorp.com/terraform/cli/commands/init):
+Initialize the Terraform project directory and download the Terraform provider from the [Terraform Registry](https://registry.terraform.io/namespaces/skysqlinc) by executing the `[terraform init` command](https://developer.hashicorp.com/terraform/cli/commands/init):
 
 `$ terraform init`
 
-If you need to download the provider manually, see "[Manually Install Provider from Binary Distribution](https://mariadb.com/docs/skysql-dbaas/nr-quickstart/terraform-launch-walkthrough/#Manually_Install_Provider_from_Binary_Distribution)".
+If you need to download the provider manually, see "[Manually Install Provider from Binary Distribution](https://registry.terraform.io/providers/skysqlinc/skysql/latest/docs#installing-the-terraform-provider-for-skysql)".
 
 ### **Step 8: Run `terraform plan`**
 
@@ -396,17 +393,13 @@ Then Terraform prints the outputs.
 
 Obtain the connection credentials for the new SkySQL service by executing the following commands:
 
-1. Download `[skysql_chain_2022.pem](https://supplychain.mariadb.com/skysql/skysql_chain_2022.pem)`, which contains the Certificate Authority chain that is used to verify the server's certificate for TLS:
-    
-    `$ curl https://supplychain.mariadb.com/skysql/skysql_chain_2022.pem --output ~/Downloads/skysql_chain_2022.pem`
-    
-2. Obtain the connection command from the `terraform.tfstate` file:
+1. Obtain the connection command from the `terraform.tfstate` file:
     
     `$ jq ".outputs.skysql_cmd" terraform.tfstate`
     
-    `"mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 --user dbpgf00000001 -p --ssl-ca ~/Downloads/skysql_chain_2022.pem"`
+    `"mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 --user dbpgf00000001 -p --ssl-verify-server-cert"`
     
-3. Obtain the user password from the `terraform.tfstate` file:
+2. Obtain the user password from the `terraform.tfstate` file:
     
     `$ jq ".outputs.skysql_credentials.value.password" terraform.tfstate`
     
@@ -417,15 +410,15 @@ Obtain the connection credentials for the new SkySQL service by executing the fo
 
 Connect to the SkySQL service by executing the connection command from the previous step:
 
-`$ mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 --user dbpgf00000001 -p --ssl-ca ~/Downloads/skysql_chain_2022.pem`
+`$ mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 --user dbpgf00000001 -p --ssl-verify-server-cert`
 
 When prompted, type the password and press enter to connect:
 
 ```yaml
 Enter password:
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
-Your MariaDB connection id is 1059
-Server version: 10.6.11-6-MariaDB-enterprise-log MariaDB Enterprise Server
+Your MariaDB connection id is 11691
+Server version: 10.11.6-MariaDB-log MariaDB Server
 
 Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
 
@@ -482,7 +475,7 @@ Destroy complete! Resources: 1 destroyed.
 
 ## Manually Install Provider from Binary Distribution
 
-The SkySQL New Release Terraform provider can be downloaded from the [GitHub releases page](https://github.com/mariadb-corporation/terraform-provider-skysql/releases) as a binary distribution and manually installed.
+The SkySQL New Release Terraform provider can be downloaded from the [GitHub releases page](https://github.com/skysqlinc/terraform-provider-skysql) as a binary distribution and manually installed.
 
 ### **Manually Install Provider on Linux**
 
@@ -490,9 +483,11 @@ With **Linux**, manually install the provider on the target system by performin
 
 1. Set some environment variables to configure your provider version, OS, and architecture:
     
-    `$ export TF_PROVIDER_RELEASE=1.1.0
+    ```
+    $ export TF_PROVIDER_RELEASE=3.0.0
     $ export TF_PROVIDER_OS=linux
-    $ export TF_PROVIDER_ARCH=amd64`
+    $ export TF_PROVIDER_ARCH=amd64
+    ```
     
     For `TF_PROVIDER_ARCH`, the following architectures are supported on Linux:
     
@@ -502,19 +497,19 @@ With **Linux**, manually install the provider on the target system by performin
     - `arm64`
 2. Download the provider from GitHub using `wget`:
     
-    `$ wget -q https://github.com/mariadb-corporation/terraform-provider-skysql/releases/download/v1.1.0/terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip`
+    `$ wget -q https://github.com/skysqlinc/terraform-provider-skysql/releases/download/v3.0.0/terraform-provider-skysql_3.0.0_linux_amd64.zip`
     
 3. Create a Terraform plugin directory:
     
-    `$ mkdir -p ~/.terraform.d/plugins/registry.terraform.io/mariadb-corporation/skysql`
+    `$ mkdir -p ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql`
     
 4. Move the provider's binary distribution to the Terraform plugin directory:
     
-    `$ mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/mariadb-corporation/skysql/`
+    `$ mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
     
 5. Verify that the provider's binary distribution is present in the Terraform plugin directory:
     
-    `$ ls -l ~/.terraform.d/plugins/registry.terraform.io/mariadb-corporation/skysql/`
+    `$ ls -l ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
     
 
 ### **Manually Install Provider on macOS**
@@ -531,9 +526,11 @@ With **macOS**, manually install the provider on the target system by performin
     
 3. Set some environment variables to configure your provider version, OS, and architecture:
     
-    `$ export TF_PROVIDER_RELEASE=1.1.0
+    ```
+    $ export TF_PROVIDER_RELEASE=1.1.0
     $ export TF_PROVIDER_OS=darwin
-    $ export TF_PROVIDER_ARCH=arm64`
+    $ export TF_PROVIDER_ARCH=arm64
+    ```
     
     For `TF_PROVIDER_ARCH`, the following architectures are supported on macOS:
     
@@ -541,25 +538,25 @@ With **macOS**, manually install the provider on the target system by performin
     - `arm64`
 4. Download the provider from GitHub using `wget`:
     
-    `$ wget -q https://github.com/mariadb-corporation/terraform-provider-skysql/releases/download/v1.1.0/terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip`
+    `$ wget -q https://github.com/skysqlinc/terraform-provider-skysql/releases/download/v3.0.0/terraform-provider-skysql_3.0.0_darwin_arm64.zip`
     
 5. Create a Terraform plugin directory:
     
-    `$ mkdir -p ~/.terraform.d/plugins/registry.terraform.io/mariadb-corporation/skysql`
+    `$ mkdir -p ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql`
     
 6. Move the provider's binary distribution to the Terraform plugin directory:
     
-    `$ mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/mariadb-corporation/skysql/`
+    `$ mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
     
 7. Verify that the provider's binary distribution is present in the Terraform plugin directory:
     
-    `$ ls -l ~/.terraform.d/plugins/registry.terraform.io/mariadb-corporation/skysql/`
+    `$ ls -l ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
     
 
 ## Resources
 
-- [GitHub Project](https://github.com/mariadb-corporation/terraform-provider-skysql)
-- [Example Terraform Configuration Files](https://github.com/mariadb-corporation/terraform-provider-skysql/tree/main/examples)
-- [Terraform Registry](https://registry.terraform.io/providers/mariadb-corporation/skysql)
+- [GitHub Project](https://github.com/skysqlinc/terraform-provider-skysql)
+- [Example Terraform Configuration Files](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples)
+- [Terraform Registry](https://registry.terraform.io/namespaces/skysqlinc)
 - [API Documentation](https://apidocs.skysql.com/)
-- [API Reference Documentation](https://mariadb.com/docs/skysql-dbaas/ref/skynr/)
+- [API Reference Documentation](https://skysqlinc.github.io/skysql-docs/Reference%20Guide/REST%20API%20Reference/)

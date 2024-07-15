@@ -63,6 +63,7 @@ markdown_extensions:
 #  - social
 
 extra:
+  generator: false
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/skysqlinc

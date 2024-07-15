@@ -17,8 +17,8 @@ To access the Configuration Manager interface:
 
 Available configuration parameters differ by cloud database topology.
 
-[**Enterprise Server Single Node**](./config/Enterprise-Server-Single-Node.md)
+[**Enterprise Server Single Node**](./Enterprise-Server-Single-Node.md)
 
-[**Enterprise Server With Replica(s)**](./config/Enterprise-Server-with-Replica(s).md)
+[**Enterprise Server With Replica(s)**](./Enterprise-Server-with-Replica(s).md)
 
-[**Maxscale Configuration**](./config/Maxscale-Configuration.md)
+[**Maxscale Configuration**](./Maxscale-Configuration.md)
