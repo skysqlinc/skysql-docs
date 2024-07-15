@@ -1,18 +1,16 @@
 # Service Details page
 
-After [service launch](https://mariadb.com/docs/skysql-dbaas/service-management/nr-launch/), a detailed summary of the service can be accessed in the Service Details interface.
+After [service launch](<./Launch page.md>), a detailed summary of the service can be accessed in the Service Details interface.
 
 # Access to Service Details
 
-1. Log in to the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/).
+1. Log in to the [Portal](https://app.skysql.com/dashboard).
 2. From the Dashboard, click the name of the desired service.
 3. Click the "Details" tab.
 
-![https://mariadb.com/docs/_images/screenshots/services-tx-xpand-details.png](https://mariadb.com/docs/_images/screenshots/services-tx-xpand-details.png)
+![service-details.png](service-details.png)
 
 *Service Details*
-
-https://skysql.mariadb.com/service/DBID/details
 
 # Available Information
 

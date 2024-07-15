@@ -2,35 +2,24 @@
 
 The available panels are :
 
-*Should be evaluated as "Panel name(context, UI tab)"*
+![monitoring.png](monitoring.png)
+*Monitoring page*
 
 ## Current SQL Commands (service)
 
 This panel shows the ratio between the types of SQL statements executed by the service during the selected time interval.
 
-## Current SQL Commands (server)
-
-This panel shows the ratio between the types of SQL statements executed by the ES node during the selected time interval.
-
 ## CPU Load (service,status)
 
-This panel shows the CPU usage for each ES node during the selected time interval.
-
-## CPU Usage / Load
-
-This panel shows the CPU usage for the ES node during the selected time interval.
+This panel shows the CPU usage for each server node during the selected time interval.
 
 ## QPS (service,status)
 
-This panel shows the queries per second (QPS) executed by the ES node during the selected time interval.
+This panel shows the queries per second (QPS) executed by the server node during the selected time interval.
 
 ## Connections (service)
 
 This panel shows the number of used and aborted connections for each ES node along with the max_connections value.
-
-## Connections (server,cluster)
-
-This panel shows the number of clients connected to the MaxScale node.
 
 ## Replicas status
 
@@ -40,17 +29,15 @@ This panel shows summarized values for certain replication-related metadata to h
 
 This panel shows average values for certain replication-related metadata to help determine if the replica ES nodes are currently lagging behind the primary ES node.
 
-## Disk Size by Partition (service,status)
+## Disk Size of Data
 
-This panel shows the amount of storage space used (as the usage percentage, actual size, and total size) by each ES node.
+This panel shows the amount of storage space used (as the usage percentage, actual size, and total size) by each server node.
 
-## Disk Size by Partition (server)
+## Disk Size of Logs
 
-This panel shows the amount of storage space used by the ES node during the selected time interval.
+This panel shows the amount of storage space used by each server node during the selected time interval.
 
-## Disk Size by Partition (service,system)
-
-This panel shows the amount of storage space used by all ES nodes during the selected time interval.
+![lags-panel.png](lags-panel.png)
 
 ## GTID Replication Position (service,replicas)
 
@@ -67,6 +54,8 @@ This panel shows the current binary log position of the replica SQL thread for e
 ## Read Primary Log Position
 
 This panel shows the current binary log position of the replica I/O thread for each ES node during the selected time interval.
+
+![queries-panel.png](queries-panel.png)
 
 ## Top Command Counters (service,queries)
 
@@ -108,6 +97,8 @@ This panel shows the number of client threads running on all ES nodes during the
 
 This panel shows the number of client threads connected and running on the ES node during the selected time interval.
 
+![database-panel.png](database-panel.png)
+
 ## MaxScale Service Connections
 
 This panel shows the number of clients connected to all MaxScale nodes during the selected time interval.
@@ -144,13 +135,12 @@ This panel shows the number of tables opened by the database server on the ES no
 
 This panel shows the number of tables that have been opened by all ES nodes during the selected time interval.
 
-## MariaDB Select Types
 
-This panel shows the number of times the ES node has used certain execution strategies to execute SELECT statements during the selected time interval.
+![system-panel.png](system-panel.png)
 
-## MariaDB Sorts
+## CPU Load
 
-This panel shows the number of times the ES node has used certain algorithms to sort data during the selected time interval.
+This panel shows the CPU usage for each server node during the selected time interval.
 
 ## Memory Usage
 

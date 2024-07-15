@@ -18,7 +18,7 @@ This walkthrough explains how to launch database services and manage the lifecyc
 
 Use it on subsequent request, e.g:
 ```bash 
- curl --request GET 'https://api.skysql.com/provisioning/v1/services' \\
+ curl --request GET 'https://api.skysql.com/provisioning/v1/services' \
  --header "X-API-Key: $API_KEY"
 ```
 
@@ -91,17 +91,17 @@ EOF
 
 This configuration is suitable for a quick test, but a more customized configuration should be selected for performance testing or for alignment to the needs of production workloads:
 
-- For `service_type`, choose a [Service Type Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/service-types/)
-- For `topology`, choose a [Topology Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/topologies/)
-- For `provider`, choose a [Cloud Provider Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/providers/) (`aws` or `gcp`)
-- For `region`, choose a [Region Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/regions/)
-- For `architecture`, choose a [Hardware Architecture Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/architectures/)
-- For `size`, choose an [Instance Size Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/instance-sizes/)
-- For `storage`, choose a [Transactional Storage Size Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/storage-sizes/)
-- For `nodes`, choose a [Node Count Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/node-count/)
-- For `version`, choose the [Software Version Selection](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/versions/)
-- For `name`, choose a [Service Name](https://mariadb.com/docs/skysql-dbaas/selections/nr-launch-time-service-name/) for the new service
-- For `allow_list`, set the client IP address using CIDR notation, so that the client can connect through the [Firewall](https://mariadb.com/docs/skysql-dbaas/security/nr-firewall/)
+- For `service_type`, choose a [Service Type Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_service_types)
+- For `topology`, choose a [Topology Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_topologies)
+- For `provider`, choose a [Cloud Provider Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_providers) (`aws`,`gcp` or `azure`)
+- For `region`, choose a [Region Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_regions)
+- For `architecture`, choose a [Hardware Architecture Selection](https://apidocs.skysql.com/#/CPU-Architectures/get_provisioning_v1_cpu_architectures)
+- For `size`, choose an [Instance Size Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_sizes)
+- For `storage`, choose a [Transactional Storage Size Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_topologies__topology_name__storage_sizes)
+- For `nodes`, choose a node count
+- For `version`, choose the [Software Version Selection](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_versions)
+- For `name`, choose a name between 4-24 characters for the new service
+- For `allow_list`, set the client IP address using CIDR notation, so that the client can connect through the firewall
 
 1. Provide the request to the `[/provisioning/v1/services` API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_services,POST/) to create (launch) a new database service and save the response to the `response-service.json` file:
 
@@ -126,7 +126,7 @@ Upon success, the command will return JSON with details about the new service.
 
 ### **Step 4: Check Service State**
 
-Before advancing, check the service state using the `[/provisioning/v1/services/${SKYSQL_SERVICE}` API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_services_slash_ocb_service_id_ccb_,GET/):
+Before advancing, check the service state using the `/provisioning/v1/services/${SKYSQL_SERVICE}` [API endpoint](https://apidocs.skysql.com/#/allowed_roles%3AADMIN%3BMEMBER%3BVIEWER/get_provisioning_v1_services__service_id_):
 
 ```bash
 curl -sS --location --request GET \
@@ -144,13 +144,7 @@ When the service has been launched, the JSON payload contains `"ready"`, and yo
 
 Obtain the connection credentials for the new SkySQL service by executing the following commands:
 
-1. If `ssl_enabled` is `true` on your service (the default), download `[skysql_chain_2022.pem](https://supplychain.mariadb.com/skysql/skysql_chain_2022.pem)`, which contains the Certificate Authority chain that is used to verify the server's certificate for TLS:
-    
-    ```bash
-    $ curl https://supplychain.mariadb.com/skysql/skysql_chain_2022.pem --output ~/Downloads/skysql_chain_2022.pem
-    ```
-    
-2. Obtain the hostname and port of the service and save them to the `SKYSQL_FQDN` and `SKYSQL_PORT` environment variables:
+1. Obtain the hostname and port of the service and save them to the `SKYSQL_FQDN` and `SKYSQL_PORT` environment variables:
     - The hostname is specified with the `"fqdn"` key.
         
         ```bash
@@ -163,7 +157,7 @@ Obtain the connection credentials for the new SkySQL service by executing the fo
         $ export SKYSQL_PORT=`jq '.endpoints[0].ports[] | select(.name=="readwrite") | .port' response-state.json`
         ```
         
-3. Obtain the default username and password for the service using the `[/provisioning/v1/services/${SKYSQL_SERVICE}/security/credentials` API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_services_slash_ocb_service_id_ccb_slash_security_slash_credentials/) and save the response to the `response-credentials.json` file:
+3. Obtain the default username and password for the service using the `/provisioning/v1/services/${SKYSQL_SERVICE}/security/credentials` [API endpoint](https://apidocs.skysql.com/#/allowed_roles%3AADMIN%3BMEMBER%3BVIEWER/get_provisioning_v1_services__service_id__security_credentials) and save the response to the `response-credentials.json` file:
 
 ```bash
 curl -sS --location --request GET \
@@ -200,7 +194,7 @@ mariadb --host ${SKYSQL_FQDN} --port ${SKYSQL_PORT} \
    --ssl-verify-server-cert 
 ```
 
-If you don't want the password to appear on the command-line, specify the [--password command-line option](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb/password/) without an argument to be prompted for a password.
+If you don't want the password to appear on the command-line, specify the `--password` command-line option without an argument to be prompted for a password.
 
 ### **Step 7: Save Connection Information (Optional)**
 
