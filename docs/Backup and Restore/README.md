@@ -1,4 +1,11 @@
 # **Backup and Restore**
+
+## **Pricing**
+> While daily automated backups are provided, using the SkySQL Backup and Restore API may incur nominal additional charges. For more information, please contact info@skysql.com."
+
+
+The following documentation describes the API for the SkySQL Backup Service. This can be used directly with any HTTP client.
+
 The Backup and Restore service provides SkySQL customers with a comprehensive list of features through a secure API and a user-friendly portal. The service extends the automated nightly backups with a number of self-service features. Users can automatically create and store backups of their databases to ensure additional data safety or provide a robust disaster recovery solution. The backups are stored on reliable and secure cloud storage, ensuring they are readily available when needed. The backup process is seamless and does not affect the database performance. SkySQL also offers the flexibility to customize backup schedule according to your specific needs. Backups on large data sets can take time.
 
 You instruct the creation of a backup using a "schedule". You can either schedule a one-time backup (schedule now) or set up automatic backups using a cron schedule. A backup schedule results in a backup job which can be tracked using the status API. We support the following types of backups: snapshot, full (physical), incremental (physical), binary log, and dump (logical).
@@ -179,7 +186,7 @@ Binlogs record database changes (data modifications, table structure changes) in
 ## Restores
 
 **WARNING**
-> Restoring from a Backup will likely wipe out all data in your target DB service. If you aren't sure, first take a backup of the DB service where a restore is being performed. The DB being restored will also be stopped during a Restore. You will need to restart it. 
+> Restoring from a backup will erase all data in your target DB service. If you are uncertain, it is advisable to first create a backup of the DB service before initiating the restore process. Consider restoring to a new database instance as a preferred approach. The database being restored will be temporarily stopped during the restoration. You will need to restart it afterward.
 
 Users can instruct the restore of their SkySQL Database from their own SkySQL storage or from an external storage they own. The restore API provides options for listing, adding, and deleting a scheduled restore operation.
 
@@ -206,9 +213,4 @@ SkySQL Users can delete their already defined database restore schedules with th
 #### Delete Restore Examples
 
 - [Examples](Delete Restore Examples.md)
-    
-## Pricing 
-
-While the daily automated backups are included, the use of this API will incur nominal additional charges. Please contact info@skysql.com for details. 
-
-The following documentation describes the API for the SkySQL Backup Service. This can be used directly with any HTTP client.
+ 
