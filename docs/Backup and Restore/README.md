@@ -213,9 +213,4 @@ SkySQL Users can delete their already defined database restore schedules with th
 #### Delete Restore Examples
 
 - [Examples](Delete Restore Examples.md)
-    
-## Pricing 
-
-While the daily automated backups are included, the use of this API will incur nominal additional charges. Please contact info@skysql.com for details. 
-
-The following documentation describes the API for the SkySQL Backup Service. This can be used directly with any HTTP client.
+ 
