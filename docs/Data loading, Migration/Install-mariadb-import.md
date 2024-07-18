@@ -1,6 +1,6 @@
 # Install mariadb-import
 
-MariaDB SkySQL customers can import data into a SkySQL service using the `mariadb-import` utility:
+SkySQL customers can import data into a SkySQL service using the `mariadb-import` utility:
 
 - The `mariadb-import` utility provides a command-line interface (CLI)
 - The `mariadb-import` utility can import data from TSV and CSV files
@@ -92,8 +92,8 @@ The procedure to import data depends on the operating system.
 
 ### **Linux**
 
-1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your MariaDB SkySQL service.
-2. Use MariaDB Import with the connection information to import the data from the TSV or CSV file into your MariaDB SkySQL database service:
+1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
+2. Use MariaDB Import with the connection information to import the data from the TSV or CSV file into your SkySQL database service:
     
     
     ```bash
@@ -123,8 +123,8 @@ The procedure to import data depends on the operating system.
     
     `$ SET "PATH=C:\Program Files\MariaDB 10.6\bin;%PATH%"`
     
-2. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your MariaDB SkySQL service.
-3. Use MariaDB Import with the connection information to import the data from the TSV or CSV file into your MariaDB SkySQL database service:
+2. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
+3. Use MariaDB Import with the connection information to import the data from the TSV or CSV file into your SkySQL database service:
     
     ```bash
     mariadb-import --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \

@@ -1,6 +1,6 @@
 # Install Mariadb-dump
 
-MariaDB SkySQL customers can manually create a backup of a SkySQL service using the `mariadb-dump` utility:
+SkySQL customers can manually create a backup of a SkySQL service using the `mariadb-dump` utility:
 
 - The `mariadb-dump` utility provides a command-line interface (CLI)
 - The `mariadb-dump` utility is available for Linux and Windows
@@ -96,7 +96,7 @@ If you plan to restore the backup to a SkySQL service, the `mysql` database sh
 
 ### **Linux**
 
-1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your MariaDB SkySQL service.
+1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
 2. Use your connection parameters in the following command line:
 
 ```bash
@@ -128,7 +128,7 @@ After the command is executed, you will be prompted for a password. Enter the de
     
     `$ SET "PATH=C:\Program Files\MariaDB 10.6\bin;%PATH%"`
     
-2. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your MariaDB SkySQL service.
+2. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
 3. Use your connection parameters in the following command line:
 
 ```bash

@@ -1,6 +1,6 @@
 # Uptime SLA
 
-MariaDB SkySQL customers should assess the availability requirements of their application and choose an appropriate service tier to meet their objectives. MariaDB SkySQL customers are on the Foundation Tier unless they have specifically purchased and paid for Power Tier service.
+SkySQL customers should assess the availability requirements of their application and choose an appropriate service tier to meet their objectives. SkySQL customers are on the Foundation Tier unless they have specifically purchased and paid for Power Tier service.
 
 ## **Performance Standard**
 
@@ -57,7 +57,7 @@ A customer will forfeit their right to receive a [Service Credit](https://maria
     
 - **Underlying infrastructure**
     
-    Impact to service availability caused by availability or performance of cloud services used to operate MariaDB SkySQL is excluded. This includes any such outages in Amazon Web Services (AWS) and Amazon Elastic Kubernetes Service (EKS), and Google Cloud Platform (GCP) and Google Kubernetes Engine (GKE).
+    Impact to service availability caused by availability or performance of cloud services used to operate SkySQL is excluded. This includes any such outages in Amazon Web Services (AWS) and Amazon Elastic Kubernetes Service (EKS), and Google Cloud Platform (GCP) and Google Kubernetes Engine (GKE).
     
 - **Network interruption**
     
@@ -65,7 +65,7 @@ A customer will forfeit their right to receive a [Service Credit](https://maria
     
 - **External factors**
     
-    Impact to your use of service based on factors outside MariaDB SkySQL are excluded. This includes periods of downtime for your applications.
+    Impact to your use of service based on factors outside SkySQL are excluded. This includes periods of downtime for your applications.
     
 - **Uncorroborated impacts**
     
@@ -73,7 +73,7 @@ A customer will forfeit their right to receive a [Service Credit](https://maria
     
 - **Portal access**
     
-    Impact to your ability to access or use the MariaDB SkySQL portal, an interface provided to manage services, is excluded. This includes any component and content linked from the MariaDB SkySQL portal, including Documentation, the Customer Support portal, Monitoring, and Workload Analysis. These components operate independently from database services and do not impact database availability.
+    Impact to your ability to access or use the SkySQL portal, an interface provided to manage services, is excluded. This includes any component and content linked from the SkySQL portal, including Documentation, the Customer Support portal, Monitoring, and Workload Analysis. These components operate independently from database services and do not impact database availability.
     
 - **Resource usage**
     
@@ -85,7 +85,7 @@ A customer will forfeit their right to receive a [Service Credit](https://maria
     
 - **Non-paying customers**
     
-    The [Performance Standard](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Performance_Standard) applies only to paying MariaDB SkySQL customers who are paid-in-full. All other MariaDB SkySQL customers, including those not paid-in-full and those customers participating in a free or credited service trial, are excluded.
+    The [Performance Standard](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Performance_Standard) applies only to paying SkySQL customers who are paid-in-full. All other SkySQL customers, including those not paid-in-full and those customers participating in a free or credited service trial, are excluded.
     
 - **Customer-directed maintenance**
     

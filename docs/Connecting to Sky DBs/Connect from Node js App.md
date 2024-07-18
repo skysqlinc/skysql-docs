@@ -10,7 +10,9 @@ MariaDB Connector/Node.js is usually installed either from the Node.js repositor
 
 To install MariaDB Connector/Node.js from the Node.js repository, use NPM:
 
-`$ npm install mariadb`
+```bash
+npm install mariadb
+```
 
 NPM connects to the Node.js repository and downloads MariaDB Connector/Node.js and all relevant dependencies into the `node_modules/` directory.
 
@@ -19,7 +21,7 @@ NPM connects to the Node.js repository and downloads MariaDB Connector/Node.js a
 To download and install the MariaDB Connector/Node.js manually from source code:
 
 1. Go to the MariaDB Connectors download page:
-    - [https://mariadb.com/downloads/#connectors](https://mariadb.com/downloads/#connectors)
+    - [https://mariadb.com/downloads/connectors/connectors-data-access/nodejs-connector](https://mariadb.com/downloads/connectors/connectors-data-access/nodejs-connector)
 2. In the "Product" dropdown, select the Node.js connector.
 3. Click the "Download" button to download the source code package
 4. When the source code package finishes downloading, install it with NPM:
@@ -37,24 +39,29 @@ Node.js developers can use MariaDB Connector/Node.js to establish client connect
 
 # Require Callback API
 
-MariaDB Connector/Node.js provides two different connection implementations: one built on the [Promise API](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/nodejs/promise/) and the other built on the Callback API.
+MariaDB Connector/Node.js provides two different connection implementations: one built on the [Promise API](https://github.com/mariadb-corporation/mariadb-connector-nodejs/blob/master/documentation/promise-api.md) and the other built on the Callback API.
 
 To use the Callback API, use the following module:
 
-**`const** mariadb = require**(**'mariadb/callback'**);**`
+```js
+const** mariadb = require**(**'mariadb/callback'**);
+```
 
 # Connect
 
-`createConnection(options) -> Connection` is the base function used to create a `Connection` object.
+```js
+createConnection(options) -> Connection
+```
+is the base function used to create a `Connection` object.
 
 The `createConnection(options)` function returns a `Connection` object.
 
-Determine the [connection information](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/) for your SkySQL database service:
+Determine the [connection information](<./README.md>) for your SkySQL database service:
 
 | Option | Description |
 | --- | --- |
-| host | The fully Qualified Domain Name in the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/ |
-| port | The Read-Write Port or Read-Only Port in the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/ |
+| host | The fully Qualified Domain Name from the "Connect" window in SkySQL portal |
+| port | The Read-Write Port or Read-Only Port from the "Connect" window in SkySQL portal |
 | user | The desired username, which might be the default username in the Service Credentials view |
 | password | The user's password, which might be the default password in the Service Credentials view if it was not yet customized |
 | database | Database name to establish a connection to. No default is configured. |
@@ -63,7 +70,7 @@ Determine the [connection information](https://mariadb.com/docs/skysql-previous
 
 # Code Example: Connect
 
-The following code example connects using the database and user account created in the [example setup](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/nodejs/example-setup/):
+The following code example connects using the database and user account created in the [example setup](https://mariadb.com/docs/server/connect/programming-languages/c/example-setup/):
 
 ```jsx
 const mariadb = require('mariadb/callback');
@@ -115,11 +122,13 @@ Node.js developers can use MariaDB Connector/Node.js to establish client connect
 
 # Require Promise API
 
-MariaDB Connector/Node.js provides two different connection implementations: one built on the Promise API and the other built on the [Callback API](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/nodejs/callback/). Promise is the default.
+MariaDB Connector/Node.js provides two different connection implementations: one built on the Promise API and the other built on the [Callback API](https://github.com/mariadb-corporation/mariadb-connector-nodejs/blob/master/documentation/callback-api.md). Promise is the default.
 
 To use the Promise API, use the `mariadb` module:
 
-**`const** mariadb = require**(**'mariadb'**);**`
+```js
+const** mariadb = require**(**'mariadb'**);
+```
 
 # Connect
 
@@ -127,17 +136,14 @@ To use the Promise API, use the `mariadb` module:
 
 The `createConnection(options)` returns a `Promise` that resolves to a `Connection` object if no error occurs, and rejects with an `Error` object if an error occurs.
 
-Determine the [connection information](https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/) for your SkySQL database service:
+Determine the [connection information](<./README.md>) for your SkySQL database service:
 
 | Option | Description |
 | --- | --- |
-| host | The fully Qualified Domain Name in the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/ |
-| port | The Read-Write Port or Read-Only Port in the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/ |
+| host | The fully Qualified Domain Name from the "Connect" window in SkySQL portal |
+| port | The Read-Write Port or Read-Only Port from the "Connect" window in SkySQL portal |
 | user | The desired username, which might be the default username in the Service Credentials view |
 | password | The user's password, which might be the default password in the Service Credentials view if it was not yet customized |
-| ssl.ca | The contents of the skysql_chain.pem file containing the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/#Certificate_Authority_Chain
-• https://supplychain.mariadb.com/skysql_chain.pem
-• https://supplychain.mariadb.com/aws_skysql_chain.pem |
 | database | Database name to establish a connection to. No default is configured. |
 | connectTimeout | Connection timeout in milliseconds. In Connector/Node.js 2.5.6, the default value changed to 1000. The default value for earlier versions is 10000. |
 | rowsAsArray | A boolean value to indicate whether to return result sets as array instead of the default JSON. Arrays are comparatively faster. |
@@ -158,7 +164,7 @@ MDB_PASS = db_user_password
 
 # Code Example: Connect
 
-The following code example connects using the database and user account created in [Setup for Examples](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/nodejs/example-setup/):
+The following code example connects using the database and user account created in [Setup for Examples](https://mariadb.com/docs/server/connect/programming-languages/c/example-setup/):
 
 ```jsx
 // Required Modules
@@ -211,16 +217,3 @@ main();
 - In the `try` block, create a new connection using the `mariadb#createConnection(options)` function in the Promise API.
 - Send error messages if any to the console in the `catch` block.
 - When you are done with a connection, close it to free resources. Close the connection using the `close()` function.
-
----
-
-| Connector | MariaDB Connector/Node.js |
-| --- | --- |
-| Supported Versions | https://mariadb.com/docs/server/release-notes/mariadb-connector-nodejs-2-5/https://mariadb.com/docs/server/release-notes/mariadb-connector-nodejs-3-2/ |
-| Programming Language | JavaScript |
-| Programming Language Version | • Connector/Node.js 2.5: Node.js 16
-• Connector/Node.js 3.2: Node.js 16, 18, 20 |
-| API | Promise APICallback API |
-| Supports TLS | Yes |
-| Supports Connection Pools | Yes |
-| License | GNU Lesser General Public License v2.1 |

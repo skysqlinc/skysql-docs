@@ -115,7 +115,7 @@ Finally, here is the reference to the utility where you will find all the [many
 
 ## **(2) Using MariaDB client**
 
-Use [MariaDB Client](../Connecting%20to%20Sky%20DBs/README.md) with the connection information to export your schema from your MariaDB SkySQL database service. Here is an example to export all rows from a single table:
+Use [MariaDB Client](../Connecting%20to%20Sky%20DBs/README.md) with the connection information to export your schema from your SkySQL database service. Here is an example to export all rows from a single table:
 
 ```sql
 mariadb --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \

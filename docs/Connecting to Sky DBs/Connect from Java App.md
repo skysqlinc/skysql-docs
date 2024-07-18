@@ -2,21 +2,12 @@
 
 MariaDB Connector/J enables Java applications to connect to SkySQL using a native MariaDB connector.
 
-# Download the connector ..
-
-| Version | Latest Release | Latest Release Date | Maturity |
-| --- | --- | --- | --- |
-| MariaDB Connector/J 3.1 | https://mariadb.com/docs/server/release-notes/mariadb-connector-j-3-1/3-1-4/ | 2023-05-01 | General Availability |
-| MariaDB Connector/J 3.0 | https://mariadb.com/docs/server/release-notes/mariadb-connector-j-3-0/3-0-10/ | 2023-01-11 | General Availability |
-| MariaDB Connector/J 2.7 | https://mariadb.com/docs/server/release-notes/mariadb-connector-j-2-7/2-7-9/ | 2023-03-22 | General Availability |
-| MariaDB Connector/J 1.8 | MariaDB Connector/J 1.8.0 | 2019-02-11 | GA |
-
 # Install MariaDB Connector/J via JAR
 
 To download the JAR file manually:
 
 1. Go to the [MariaDB Connector/J download page](https://mariadb.com/downloads/connectors/connectors-data-access/java8-connector/)
-2. Within the "Product" dropdown, choose the "Java 8 connector" or "Java 7 connector".
+2. Within the "Product" dropdown, choose the "Java 8+ connector".
 3. In the "Version" dropdown, choose the desired version.
 4. Click the "Download" button to download the JAR file.
 5. When the JAR file finishes downloading, place it into the relevant directory on your system.
@@ -32,18 +23,18 @@ To use Maven to install MariaDB Connector/J, add the dependency to your `pom.xm
 <dependency>
    <groupId>org.mariadb.jdbc</groupId>
    <artifactId>mariadb-java-client</artifactId>
-   <version>3.0.10</version>
+   <version>3.4.1</version>
 </dependency>
 ```
 
-For additional information on available releases, see the "[Release Notes for MariaDB Connector/J](https://mariadb.com/docs/server/release-notes/mariadb-connector-j-3-1/)".
+For additional information on available releases, see the "[Release Notes for MariaDB Connector/J](https://mariadb.com/kb/en/mariadb-connector-j-release-notes/)".
 
 Depending on the features you plan to use, you may need to add some additional dependencies to `pom.xml`.
 
 If you downloaded the connector JAR, place it on your CLASSPATH
 
 ```bash
-export CLASSPATH="/path/to/application:/path/to/mariadb-java-client-3.0.10.jar"
+export CLASSPATH="/path/to/application:/path/to/mariadb-java-client-3.4.1.jar"
 ```
 
 ### **Connector/J 3.0**
@@ -111,12 +102,3 @@ public class App {
     }
 }
 ```
-
-| Connector | MariaDB Connector/J |
-| --- | --- |
-| Supported Versions | https://mariadb.com/docs/server/release-notes/mariadb-connector-j-3-1/https://mariadb.com/docs/server/release-notes/mariadb-connector-j-3-0/https://mariadb.com/docs/server/release-notes/mariadb-connector-j-2-7/MariaDB Connector/J 1.8 |
-| Programming Language | Java |
-| Programming Language Version | Java 17, Java 11, Java 8 (Connector/J 3.1)Java 17, Java 11, Java 8 (Connector/J 3.0)Java 17, Java 11, Java 8 (Connector/J 2.7)Java 7 (Connector/J 1.8) |
-| API | JDBC 4.2 (Connector/J 3.1)JDBC 4.2 (Connector/J 3.0)JDBC 4.2 (Connector/J 2.7)JDBC 4.1 (Connector/J 1.8) |
-| Supports TLS | Yes |
-| License | GNU Lesser General Public License v2.1 |
