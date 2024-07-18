@@ -32,7 +32,7 @@ Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can he
 ---
 
 # Replicating data from an External DB
-Click [here](Replicating%20data%20from%20external%20DB%20cdf15e1cd8d24880858d6cd2f50d8fd2.md) for a detailed walk through of the steps involved.
+Click [here](https://skysqlinc.github.io/skysql-docs/Data%20loading%2C%20Migration/Replicating%20data%20from%20external%20DB/) for a detailed walk through of the steps involved.
 
 ---
 
