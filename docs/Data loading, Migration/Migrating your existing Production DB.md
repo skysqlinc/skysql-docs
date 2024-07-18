@@ -35,9 +35,9 @@ For assistance with a migration:
 - Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
 - New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
 
-## Migration Process
+# Assisted Migration to SkySQL
 
-We use a multi-step process to assist customers with migrations:
+Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can help design a migration plan to suit your needs. We use a multi-step process to assist customers with migrations:
 
 1. **Assessment** of application requirements, inventory, and identified challenges
 2. **Schema Migration** including tables, constraints, indexes, and views
@@ -53,7 +53,6 @@ For additional information, see "[Migrate to MariaDB from Oracle](https://mariad
 # Migrate to SkySQL using AWS DMS
 
 This blog article details how to [Migrate RDS MySQL to SkySQL MariaDB Using AWS Data Migration Service](<./migrate-rds-mysql-to-skysql-using-amazon-data-migration-service_whitepaper_1109.pdf>)
-
 ---
 
 # Replicating data from an External DB
@@ -67,6 +66,7 @@ For assistance with a migration:
 
 ## Best Practices
 
+---
 
 ### Live Replication for Minimal Downtime
 
