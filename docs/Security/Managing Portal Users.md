@@ -1,10 +1,10 @@
 # Managing Portal Users
 
-By default, SkySQL services are launched and managed in the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/) from a single [MariaDB ID](https://mariadb.com/docs/skysql-dbaas/working/nr-mariadb-id/).
+By default, SkySQL services are launched and managed in the [Portal](<../../Portal features/>).
 
-For multiple MariaDB ID accounts to jointly manage a set of SkySQL services, these accounts can be added to a Team.
+For multiple SkySQL ID accounts to jointly manage a set of SkySQL services, these accounts can be added to a Team.
 
-The User Management interface in the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/) is a self-service tool to manage your Team.
+The User Management interface in the [Portal](<../../Portal features/>) is a self-service tool to manage your Team.
 
 A Team can be managed by the initial user on the Team or by any Administrator added to the Team.
 
@@ -14,15 +14,13 @@ An email address can belong to only one SkySQL Team. If an email address is alre
 
 To access the User Management interface:
 
-1. Log in to the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/).
+1. Log in to the [Portal](https://app.skysql.com/dashboard).
 2. Click the "Settings" link in the main menu (left navigation in the Portal).
-3. Click the "User Management" button.
+3. Click the [User Management](https://app.skysql.com/settings/user-management) button.
 
-![https://mariadb.com/docs/_images/screenshots/user-management.png](https://mariadb.com/docs/_images/screenshots/user-management.png)
+![user-management.png](user-management.png)
 
 *User Management*
-
-https://skysql.mariadb.com/settings/user-management
 
 ## **Roles**
 
@@ -35,11 +33,9 @@ Each Team member has one of the following roles:
 
 ## **Add a Team Member**
 
-![https://mariadb.com/docs/_images/screenshots/user-management-invite.png](https://mariadb.com/docs/_images/screenshots/user-management-invite.png)
+![user-management-invite.png](user-management-invite.png)
 
 *User Management - Invite*
-
-https://skysql.mariadb.com/settings/user-management
 
 From the User Management interface, an Administrator can invite someone to join a team:
 

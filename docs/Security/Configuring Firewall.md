@@ -2,7 +2,7 @@
 
 SkySQL services are firewall-protected.
 
-Access to MariaDB SkySQL services is managed on a per-service basis.
+Access to SkySQL services is managed on a per-service basis.
 
 IPv4 addresses and IPv4 netblocks can be added to the allowlist to enable service access. Access from other addresses will be blocked.
 
@@ -14,23 +14,19 @@ By default, when a service is launched its allowlist is empty. All external traf
 
 To modify Secure Access settings:
 
-1. Log in to the [Portal](https://mariadb.com/docs/skysql-dbaas/working/nr-portal/).
+1. Log in to the [Portal](https://app.skysql.com/dashboard).
 2. Click the "Settings" link in the main menu (left navigation in the Portal).
 3. Click the "Secure Access" button.
 
-![https://mariadb.com/docs/_images/screenshots/settings-secure-access.png](https://mariadb.com/docs/_images/screenshots/settings-secure-access.png)
+![secure-access.png](secure-access.png)
 
-*Secure Access settings.*
+*Secure Access Settings*
 
-https://skysql.mariadb.com/settings/secure-access
+Alternatively, you can access firewall settings for a specific service by clicking on the "MANAGE" button for the desired service, then choose "Manage allowlist" from the menu.
 
-Alternatively, you can access firewall settings for a specific service by clicking on the "MANAGE" button for the desired service, then choose "Security access" from the menu.
+![allow-list-dialog.png](allow-list-dialog.png)
 
-![https://mariadb.com/docs/_images/screenshots/services-tx-xpand-creating-allowlist-dialog.png](https://mariadb.com/docs/_images/screenshots/services-tx-xpand-creating-allowlist-dialog.png)
-
-*Whitelist dialog.*
-
-https://skysql.mariadb.com/dashboard
+*Allowlist dialog*
 
 ## **Add to the Allowlist**
 
@@ -40,7 +36,7 @@ IP addresses can be added to the allowlist from the Firewall settings interface 
 2. Optionally enter an alias for this address. An alias provides a way to remember why an address was added to the allowlist.
 3. Click the "Save" button.
 
-After saving the change, a [notification](https://mariadb.com/docs/skysql-dbaas/working/nr-notifications/) will be provided when the change has been applied.
+After saving the change, a [notification](<../Portal features/Notifications.md>) will be provided when the change has been applied.
 
 ## **Remove from the Allowlist**
 
@@ -49,7 +45,7 @@ IP addresses can be removed from the allowlist from the Firewall settings interf
 1. Click the "X" button to the right of the entry to remove.
 2. Click the "Save" button.
 
-After saving the change, a [notification](https://mariadb.com/docs/skysql-dbaas/working/nr-notifications/) will be provided when the change has been applied.
+After saving the change, a [notification](<../Portal features/Notifications.md>) will be provided when the change has been applied.
 
 ## **Edit an Allowlist Entry**
 
@@ -58,4 +54,4 @@ An allowlist entry can be edited from the Firewall settings interface or a servi
 1. Modify the IP address or alias of the desired allowlist entry.
 2. Click the "Save" button.
 
-After saving the change, a [notification](https://mariadb.com/docs/skysql-dbaas/working/nr-notifications/) will be provided when the change has been applied.
+After saving the change, a [notification](<../Portal features/Notifications.md>) will be provided when the change has been applied.

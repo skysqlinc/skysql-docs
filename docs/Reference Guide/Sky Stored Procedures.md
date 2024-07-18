@@ -1,7 +1,7 @@
 
 ## change_external_primary
 
-Executes the [CHANGE MASTER TO](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/CHANGE_MASTER_TO/) statement to configures inbound replication from an external primary server based on binary log file and position.
+Executes the [CHANGE MASTER TO](https://mariadb.com/kb/en/change-master-to/) statement to configures inbound replication from an external primary server based on binary log file and position.
 
 ```sql
 CALL sky.change_external_primary(
@@ -14,11 +14,10 @@ CALL sky.change_external_primary(
 ```
 
 ```sql
-+------------------------------+
-| Run_this_grant_on_your_external_primary                                                                      |
-+------------------------------+
-| GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
-+------------------------------+
+
+-- Run_this_grant_on_your_external_primary                                                                      |
+GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
+
 ```
 
 ## change_connect_retry
@@ -33,7 +32,7 @@ If the value is NULL, a default retry interval of 60 seconds will be used.
 
 ## change_external_primary_gtid
 
-Executes the [CHANGE MASTER TO](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/CHANGE_MASTER_TO/) statement to configures inbound replication from an external primary server based on the provided GTID.
+Executes the [CHANGE MASTER TO](https://mariadb.com/kb/en/change-master-to/) statement to configures inbound replication from an external primary server based on the provided GTID.
 
 ```sql
 CALL sky.change_external_primary_gtid(
@@ -45,11 +44,8 @@ CALL sky.change_external_primary_gtid(
 ```
 
 ```sql
-+------------------------------+
-| Run_this_grant_on_your_external_primary                                                                      |
-+------------------------------+
-| GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
-+------------------------------+
+-- Run_this_grant_on_your_external_primary
+GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';
 ```
 
 ## change_heartbeat_period
@@ -84,7 +80,7 @@ If the value is NULL, SSL encryption will be enabled by default.
 
 ## gtid_status
 
-Provides a list of GTID-related [system variables](https://mariadb.com/docs/skysql-previous-release/ref/mdb/system-variables/).
+Provides a list of GTID-related [system variables](https://mariadb.com/kb/en/server-system-variables/).
 
 ```sql
 CALL sky.gtid_status();
@@ -103,7 +99,7 @@ CALL sky.gtid_status();
 
 ## kill_session
 
-Kills any non-root or non-SkySQL threads, similar to the [KILL](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/KILL/) statement.
+Kills any non-root or non-SkySQL threads, similar to the [KILL](https://mariadb.com/kb/en/kill/) statement.
 
 ```sql
 CALL sky.kill_session(IN thread BIGINT);
@@ -111,23 +107,20 @@ CALL sky.kill_session(IN thread BIGINT);
 
 ## replication_grants
 
-Provides a [GRANT](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/GRANT/) statement to run on an external primary server when configuring inbound replication.
+Provides a [GRANT](https://mariadb.com/kb/en/grant/) statement to run on an external primary server when configuring inbound replication.
 
 ```sql
 CALL sky.replication_grants();
 ```
 
 ```sql
-+------------------------------+
-| Run_this_grant_on_your_external_primary                                                                      |
-+------------------------------+
-| GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
-+------------------------------+
+-- Run_this_grant_on_your_external_primary
+GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';
 ```
 
 ## replication_status
 
-Executes the [SHOW REPLICA STATUS](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/SHOW_REPLICA_STATUS/) statement to obtain the status of inbound replication.
+Executes the [SHOW REPLICA STATUS](https://mariadb.com/kb/en/show-replica-status/) statement to obtain the status of inbound replication.
 
 ```sql
 CALL sky.replication_status()\G
@@ -196,7 +189,7 @@ CALL sky.replication_status()\G
 
 ## reset_replication
 
-Executes the [RESET REPLICA](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/RESET_REPLICA/) statement to clear inbound replication configuration.
+Executes the [RESET REPLICA](https://mariadb.com/kb/en/reset-replica/) statement to clear inbound replication configuration.
 
 ```sql
 CALL sky.reset_replication();
@@ -212,7 +205,7 @@ CALL sky.reset_replication();
 
 ## set_master_ssl
 
-Toggles the `MASTER_SSL` replication option using the [CHANGE MASTER TO](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/CHANGE_MASTER_TO/) statement.
+Toggles the `MASTER_SSL` replication option using the [CHANGE MASTER TO](https://mariadb.com/kb/en/change-master-to/) statement.
 
 ```sql
 CALL sky.set_master_ssl();
@@ -222,7 +215,7 @@ CALL sky.set_master_ssl();
 
 This stored procedure can be used to ignore a transaction that is causing a replication error.
 
-Executes the [STOP REPLICA](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/STOP_REPLICA/) statement, then sets the [sql_slave_skip_counter](https://mariadb.com/docs/skysql-previous-release/ref/mdb/system-variables/sql_slave_skip_counter/) system variable, and then executes the [START REPLICA](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/START_REPLICA/) statement to skip a single transaction. Does not currently work with GTID.
+Executes the [STOP REPLICA](https://mariadb.com/kb/en/stop-replica/) statement, then sets the [sql_slave_skip_counter](https://mariadb.com/kb/en/replication-and-binary-log-system-variables/#sql_slave_skip_counter) system variable, and then executes the [START REPLICA](https://mariadb.com/kb/en/start-replica/) statement to skip a single transaction. Does not currently work with GTID.
 
 ```sql
 CALL sky.skip_repl_error();
@@ -230,7 +223,7 @@ CALL sky.skip_repl_error();
 
 ## start_replication
 
-Executes the `[START REPLICA](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/START_REPLICA/)` statement to start inbound replication from an external primary.
+Executes the [START REPLICA](https://mariadb.com/kb/en/start-replica/) statement to start inbound replication from an external primary.
 
 ```sql
 CALL sky.start_replication();
@@ -262,7 +255,7 @@ CALL start_replication_until_gtid(master_gtid_pos TEXT);
 
 ## stop_replication
 
-Executes the [STOP REPLICA](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/STOP_REPLICA/) statement to stop inbound replication from an external primary.
+Executes the [STOP REPLICA](https://mariadb.com/kb/en/stop-replica/) statement to stop inbound replication from an external primary.
 
 ```sql
 CALL sky.stop_replication();

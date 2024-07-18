@@ -12,7 +12,7 @@ Auto-scale of storage enables expansion of capacity based on usage.
 Autonomous features can be enabled at time of [service launch](<../Portal features/Launch page/>).
 Autonomous features can be enabled or disabled after launch.
 
-![https://mariadb.com/docs/_images/screenshots/services-tx-xpand-autonomous-dialog.png](https://mariadb.com/docs/_images/screenshots/services-tx-xpand-autonomous-dialog.png)
+![autonomous.png](autonomous.png)
 
 ## Enable Auto-Scaling of Nodes
 

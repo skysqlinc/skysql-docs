@@ -1,6 +1,6 @@
 # Replicating data from SkySQL to external database
 
-MariaDB SkySQL customers can configure outbound replication from a Replicated Transactions service to a compatible MariaDB Server running elsewhere - could be your data center, self-managed MariaDB DB on the cloud or even other managed services like AWS RDS. 
+SkySQL customers can configure outbound replication from a Replicated Transactions service to a compatible MariaDB Server running elsewhere - could be your data center, self-managed MariaDB DB on the cloud or even other managed services like AWS RDS. 
 
 SkySQL uses stored procedures to configure replication to other MariaDB or MySQL database servers. 
 
@@ -88,7 +88,7 @@ SET GLOBAL gtid_slave_pos='435700-435700-124';
 
 ## Configure Replication
 
-**On the external replica server**, configure replication using the connection parameters for your MariaDB SkySQL service.
+**On the external replica server**, configure replication using the connection parameters for your SkySQL service.
 
 Replication can be configured using the 'CHANGE MASTER TO' SQL statement:
 

@@ -7,7 +7,7 @@
 
 3. Use it on subsequent request, e.g:
 ```bash 
- curl --request GET 'https://api.skysql.com/provisioning/v1/services' \\
+ curl --request GET 'https://api.skysql.com/provisioning/v1/services' \
  --header "X-API-Key: $API_KEY"
 ```
 
@@ -17,10 +17,12 @@ Use the [Portal](https://app.skysql.com/user-profile/api-keys) to create new, re
 
 OR
 
-You can use the swagger API portal to manage the keys. 
-1. [Fetch all keys](https://apidocs.skysql.com/#/allowed_roles:ADMIN;MEMBER/get_organization_v1_users__user_id__api_keys) 
+You can use the swagger API portal to manage the keys.
+
+1. [Fetch all keys](https://apidocs.skysql.com/#/allowed_roles:ADMIN;MEMBER/get_organization_v1_users__user_id__api_keys)
+
 2. [Create a new API Key](https://apidocs.skysql.com/#/allowed_roles:ADMIN;MEMBER/post_organization_v1_users__user_id__api_keys)
+
 3. [Delete a user specific Key](https://apidocs.skysql.com/#/allowed_roles:ADMIN;MEMBER/get_organization_v1_users__user_id__api_keys__key_id_)
+
 4. [Update a user specific key ](https://apidocs.skysql.com/#/allowed_roles:ADMIN;MEMBER/patch_organization_v1_users__user_id__api_keys__key_id_)
-
-

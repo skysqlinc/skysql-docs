@@ -2,7 +2,7 @@
 
 Database server configuration, including system variables, is managed through the Configuration Manager.
 
-![https://mariadb.com/docs/_images/screenshots/configuration-manager.png](https://mariadb.com/docs/_images/screenshots/configuration-manager.png)
+![configuration-manager.png](configuration-manager.png)
 
 
 ## **Access to Configuration Manager**

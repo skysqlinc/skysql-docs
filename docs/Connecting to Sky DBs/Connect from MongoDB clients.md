@@ -11,7 +11,7 @@ For detailed information on supported commands, see "[NoSQL Protocol Module](htt
 
 # Enable Support for NoSQL
 
-1. When [launching](https://mariadb.com/docs/skysql-dbaas/service-management/nr-launch/) Enterprise Server With Replica(s), after defining the service name, expand the "Additional options" section.
+1. When [launching](<../Portal features/Launch page.md>) Enterprise Server With Replica(s), after defining the service name, expand the "Additional options" section.
 2. Check the "Enable support for NoSQL" checkbox.
 
 # Available Clients
@@ -26,6 +26,6 @@ From the Dashboard, the details needed to connect to your SkySQL service can be 
 
 The "NoSQL port" is the TCP port used to connect to the NoSQL interface.
 
-The [firewall](https://mariadb.com/docs/skysql-dbaas/security/nr-firewall/) must be configured to allowlist the client's IP address or netblock before connections can occur.
+The [firewall](<../Security/Configuring Firewall.md>) must be configured to allowlist the client's IP address or netblock before connections can occur.
 
 See the "Connecting using Mongosh" section of the Connect page for an example `mongosh` command-line, authentication instructions, and instructions to change the default password.

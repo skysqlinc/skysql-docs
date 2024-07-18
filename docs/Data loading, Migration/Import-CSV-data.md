@@ -1,6 +1,6 @@
 # Import CSV data
 
-MariaDB SkySQL customers can import data into a SkySQL service using the `LOAD DATA LOCAL INFILE` SQL statement:
+SkySQL customers can import data into a SkySQL service using the `LOAD DATA LOCAL INFILE` SQL statement:
 
 - The `LOAD DATA LOCAL INFILE` statement can import data from TSV and CSV files
 - The `LOAD DATA LOCAL INFILE` statement can be executed by any client or connector
@@ -31,7 +31,7 @@ For SkySQL services that use MariaDB Enterprise Server and MariaDB Enterprise Co
 
 ## **Import Data**
 
-1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your MariaDB SkySQL service.
+1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
 2. Connect with the `mariadb` client and specify the [-local-infile option](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb/local-infile/), which is needed by the next step:
 
 ```bash
@@ -44,7 +44,7 @@ mariadb --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
 
 After the command is executed, you will be prompted for a password. Enter the default password for your default user, the password you set for the default user, or the password for the database user you created.
 
-For each table that you want to import, execute the [LOAD DATA LOCAL INFILE](https://mariadb.com/docs/skysql-dbaas/ref/mdb/sql-statements/LOAD_DATA_INFILE/) statement to import the data from the TSV or CSV file into your MariaDB SkySQL database service.
+For each table that you want to import, execute the [LOAD DATA LOCAL INFILE](https://mariadb.com/docs/skysql-dbaas/ref/mdb/sql-statements/LOAD_DATA_INFILE/) statement to import the data from the TSV or CSV file into your SkySQL database service.
 
 For a TSV file:
 

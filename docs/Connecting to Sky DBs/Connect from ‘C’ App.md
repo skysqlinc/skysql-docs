@@ -2,7 +2,7 @@
 
 MariaDB Connector/C enables C and C++ applications to establish client connections to SkySQL over TLS. MariaDB Connector/C is a native connector that is written in C.
 
-## First [Install MariaDB Connector/C](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/c/install/)
+## First [Install MariaDB Connector/C](https://mariadb.com/docs/server/connect/programming-languages/c/install/)
 
 MariaDB Connector/C enables C and C++ applications to establish client connections to SkySQL and MariaDB database products over TLS.
 
@@ -14,17 +14,14 @@ The connection is configured via the information that is initially acquired from
 
 | Function | Option/Argument | Where to find it |
 | --- | --- | --- |
-| mysql_optionsv() | MYSQL_OPT_SSL_CA option | The path to the skysql_chain.pem file containing the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/#Certificate_Authority_Chain
-• https://supplychain.mariadb.com/skysql_chain.pem
-• https://supplychain.mariadb.com/aws_skysql_chain.pem |
-| mysql_real_connect() | host argument | The fully Qualified Domain Name in the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/ |
+| mysql_real_connect() | host argument | The fully Qualified Domain Name from the "Connect" window in SkySQL portal |
 | mysql_real_connect() | user argument | The desired username, which might be the default username in the Service Credentials view |
 | mysql_real_connect() | passwd argument | The user's password, which might be the default password in the Service Credentials view if it was not yet customized |
-| mysql_real_connect() | port argument | The Read-Write Port or Read-Only Port in the https://mariadb.com/docs/skysql-previous-release/connect/connection-parameters-portal/ |
+| mysql_real_connect() | port argument | The Read-Write Port or Read-Only Port from the "Connect" window in SkySQL portal |
 
 # Code Example
 
-The following code demonstrates how to use MariaDB Connector/C to connect to SkySQL. This example uses the [example database and user account](https://mariadb.com/docs/skysql-previous-release/connect/programming-languages/c/example-setup/):
+The following code demonstrates how to use MariaDB Connector/C to connect to SkySQL. This example uses the [example database and user account](https://mariadb.com/docs/server/connect/programming-languages/c/example-setup/):
 
 ```c
 #include <stdio.h>

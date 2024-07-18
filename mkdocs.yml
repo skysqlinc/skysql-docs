@@ -3,7 +3,7 @@ theme:
   name: material
   logo: assets/skysqllogo.png
   favicon: assets/favicon.png
-  custom_dir: docs/stylesheets  # TODO - path not found ? 
+  custom_dir: docs/stylesheets 
   features:
   - announce.dismiss
   - content.action.edit
@@ -74,6 +74,7 @@ extra:
 
 nav:
   - 'index.md'
+  - 'Higher Availability and Disaster Recovery.md'
   - 'FAQs.md'
   - 'Quickstart' : 
       - 'Quickstart/README.md'
@@ -88,21 +89,21 @@ nav:
       - 'Portal features/Service Monitoring Panels.md'
   - 'Connecting to Sky DBs' :
       - 'Connecting to Sky DBs/README.md'
-      - 'Connecting to Sky DBs/Connect from ‘C’ App.md'
-      - 'Connecting to Sky DBs/Connect from ‘C++’ App.md'
+      - 'Connecting to Sky DBs/Connect using MariaDB CLI.md'
+      - 'Connecting to Sky DBs/Connect from Node js App.md'
       - 'Connecting to Sky DBs/Connect from Java App.md'
       - 'Connecting to Sky DBs/Connect from Python App.md'
+      - 'Connecting to Sky DBs/Connect from ‘C’ App.md'
+      - 'Connecting to Sky DBs/Connect from ‘C++’ App.md'
       - 'Connecting to Sky DBs/Connect from MongoDB clients.md'
-      - 'Connecting to Sky DBs/Connect from Node js App.md'
-      - 'Connecting to Sky DBs/Connect using Connector R2DBC.md'
       - 'Connecting to Sky DBs/Connect using ODBC.md'
+      - 'Connecting to Sky DBs/Connect using Connector R2DBC.md'
   - 'Data Loading, Migrations' :
       - 'Data loading, Migration/README.md'
       - 'Data loading, Migration/Import-CSV-data.md'
       - 'Data loading, Migration/Import data from external DB.md'
       - 'Data loading, Migration/Install Mariadb-dump.md'
       - 'Data loading, Migration/Install-mariadb-import.md'
-      - 'Data loading, Migration/Migrating your existing Production DB.md'
       - 'Data loading, Migration/Migrating your existing Production DB.md'
       - 'Data loading, Migration/Replicating data from external DB.md'
   - 'Data Offloading' :
@@ -111,7 +112,6 @@ nav:
   - 'Autonomously scale Compute/Storage' :
       - 'Autonomously scale Compute, Storage/README.md'
       - 'Autonomously scale Compute, Storage/Uptime SLA.md'
-  - 'Scale Horizontally with High Availability' : 'Scaling horizontally, HA.md'
   - 'Configure your Database Server(s)' :
       - 'config/README.md'
       - 'config/Enterprise-Server-Single-Node.md'
@@ -140,27 +140,18 @@ nav:
   - 'FractionalDBA.md'
   - 'Security' :
       - 'Security/README.md'
+      - 'Security/Managing Portal Users.md'
       - 'Security/Configuring Firewall.md'
       - 'Security/Encryption.md'
-      - 'Security/Managing Portal Users.md'
       - 'Security/Managing API keys.md'
-      - 'Security/Portal Single Sign-On.md'
       - 'Security/Private VPC connections.md'
+      - 'Security/Portal Single Sign-On.md'
   - 'Reference Guides' :
       - 'Reference Guide/README.md'
       - 'Reference Guide/Instance Size Choices.md'
       - 'Reference Guide/Monitoring Metrics Reference.md'
-      - 'Reference Guide/MaxScale Reference.md'
       - 'Reference Guide/Region Choices.md'
       - 'Reference Guide/REST API Reference.md'
       - 'Reference Guide/Sky Stored Procedures.md'
 
-
-#  - Quickstart : 
-#    - 'Use API' : Quickstart da3c5848d30348b1815026b2d24219a6/Launch DB using the REST API cf85a5036a454ee987bb392df694dfc3.md
-
-#  - Quickstart : 
-#    - 'Quickstart da3c5848d30348b1815026b2d24219a6.md'
-
-# Copyright
 copyright: Copyright &copy; 2023 - 2024 SkySQL Inc

@@ -18,7 +18,7 @@ Power level support expands the Standard level offering with Problem Resolution 
 | Real-Time Chat | No  | Yes, with SkyDBA Add-on Option |
 | SLA Response Time | * P3, 4 hours (24x5)<br>* P4, 8 hours (24x5) | * P1, 30 minutes (24x7)<br> * P2, 2 hours (24x5)<br> * P3, 4 hours (24x5)<br> * P4, 8 hours (24x5) |
 
-A definitive description of MariaDB SkySQL support can be found in the [SkySQL Support Policy](https://skysql.com/support-policy/).
+A definitive description of SkySQL support can be found in the [SkySQL Support Policy](https://skysql.com/support-policy/).
 
 ## How to Request Support
 Support cases are managed through the [Support Portal](https://support.skysql.com/), which is accessible to all registered users.

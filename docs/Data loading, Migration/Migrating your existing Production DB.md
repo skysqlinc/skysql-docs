@@ -1,39 +1,39 @@
 # Migrating your existing Production DB
 
-Databases can be migrated to MariaDB SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more
+Databases can be migrated to SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more
 
 # Lift-and-shift from a compatible version of MySQL/MariaDB to SkySQL
 
 To perform a lift-and-shift migration to SkySQL, use the following process:
 
-1. Identify requirements for your MariaDB SkySQL implementation including:
-    - [Topology](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/services/)
-    - [Instance size](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/selections/instance-sizes/)
+1. Identify requirements for your SkySQL implementation including:
+    - Topology - Enterprise Server Single node or with Replica(s)
+    - [Instance size](<../Reference Guide/Instance Size Choices.md>)
     - Storage requirements
     - Desired server version
-2. [Deploy the desired configuration](https://mariadb.com/docs/skysql-previous-release/service-management/launch/) on MariaDB SkySQL
+2. [Deploy the desired configuration](<../Portal features/Launch page.md>) on SkySQL
 
 <aside>
 💡 When migrating from a production DB a common practice is to setup live replication to the SkySQL database.  Here is the sequence of steps you should follow for a live cutover:
 
 </aside>
 
-1. On the source database (MySQL or MariaDB) obtain the Binlog file name and its current position. Essentially, we want to track all DB changes from a certain point in time. See [‘Replicating data’](Migrating%20your%20existing%20Production%20DB%208ba80cbdb9b14f81a1df5b096d549522/Replicating%20data%20from%20external%20DB%20cdf15e1cd8d24880858d6cd2f50d8fd2.md) page for the command. 
-2. Next, take a [dump of your source database using mysqldump or mariadb-dump](Import%20data%20from%20external%20DB%209d0a68120e404f36b9f09a5ad71796b7.md) 
-3. Import into your target SkySQL DB using this logical “dump” (SQL)
-4. Finally, turn ON the replication using the SkySQL ‘start_replication’ procedure as noted below. 
+1. On the source database (MySQL or MariaDB) obtain the Binlog file name and its current position. Essentially, we want to track all DB changes from a certain point in time. See [Replicating data](<./Replicating data from external DB.md>) page for the command. 
+2. Next, take a [dump of your source database using mysqldump or mariadb-dump](<./Import data from external DB.md>) 
+3. Import into your target SkySQL DB using this logical `dump` (SQL)
+4. Finally, turn ON the replication using the SkySQL `start_replication` procedure as noted below. 
 
-# Assisted Migration to SkySQL MariaDB
+# Assisted Migration to SkySQL
 
 SkySQL customers can receive assistance from SkySQL Inc when migrating a database to SkySQL:
 
-- SkySQL Inc's [migration process](https://mariadb.com/docs/skysql-previous-release/migration/assisted/#Migration_Process) divides a migration into multiple well-defined stages with distinct validation criteria at each stage
+- SkySQL Inc's [migration process](#migration-process) divides a migration into multiple well-defined stages with distinct validation criteria at each stage
 - SkyDBAs and SkySQL support can assist with many migration steps
 
 For assistance with a migration:
 
-- Existing customers can submit a [support case](https://mariadb.com/docs/skysql-previous-release/service-management/support/) to request assistance with a migration
-- New customers can [contact us](https://mariadb.com/docs/skysql-previous-release/contact/) to begin the migration planning process
+- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
+- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
 
 ## Migration Process
 
@@ -46,24 +46,24 @@ We use a multi-step process to assist customers with migrations:
 5. **Quality Assurance** to assess data validity, data integrity, performance, accuracy of query results, stored code, and running code such as client applications, APIs, and batch jobs
 6. **Cutover** including final database preparation, fallback planning, switchover, and decommissioning of old databases
 
-For additional information, see "[Whitepaper: Migrate to MariaDB from Oracle](https://go.mariadb.com/GLBL-WC2020OracleMigration_LP-Registration.html)".
+For additional information, see "[Migrate to MariaDB from Oracle](https://mariadb.com/resources/blog/a-typical-journey-migrating-to-mariadb-from-oracle/)".
 
 ---
 
-# Migrate to MariaDB SkySQL using AWS DMS
+# Migrate to SkySQL using AWS DMS
 
-This blog article details how to [Migrate RDS MySQL to SkySQL MariaDB Using AWS Data Migration Service](https://go.mariadb.com/21Q3-WC-GLBL-DBaaS-Amazon-RDS-to-SkySQL-Migration-DB1109_LP-Registration.html)
+This blog article details how to [Migrate RDS MySQL to SkySQL MariaDB Using AWS Data Migration Service](<./migrate-rds-mysql-to-skysql-using-amazon-data-migration-service_whitepaper_1109.pdf>)
 
 ---
 
 # Replicating data from an External DB
-Click [here](Replicating%20data%20from%20external%20DB%20cdf15e1cd8d24880858d6cd2f50d8fd2.md) for a detailed walk through of the steps involved. 
+Click [here](<./Replicating data from external DB.md>) for a detailed walk through of the steps involved. 
 
 
 For assistance with a migration:
 
-- Existing customers can submit a [support case](https://mariadb.com/docs/skysql-previous-release/service-management/support/) to request assistance with a migration
-- New customers can [contact us](https://mariadb.com/docs/skysql-previous-release/contact/) to begin the migration planning process
+- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
+- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
 
 ## Best Practices
 
@@ -81,7 +81,8 @@ To minimize downtime during migration, set up live replication from your source 
 2. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`, ensuring to skip the `mysql` table and handle the user dump separately to avoid issues with the default SkySQL user. Also, include triggers, procedures, views, and schedules in the dump.
 
     ```bash
-    mysqldump -u [username] -p --all-databases --ignore-table=mysql.user --routines --triggers --events --skip-lock-tables > dump.sql
+    mysqldump -u [username] -p --all-databases --ignore-table=mysql.user \
+        --routines --triggers --events --skip-lock-tables > dump.sql
     ```
 
 3. **Dump the User Table Separately**: Dump the `mysql.user` table separately to handle user data without affecting the default SkySQL user.
@@ -97,7 +98,7 @@ To minimize downtime during migration, set up live replication from your source 
     mariadb -u [username] -p mysql < mysql_user_dump.sql
     ```
 
-5. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](https://skysqlinc.github.io/skysql-docs/Reference%20Guide/Sky%20Stored%20Procedures/) for details.
+5. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](<../Reference Guide/Sky Stored Procedures.md>) for details.
 
     ```sql
     CALL sky.replication_grants();
@@ -116,7 +117,7 @@ To minimize downtime during migration, set up live replication from your source 
 
 ### Data Integrity and Validation
 
-- **Consistency Checks**: Perform consistency checks on the source database before migration. Use a [supported SQL client](https://skysqlinc.github.io/skysql-docs/Connecting%20to%20Sky%20DBs/) to connect to your SkySQL instance and run the following.
+- **Consistency Checks**: Perform consistency checks on the source database before migration. Use a [supported SQL client](<../../Connecting to Sky DBs/>) to connect to your SkySQL instance and run the following.
 
     ```sql
     CHECK TABLE [table_name] FOR UPGRADE;
@@ -140,7 +141,8 @@ To minimize downtime during migration, set up live replication from your source 
 - **Parallel Dump and Import**: Use tools that support parallel processing for dumping and importing data.
 
     ```bash
-    mysqlpump -u [username] -p --default-parallelism=4 --add-drop-database --databases [database_name] > dump.sql
+    mysqlpump -u [username] -p --default-parallelism=4 --add-drop-database \
+        --databases [database_name] > dump.sql
     ```
 
 - **Incremental Backups**: For large datasets, incremental backups can be used to minimize the amount of data to be transferred. SkyDBA Services can assist you with setting these up as part of a custom migration plan.
@@ -149,11 +151,11 @@ To minimize downtime during migration, set up live replication from your source 
 
 - **Enable Detailed Logging**: Enable detailed logging while testing the migration process to monitor and troubleshoot effectively. The slow_log can be enabled in the SkySQL configuration manager.
 
-- **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability. See our [monitoring documentation](https://skysqlinc.github.io/skysql-docs/Portal%20features/Service%20Monitoring%20Panels/) for details.
+- **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability. See our [monitoring documentation](<../Portal features/Service Monitoring Panels.md>) for details.
 
 ### Additional Resources
 
-- [Parallel Processing with mysqlpump](https://dev.mysql.com/doc/mysqlpump/en/)
+- [Backup with mariadb-dump](https://mariadb.com/kb/en/mariadb-dump/)
 - [MariaDB Backup Documentation](https://mariadb.com/kb/en/mariadb-backup-overview/)
 - [Advanced Backup Techniques](https://mariadb.com/kb/en/backup-and-restore-overview/)
 

@@ -157,7 +157,7 @@ Binlogs record database changes (data modifications, table structure changes) in
 
 #### BinaryLog Backup Examples
 
-- [Examples](BinaryLog Backup Examples.md)
+- [Examples](<./Binarylog Backup Examples.md>)
 
 ### **Additional Backup Options (with Examples)**
   

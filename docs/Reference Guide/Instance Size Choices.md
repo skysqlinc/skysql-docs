@@ -1,10 +1,9 @@
 # Instance Size Choices
 
-Instance size choices are specific to the [cloud provider](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/providers/), [topology](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/topologies/), [region](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/regions/), and [hardware architecture](https://mariadb.com/docs/skysql-dbaas/ref/skynr/selections/architectures/).
+Instance size choices are specific to the cloud provider, topology, region, and hardware architecture.
 
 <aside>
-💡 the list below provides available sizes as of Jan 2024. Likely to evolve over time. The [SkySQL portal](http://app.skysql.com) is the best place for accurate information.
-
+💡 the list below provides available sizes as of Jan 2024. Likely to evolve over time. The SkySQL portal is the best place for accurate information.
 </aside>
 
 ### MariaDB Server

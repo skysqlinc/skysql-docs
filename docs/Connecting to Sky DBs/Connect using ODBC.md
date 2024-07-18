@@ -12,7 +12,7 @@ The method for configuring the data source varies between operating systems.
     
     For example, on CentOS / RHEL / Rocky Linux:
     
-    ```
+    ```ini
     [MariaDB ODBC 3.1 Driver]
     Description = MariaDB Connector/ODBC v.3.1
     Driver      = /usr/lib64/libmaodbc.so
@@ -20,7 +20,7 @@ The method for configuring the data source varies between operating systems.
     
     On Debian / Ubuntu:
     
-    ```
+    ```ini
     [MariaDB ODBC 3.1 Driver]
     Description = MariaDB Connector/ODBC v.3.1
     Driver      = /usr/lib/libmaodbc.so
@@ -31,17 +31,15 @@ The method for configuring the data source varies between operating systems.
     For example:
     
     ```bash
-    $ sudo odbcinst -i -d -f MariaDB_odbc_driver_template.ini
-    odbcinst: Driver installed. Usage count increased to 1.
-    Target directory is /etc
+    sudo odbcinst -i -d -f MariaDB_odbc_driver_template.ini
     ```
-    
+        
 3. Determine the connection parameters for your database.
 4. Configure `unixODBC` to connect to the data source by creating a file called `MariaDB_odbc_data_source_template.ini`with the relevant data source parameters. Be sure to specify `SSLVERIFY = 1` for your SkySQL database.
     
     For example:
     
-    ```
+    ```ini
     # Data Source for unixODBC
     [My-Test-Server]
     Description = Describe your database setup here
@@ -55,7 +53,7 @@ The method for configuring the data source varies between operating systems.
     DATABASE    = test
     ```
     
-    ```
+    ```ini
     # Data Source for unixODBC
     [My-Test-Server]
     Description = Describe your database setup here
@@ -73,7 +71,7 @@ The method for configuring the data source varies between operating systems.
     - Customize the values of the parameters with the relevant information for your environment.
     - If you have SSL certificate files, you can add the following parameters to your data source file:
   
-    ```
+    ```bash
     SSLCA = /path/to/ca-cert.pem
     SSLKEY = /path/to/client-key.pem
     SSL_CERT = /path/to/client-cert.pem
@@ -88,7 +86,7 @@ The method for configuring the data source varies between operating systems.
 6. Test the data source `My-Test-Server`configured in the `MariaDB_odbc_data_source_template.ini`
 file using the `isql` command. If you see the output below, you have successfully connected to your Sky database.
     
-    ```
+    ```bash
     $ isql -v My-Test-Server
     +-------------------------+
     | Connected!              |
@@ -105,7 +103,7 @@ file using the `isql` command. If you see the output below, you have successfull
 
 1. Confirm that MariaDB Connector/ODBC has been registered with`iODBC` by confirming that the following options are set in the `iODBC`configuration file at `/Library/ODBC/odbcinst.ini`:
     
-    ```
+    ```ini
     [ODBC]
     Trace     = no
     TraceFile = /tmp/iodbc_trace.log
@@ -122,7 +120,7 @@ file using the `isql` command. If you see the output below, you have successfull
 2. Determine the connection parameters for your database.
 3. Add a data source for your database to `iODBC` by adding the following options to the `iODBC` configuration file at `/Library/ODBC/odbc.ini`:
     
-    ```
+    ```ini
     [ODBC Data Sources]
     My-Test-Server = MariaDB ODBC 3.1 Unicode Driver
     
@@ -137,8 +135,8 @@ file using the `isql` command. If you see the output below, you have successfull
     - Substitute the values of the `SERVER`, `SOCKET`, `DATABASE`, `PORT`, `USER`, and `PASSWORD` parameters with the relevant value for your environment.
 4. Test the data source using the `iodbctest`command:
     
-    ```
-    $ iodbctest "DSN=My-Test-Server"
+    ```bash
+    iodbctest "DSN=My-Test-Server"
     ```
     
 5. To select your new data source in your application, select the data source with the name that you configured, which is `My-Test-Server` in the above example.
@@ -188,7 +186,8 @@ MariaDB Connector/ODBC supports failover in case one or more hosts are not avail
 
 The failover feature requires using MariaDB Connector/ODBC 3.1.16 or greater with MariaDB Connector/C 3.3 or greater.
 
-MariaDB Connector/ODBC 3.1.16 and greater is statically linked for Windows and macOS with MariaDB Connector/C 3.3.1. MariaDB Connector/ODBC 3.1.16 and greater is dynamically linked for Linux with MariaDB Connector/C.
+`MariaDB Connector/ODBC 3.1.16` and greater is statically linked for Windows and macOS with `MariaDB Connector/C 3.3.1`. 
+`MariaDB Connector/ODBC 3.1.16` and greater is dynamically linked for Linux with MariaDB Connector/C.
 
 The failover feature is enabled by providing a comma separated list of hosts as a server name.
 
@@ -204,7 +203,9 @@ The following syntax is required:
 
 An example of a failover host string:
 
-`[::1]:3306,192.168.0.1:3307,test.example.com`
+```bash
+[::1]:3306,192.168.0.1:3307,test.example.com
+```
 
 ## Connection Parameters
 
@@ -220,7 +221,7 @@ An example of a failover host string:
 | FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by default. |  |
 | NO_CACHE | When enabled, result set streaming is enabled, which enables the application to fetch result sets from the server row-by-row instead of caching the entire result set on the client side. Since the application is not caching the entire result set, the application is less likely to run out of memory when working with large result sets. |  |
 | STREAMRS | Alias for the NO_CACHE connection parameter. |  |
-| OPTIONS | See about:blank#OPTIONS_Bitmaskabout:blank#OPTIONS_Bitmask. |  |
+| OPTIONS | See [OPTIONS Bitmask](#options-bitmask) |  |
 | PREPONCLIENT | When enabled, the SQLPrepare ODBC API function uses the text protocol and client-side prepared statements (CSPS). |  |
 | ATTR | Sets connection attributes that can be queried via the Performance Schema session_connect_attrs Table when the Performance Schema is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |  |
 
@@ -236,7 +237,7 @@ An example of a failover host string:
 | FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by default. |
 | NO_CACHE | When enabled, result set streaming is enabled, which enables the application to fetch result sets from the server row-by-row instead of caching the entire result set on the client side. Since the application is not caching the entire result set, the application is less likely to run out of memory when working with large result sets. |
 | STREAMRS | Alias for the NO_CACHE connection parameter. |
-| OPTIONS | See about:blank#OPTIONS_Bitmaskabout:blank#OPTIONS_Bitmask. |
+| OPTIONS | See [OPTIONS Bitmask](#options-bitmask)  |
 | PREPONCLIENT | When enabled, the SQLPrepare ODBC API function uses the text protocol and client-side prepared statements (CSPS). |
 | ATTR | Sets connection attributes that can be queried via the Performance Schema session_connect_attrs Table when the Performance Schema is enabled. Specify attributes in the format ATTR={<attrname1>=<attrvalue1>[,<attrname2=attrvalue2,...]} |
 
