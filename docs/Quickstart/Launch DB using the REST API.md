@@ -6,12 +6,12 @@ This walkthrough explains how to launch database services and manage the lifecyc
 
 ### **Step 1: Generate API Key**
 
-1. Go to SkySQL API Key management page: https://app.skysql.com/user-profile/api-keys and generate an API key
+1. Go to [SkySQL API Key management page](https://app.skysql.com/user-profile/api-keys) and generate an API key
 
 2. Export the value from the token field to an environment variable $API_KEY
     
     ```bash
-    $ export API_KEY='... key data ...'
+    export API_KEY='... key data ...'
     ```
     
     The `API_KEY` environment variable will be used in the subsequent steps.
@@ -19,7 +19,7 @@ This walkthrough explains how to launch database services and manage the lifecyc
 Use it on subsequent request, e.g:
 ```bash 
  curl --request GET 'https://api.skysql.com/provisioning/v1/services' \
- --header "X-API-Key: $API_KEY"
+    --header "X-API-Key: $API_KEY"
 ```
 
 !!! Note
@@ -57,7 +57,7 @@ Before creating the new service, determine the public IP address of your client 
 If you are not sure of your public IP address, you can use a lookup service, such as `checkip.amazonaws.com`:
 
 ```bash
-$ export SKYSQL_CLIENT_IP=`curl -sS checkip.amazonaws.com`
+export SKYSQL_CLIENT_IP=`curl -sS checkip.amazonaws.com`
 ```
 
 ### **Step 3: Launch a Service**
@@ -103,7 +103,7 @@ This configuration is suitable for a quick test, but a more customized configura
 - For `name`, choose a name between 4-24 characters for the new service
 - For `allow_list`, set the client IP address using CIDR notation, so that the client can connect through the firewall
 
-1. Provide the request to the `[/provisioning/v1/services` API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_services,POST/) to create (launch) a new database service and save the response to the `response-service.json` file:
+1. Provide the request to the [`/provisioning/v1/services` API endpoint](https://apidocs.skysql.com/#/Services/post_provisioning_v1_services) to create (launch) a new database service and save the response to the `response-service.json` file:
 
 ```bash
 curl -sS --location --request POST \
@@ -148,13 +148,13 @@ Obtain the connection credentials for the new SkySQL service by executing the fo
     - The hostname is specified with the `"fqdn"` key.
         
         ```bash
-        $ export SKYSQL_FQDN=`jq -r .fqdn response-state.json`
+        export SKYSQL_FQDN=`jq -r .fqdn response-state.json`
         ```
         
     - Available TCP ports are specified in the `"endpoints"` array. For this test, connect to the `"port"` where `"name"` is `"readwrite"`.
         
         ```bash
-        $ export SKYSQL_PORT=`jq '.endpoints[0].ports[] | select(.name=="readwrite") | .port' response-state.json`
+        export SKYSQL_PORT=`jq '.endpoints[0].ports[] | select(.name=="readwrite") | .port' response-state.json`
         ```
         
 3. Obtain the default username and password for the service using the `/provisioning/v1/services/${SKYSQL_SERVICE}/security/credentials` [API endpoint](https://apidocs.skysql.com/#/allowed_roles%3AADMIN%3BMEMBER%3BVIEWER/get_provisioning_v1_services__service_id__security_credentials) and save the response to the `response-credentials.json` file:
@@ -202,7 +202,7 @@ To connect to your SkySQL service easily, it is possible to create a `.my.cnf`�
 
 1. Use the following command to create a new `.my.cnf` file or overwrite an existing one and populates it with the connection information that was collected in the previous steps:
 
-```bash
+```ini
 cat > ~/.my.cnf <<EOF
 [client]
 host=${SKYSQL_FQDN}
@@ -228,4 +228,4 @@ EOF
 ## Resources
 
 - [API Documentation](https://apidocs.skysql.com/)
-- [API Reference Documentation](../Reference%20Guide/REST%20API%20Reference.md)
+- [API Reference Documentation](<../Reference Guide/REST API Reference.md>)

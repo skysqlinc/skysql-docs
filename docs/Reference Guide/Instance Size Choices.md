@@ -3,7 +3,7 @@
 Instance size choices are specific to the cloud provider, topology, region, and hardware architecture.
 
 <aside>
-💡 the list below provides available sizes as of Jan 2024. Likely to evolve over time. The SkySQL portal is the best place for accurate information.
+💡 the list below provides available sizes as of July 2024. Likely to evolve over time. The SkySQL portal is the best place for accurate information.
 </aside>
 
 ### MariaDB Server
@@ -13,43 +13,30 @@ For Foundation tier:
 | Instance Size | Cloud Provider | CPU | Memory |
 | --- | --- | --- | --- |
 | sky-2x4 | aws | 2 vCPU | 4 GB |
-| sky-2x8 | aws | 2 vCPU | 8 GB |
-| sky-2x8 | gcp | 2 vCPU | 8 GB |
-| sky-4x16 | aws | 4 vCPU | 16 GB |
-| sky-4x16 | gcp | 4 vCPU | 16 GB |
-| sky-4x32 | aws | 4 vCPU | 32 GB |
-| sky-4x32 | gcp | 4 vCPU | 32 GB |
-| sky-8x32 | aws | 8 vCPU | 32 GB |
-| sky-8x32 | gcp | 8 vCPU | 32 GB |
-| sky-8x64 | aws | 8 vCPU | 64 GB |
-| sky-8x64 | gcp | 8 vCPU | 64 GB |
+| sky-2x8 | aws, gcp, azure | 2 vCPU | 8 GB |
+| sky-4x16 | aws, gcp, azure | 4 vCPU | 16 GB |
+| sky-4x32 | aws, gcp, azure | 4 vCPU | 32 GB |
+| sky-8x32 | aws, gcp, azure | 8 vCPU | 32 GB |
+| sky-8x64 | aws, gcp, azure | 8 vCPU | 64 GB |
+| sky-16x64 | aws, gcp, azure | 16 vCPU | 64 GB |
+| sky-16x128 | aws, gcp, azure | 16 vCPU | 128 GB |
 
 For Power tier:
 
 | Instance Size | Cloud Provider | CPU | Memory |
 | --- | --- | --- | --- |
 | sky-2x4 | aws | 2 vCPU | 4 GB |
-| sky-2x8 | aws | 2 vCPU | 8 GB |
-| sky-2x8 | gcp | 2 vCPU | 8 GB |
-| sky-4x16 | aws | 4 vCPU | 16 GB |
-| sky-4x16 | gcp | 4 vCPU | 16 GB |
-| sky-4x32 | aws | 4 vCPU | 32 GB |
-| sky-4x32 | gcp | 4 vCPU | 32 GB |
-| sky-8x32 | aws | 8 vCPU | 32 GB |
-| sky-8x32 | gcp | 8 vCPU | 32 GB |
-| sky-8x64 | aws | 8 vCPU | 64 GB |
-| sky-16x64 | aws | 16 vCPU | 64 GB |
-| sky-16x64 | gcp | 16 vCPU | 64 GB |
-| sky-16x128 | aws | 16 vCPU | 128 GB |
-| sky-16x128 | gcp | 16 vCPU | 128 GB |
-| sky-32x128 | aws | 32 vCPU | 128 GB |
-| sky-32x128 | gcp | 32 vCPU | 128 GB |
-| sky-32x256 | aws | 32 vCPU | 256 GB |
-| sky-32x256 | gcp | 32 vCPU | 256 GB |
-| sky-64x256 | aws | 64 vCPU | 256 GB |
-| sky-64x256 | gcp | 64 vCPU | 256 GB |
-| sky-64x512 | aws | 64 vCPU | 512 GB |
-| sky-64x512 | gcp | 64 vCPU | 512 GB |
+| sky-2x8 | aws, gcp, azure | 2 vCPU | 8 GB |
+| sky-4x16 | aws, gcp, azure | 4 vCPU | 16 GB |
+| sky-4x32 | aws, gcp, azure | 4 vCPU | 32 GB |
+| sky-8x32 | aws, gcp, azure | 8 vCPU | 32 GB |
+| sky-8x64 | aws, gcp, azure | 8 vCPU | 64 GB |
+| sky-16x64 | aws, gcp, azure | 16 vCPU | 64 GB |
+| sky-16x128 | aws, gcp, azure | 16 vCPU | 128 GB |
+| sky-32x128 | aws, gcp, azure | 32 vCPU | 128 GB |
+| sky-32x256 | aws, gcp, azure | 32 vCPU | 256 GB |
+| sky-64x256 | aws, gcp, azure | 64 vCPU | 256 GB |
+| sky-64x512 | aws, gcp, azure | 64 vCPU | 512 GB |
 
 ### **MaxScale**
 
@@ -58,17 +45,12 @@ With Power tier, the following instance sizes can be selected for MaxScale nodes
 | Instance Size | Cloud Provider | CPU | Memory |
 | --- | --- | --- | --- |
 | sky-2x4 | aws | 2 vCPU | 4 GB |
-| sky-2x8 | gcp | 2 vCPU | 8 GB |
-| sky-4x16 | aws | 4 vCPU | 16 GB |
-| sky-4x16 | gcp | 4 vCPU | 16 GB |
-| sky-8x32 | aws | 8 vCPU | 32 GB |
-| sky-8x32 | gcp | 8 vCPU | 32 GB |
-| sky-16x64 | aws | 16 vCPU | 64 GB |
-| sky-16x64 | gcp | 16 vCPU | 64 GB |
-| sky-32x128 | aws | 32 vCPU | 128 GB |
-| sky-32x128 | gcp | 32 vCPU | 128 GB |
-| sky-64x256 | aws | 64 vCPU | 256 GB |
-| sky-64x256 | gcp | 64 vCPU | 256 GB |
+| sky-2x8 | aws, gcp, azure | 2 vCPU | 8 GB |
+| sky-4x16 | aws, gcp, azure | 4 vCPU | 16 GB |
+| sky-8x32 | aws, gcp, azure | 8 vCPU | 32 GB |
+| sky-16x64 | aws, gcp, azure | 16 vCPU | 64 GB |
+| sky-32x128 | aws, gcp, azure | 32 vCPU | 128 GB |
+| sky-64x256 | aws, gcp, azure | 64 vCPU | 256 GB |
 
 ## REST Client
 
@@ -78,7 +60,7 @@ A REST client can use the SkySQL DBaaS API to query instance size selections and
 
 A REST client can query the SkySQL DBaaS API for the database node instance size selections for a specific cloud provider, architecture, and topology.
 
-To see the available database node instance sizes for a topology, use `curl` to call the `[/provisioning/v1/sizes` API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_sizes/) with `type=server` set:
+To see the available database node instance sizes for a topology, use `curl` to call the [`/provisioning/v1/sizes` API endpoint](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_sizes) with `type=server` set:
 
 ```bash
 curl -sS --location \
@@ -132,7 +114,7 @@ curl -sS --location \
 
 A REST client can query the SkySQL DBaaS API for the MaxScale node instance size selections for a specific cloud provider, architecture, and topology.
 
-To see the default MaxScale instance size for a topology, cloud, and architecture, use `curl` to call the `[/provisioning/v1/sizes` API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_sizes/):
+To see the default MaxScale instance size for a topology, cloud, and architecture, use `curl` to call the [`/provisioning/v1/sizes` API endpoint](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_sizes):
 
 ```bash
 curl -sS --location \
@@ -165,7 +147,7 @@ curl -sS --location \
 
 The `default_maxscale_size_name` attribute shows the default MaxScale instance size.
 
-To see the available MaxScale node instance sizes for a topology, use `curl` to call the `[/provisioning/v1/sizes` API endpoint](https://mariadb.com/docs/skysql-dbaas/ref/skynr/api/slash_provisioning_slash_v1_slash_sizes/) with `type=proxy` set:
+To see the available MaxScale node instance sizes for a topology, use `curl` to call the [`/provisioning/v1/sizes` API endpoint](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_sizes) with `type=proxy` set:
 
 ```bash
 curl -sS --location \
