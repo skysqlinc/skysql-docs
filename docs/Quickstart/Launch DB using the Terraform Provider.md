@@ -39,8 +39,10 @@ This walkthrough demonstrates a service configuration that is suitable for a qui
 
 Create a directory for your Terraform project and change to the directory:
 
-`$ mkdir -p ~/skysql-nr-tf
-$ cd ~/skysql-nr-tf`
+```bash
+mkdir -p ~/skysql-nr-tf
+cd ~/skysql-nr-tf
+```
 
 ### **Step 3: Create `main.tf`**
 
@@ -51,7 +53,7 @@ In the Terraform project directory, create a `main.tf` file that contains the 
 - [Resources](https://developer.hashicorp.com/terraform/language/resources/syntax)
 - [Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
 
-```yaml
+```tf
 # ---------------------
 # Provider Requirements
 # ---------------------
@@ -140,7 +142,7 @@ data "skysql_availability_zones" "default" {
 
 In the Terraform project directory, create an `outputs.tf` file that contains the [output values](https://developer.hashicorp.com/terraform/language/values/outputs) used to display metadata about the SkySQL service:
 
-```yaml
+```tf
 # -------------
 # Output Values
 # -------------
@@ -175,7 +177,7 @@ output "availability_zones" {
 
 In the Terraform project directory, create a `variables.tf` file that contains the [input variables](https://developer.hashicorp.com/terraform/language/values/variables) used to configure the SkySQL service:
 
-```yaml
+```tf
 # ---------------
 # Input Variables
 # ---------------
@@ -280,11 +282,11 @@ The variables are configured in the next step.
 
 ### **Step 6: Configure Service in a `.tfvars` File**
 
-A `[.tfvars` file](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables#assign-values-with-a-file) can be used to configure the service using the input variables.
+A [`.tfvars` file](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables#assign-values-with-a-file) can be used to configure the service using the input variables.
 
 For example:
 
-```yaml
+```tf
 api_key             = "... key data ..."
 service_type        = "transactional"
 topology            = "es-single"
@@ -325,27 +327,33 @@ The following steps assume that the file is called `skysql-nr-quickstart.tfvars
 
 ### **Step 7: Run `terraform init`**
 
-Initialize the Terraform project directory and download the Terraform provider from the [Terraform Registry](https://registry.terraform.io/namespaces/skysqlinc) by executing the `[terraform init` command](https://developer.hashicorp.com/terraform/cli/commands/init):
+Initialize the Terraform project directory and download the Terraform provider from the [Terraform Registry](https://registry.terraform.io/namespaces/skysqlinc) by executing the [`terraform init` command](https://developer.hashicorp.com/terraform/cli/commands/init):
 
-`$ terraform init`
+```bash
+terraform init
+```
 
 If you need to download the provider manually, see "[Manually Install Provider from Binary Distribution](https://registry.terraform.io/providers/skysqlinc/skysql/latest/docs#installing-the-terraform-provider-for-skysql)".
 
 ### **Step 8: Run `terraform plan`**
 
-Create a Terraform execution plan by executing the `[terraform plan` command](https://developer.hashicorp.com/terraform/cli/commands/plan) and specifying the path to the `.tfvars` file:
+Create a Terraform execution plan by executing the [`terraform plan` command](https://developer.hashicorp.com/terraform/cli/commands/plan) and specifying the path to the `.tfvars` file:
 
-`$ terraform plan -var-file="skysql-nr-quickstart.tfvars"`
+```bash
+terraform plan -var-file="skysql-nr-quickstart.tfvars"
+```
 
 ### **Step 9: Run `terraform apply`**
 
-Execute the Terraform execution plan and create the SkySQL service by executing the `[terraform apply` command](https://developer.hashicorp.com/terraform/cli/commands/apply) and specifying the path to the `.tfvars` file:
+Execute the Terraform execution plan and create the SkySQL service by executing the [`terraform apply` command](https://developer.hashicorp.com/terraform/cli/commands/apply) and specifying the path to the `.tfvars` file:
 
-`$ terraform apply -var-file="skysql-nr-quickstart.tfvars"`
+```bash
+terraform apply -var-file="skysql-nr-quickstart.tfvars"
+```
 
 Terraform prints the plan from the previous step again and prompts the user to confirm that the plan should be applied:
 
-```yaml
+```tf
 Do you want to perform these actions?
   Terraform will perform the actions described above.
   Only 'yes' will be accepted to approve.
@@ -355,7 +363,7 @@ Do you want to perform these actions?
 
 Then Terraform creates the objects and prints status messages:
 
-```yaml
+```tf
 skysql_service.default: Creating...
 skysql_service.default: Still creating... [10s elapsed]
 skysql_service.default: Still creating... [20s elapsed]
@@ -395,26 +403,34 @@ Obtain the connection credentials for the new SkySQL service by executing the fo
 
 1. Obtain the connection command from the `terraform.tfstate` file:
     
-    `$ jq ".outputs.skysql_cmd" terraform.tfstate`
+   ```bash
+    jq ".outputs.skysql_cmd" terraform.tfstate
+   ```
     
-    `"mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 --user dbpgf00000001 -p --ssl-verify-server-cert"`
+   ```bash
+   mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 \
+      --user dbpgf00000001 -p --ssl-verify-server-cert
+   ```
     
 2. Obtain the user password from the `terraform.tfstate` file:
     
-    `$ jq ".outputs.skysql_credentials.value.password" terraform.tfstate`
-    
-    `"..password string.."`
-    
+   ```bash
+   jq ".outputs.skysql_credentials.value.password" terraform.tfstate \
+         "..password string.."
+   ```
 
 ### **Step 11: Connect**
 
 Connect to the SkySQL service by executing the connection command from the previous step:
 
-`$ mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 --user dbpgf00000001 -p --ssl-verify-server-cert`
+```bash
+mariadb --host dbpgf00000001.sysp0000.db.skysql.net --port 3306 \
+   --user dbpgf00000001 -p --ssl-verify-server-cert
+```
 
 When prompted, type the password and press enter to connect:
 
-```yaml
+```bash
 Enter password:
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 11691
@@ -429,29 +445,34 @@ MariaDB [(none)]>
 
 ### **Step 12: Run `terraform destroy`**
 
-Delete the service by executing the `[terraform destroy` command](https://developer.hashicorp.com/terraform/cli/commands/destroy) and specifying the path to the `.tfvars` file:
+Delete the service by executing the [`terraform destroy` command](https://developer.hashicorp.com/terraform/cli/commands/destroy) and specifying the path to the `.tfvars` file:
 
-`$ terraform destroy -var-file="skysql-nr-quickstart.tfvars"`
+```bash
+terraform destroy -var-file="skysql-nr-quickstart.tfvars"
+```
 
 Terraform prints the plan to delete the service and prompts the user to confirm that the plan should be applied:
 
-`Do you really want to destroy all resources?
-  Terraform will destroy all your managed infrastructure, as shown above.
-  There is no undo. Only 'yes' will be accepted to confirm.
+```bash
+Do you really want to destroy all resources?
+Terraform will destroy all your managed infrastructure, as shown above.
+There is no undo. Only 'yes' will be accepted to confirm.
 
-  Enter a value: yes`
+Enter a value: yes
+```
 
 If deletion protection is enabled for the resources, the operation raises an error:
 
-`╷
+```bash
 │ Error: Can not delete service
 │
 │ Deletion protection is enabled
-╵`
+╵
+```
 
 If deletion protection is not enabled for the resources, Terraform deletes the resources and prints status messages:
 
-```yaml
+```tf
 skysql_service.default: Destroying... [id=dbpgf00000001]
 skysql_service.default: Still destroying... [id=dbpgf00000001, 10s elapsed]
 skysql_service.default: Still destroying... [id=dbpgf00000001, 20s elapsed]
@@ -481,77 +502,95 @@ The SkySQL New Release Terraform provider can be downloaded from the [GitHub re
 
 With **Linux**, manually install the provider on the target system by performing the following steps in the same Bash terminal:
 
-1. Set some environment variables to configure your provider version, OS, and architecture:
-    
-    ```
-    $ export TF_PROVIDER_RELEASE=3.0.0
-    $ export TF_PROVIDER_OS=linux
-    $ export TF_PROVIDER_ARCH=amd64
-    ```
-    
-    For `TF_PROVIDER_ARCH`, the following architectures are supported on Linux:
-    
-    - `386`
-    - `amd64`
-    - `arm`
-    - `arm64`
-2. Download the provider from GitHub using `wget`:
-    
-    `$ wget -q https://github.com/skysqlinc/terraform-provider-skysql/releases/download/v3.0.0/terraform-provider-skysql_3.0.0_linux_amd64.zip`
-    
-3. Create a Terraform plugin directory:
-    
-    `$ mkdir -p ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql`
-    
-4. Move the provider's binary distribution to the Terraform plugin directory:
-    
-    `$ mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
-    
-5. Verify that the provider's binary distribution is present in the Terraform plugin directory:
-    
-    `$ ls -l ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
-    
+   1. Set some environment variables to configure your provider version, OS, and architecture:
+      
+      ```bash
+      export TF_PROVIDER_RELEASE=3.0.0
+      export TF_PROVIDER_OS=linux
+      export TF_PROVIDER_ARCH=amd64
+      ```
+      
+      For `TF_PROVIDER_ARCH`, the following architectures are supported on Linux:
+      
+      - `386`
+      - `amd64`
+      - `arm`
+      - `arm64`
+   2. Download the provider from GitHub using `wget`:
+      
+      ```bash
+      wget -q https://github.com/skysqlinc/terraform-provider-skysql/releases/download/v3.0.0/terraform-provider-skysql_3.0.0_linux_amd64.zip
+      ```
+      
+   3. Create a Terraform plugin directory:
+      
+      ```bash
+      mkdir -p ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql
+      ```
+      
+   4. Move the provider's binary distribution to the Terraform plugin directory:
+      
+      ```bash
+      mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/
+      ```
+      
+   5. Verify that the provider's binary distribution is present in the Terraform plugin directory:
+      
+      ```bash
+      ls -l ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/
+      ```
 
 ### **Manually Install Provider on macOS**
 
 With **macOS**, manually install the provider on the target system by performing the following steps in the same macOS Terminal:
 
-1. If [Homebrew](https://brew.sh/) is not installed, install it:
-    
-    `$ /bin/bash -c "**$(**curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh**)**"`
-    
-2. Install `wget` using Homebrew:
-    
-    `$ brew install wget`
-    
-3. Set some environment variables to configure your provider version, OS, and architecture:
-    
-    ```
-    $ export TF_PROVIDER_RELEASE=1.1.0
-    $ export TF_PROVIDER_OS=darwin
-    $ export TF_PROVIDER_ARCH=arm64
-    ```
-    
-    For `TF_PROVIDER_ARCH`, the following architectures are supported on macOS:
-    
-    - `amd64`
-    - `arm64`
-4. Download the provider from GitHub using `wget`:
-    
-    `$ wget -q https://github.com/skysqlinc/terraform-provider-skysql/releases/download/v3.0.0/terraform-provider-skysql_3.0.0_darwin_arm64.zip`
-    
-5. Create a Terraform plugin directory:
-    
-    `$ mkdir -p ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql`
-    
-6. Move the provider's binary distribution to the Terraform plugin directory:
-    
-    `$ mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
-    
-7. Verify that the provider's binary distribution is present in the Terraform plugin directory:
-    
-    `$ ls -l ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/`
-    
+   1. If [Homebrew](https://brew.sh/) is not installed, install it:
+      
+      ```bash
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      ```
+
+   2. Install `wget` using Homebrew:
+      
+      ```bash
+      brew install wget
+      ```
+
+   3. Set some environment variables to configure your provider version, OS, and architecture:
+      
+      ```bash
+      export TF_PROVIDER_RELEASE=1.1.0
+      export TF_PROVIDER_OS=darwin
+      export TF_PROVIDER_ARCH=arm64
+      ```
+      
+      For `TF_PROVIDER_ARCH`, the following architectures are supported on macOS:
+      - `amd64`
+      - `arm64`
+
+   4. Download the provider from GitHub using `wget`:
+      
+      ```bash
+      wget -q https://github.com/skysqlinc/terraform-provider-skysql/releases/download/v3.0.0/terraform-provider-skysql_3.0.0_darwin_arm64.zip
+      ```
+      
+   5. Create a Terraform plugin directory:
+      
+      ```bash
+      mkdir -p ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql
+      ```
+      
+   6. Move the provider's binary distribution to the Terraform plugin directory:
+      
+      ```bash
+      mv terraform-provider-skysql_${TF_PROVIDER_RELEASE}_${TF_PROVIDER_OS}_${TF_PROVIDER_ARCH}.zip ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/
+      ```
+      
+   7. Verify that the provider's binary distribution is present in the Terraform plugin directory:
+      
+      ```bash
+      ls -l ~/.terraform.d/plugins/registry.terraform.io/skysqlinc/skysql/
+      ```
 
 ## Resources
 
