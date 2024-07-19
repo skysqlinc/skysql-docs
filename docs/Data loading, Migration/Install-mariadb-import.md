@@ -15,57 +15,61 @@ Installation of MariaDB Import varies by operating system.
 
 1. Configure YUM package repositories:
     
-    `$ sudo yum install wget
-    
-    $ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-    
-    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \    **|** sha256sum -c -
-    
-    $ chmod +x mariadb_repo_setup
-    
-    $ sudo ./mariadb_repo_setup \   --mariadb-server-version="mariadb-10.6"`
+    ```bash
+    sudo yum install wget  
+    wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+    echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \
+        | sha256sum -c -
+    chmod +x mariadb_repo_setup   
+    sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
+    ```
     
 2. Install MariaDB Import and package dependencies:
     
-    `$ sudo yum install MariaDB-client`
+    ```bash
+    sudo yum install MariaDB-client
+    ```
     
 
 ### **Debian / Ubuntu**
 
 1. Configure APT package repositories:
     
-    `$ sudo apt install wget
-    
-    $ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-    
-    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \    **|** sha256sum -c -
-    
-    $ chmod +x mariadb_repo_setup
-    
-    $ sudo ./mariadb_repo_setup \   --mariadb-server-version="mariadb-10.6"$ sudo apt update`
+    ```bash
+    sudo apt install wget
+    wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+    echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \
+        | sha256sum -c -
+    chmod +x mariadb_repo_setup
+    sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
+    sudo apt update
+    ```
     
 2. Install MariaDB Import and package dependencies:
     
-    `$ sudo apt install mariadb-client`
+    ```bash
+    sudo apt install mariadb-client
+    ```
     
 
 ### **SLES**
 
 1. Configure ZYpp package repositories:
     
-    `$ sudo zypper install wget
-    
-    $ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-    
-    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \    **|** sha256sum -c -
-    
-    $ chmod +x mariadb_repo_setup
-    
-    $ sudo ./mariadb_repo_setup \   --mariadb-server-version="mariadb-10.6"`
+    ```bash
+    sudo zypper install wget
+    wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \
+        | sha256sum -c -
+    chmod +x mariadb_repo_setup
+    sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
+    ```
     
 2. Install MariaDB Import and package dependencies:
     
-    `$ sudo zypper install MariaDB-client`
+    ```bash
+    sudo zypper install MariaDB-client
+    ```
     
 
 ### **Windows**
@@ -121,9 +125,11 @@ The procedure to import data depends on the operating system.
     
     On Windows, MariaDB Import is not typically found in the executable search path by default. You must find its installation path, and add that path to the executable search path:
     
-    `$ SET "PATH=C:\Program Files\MariaDB 10.6\bin;%PATH%"`
+    ```bash
+    SET "PATH=C:\Program Files\MariaDB 10.6\bin;%PATH%"
+    ```
     
-2. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
+2. Determine the [connection parameters](<../../Connecting to Sky DBs/>) for your SkySQL service.
 3. Use MariaDB Import with the connection information to import the data from the TSV or CSV file into your SkySQL database service:
     
     ```bash
