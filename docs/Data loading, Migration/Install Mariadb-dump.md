@@ -4,10 +4,10 @@ SkySQL customers can manually create a backup of a SkySQL service using the `ma
 
 - The `mariadb-dump` utility provides a command-line interface (CLI)
 - The `mariadb-dump` utility is available for Linux and Windows
-- The `mariadb-dump` utility supports [many command-line options](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb-dump/)
+- The `mariadb-dump` utility supports [many command-line options](https://mariadb.com/kb/en/mariadb-dump/)
 - Egress charges may apply for customer-initiated backups
 
-For details about restoring a backup created with the `mariadb-dump` utility, see "[Restore a Manual Backup](https://mariadb.com/docs/skysql-dbaas/data-operations/backup-restore/nr-manual-restore/)".
+For details about restoring a backup created with the `mariadb-dump` utility, see "[Restore a Manual Backup](https://mariadb.com/kb/en/mariadb-dump/#restoring)".
 
 # Installation
 
@@ -17,58 +17,59 @@ Installation of MariaDB Dump varies by operating system.
 
 1. Configure YUM package repositories:
     
-    `$ sudo yum install wget
-    
-    $ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-    
-    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \    **|** sha256sum -c -
-    
-    $ chmod +x mariadb_repo_setup
-    
-    $ sudo ./mariadb_repo_setup \   --mariadb-server-version="mariadb-10.6"`
+    ```bash
+    sudo yum install wget
+    wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+    echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \
+        | sha256sum -c -
+    chmod +x mariadb_repo_setup
+    sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
+    ```
     
 2. Install MariaDB Dump and package dependencies:
     
-    `$ sudo yum install MariaDB-client`
-    
+    ```bash
+    sudo yum install MariaDB-client
+    ```
 
 ### **Debian / Ubuntu**
 
 1. Configure APT package repositories:
     
-    `$ sudo apt install wget
-    
-    $ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-    
-    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \    **|** sha256sum -c -
-    
-    $ chmod +x mariadb_repo_setup
-    
-    $ sudo ./mariadb_repo_setup \   --mariadb-server-version="mariadb-10.6"$ sudo apt update`
+    ```bash
+    sudo apt install wget
+    wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" 
+        | sha256sum -c -
+    chmod +x mariadb_repo_setup
+    sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"$ sudo apt update
+    ```
     
 2. Install MariaDB Dump and package dependencies:
     
-    `$ sudo apt install mariadb-client`
+    ```bash
+    sudo apt install mariadb-client
+    ```
     
 
 ### **SLES**
 
 1. Configure ZYpp package repositories:
     
-    `$ sudo zypper install wget
-    
-    $ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-    
-    $ echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \    **|** sha256sum -c -
-    
-    $ chmod +x mariadb_repo_setup
-    
-    $ sudo ./mariadb_repo_setup \   --mariadb-server-version="mariadb-10.6"`
+    ```bash
+    sudo zypper install wget
+    wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+    echo "935944a2ab2b2a48a47f68711b43ad2d698c97f1c3a7d074b34058060c2ad21b mariadb_repo_setup" \
+        | sha256sum -c -
+    chmod +x mariadb_repo_setup
+    sudo ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
+    ```
     
 2. Install MariaDB Dump and package dependencies:
     
-    `$ sudo zypper install MariaDB-client`
-    
+    ```bash
+    sudo zypper install MariaDB-client
+    ```
 
 ### **Windows**
 
@@ -92,18 +93,17 @@ Installation of MariaDB Dump varies by operating system.
 
 The procedure to create a backup depends on the operating system.
 
-If you plan to restore the backup to a SkySQL service, the `mysql` database should be excluded from the backup by specifying `[--ignore-database=mysql](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb-dump/ignore-database/)`, because SkySQL user accounts do not have sufficient privileges to restore that database.
+If you plan to restore the backup to a SkySQL service, the `mysql` database should be excluded from the backup by specifying [`--ignore-database=mysql`](https://mariadb.com/kb/en/mariadb-dump/#options), because SkySQL user accounts do not have sufficient privileges to restore that database.
 
 ### **Linux**
 
-1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
+1. Determine the [connection parameters](<../../Connecting to Sky DBs/>) for your SkySQL service.
 2. Use your connection parameters in the following command line:
 
 ```bash
 mariadb-dump --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
       --user DATABASE_USER --password \
       --ssl-verify-server-cert \
-      --ssl-ca ~/PATH_TO_PEM_FILE \
       --all-databases \
       --ignore-database=mysql \
       --single-transaction \
@@ -116,7 +116,6 @@ mariadb-dump --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
 - Replace `FULLY_QUALIFIED_DOMAIN_NAME` with the Fully Qualified Domain Name of your service.
 - Replace `TCP_PORT` with the read-write or read-only port of your service.
 - Replace `DATABASE_USER` with the default username for your service, or the username you created.
-- Replace `~/PATH_TO_PEM_FILE` with the path to the certificate authority chain (.pem) file.
 
 After the command is executed, you will be prompted for a password. Enter the default password for your default user, the password you set for the default user, or the password for the database user you created.
 
@@ -126,16 +125,17 @@ After the command is executed, you will be prompted for a password. Enter the de
     
     On Windows, MariaDB Dump is not typically found in the executable search path by default. You must find its installation path, and add that path to the executable search path:
     
-    `$ SET "PATH=C:\Program Files\MariaDB 10.6\bin;%PATH%"`
+    ```bash
+    SET "PATH=C:\Program Files\MariaDB 10.6\bin;%PATH%"
+    ```
     
-2. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
+2. Determine the [connection parameters](<../../Connecting to Sky DBs/>) for your SkySQL service.
 3. Use your connection parameters in the following command line:
 
 ```bash
 mariadb-dump --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
       --user DATABASE_USER --password \
       --ssl-verify-server-cert \
-      --ssl-ca ~/PATH_TO_PEM_FILE \
       --all-databases \
       --ignore-database=mysql \
       --single-transaction \
@@ -148,7 +148,6 @@ mariadb-dump --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
 - Replace `FULLY_QUALIFIED_DOMAIN_NAME` with the Fully Qualified Domain Name of your service.
 - Replace `TCP_PORT` with the read-write or read-only port of your service.
 - Replace `DATABASE_USER` with the default username for your service, or the username you created.
-- Replace `PATH_TO_PEM_FILE` with the path to the certificate authority chain (.pem) file.
 
 After the command is executed, you will be prompted for a password. Enter the default password for your default user, the password you set for the default user, or the password for the database user you created.
 

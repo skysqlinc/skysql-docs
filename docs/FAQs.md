@@ -30,10 +30,10 @@ The real time benefits come every day after, when you're operating at scale. A f
 
 SkySQL provides services backed by:
 
-- MariaDB Enterprise Server 10.4
 - MariaDB Enterprise Server 10.5
 - MariaDB Enterprise Server 10.6
 - MariaDB Community Server 10.11
+- MariaDB Community Server 11.4
 - MariaDB MaxScale
 
 ### **Are other databases supported?**
@@ -64,9 +64,12 @@ SkySQL runs on Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine
 
 SkySQL [officially launched](https://mariadb.com/newsroom/press-releases/mariadb-skysql-launches-delivers-next-generation-cloud-database/) as a production-ready enterprise-grade DBaaS in 2020, after extensive pre-release testing.
 
+In December 2023, MariaDB completed the spinoff of its SkySQL business to SkySQL Inc., as a new independent entity founded by the former MariaDB team that built and 
+supported the SkySQL product. 
+
 ### **Is SkySQL ready for production use?**
 
-Yes. SkySQL delivers enterprise-grade cloud database services for mission-critical applications. SkySQL is built to make MariaDB Enterprise ready - optimized for security, stability, and reliability in demanding production environments. Multi-node database deployments feature a comprehensive [SLA](<../Autonomously scale Compute, Storage/Uptime SLA>), High Availability (HA) features, and operations features. [Enterprise support](https://skysql.com/support-policy/) options extend support to 24x7, with the additional option of [SkyDBA](../FractionalDBA) for reactive and proactive assistance from a team of expert DBAs. [Security features](../Security) are designed to meet the GRC and infosec challenges faced by modern applications. [//]: # , and [DPA (GDPR) and BAA (HIPAA)](https://mariadb.com/trust/) are available.
+Yes. SkySQL delivers enterprise-grade cloud database services for mission-critical applications. SkySQL is built to make MariaDB Enterprise ready - optimized for security, stability, and reliability in demanding production environments. Multi-node database deployments feature a comprehensive [SLA](<../Autonomously scale Compute, Storage/Uptime SLA>), High Availability (HA) features, and operations features. [Enterprise support](https://skysql.com/support-policy/) options extend support to 24x7, with the additional option of [SkyDBA](<../FractionalDBA>) for reactive and proactive assistance from a team of expert DBAs. [Security features](../Security) are designed to meet the GRC and infosec challenges faced by modern applications. [//]: # , and [DPA (GDPR) and BAA (HIPAA)](https://mariadb.com/trust/) are available.
 
 ## **SkySQL Features**
 
@@ -133,7 +136,7 @@ Estimated SkySQL pricing is available from the SkySQL portal. SkySQL pricing is
 
 SkySQL pricing varies based on the selections made when you [launch a service](<../Portal features/Launch page>). Examples of selections include provider, topology, instance and storage size, and region.
 
-The pricing shown is not a quote and does not guarantee the cost for your actual use of SkySQL services, as is shown on monthly invoices. The cost estimate can vary from your actual costs for [several reasons](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/pricing/).
+The pricing shown is not a quote and does not guarantee the cost for your actual use of SkySQL services, as is shown on monthly invoices. The cost estimate can vary from your actual costs for [several reasons](<./Billing and Power Tier/Pricing.md>).
 
 ### **Do I need to purchase a MariaDB Server license or subscription to use SkySQL?**
 
@@ -143,7 +146,7 @@ No. Purchase of SkySQL service includes [support](Support.md) and access to M
 
 Yes. SkySQL is listed in the Google Cloud Marketplace. Customers have the ability to retire their GCP commitment with a SkySQL subscription via the Marketplace.
 
-[See the Marketplace listing](https://console.cloud.google.com/marketplace/details/mariadb-public/mariadb-for-gcp).
+[See the Marketplace listing](https://console.cloud.google.com/marketplace/details/skysql-public/skysql-gcp-mp).
 
 [Contact us](mailto:info@skysql.com) if you have further questions.
 
@@ -151,17 +154,17 @@ Yes. SkySQL is listed in the Google Cloud Marketplace. Customers have the abilit
 
 Yes. SkySQL is an AWS partner network. Customers can retire their AWS commitment with a SkySQL subscription via the AWS Marketplace.
 
-[See the AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-uaoi4womvi6la?qid=1625063138420&sr=0-1&ref_=srh_res_product_title)
+[See the AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-txge2dgyj4ieg?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
 
 [Contact us](mailto:info@skysql.com) if you have further questions.
 
 ### **Do you have a pricing calculator?**
 
-Estimated SkySQL pricing information is shown when you [create a service](./Portal%20features/Launch%20page.md) based on the selections you make at launch time, such as topology, region, and instance size. Please [contact us](mailto:info@skysql.com) for assistance in cost estimation, including [support](Support.md) and [Power Tier](<../Billing and Power Tier>).
+Estimated SkySQL pricing information is shown when you [create a service](<./Portal features/Launch page.md>) based on the selections you make at launch time, such as topology, region, and instance size. Please [contact us](mailto:info@skysql.com) for assistance in cost estimation, including [support](Support.md) and [Power Tier](<../Billing and Power Tier>).
 
 ### **What is included in SkySQL pricing?**
 
-SkySQL pricing includes instances for a specific service topology, and monitoring, and also includes management features, e.g., backups, upgrades, patch installs, etc. [Some factors](https://mariadb.com/docs/skysql-previous-release/features-and-concepts/pricing/), such as object storage and network egress which are variable and usage-dependent, are not included in estimated pricing. We typically pass-thru the cloud provider costs with no additional markup.
+SkySQL pricing includes instances for a specific service topology, and monitoring, and also includes management features, e.g., backups, upgrades, patch installs, etc. [Some factors](<./Billing and Power Tier/Pricing.md>), such as object storage and network egress which are variable and usage-dependent, are not included in estimated pricing. We typically pass-thru the cloud provider costs with no additional markup.
 
 ### **What is optional in SkySQL pricing?**
 
@@ -179,7 +182,7 @@ Yes. Discounts are typically offered for one-year and three-year commitments. Pl
 
 ### **What forms of payment does SkySQL accept?**
 
-SkySQL accepts payment by [major credit card and through remittance accounts](<../Billing and Power Tier/Billing/>)
+SkySQL accepts payment by [major credit card and through remittance accounts](<./Portal features/Billing.md>)
 
 ### **Which credit cards does SkySQL accept?**
 
@@ -204,7 +207,7 @@ SkySQL charges are paid using a credit card, or via wire transfer/ACH upon invoi
 
 Yes. We offer direct purchase through the AWS Marketplace or we can craft a "private offer" to customize a subscription.
 
-[See the AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-uaoi4womvi6la?qid=1625063138420&sr=0-1&ref_=srh_res_product_title)
+[See the AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-txge2dgyj4ieg?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
 
 [Contact us](https://skysql.com/contact/) if you have further questions.
 
@@ -212,7 +215,7 @@ Yes. We offer direct purchase through the AWS Marketplace or we can craft a "pri
 
 Yes. SkySQL is an AWS partner network. Customers can retire their AWS commitment with a SkySQL subscription via the AWS Marketplace.
 
-[See the AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-uaoi4womvi6la?qid=1625063138420&sr=0-1&ref_=srh_res_product_title)
+[See the AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-txge2dgyj4ieg?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)
 
 [Contact us](https://skysql.com/contact/) if you have further questions.
 
@@ -220,7 +223,7 @@ Yes. SkySQL is an AWS partner network. Customers can retire their AWS commitment
 
 Yes. We offer direct purchase through the Google Marketplace or we can craft a "private offer" to customize a subscription.
 
-[See the Marketplace listing](https://console.cloud.google.com/marketplace/details/mariadb-public/mariadb-for-gcp).
+[See the Marketplace listing](https://console.cloud.google.com/marketplace/details/skysql-public/skysql-gcp-mp).
 
 [Contact us](https://skysql.com/contact/) if you have further questions.
 
@@ -228,7 +231,7 @@ Yes. We offer direct purchase through the Google Marketplace or we can craft a "
 
 Yes. SkySQL is listed in the Google Cloud Marketplace. Customers have the ability to retire their GCP commitment with a SkySQL subscription via the Marketplace.
 
-[See the Marketplace listing](https://console.cloud.google.com/marketplace/details/mariadb-public/mariadb-for-gcp).
+[See the Marketplace listing](https://console.cloud.google.com/marketplace/details/skysql-public/skysql-gcp-mp).
 
 [Contact us](https://skysql.com/contact/) if you have further questions.
 
@@ -258,7 +261,7 @@ MariaDB will bill for VAT and/or taxes in applicable jurisdictions. Customers ar
 
 Current month's estimated charges, including coupons and service credits, can be viewed on the Account Information page and are updated six times per day.
 
-In the event of service credits issued based on [SLA]https://skysql.com/sla/), service credits will be included in coupons and service credits on the Account Information page.
+In the event of service credits issued based on [SLA](https://skysql.com/sla/), service credits will be included in coupons and service credits on the Account Information page.
 
 ### **Can I stop or pause my instance to save money?**
 
@@ -428,7 +431,7 @@ You can SkySQL Monitoring after launching a service, then clicking the "Monitori
 
 ### **What is monitored?**
 
-SkySQL Monitoring covers status and metrics specific to a service and its servers. A [complete list of charts](https://mariadb.com/docs/skysql-previous-release/service-management/monitoring/) is provided.
+SkySQL Monitoring covers status and metrics specific to a service and its servers. A [complete list of charts](<./Reference Guide/Monitoring Metrics Reference.md>) is provided.
 
 ### **Who is alerted if a service goes down?**
 
@@ -477,7 +480,7 @@ Our optional [SkyDBA](FractionalDBA.md) service is available for Enterprise an
 SkySQL offers a full range of professional services, including:
 
 - [SkyDBA](./FractionalDBA.md) for proactive and reactive support
-- [Migration](https://mariadb.com/docs/skysql-previous-release/migration/) assistance
+- [Migration](<./Data loading, Migration/nr-support-assisted.md>) assistance
 - Assistance with your SkySQL proof-of-concept ([contact us for more information](https://skysql.com/contact/))
 
 ## **Inquiries**

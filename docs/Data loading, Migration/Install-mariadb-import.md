@@ -96,7 +96,7 @@ The procedure to import data depends on the operating system.
 
 ### **Linux**
 
-1. Determine the [connection parameters](https://mariadb.com/docs/skysql-dbaas/connect/nr-client-connections/) for your SkySQL service.
+1. Determine the [connection parameters](<../../Connecting to Sky DBs/>) for your SkySQL service.
 2. Use MariaDB Import with the connection information to import the data from the TSV or CSV file into your SkySQL database service:
     
     

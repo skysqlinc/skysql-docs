@@ -73,8 +73,10 @@ extra:
       link: https://www.linkedin.com/company/skysql
 
 nav:
-  - 'index.md'
-  - 'Higher Availability and Disaster Recovery.md'
+  - Introduction to SkySQL:
+    - 'index.md'
+    - 'Higher Availability and Disaster Recovery.md'
+    - 'Uptime SLA.md'
   - 'FAQs.md'
   - 'Quickstart' : 
       - 'Quickstart/README.md'
@@ -87,6 +89,7 @@ nav:
       - 'Portal features/Service Details page.md'
       - 'Portal features/Notifications.md'
       - 'Portal features/Service Monitoring Panels.md'
+      - 'Portal features/Billing.md'
   - 'Connecting to Sky DBs' :
       - 'Connecting to Sky DBs/README.md'
       - 'Connecting to Sky DBs/Connect using MariaDB CLI.md'
@@ -111,7 +114,14 @@ nav:
       - 'Data offloading/Replicating data from SkySQL to external database.md'
   - 'Autonomously scale Compute/Storage' :
       - 'Autonomously scale Compute, Storage/README.md'
-      - 'Autonomously scale Compute, Storage/Uptime SLA.md'
+  - 'Security' :
+      - 'Security/README.md'
+      - 'Security/Managing Portal Users.md'
+      - 'Security/Configuring Firewall.md'
+      - 'Security/Encryption.md'
+      - 'Security/Managing API keys.md'
+      - 'Security/Private VPC connections.md'
+      - 'Security/Portal Single Sign-On.md'
   - 'Configure your Database Server(s)' :
       - 'config/README.md'
       - 'config/Enterprise-Server-Single-Node.md'
@@ -134,18 +144,9 @@ nav:
       - 'Using AWS GCP private VPC connections/README.md'
       - 'Using AWS GCP private VPC connections/Setting up AWS Private Link.md'
       - 'Using AWS GCP private VPC connections/Setting up GCP Private Service Connect.md'
-  - 'Billing and Power Tier' :
+  - 'Power Tier' :
       - 'Billing and Power Tier/README.md'
-      - 'Billing and Power Tier/Billing.md'
   - 'FractionalDBA.md'
-  - 'Security' :
-      - 'Security/README.md'
-      - 'Security/Managing Portal Users.md'
-      - 'Security/Configuring Firewall.md'
-      - 'Security/Encryption.md'
-      - 'Security/Managing API keys.md'
-      - 'Security/Private VPC connections.md'
-      - 'Security/Portal Single Sign-On.md'
   - 'Reference Guides' :
       - 'Reference Guide/README.md'
       - 'Reference Guide/Instance Size Choices.md'

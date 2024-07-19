@@ -57,7 +57,7 @@ The Dashboard includes a Spending gauge to indicate current charges. More detail
 
 Alternatively, you can access detailed billing and invoice information by clicking on your name in the upper-right corner of the interface, then select "Billing" from the menu.
 
-See "[Billing](<../Billing and Power Tier/Billing.md>)" for additional details.
+See "[Billing](<./Billing.md>)" for additional details.
 
 ## Monitoring
 

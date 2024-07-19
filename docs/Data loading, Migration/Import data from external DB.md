@@ -18,7 +18,7 @@ To export data from a MySQL/MariaDB database and import it into SkySQL, you can 
 
 1. Start by using the `mysqldump` command to export the data from the source database. This command allows you to create a backup of your database in a SQL file. For example, you can use the following command:
     
-    ```
+    ```bash
     mysqldump -u [username] -p [database_name] > dump.sql
     
     ```
@@ -33,7 +33,8 @@ To export data from a MySQL/MariaDB database and import it into SkySQL, you can 
     ```bash
     ## mariadb -u [username] -p [database_name] < dump.sql
     
-    mariadb --host dbpwp27784332.orgtd5j0.db1.skysql.mariadb.com --port 3306 --user dbpwp27784332 -p [database_name] < dump.sql
+    mariadb --host dbpwp27784332.orgtd5j0.db1.skysql.mariadb.com --port 3306 \
+        --user dbpwp27784332 -p [database_name] < dump.sql
     ```
     
     Replace `[hostname], username]` with your SkySQL username and `[database_name]` with the name of the destination database. The `<` symbol is used to redirect the input from the file `dump.sql`.
@@ -43,18 +44,10 @@ By following these steps, you will be able to export data from your MySQL/MariaD
 
 <aside>
 💡 Note that mariadb-dump uses a single thread to create a logical backup (SQL) of your database. While this approach can work well on a loaded production DB there are better/faster approaches to dumping and loading data in parallel. You can use the mysqlpump or the mariadb-backup (or mysqlbackup) command to parallelize the export of larger DBs.
-
 </aside>
 
 <aside>
 💡 TODO - describe how users can use the SkySQL backup service to do a fast backup and restore of a compatible external database.
-
 </aside>
 
-### Mariadb-dump options
-
-- [mariadb-dump Options for 23.08 ES](https://mariadb.com/docs/skysql-dbaas/ref/es23.08/cli/mariadb-dump/)
-- [mariadb-dump Options for 23.07 ES](https://mariadb.com/docs/skysql-dbaas/ref/es23.07/cli/mariadb-dump/)
-- [mariadb-dump Options for 10.6 ES](https://mariadb.com/docs/skysql-dbaas/ref/es10.6/cli/mariadb-dump/)
-- [mariadb-dump Options for 10.5 ES](https://mariadb.com/docs/skysql-dbaas/ref/es10.5/cli/mariadb-dump/)
-- [mariadb-dump Options for 10.4 ES](https://mariadb.com/docs/skysql-dbaas/ref/es10.4/cli/mysqldump/)
+See [Mariadb-dump options](https://mariadb.com/kb/en/mariadb-dump/)

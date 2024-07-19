@@ -4,22 +4,23 @@ There are multiple options to copy/offload data from a SkySQL DB. You can do a l
 
 You can then use the offloaded data to resurrect the DB elsewhere. You can also optionally setup "outbound replication" to keep the new DB in sync with SkySQL. 
 
-## **(1) Offload your Database using `mariadb-dump`**
+## **1. Offload your Database using `mariadb-dump`**
 
 The [`mariadb-dump`](https://mariadb.com/kb/en/mariadb-dump/) utility is a powerful command-line tool that allows you to export databases, tables, or specific data from your MariaDB instance in SkySQL. 
 
 ### **Prerequisites**
-Ensure you have the mariadb-dump utility installed on your system. See [here](../Data%20loading,%20Migration/Install%20Mariadb-dump.md)
+Ensure you have the mariadb-dump utility installed on your system. See [here](<../Data loading, Migration/Install Mariadb-dump.md>)
 Obtain the necessary connection details for your SkySQL instance, including the host, username, and password.
 
 ### **Exporting All Databases**
 
 To export all databases from your SkySQL instance, use the following command:
 
-```sql 
-mariadb-dump -h your_skysql_host -u your_username -p --all-databases > all_databases_backup.sql
-
+```bash
+mariadb-dump -h your_skysql_host -u your_username -p \
+    --all-databases > all_databases_backup.sql
 ```
+
 - `-h your_skysql_host`: Specifies the host of your SkySQL instance.
 - `-u your_username`: Specifies the username to connect to the SkySQL instance.
 - `-p`: Prompts for the password for the specified username.
@@ -31,21 +32,22 @@ mariadb-dump -h your_skysql_host -u your_username -p --all-databases > all_datab
 
 To export specific databases, list the database names after the connection details:
 
-```sql
-mariadb-dump -h your_skysql_host -u your_username -p database1 database2 > selected_databases_backup.sql
+```bash
+mariadb-dump -h your_skysql_host -u your_username \
+    -p database1 database2 > selected_databases_backup.sql
 ```
 
 - `database1 database2`: Replace with the names of the databases you want to export.
 - ``> selected_databases_backup.sql`: Redirects the output to a file named selected_databases_backup.sql.
 
-
 ### **Exporting Just the Schema**
 To export only the schema (structure) of a database without the data, use the --no-data option:
 
-```sql
-mariadb-dump -h your_skysql_host -u your_username -p --no-data your_database > schema_backup.sql
-
+```bash
+mariadb-dump -h your_skysql_host -u your_username -p \
+    --no-data your_database > schema_backup.sql
 ```
+
 - `--no-data`: Ensures that only the schema is exported, not the data.
 - `your_database`: Replace with the name of the database whose schema you want to export.
 - `> schema_backup.sql`: Redirects the output to a file named schema_backup.sql.
@@ -106,18 +108,18 @@ INSERT INTO `your_table` VALUES (1,'Example Name','2023-01-01 00:00:00'),(2,'Ano
 UNLOCK TABLES;
 ```
 
-Finally, here is the reference to the utility where you will find all the [many command-line options](https://mariadb.com/docs/skysql-dbaas/ref/mdb/cli/mariadb-dump/)
+Finally, here is the reference to the utility where you will find all the [many command-line options](https://mariadb.com/kb/en/mariadb-dump/)
 
 > **Note**  
 >
 > Egress charges may apply when data is exported
 
 
-## **(2) Using MariaDB client**
+## **2. Using MariaDB client**
 
-Use [MariaDB Client](../Connecting%20to%20Sky%20DBs/README.md) with the connection information to export your schema from your SkySQL database service. Here is an example to export all rows from a single table:
+Use [MariaDB Client](<../Connecting to Sky DBs/Connect using MariaDB CLI.md>) with the connection information to export your schema from your SkySQL database service. Here is an example to export all rows from a single table:
 
-```sql
+```bash
 mariadb --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
       --user DATABASE_USER --password \
       --ssl-verify-server-cert \
@@ -135,8 +137,8 @@ mariadb --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \
 - You can customize the SQL along with providing multiple SQL statements to `-execute`. 
 
 
-## **(3) Exporting Data Using SkySQL Backup Service API to S3 or GCS Bucket**
-The [SkySQL Backup service API](../Backup%20and%20Restore/README.md) allows you to perform logical and physical dumps of your SkySQL databases to external storage buckets such as Amazon S3 or Google Cloud Storage (GCS). 
+## **3. Exporting Data Using SkySQL Backup Service API to S3 or GCS Bucket**
+The [SkySQL Backup service API](<../Backup and Restore/README.md>) allows you to perform logical and physical dumps of your SkySQL databases to external storage buckets such as Amazon S3 or Google Cloud Storage (GCS). 
 
 ### **Prerequisites**
 - Obtain the necessary credentials for your S3 bucket.
@@ -194,6 +196,7 @@ curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
     }
 }'
 ```
+
 - backup_type: Set to "physical" for a physical dump.
 - schedule: Set to "once" to schedule the backup immediately.
 
@@ -210,10 +213,11 @@ curl --location 'https://api.skysql.com/skybackup/v1/backups/status' \
     "service_id": "your_service_id"
 }'
 ```
+
 - service_id: The ID of your SkySQL service.
 This API call will return the status of the backups, including whether they are in progress, completed, or failed.
 
 
-## [**(4) Replicating changes from SkySQL to a compatible external DB**](./Replicating%20data%20from%20SkySQL%20to%20external%20database.md)
+## **4. Replicating changes from SkySQL to a compatible external DB**
 
-
+See [Replicating data From SkySQL to External Database](<./Replicating data from SkySQL to external database.md>) for details.

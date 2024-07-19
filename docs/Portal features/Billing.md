@@ -2,7 +2,7 @@
 
 Billing is associated with a SkySQL ID.
 
-For pricing information see "[Pricing](<./Pricing.md>)" .
+For pricing information see "[Pricing](<../Billing and Power Tier/Pricing.md>)" .
 
 ## **Usage Information**
 

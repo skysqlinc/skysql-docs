@@ -1,4 +1,3 @@
-details>
 <summary>
 Authentication
 </summary>
