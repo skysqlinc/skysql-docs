@@ -6,10 +6,8 @@ SkySQL customers should assess the availability requirements of their applicatio
 
 | Tier | Performance Standard |
 | --- | --- |
-| SkySQL Foundation Tier | • Multi-node configurations will deliver a 99.95% service availability on a per-billing-month basis.
-• For example, with this availability target in a 30 day calendar month the maximum service downtime is 21 minutes and 54 seconds. |
-| SkySQL Power Tier | • Multi-node configurations will deliver a 99.995% service availability on a per-billing-month basis.
-• For example, with this availability target in a 30 day calendar month the maximum service downtime is 2 minutes and 11 seconds. |
+| SkySQL Foundation Tier | Multi-node configurations will deliver a 99.95% service availability on a per-billing-month basis. For example, with this availability target in a 30 day calendar month the maximum service downtime is 21 minutes and 54 seconds. |
+| SkySQL Power Tier | Multi-node configurations will deliver a 99.995% service availability on a per-billing-month basis. For example, with this availability target in a 30 day calendar month the maximum service downtime is 2 minutes and 11 seconds. |
 
 ## **Service Downtime**
 
@@ -17,11 +15,11 @@ SkySQL customers should assess the availability requirements of their applicatio
 
 ## **Monthly Uptime Percentage**
 
-**Monthly Uptime Percentage** is calculated on a per-billing-month basis as the total number of minutes in a month, minus the number of minutes of measured [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime) within the month, divided by the number of minutes in that month. When a service is deployed for only part of a month, it is assumed to be 100% available for the portion of the month that it is not deployed.
+**Monthly Uptime Percentage** is calculated on a per-billing-month basis as the total number of minutes in a month, minus the number of minutes of measured [Service Downtime](https://skysql.com/sla/) within the month, divided by the number of minutes in that month. When a service is deployed for only part of a month, it is assumed to be 100% available for the portion of the month that it is not deployed.
 
 ## **Service Credit**
 
-**Service Credit** is the percentage of the total fees paid by you for a given SkySQL service during the month in which the downtime occurred to be credited if MariaDB approves your claim. The percentage used in calculating Service Credit is dependent on whether the customer is on Foundation Tier or Power Tier, and is dependent on the calculated [Monthly Uptime Percentage](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Monthly_Uptime_Percentage).
+**Service Credit** is the percentage of the total fees paid by you for a given SkySQL service during the month in which the downtime occurred to be credited if MariaDB approves your claim. The percentage used in calculating Service Credit is dependent on whether the customer is on Foundation Tier or Power Tier, and is dependent on the calculated [Monthly Uptime Percentage](https://skysql.com/sla/).
 
 | Tier | Monthly Uptime Percentage | Percentage Applied |
 | --- | --- | --- |
@@ -30,31 +28,29 @@ SkySQL customers should assess the availability requirements of their applicatio
 | Power Tier | Less than 99.995%, but greater than or equal to 99.0% | 10% |
 | Power Tier | Less than 99.0% | 25% |
 
-MariaDB will grant and process claims, provided the customer has satisfied its [Customer Obligations](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Customer_Obligations) and that none of the [Exclusions](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Exclusions) listed apply to the claim. [Service Credits](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Credit) will be issued only upon request within 60 days of the end of the billing period of the month of impact to service availability, and upon confirmation of outage. [Service Credits](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Credit) will be issued in the form of a monetary credit applied to future use of the service that experienced the [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime). [Service Credits](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Credit) will not be applied to fees for any other SkySQL instance.
+MariaDB will grant and process claims, provided the customer has satisfied its [Customer Obligations](https://skysql.com/sla/) and that none of the [Exclusions](https://skysql.com/sla/) listed apply to the claim. [Service Credits](https://skysql.com/sla/) will be issued only upon request within 60 days of the end of the billing period of the month of impact to service availability, and upon confirmation of outage. [Service Credits](https://skysql.com/sla/) will be issued in the form of a monetary credit applied to future use of the service that experienced the [Service Downtime](https://skysql.com/sla/). [Service Credits](https://skysql.com/sla/) will not be applied to fees for any other SkySQL instance.
 
-The aggregate maximum number of [Service Credits](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Credit) to be issued by MariaDB to customers for any and all [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime) that occurs in a single billing month will not exceed 50% of the amount due from the customer for the covered service for the applicable month.
+The aggregate maximum number of [Service Credits](https://skysql.com/sla/) to be issued by MariaDB to customers for any and all [Service Downtime](https://skysql.com/sla/) that occurs in a single billing month will not exceed 50% of the amount due from the customer for the covered service for the applicable month.
 
 ## **Customer Obligations**
 
-A customer will forfeit their right to receive a [Service Credit](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Credit) unless they:
+A customer will forfeit their right to receive a [Service Credit](https://skysql.com/sla/) unless they:
 
 - Log a support ticket with MariaDB Support within 60 minutes of first becoming aware of an event that impacts service availability.
-- Submit a claim and all required information by the end of the month immediately following the month when the [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime) occurred.
+- Submit a claim and all required information by the end of the month immediately following the month when the [Service Downtime](https://skysql.com/sla/) occurred.
 - Submit necessary information for MariaDB to validate the claim, including:
-    - a description of the events resulting in the [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime), and related request logs
-    - the date, time, and duration of the [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime)
+    - a description of the events resulting in the [Service Downtime](https://skysql.com/sla/), and related request logs
+    - the date, time, and duration of the [Service Downtime](https://skysql.com/sla/)
     - the number and location(s) of affected users
-    - descriptions of customer attempts to fix the [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime) as it occurred
-- Provide reasonable assistance to MariaDB in investigating the cause of the [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime) and investigating your claim.
+    - descriptions of customer attempts to fix the [Service Downtime](https://skysql.com/sla/) as it occurred
+- Provide reasonable assistance to MariaDB in investigating the cause of the [Service Downtime](https://skysql.com/sla/) and investigating your claim.
 
 ## **Exclusions**
 
 - **Out-of-scope configurations**
     
-    The [Performance Standard](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Performance_Standard) does not apply to single instance SkySQL service configuration or services in Technical Preview. Customers requiring High Availability should deploy instead in production-ready multi-node service configuration.
-    
-    See "[Choose a SkySQL Release](https://mariadb.com/docs/skysql-dbaas/working/nr-release-choice/)" for information on SkySQL services in Technical Preview.
-    
+    The [Performance Standard](https://skysql.com/sla/) does not apply to single instance SkySQL service configuration or services in Technical Preview. Customers requiring High Availability should deploy instead in production-ready multi-node service configuration.
+        
 - **Underlying infrastructure**
     
     Impact to service availability caused by availability or performance of cloud services used to operate SkySQL is excluded. This includes any such outages in Amazon Web Services (AWS) and Amazon Elastic Kubernetes Service (EKS), and Google Cloud Platform (GCP) and Google Kubernetes Engine (GKE).
@@ -69,7 +65,7 @@ A customer will forfeit their right to receive a [Service Credit](https://maria
     
 - **Uncorroborated impacts**
     
-    Only impacts to service availability detected at [point of measurement](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime) are subject when determining the uptime percentage. Service availability impacts measured through any other means, such as application instrumentation, are excluded except as also measured as [Service Downtime](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Service_Downtime) by MariaDB.
+    Only impacts to service availability detected at [point of measurement](https://skysql.com/sla/) are subject when determining the uptime percentage. Service availability impacts measured through any other means, such as application instrumentation, are excluded except as also measured as [Service Downtime](https://skysql.com/sla/) by MariaDB.
     
 - **Portal access**
     
@@ -85,7 +81,7 @@ A customer will forfeit their right to receive a [Service Credit](https://maria
     
 - **Non-paying customers**
     
-    The [Performance Standard](https://mariadb.com/docs/skysql-dbaas/service-management/nr-sla/#Performance_Standard) applies only to paying SkySQL customers who are paid-in-full. All other SkySQL customers, including those not paid-in-full and those customers participating in a free or credited service trial, are excluded.
+    The [Performance Standard](https://skysql.com/sla/) applies only to paying SkySQL customers who are paid-in-full. All other SkySQL customers, including those not paid-in-full and those customers participating in a free or credited service trial, are excluded.
     
 - **Customer-directed maintenance**
     
