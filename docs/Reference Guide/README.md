@@ -9,7 +9,7 @@
 
 ####2. [MariaDB Server With Replica(s)](<../config/Enterprise-Server-with-Replica(s).md>)
 
-####3. [SkySQL Intelligent Proxy Configuration](<../config/SkySQL-Intelligen-Proxy .md>)
+####3. [SkySQL Intelligent Proxy Configuration](<../config/SkySQL-Intelligent-Proxy.md>)
 
 ### [SkySQL supported Instance sizes](<./Instance Size Choices.md>)
 
