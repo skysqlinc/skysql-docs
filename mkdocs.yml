@@ -126,7 +126,7 @@ nav:
       - 'config/README.md'
       - 'config/Enterprise-Server-Single-Node.md'
       - 'config/Enterprise-Server-with-Replica(s).md'
-      - 'config/Maxscale-Configuration.md'
+      - 'config/SkySQL-Intelligent-Proxy.md'
   - 'Backup and Restore' :
       - 'Backup and Restore/README.md'
       - 'Backup and Restore/Snapshot Backup Examples.md'

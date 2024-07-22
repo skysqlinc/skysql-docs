@@ -21,4 +21,4 @@ Available configuration parameters differ by cloud database topology.
 
 [**Enterprise Server With Replica(s)**](./Enterprise-Server-with-Replica(s).md)
 
-[**Maxscale Configuration**](./Maxscale-Configuration.md)
+[**SkySQL Intelligent Proxy Configuration**](./SkySQL-Intelligent-Proxy.md)
