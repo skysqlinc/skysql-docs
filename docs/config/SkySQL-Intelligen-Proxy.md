@@ -1,4 +1,4 @@
-The following Configuration Manager parameters are used to configure MariaDB MaxScale behavior:
+SkySQL Intelligent Proxy represents an optimized iteration of MariaDB MaxScale. The subsequent Configuration Manager parameters are leveraged to tailor the behavior of MariaDB MaxScale:"
 
 | Name | Default Value |
 |------|---------------|
