@@ -186,7 +186,7 @@ Binlogs record database changes (data modifications, table structure changes) in
 ## Restores
 
 **WARNING**
-> Restoring from a backup will erase all data in your target DB service. If you are uncertain, it is advisable to first create a backup of the DB service before initiating the restore process. Consider restoring to a new database instance as a preferred approach. The database being restored will be temporarily stopped during the restoration. You will need to restart it afterward.
+> Restoring from a backup will erase all data in your target DB service. If you are uncertain, it is advisable to first create a backup of the DB service before initiating the restore process. Consider restoring to a new database instance as a preferred approach. The database being restored will be temporarily stopped during the restoration.
 
 Users can instruct the restore of their SkySQL Database from their own SkySQL storage or from an external storage they own. The restore API provides options for listing, adding, and deleting a scheduled restore operation.
 
