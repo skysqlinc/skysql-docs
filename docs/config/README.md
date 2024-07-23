@@ -17,8 +17,8 @@ To access the Configuration Manager interface:
 
 Available configuration parameters differ by cloud database topology.
 
-[**Enterprise Server Single Node**](./Enterprise-Server-Single-Node.md)
+[1. Enterprise Server Single Node](./Enterprise-Server-Single-Node.md)
 
-[**Enterprise Server With Replica(s)**](./Enterprise-Server-with-Replica(s).md)
+[2. Enterprise Server With Replica(s)](./Enterprise-Server-with-Replica(s).md)
 
-[**SkySQL Intelligent Proxy Configuration**](./SkySQL-Intelligent-Proxy.md)
+[3. SkySQL Intelligent Proxy Configuration](./SkySQL-Intelligent-Proxy.md)
