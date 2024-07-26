@@ -75,7 +75,7 @@ curl --location --request POST 'https://api.skysql.com/skybackup/v1/backups/sche
   }'
 ```
 
-2. Each backup also has a unique identified. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Standby service. Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. Replcate {backup-id} with the backup id that you want to restore and {service-id} with the id of the Standby service.
+2. Each backup also has a unique identified. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Standby service. Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. Replace {backup-id} with the backup id that you want to restore and {service-id} with the id of the Standby service.
 
 ```bash
 curl --location --request POST 'https://api.skysql.com/skybackup/v1/restores' \
