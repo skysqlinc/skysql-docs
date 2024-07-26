@@ -56,7 +56,7 @@ curl --location --request POST 'https://api.skysql.com/provisioning/v1/services'
 ### **Step 3: Backup the Primary and Restore to the Standby Service**
 1. In a real world scenario, the Primary service will have some data which will need to be restored to the Standby service before the replication can be set up. SkySQL performs full backup of your services every night. You can either use existing latest nightly backup or create a schedule to perform a new full backup.
 
-Use the following API to list backups associated with the Primary service. Replcate {id} with the id of the Primary service.
+Use the following API to list backups associated with the Primary service. Replace {id} with the id of the Primary service.
 
 ```bash
 curl --location --request GET 'https://api.skysql.com/skybackup/v1/backups?service_id={id}' \
