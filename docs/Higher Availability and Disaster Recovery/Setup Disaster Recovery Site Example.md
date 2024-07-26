@@ -63,7 +63,7 @@ curl --location --request GET 'https://api.skysql.com/skybackup/v1/backups?servi
    --header "X-API-Key: ${SKYSQL_API_KEY}" --header "Content-type: application/json" \
 ```
 
-Use the following API to create a one-time schedule to perform a new full backup. Replcate {id} with the id of the Primary service.
+Use the following API to create a one-time schedule to perform a new full backup. Replace {id} with the id of the Primary service.
 
 ```bash
 curl --location --request POST 'https://api.skysql.com/skybackup/v1/backups/schedules' \
