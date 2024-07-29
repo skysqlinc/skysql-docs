@@ -1,7 +1,5 @@
 # Security
 
-!!! Note
-    TODO - describe security properly - things like how storage is encrypted, between zones, etc
 
 
 SkySQL takes security very seriously and provides security at all levels - encryption on-the-wire, encrypted storage, guarded compute, multiple levels of authentication and Authorization. 
