@@ -6,8 +6,8 @@ SkySQL offers a robust platform for managing databases in the cloud and supports
 - Replication Procedures: To setup active replication between the primary and the secondarymservices.
 
 ### **Step 1: Generate SkySQL API Key**
-1. Go to the [User Profile](https://app.skysql.com/user-profile/api-keys/) page of the SkySQL Portal to generate an API key.
-2. Export the value from the token field to an environment variable $API_KEY
+1\. Go to the [User Profile](https://app.skysql.com/user-profile/api-keys/) page of the SkySQL Portal to generate an API key.
+2\. Export the value from the token field to an environment variable $API_KEY
     
     ```bash
     $ export API_KEY='... key data ...'
@@ -21,7 +21,7 @@ Launch two SkySQL services - a Primary that your application(s) will connect to 
 !!! Note
     Review [Launch DB using the REST API](./Launch%20DB%20using%20the%20REST%20API) quickstart for detailed instructions on launching a SkySQL service using the provisioning API. Launching a new service will take about 5 minutes.
 
-1. Following API requests will create two services in Google Cloud - 'skysql-primary' in the Virginia region and 'skysql-secondary' in the Oregon region. 
+1\. Following API requests will create two services in Google Cloud - 'skysql-primary' in the Virginia region and 'skysql-secondary' in the Oregon region. 
 
 ```bash
 curl --location --request POST https://api.skysql.com/provisioning/v1/services \
@@ -65,7 +65,7 @@ In a real world scenario, the Primary service will contain data which will need 
 !!! Note
     Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service.
 
-1. Use the following API to list backups associated with the Primary service. Replcate {id} with the id of the Primary service.
+1\. Use the following API to list backups associated with the Primary service. Replcate {id} with the id of the Primary service.
 
    ```bash
    curl --location --request GET https://api.skysql.com/skybackup/v1/backups?service_id={id} \
@@ -73,10 +73,10 @@ In a real world scenario, the Primary service will contain data which will need 
    ```
 OR
 
-1. Use the following API to create a one-time schedule to perform a new full backup. Replace {id} with the id of the Primary service.
+1\. Use the following API to create a one-time schedule to perform a new full backup. Replace {id} with the id of the Primary service.
 
    ```bash
-   curl --location --request POST 'https://api.skysql.com/skybackup/v1/backups/schedules' \
+   curl --location --request POST https://api.skysql.com/skybackup/v1/backups/schedules \
       --header "X-API-Key: ${SKYSQL_API_KEY}" --header "Content-type: application/json" \
       --data '{
    "backup_type": "full",
@@ -99,9 +99,9 @@ OR
 3\. Once the restore is complete, the default username and password associated with the Secondary service will not work. You will have to use Primary service's username and password to connect to the Secondary service.
 
 ### **Step 4: Set up Replication between the Primary and the Standby**
-1. Since we want to set up replication between the two SkySQL services, the Standby service should be able to connect to the Primary service. Add the Outbound IP address of the Standby service to the Allowlist of the Primary service. (TODO - Add APIs for retrieving outbound IP and adding it to allowlist)
+1\. Since we want to set up replication between the two SkySQL services, the Standby service should be able to connect to the Primary service. Add the Outbound IP address of the Standby service to the Allowlist of the Primary service. (TODO - Add APIs for retrieving outbound IP and adding it to allowlist)
 
-2. Next, obtain the GTID position from which to start the replication and configure it on the Standby service by calling the following stored procedures. Replace 'host' and 'port' with the Primary service's hostname and port. Replace 'gtid' with the GTID position from which to start replication. Use true/false for whether to use SSL.
+2\. Next, obtain the GTID position from which to start the replication and configure it on the Standby service by calling the following stored procedures. Replace 'host' and 'port' with the Primary service's hostname and port. Replace 'gtid' with the GTID position from which to start replication. Use true/false for whether to use SSL.
 
 ```bash
 CALL sky.gtid_status();
