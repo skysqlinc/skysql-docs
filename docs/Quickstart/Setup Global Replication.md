@@ -19,46 +19,46 @@ SkySQL offers a robust platform for managing databases in the cloud and supports
 Launch two SkySQL services - a Primary that your application(s) will connect to and a Secondary that will act as a globally available service. If you already have your Primary service running, you simply need to create a new Secondary service. 
 
 !!! Note
-    Review [Launch DB using the REST API](/docs/Quickstart/Launch%20DB%20using%20the%20REST%20API.md) quickstart for detailed instructions on launching a SkySQL service using the provisioning API.
+    Review [Launch DB using the REST API](Launch%20DB%20using%20the%20REST%20API.md) quickstart for detailed instructions on launching a SkySQL service using the provisioning API.
 
 1. Following API requests will create two services in Google Cloud - 'skysql-primary' in the Virginia region and 'skysql-secondary' in the Oregon region. 
 
    !!! Note
       Launching a new service will take about 5 minutes.
 
-```bash
-curl --location --request POST https://api.skysql.com/provisioning/v1/services \
-   --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
-   --data '{
-  "service_type": "transactional",
-  "topology": "standalone",
-  "provider": "gcp",
-  "region": "us-east4",
-  "architecture": "amd64",
-  "size": "sky-2x8",
-  "storage": 100,
-  "nodes": 1,
-  "name": "skysql-primary",
-  "ssl_enabled": true
-  }'
-```
+   ```bash
+   curl --location --request POST https://api.skysql.com/provisioning/v1/services \
+      --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
+      --data '{
+   "service_type": "transactional",
+   "topology": "standalone",
+   "provider": "gcp",
+   "region": "us-east4",
+   "architecture": "amd64",
+   "size": "sky-2x8",
+   "storage": 100,
+   "nodes": 1,
+   "name": "skysql-primary",
+   "ssl_enabled": true
+   }'
+   ```
 
-```bash
-curl --location --request POST https://api.skysql.com/provisioning/v1/services \
-   --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
-   --data '{
-  "service_type": "transactional",
-  "topology": "standalone",
-  "provider": "gcp",
-  "region": "us-west1",
-  "architecture": "amd64",
-  "size": "sky-2x8",
-  "storage": 100,
-  "nodes": 1,
-  "name": "skysql-secondary",
-  "ssl_enabled": true
-  }'
-```
+   ```bash
+   curl --location --request POST https://api.skysql.com/provisioning/v1/services \
+      --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
+      --data '{
+   "service_type": "transactional",
+   "topology": "standalone",
+   "provider": "gcp",
+   "region": "us-west1",
+   "architecture": "amd64",
+   "size": "sky-2x8",
+   "storage": 100,
+   "nodes": 1,
+   "name": "skysql-secondary",
+   "ssl_enabled": true
+   }'
+   ```
 
 2. Each SkySQL service has a unique identifier. Please make note of the identifier shown in the API response. We will need it later.
 
@@ -67,10 +67,10 @@ In a real world scenario, the Primary service will contain data which will need 
 
 1. Use the following API to list backups associated with the Primary service. Replcate {id} with the id of the Primary service.
 
-```bash
-curl --location --request GET https://api.skysql.com/skybackup/v1/backups?service_id={id} \
-   --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json"
-```
+   ```bash
+   curl --location --request GET https://api.skysql.com/skybackup/v1/backups?service_id={id} \
+      --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json"
+   ```
 OR
 
 1. Use the following API to create a one-time schedule to perform a new full backup. Replace {id} with the id of the Primary service.
@@ -78,26 +78,26 @@ OR
    !!! Note
       Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service.
 
-```bash
-curl --location --request POST 'https://api.skysql.com/skybackup/v1/backups/schedules' \
-   --header "X-API-Key: ${SKYSQL_API_KEY}" --header "Content-type: application/json" \
-   --data '{
-  "backup_type": "full",
-  "schedule": "once",
-  "service_id": "{id}"
-  }'
-```
+   ```bash
+   curl --location --request POST 'https://api.skysql.com/skybackup/v1/backups/schedules' \
+      --header "X-API-Key: ${SKYSQL_API_KEY}" --header "Content-type: application/json" \
+      --data '{
+   "backup_type": "full",
+   "schedule": "once",
+   "service_id": "{id}"
+   }'
+   ```
 
 2. Each backup also has a unique identified. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Secondary service. Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. Replcate {backup-id} with the backup id that you want to restore and {service-id} with the id of the Secondary service.
 
-```bash
-curl --location --request POST https://api.skysql.com/skybackup/v1/restores \
-   --header "X-API-Key: ${SKYSQL_API_KEY}" --header "Content-type: application/json" \
-   --data '{
-  "id": "{backup-id}}",
-  "service_id": "{service-id}"
-  }'
-```
+   ```bash
+   curl --location --request POST https://api.skysql.com/skybackup/v1/restores \
+      --header "X-API-Key: ${SKYSQL_API_KEY}" --header "Content-type: application/json" \
+      --data '{
+   "id": "{backup-id}}",
+   "service_id": "{service-id}"
+   }'
+   ```
 
 3. Once the restore is complete, the default username and password associated with the Secondary service will not work. You will have to use Primary service's username and password to connect to the Secondary service.
 
