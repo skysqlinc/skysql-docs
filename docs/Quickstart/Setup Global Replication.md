@@ -8,12 +8,12 @@ SkySQL offers a robust platform for managing databases in the cloud and supports
 ### **Step 1: Generate SkySQL API Key**
 1\. Go to the [User Profile](https://app.skysql.com/user-profile/api-keys/) page of the SkySQL Portal to generate an API key.
 2\. Export the value from the token field to an environment variable $API_KEY
+
+   ```bash
+   $ export API_KEY='... key data ...'
+   ```
     
-    ```bash
-    $ export API_KEY='... key data ...'
-    ```
-    
-    The `API_KEY` environment variable will be used in the subsequent steps.
+The `API_KEY` environment variable will be used in the subsequent steps.
 
 ### **Step 2: Launch SkySQL Services**
 Launch two SkySQL services - a Primary that your application(s) will connect to and a Secondary that will act as a globally available service. If you already have your Primary service running, you simply need to create a new Secondary service. 
