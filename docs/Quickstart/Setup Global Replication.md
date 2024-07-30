@@ -19,7 +19,7 @@ SkySQL offers a robust platform for managing databases in the cloud and supports
 Launch two SkySQL services - a Primary that your application(s) will connect to and a Secondary that will act as a globally available service. If you already have your Primary service running, you simply need to create a new Secondary service. 
 
 !!! Note
-    Review [Launch DB using the REST API](Launch%20DB%20using%20the%20REST%20API.md) quickstart for detailed instructions on launching a SkySQL service using the provisioning API.
+    Review [Launch DB using the REST API](./Launch%20DB%20using%20the%20REST%20API) quickstart for detailed instructions on launching a SkySQL service using the provisioning API.
 
 1. Following API requests will create two services in Google Cloud - 'skysql-primary' in the Virginia region and 'skysql-secondary' in the Oregon region. 
 
@@ -60,7 +60,7 @@ Launch two SkySQL services - a Primary that your application(s) will connect to 
    }'
    ```
 
-2. Each SkySQL service has a unique identifier. Please make note of the identifier shown in the API response. We will need it later.
+2\. Each SkySQL service has a unique identifier. Please make note of the identifier shown in the API response. We will need it later.
 
 ### **Step 3: Backup the Primary and Restore to the Secondary Service**
 In a real world scenario, the Primary service will contain data which will need to be restored to the Standby service before the replication can be set up. SkySQL performs full backup of your services every night. You can either use an existing nightly backup or create a schedule to perform a new full backup.
@@ -88,7 +88,7 @@ OR
    }'
    ```
 
-2. Each backup also has a unique identified. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Secondary service. Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. Replcate {backup-id} with the backup id that you want to restore and {service-id} with the id of the Secondary service.
+2\. Each backup also has a unique identified. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Secondary service. Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. Replcate {backup-id} with the backup id that you want to restore and {service-id} with the id of the Secondary service.
 
    ```bash
    curl --location --request POST https://api.skysql.com/skybackup/v1/restores \
@@ -99,7 +99,7 @@ OR
    }'
    ```
 
-3. Once the restore is complete, the default username and password associated with the Secondary service will not work. You will have to use Primary service's username and password to connect to the Secondary service.
+3\. Once the restore is complete, the default username and password associated with the Secondary service will not work. You will have to use Primary service's username and password to connect to the Secondary service.
 
 ### **Step 4: Set up Replication between the Primary and the Standby**
 1. Since we want to set up replication between the two SkySQL services, the Standby service should be able to connect to the Primary service. Add the Outbound IP address of the Standby service to the Allowlist of the Primary service. (TODO - Add APIs for retrieving outbound IP and adding it to allowlist)
@@ -111,12 +111,12 @@ CALL sky.gtid_status();
 CALL sky.change_external_primary_gtid(host,port,gtid,use_ssl_encryption);
 ```
 
-3. Start replication and check status on the Standby service using the following procedures:
+3\. Start replication and check status on the Standby service using the following procedures:
 
 ```bash
 CALL sky.start_replication();
 CALL sky.replication_status();
 ```
 
-4. Once the replication is setup, verify the status of the new database service in the SkySQL console. Ensure that the service is replicating for your use case for global replication.
+4\. Once the replication is setup, verify the status of the new database service in the SkySQL console. Ensure that the service is replicating for your use case for global replication.
 
