@@ -19,51 +19,51 @@ SkySQL offers a robust platform for managing databases in the cloud and supports
 Launch two SkySQL services - a Primary that your application(s) will connect to and a Secondary that will act as a globally available service. If you already have your Primary service running, you simply need to create a new Secondary service. 
 
 !!! Note
-    Review [Launch DB using the REST API](./Launch%20DB%20using%20the%20REST%20API) quickstart for detailed instructions on launching a SkySQL service using the provisioning API.
+    Review [Launch DB using the REST API](./Launch%20DB%20using%20the%20REST%20API) quickstart for detailed instructions on launching a SkySQL service using the provisioning API. Launching a new service will take about 5 minutes.
 
 1. Following API requests will create two services in Google Cloud - 'skysql-primary' in the Virginia region and 'skysql-secondary' in the Oregon region. 
 
-   !!! Note
-      Launching a new service will take about 5 minutes.
+```bash
+curl --location --request POST https://api.skysql.com/provisioning/v1/services \
+   --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
+   --data '{
+"service_type": "transactional",
+"topology": "standalone",
+"provider": "gcp",
+"region": "us-east4",
+"architecture": "amd64",
+"size": "sky-2x8",
+"storage": 100,
+"nodes": 1,
+"name": "skysql-primary",
+"ssl_enabled": true
+}'
+```
 
-   ```bash
-   curl --location --request POST https://api.skysql.com/provisioning/v1/services \
-      --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
-      --data '{
-   "service_type": "transactional",
-   "topology": "standalone",
-   "provider": "gcp",
-   "region": "us-east4",
-   "architecture": "amd64",
-   "size": "sky-2x8",
-   "storage": 100,
-   "nodes": 1,
-   "name": "skysql-primary",
-   "ssl_enabled": true
-   }'
-   ```
-
-   ```bash
-   curl --location --request POST https://api.skysql.com/provisioning/v1/services \
-      --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
-      --data '{
-   "service_type": "transactional",
-   "topology": "standalone",
-   "provider": "gcp",
-   "region": "us-west1",
-   "architecture": "amd64",
-   "size": "sky-2x8",
-   "storage": 100,
-   "nodes": 1,
-   "name": "skysql-secondary",
-   "ssl_enabled": true
-   }'
-   ```
+```bash
+curl --location --request POST https://api.skysql.com/provisioning/v1/services \
+   --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" \
+   --data '{
+"service_type": "transactional",
+"topology": "standalone",
+"provider": "gcp",
+"region": "us-west1",
+"architecture": "amd64",
+"size": "sky-2x8",
+"storage": 100,
+"nodes": 1,
+"name": "skysql-secondary",
+"ssl_enabled": true
+}'
+```
 
 2\. Each SkySQL service has a unique identifier. Please make note of the identifier shown in the API response. We will need it later.
 
 ### **Step 3: Backup the Primary and Restore to the Secondary Service**
 In a real world scenario, the Primary service will contain data which will need to be restored to the Standby service before the replication can be set up. SkySQL performs full backup of your services every night. You can either use an existing nightly backup or create a schedule to perform a new full backup.
+
+!!! Note
+   Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service.
 
 1. Use the following API to list backups associated with the Primary service. Replcate {id} with the id of the Primary service.
 
@@ -74,9 +74,6 @@ In a real world scenario, the Primary service will contain data which will need 
 OR
 
 1. Use the following API to create a one-time schedule to perform a new full backup. Replace {id} with the id of the Primary service.
-
-   !!! Note
-      Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service.
 
    ```bash
    curl --location --request POST 'https://api.skysql.com/skybackup/v1/backups/schedules' \
