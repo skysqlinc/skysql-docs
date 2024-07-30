@@ -98,17 +98,17 @@ OR
 
 3\. Once the restore is complete, the default username and password associated with the Secondary service will not work. You will have to use Primary service's username and password to connect to the Secondary service.
 
-### **Step 4: Set up Replication between the Primary and the Standby**
-1\. Since we want to set up replication between the two SkySQL services, the Standby service should be able to connect to the Primary service. Add the Outbound IP address of the Standby service to the Allowlist of the Primary service. (TODO - Add APIs for retrieving outbound IP and adding it to allowlist)
+### **Step 4: Set up Replication between the Primary and the Secondary**
+1\. Since we want to set up replication between the two SkySQL services, the Secondary service should be able to connect to the Primary service. Add the Outbound IP address of the Secondary service to the Allowlist of the Primary service. (TODO - Add APIs for retrieving outbound IP and adding it to allowlist)
 
-2\. Next, obtain the GTID position from which to start the replication and configure it on the Standby service by calling the following stored procedures. Replace 'host' and 'port' with the Primary service's hostname and port. Replace 'gtid' with the GTID position from which to start replication. Use true/false for whether to use SSL.
+2\. Next, obtain the GTID position from which to start the replication and configure it on the Secondary service by calling the following stored procedures. Replace 'host' and 'port' with the Primary service's hostname and port. Replace 'gtid' with the GTID position from which to start replication. Use true/false for whether to use SSL.
 
 ```bash
 CALL sky.gtid_status();
 CALL sky.change_external_primary_gtid(host,port,gtid,use_ssl_encryption);
 ```
 
-3\. Start replication and check status on the Standby service using the following procedures:
+3\. Start replication and check status on the Secondary service using the following procedures:
 
 ```bash
 CALL sky.start_replication();
