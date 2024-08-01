@@ -28,6 +28,9 @@ Connection parameters include:
 - ssl-verify-server-cert (if SSL is ON)
 
 !!! Note
+    💡 Unlike previous SkySQL versions, the current version no longer requires clients to supply the Server SSL Certificate for SSL connections. Customers who migrated from MariaDB corporation to SkySQL Inc can continue to use provided certificates (when using the previous SkySQL method for connecting). But, we strongly recommend moving to the connection properties as shown in the Connect window for your service.
+
+!!! Note
     💡 **There is a default config change in the 11.4.2 MariaDB client that requires SSL. This needs to be disabled by setting ```--ssl-verify-server-cert=0```.**
 
 ![Connect window example](connect_window.png)
@@ -58,9 +61,6 @@ Applications can connect to SkySQL using any of the below MariaDB supported conn
 ## Connecting from SQL tools
 
 Clients listed here have been tested to properly connect with SkySQL and execute queries.
-
-!!! Note
-    💡 Unlike previous SkySQL versions, the current version no longer requires clients to supply the Server SSL Certificate for SSL connections. Customers who migrated from MariaDB corporation to SkySQL Inc can continue to use provided certificates (when using the previous SkySQL method for connecting). But, we strongly recommend moving to the connection properties as shown in the Connect window for your service.
 
 Most of the SQL clients and editors natively support MariaDB. Most often you can also just select 'MySQL' and connect to your SkySQL DB service. 
 
