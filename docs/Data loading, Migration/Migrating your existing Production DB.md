@@ -85,17 +85,17 @@ To minimize downtime during migration, set up live replication from your source 
         --routines --triggers --events --skip-lock-tables > dump.sql
     ```
 
-3. **Dump the User Table Separately**: Dump the `mysql.user` table separately to handle user data without affecting the default SkySQL user.
+3. **Dump the User Table Separately**: Since the `mysql.user` view aggregates information from the `global_priv` table, you should dump the `global_priv` table separately to ensure that user privileges are preserved:
 
     ```bash
-    mysqldump -u [username] -p mysql user > mysql_user_dump.sql
+    mysqldump -u [username] -p mysql global_priv > global_priv.sql
     ```
 
 4. **Import the Dumps into SkySQL**: Import the logical dumps (SQL files) into your SkySQL database, ensuring to load the user dump after the main dump.
 
     ```bash
     mariadb -u [username] -p [database_name] < dump.sql
-    mariadb -u [username] -p mysql < mysql_user_dump.sql
+    mariadb -u [username] -p mysql < global_priv.sql
     ```
 
 5. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](<../Reference Guide/Sky Stored Procedures.md>) for details.
