@@ -23,3 +23,6 @@ When making changes:
    - `git commit -m "Your commit message"`
 4. Push your changes to the remote repository: `git push origin new-branch-name`
 5. Create a pull request for your changes to be reviewed and merged into the main branch.
+
+### Sample Pull Request Recodring 
+[Download Video Tutorial](usingtherepoexample.mov)
