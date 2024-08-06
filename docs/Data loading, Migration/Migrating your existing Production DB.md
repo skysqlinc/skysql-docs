@@ -82,7 +82,8 @@ To minimize downtime during migration, set up live replication from your source 
 
     ```bash
     mysqldump -u [username] -p --all-databases --ignore-table=mysql.user \
-        --routines --triggers --events --skip-lock-tables > dump.sql
+        --ignore-table=mysql.global_priv --routines --triggers --events  \
+        --skip-lock-tables > dump.sql
     ```
 
 3. **Dump the User Table Separately**: Since the `mysql.user` view aggregates information from the `global_priv` table, you should dump the `global_priv` table separately to ensure that user privileges are preserved:
