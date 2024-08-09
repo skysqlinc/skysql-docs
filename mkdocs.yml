@@ -75,14 +75,12 @@ extra:
 nav:
   - Introduction to SkySQL:
     - 'index.md'
-    - 'Higher Availability and Disaster Recovery.md'
     - 'Uptime SLA.md'
   - 'FAQs.md'
   - 'Quickstart' : 
       - 'Quickstart/README.md'
       - 'Quickstart/Launch DB using the REST API.md'
       - 'Quickstart/Launch DB using the Terraform Provider.md'
-      - 'Quickstart/Setup Global Replication.md'
   - 'UI Portal Features' : 
       - 'Portal features/README.md'
       - 'Portal features/Launch page.md'
@@ -113,6 +111,9 @@ nav:
   - 'Data Offloading' :
       - 'Data offloading/README.md'
       - 'Data offloading/Replicating data from SkySQL to external database.md'
+  - 'High Availability, DR' :
+      - 'High Availability, DR/README.md'
+      - 'High Availability, DR/Setup Global Replication.md'
   - 'Autonomously scale Compute/Storage' :
       - 'Autonomously scale Compute, Storage/README.md'
   - 'Security' :

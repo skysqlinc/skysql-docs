@@ -1,9 +1,11 @@
-# Higher Availability and Disaster Recovery
+# Higher Availability and Disaster Recovery Concepts
 
 !!! Note
-    SkySQL, unlike hyperscalers, deploy replicas in a active-active configuration. When primary crashes our intelligent proxy allows us to failover near instantly to an alternate replica. Or, failback when the original primary recovers. Ensuring data consistency even when replicas have a replication lag through “causal reads”, or transaction replay. Our underlying k8s based operator has smarts to rebuild replicas that lag a lot using cloud native snapshots.
+    SkySQL provides HA using semi-synchronous replicas. Unlike hyperscalers these replicas are not standy DB servers but actively used for Reads. When the primary crashes our intelligent proxy allows us to failover near instantly to an alternate replica. Or, failback when the original primary recovers. Ensuring data consistency even when replicas have a replication lag through “causal reads”, or transaction replay. 
 
 ----
+
+## **Use 'Replicated Topoplogy' for HA**
 
 For HA and Load balancing client requests there is no configuration required. Just launch a `replicated topology` DB service. SkySQL automatically starts a intelligent proxy that does all the heavy lifting. Detecting failures and replaying transactions, awareness of who the primary is at all times, balancing load and much more. 
 
@@ -37,19 +39,21 @@ This model functions optimally when application clients utilize sticky SQL conne
 
 ### Configuring Causal Read in SkySQL 
 Causal consistency is configured in the SkySQL Configuration Manager, maxscale settings (applies to Replicated clusters only)
-You can configure [causal reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) using the SkySQL configuration Manager. Look for maxscale properties and search for causal_reads. 
 
-- set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'local' to achieve consistency at a connection/session level. 
-- set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'global' for strict consistency across all connections. 
-- set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'fast' to achieve consistency at a connection/session level but is faster than 'local' but at the cost of load balancing. 
+!!! Note
+    You can configure [causal reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) using the SkySQL configuration Manager. Look for maxscale properties and search for causal_reads. 
+
+    - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'local' to achieve consistency at a connection/session level. 
+    - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'global' for strict consistency across all connections. 
+    - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'fast' to achieve consistency at a connection/session level but is faster than 'local' but at the cost of load balancing. 
 
 You can also configure [causal_reads_timeout](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads_timeout) so any reads on replicas don't wait too long for a consistent read. 
 
 Finally, you can configure the [max_slave_replication_lag](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#max_slave_replication_lag) which determines the max lag for any read. The load balancer will only routes to slaves with a lag less than this value. 
 
-### **Doubling Throughput Compared to RDS MariaDB or GCP CloudSQL**
+### **Increased throughput using Active-Active**
 
-Unlike RDS or GCP, where the standby is typically unused for client requests (wasting resources), SkySQL maximizes the available compute power across all nodes, delivering unparalleled cost effectiveness.
+Unlike RDS or GCP, where the standby is not used for client requests (wasting resources), SkySQL maximizes the available compute power across all nodes, delivering unparalleled cost effectiveness.
 
 A notable feature enhancing performance is the ‘Read-Write Splitting,’ allowing for custom routing to achieve consistently lower latencies for specific application patterns. For example, point queries and index-optimized queries can be directed to select nodes hosting frequently accessed data, while more resource-intensive scan-aggregation class queries (such as those for reporting dashboards or complex queries based on end-user selections of historical data) can be routed to a separate set of nodes. These routing strategies effectively segment actively used data sets, optimizing the DB buffer cache and resulting in lower latencies.
 
