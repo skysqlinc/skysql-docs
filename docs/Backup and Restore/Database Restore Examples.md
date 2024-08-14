@@ -32,7 +32,7 @@ You can restore your database from the backup located in the default SkySQL mana
 curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'X-API-Key: ${API_KEY}' \
+--header "X-API-Key: ${API_KEY}" \
 --data '{
   "key": "eda3b72460c8c0d9d61a7f01b6a22e32:dbtgf28216706:tx-filip-mdb-ms-0",
   "service_id": "dbtgf28044362"
@@ -51,7 +51,7 @@ You can restore your data from external storage. Your external storage bucket da
     curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
     --header 'Content-Type: application/json' \
     --header 'Accept: application/json' \
-    --header 'X-API-Key: ${API_KEY}' \
+    --header "X-API-Key: ${API_KEY}" \
     --data '{
         "backup_type": "full",
         "schedule": "0 2 * * *",
