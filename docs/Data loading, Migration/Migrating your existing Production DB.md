@@ -2,16 +2,15 @@
 
 Databases can be migrated to SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more.
 
-# Lift-and-shift from a compatible version of MySQL/MariaDB to SkySQL
+# Prerequisites
 
-To perform a lift-and-shift migration to SkySQL, use the following process:
-
-1. Identify requirements for your SkySQL implementation including:
-    - Topology - Enterprise Server Single node or with Replica(s)
-    - [Instance size](<../Reference Guide/Instance Size Choices.md>)
-    - Storage requirements
-    - Desired server version
-2. [Deploy the desired configuration](<../Portal features/Launch page.md>) on SkySQL
+- An active SkySQL account. Identify requirements for your SkySQL implementation, including:
+        - Topology - Enterprise Server Single node or with Replica(s)
+        - [Instance size](<../Reference Guide/Instance Size Choices.md>)
+        - Storage requirements
+        - Desired server version
+  [Then deploy the desired configuration](<../Portal features/Launch page.md>) on SkySQL.
+- An existing source database.
 
 # Assisted Migration to SkySQL
 
