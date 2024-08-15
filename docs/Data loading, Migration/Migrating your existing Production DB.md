@@ -1,6 +1,6 @@
 # Migrating your existing Production DB
 
-Databases can be migrated to SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more
+Databases can be migrated to SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more.
 
 # Lift-and-shift from a compatible version of MySQL/MariaDB to SkySQL
 
@@ -13,29 +13,11 @@ To perform a lift-and-shift migration to SkySQL, use the following process:
     - Desired server version
 2. [Deploy the desired configuration](<../Portal features/Launch page.md>) on SkySQL
 
-<aside>
-💡 When migrating from a production DB a common practice is to setup live replication to the SkySQL database.  Here is the sequence of steps you should follow for a live cutover:
-
-</aside>
-
-1. On the source database (MySQL or MariaDB) obtain the Binlog file name and its current position. Essentially, we want to track all DB changes from a certain point in time. See [Replicating data](<./Replicating data from external DB.md>) page for the command. 
-2. Next, take a [dump of your source database using mysqldump or mariadb-dump](<./Import data from external DB.md>) 
-3. Import into your target SkySQL DB using this logical `dump` (SQL)
-4. Finally, turn ON the replication using the SkySQL `start_replication` procedure as noted below. 
-
 # Assisted Migration to SkySQL
 
 SkySQL customers can receive assistance from SkySQL Inc when migrating a database to SkySQL:
 
 - SkySQL Inc's [migration process](#migration-process) divides a migration into multiple well-defined stages with distinct validation criteria at each stage
-- SkyDBAs and SkySQL support can assist with many migration steps
-
-For assistance with a migration:
-
-- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
-- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
-
-# Assisted Migration to SkySQL
 
 Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can help design a migration plan to suit your needs. We use a multi-step process to assist customers with migrations:
 
@@ -46,23 +28,22 @@ Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can he
 5. **Quality Assurance** to assess data validity, data integrity, performance, accuracy of query results, stored code, and running code such as client applications, APIs, and batch jobs
 6. **Cutover** including final database preparation, fallback planning, switchover, and decommissioning of old databases
 
+- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
+- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
+
 For additional information, see "[Migrate to MariaDB from Oracle](https://mariadb.com/resources/blog/a-typical-journey-migrating-to-mariadb-from-oracle/)".
 
 ---
 
 # Migrate to SkySQL using AWS DMS
 
-This blog article details how to [Migrate RDS MySQL to SkySQL MariaDB Using AWS Data Migration Service](<./migrate-rds-mysql-to-skysql-using-amazon-data-migration-service_whitepaper_1109.pdf>)
+[This article details how to migrate RDS MySQL to SkySQL using the AWS Data Migration Service.](<./migrate-rds-mysql-to-skysql-using-amazon-data-migration-service_whitepaper_1109.pdf>)
+
 ---
 
 # Replicating data from an External DB
 Click [here](<./Replicating data from external DB.md>) for a detailed walk through of the steps involved. 
 
-
-For assistance with a migration:
-
-- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
-- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
 
 ## Best Practices
 
