@@ -21,6 +21,9 @@ Launch two SkySQL services - a Primary that your application(s) will connect to 
 !!! Note
     Review [Launch DB using the REST API](./Launch%20DB%20using%20the%20REST%20API) quickstart for detailed instructions on launching a SkySQL service using the provisioning API. Launching a new service will take about 5 minutes.
 
+!!! Note
+   You can also launch using the [Portal](https://app.skysql.com)
+
 1\. Following API requests will create two services in Google Cloud - 'skysql-primary' in the Virginia region and 'skysql-secondary' in the Oregon region. 
 
 ```bash
@@ -63,15 +66,16 @@ curl --location --request POST https://api.skysql.com/provisioning/v1/services \
 In a real world scenario, the Primary service will contain data which will need to be restored to the Standby service before the replication can be set up. SkySQL performs full backup of your services every night. You can either use an existing nightly backup or create a schedule to perform a new full backup.
 
 !!! Note
-    Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service.
+    Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service. If you have a recent backup (normally will be available) you can skip the step to create a new Backup. After we restore from the backup we have replay all the subsequent DB changes from the Source DB 'binlog'. Binlogs expire in 4 days, by default. 
 
-1\. Use the following API to list backups associated with the Primary service. Replace {id} with the database id of the Primary service.
+1\. Use the following API to list backups associated with the Primary service. Replace {id} with the database id of the Primary service. Look for a "FULL" backup or "snapshot". 
 
    ```bash
    curl --location --request GET https://api.skysql.com/skybackup/v1/backups?service_id={id} \
       --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json"
    ```
-OR
+
+You can also look for recent "FULL" backups from the [Portal](https://app.skysql.com/backups/service-backups). If not available you can also initiate a backup from the Portal or using the API below. 
 
 1\. Use the following API to create a one-time schedule to perform a new full backup. Replace {id} with the id of the Primary service.
 
@@ -85,7 +89,12 @@ OR
    }'
    ```
 
-2\. Each backup also has a unique identifier. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Secondary service. Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. Replace {backup-id} with the backup id that you want to restore and {service-id} with the id of the Secondary service.
+2\. Each backup also has a unique identifier. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Secondary service. 
+
+!!! Note
+   Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. 
+
+Replace {backup-id} with the backup id that you want to restore and {service-id} with the id of the Secondary service.
 
    ```bash
    curl --location --request POST https://api.skysql.com/skybackup/v1/restores \
@@ -96,26 +105,36 @@ OR
    }'
    ```
 
-3\. IMPORTANT NOTE: Once the restore is complete, the default username and password displayed in "connect" window of the  Secondary service will not work. Restore overwrites this information with the username and password of the Primary service. Hence, you will have to use Primary service's username and password to connect to the Secondary service.
+!!! Note
+   As of July 2024, you can only restore from Backups within the same Cloud provider. To restore to a different provider, you would need to explicitly Backup to your own S3/GCS bucket, copy the folder over to the other provider's bucket and initiate a Restore. Please refer to the [Backup Service](../Backup%20and%20Restore/README.md) docs.
+
+!!! Note
+   Once the restore is complete, the default username and password displayed in "connect" window of the  Secondary service will not work. Restore overwrites this information with the username and password of the Primary service. Hence, you will have to use Primary service's username and password to connect to the Secondary service.
 
 ### **Step 4: Set up Replication between the Primary and the Secondary**
 1\. Since we want to set up replication between the two SkySQL services, the Secondary service should be able to connect to the Primary service. Add the Outbound IP address of the Secondary service to the Allowlist of the Primary service. Outbound IP can be obtained from "Service Details" page in the SkySQL portal. Please add this IP to the allow list of Primary service in the portal.
 
 2\. Next, obtain the GTID position from which to start the replication by using the following API. Please replace {service_id} with the service id of the primary service.
 ```bash
-curl --location --request GET "https://api.skysql.com/skybackup/v1/backups?service_id={service_id}" --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" | jq
+curl --location --request GET "https://api.skysql.com/skybackup/v1/backups?service_id={service_id}" \
+  --header "X-API-Key: ${API_KEY}" --header "Content-type: application/json" | jq
 ```
 Make  note of the gtid position ("binlog_gtid_position") in the API response output. 
 
 3\. Now configure the Secondary service by calling the following stored procedure. Replace 'host' and 'port' with the Primary service's hostname and port. Replace 'gtid' with the GTID position obtained from the previous setp. Use true/false for whether to use SSL.
 
 ```bash
-CALL sky.change_external_primary_gtid(host,port,gtid,use_ssl_encryption);
+CALL sky.change_external_primary_gtid(host, port, gtid, use_ssl_encryption);
 ```
 Alternatively, the above command can be used with "binlog_file" and "binlog_position" output from step #2 above. 
 
 ```bash
-CALL sky.change_external_primary('dbpwfxxxx.sysp0000.db1.skysql.com', 3306, 'mariadb-bin.000007', xxxxx, true);
+CALL sky.change_external_primary
+  ('dbpwfxxxx.sysp0000.db1.skysql.com',
+   3306,
+   'mariadb-bin.000007',
+   xxxxx,
+   true);
 ```
 
 

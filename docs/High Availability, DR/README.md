@@ -72,6 +72,9 @@ In SkySQL you can control routing using 2 strategies:
 
 ## **Level 3 Resiliency -  Disaster Recovery – Across Regions, Cloud Providers, or “Self-managed” Environments**
 
+!!! Note
+    Please refer to [this](Setup%20Global%20Replication.md) document for the steps to setup a distant replica for DR. 
+
 The major cloud providers tout disaster recover across regions, ensuring resilience against natural disasters impacting an entire geographical region. But in reality, such disasters are exceedingly rare. Whatʼs far more common are technical issues impacting an entire region for a specific cloud provider. For instance, we’ve encountered DNS-level failures in GCP regions, rendering all services dependent on DNS, including SkySQL, inaccessible.
 
 One effective strategy to mitigate such risks is to replicate data to a data center owned by a different cloud provider within the same geographical area, minimizing network latencies. Disaster recovery across cloud providers is of course something an individual provider such as AWS or GCP simply donʼt support. Alternatively, customers can maintain their own “standby” database for emergencies—an environment entirely under their control, ensuring a near-real time copy of the data at all times.
