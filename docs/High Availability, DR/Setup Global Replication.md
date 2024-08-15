@@ -19,10 +19,7 @@ The `API_KEY` environment variable will be used in the subsequent steps.
 Launch two SkySQL services - a Primary that your application(s) will connect to and a Secondary that will act as a globally available service. If you already have your Primary service running, you simply need to create a new Secondary service. 
 
 !!! Note
-    Review [Launch DB using the REST API](./Launch%20DB%20using%20the%20REST%20API) quickstart for detailed instructions on launching a SkySQL service using the provisioning API. Launching a new service will take about 5 minutes.
-
-!!! Note
-   You can also launch using the [Portal](https://app.skysql.com)
+    You can launch these services using the [Portal](https://app.skysql.com) or [Using the REST API](./Launch%20DB%20using%20the%20REST%20API) as shown below. Launching a new service will take about 5 minutes. 
 
 1\. Following API requests will create two services in Google Cloud - 'skysql-primary' in the Virginia region and 'skysql-secondary' in the Oregon region. 
 
@@ -66,7 +63,7 @@ curl --location --request POST https://api.skysql.com/provisioning/v1/services \
 In a real world scenario, the Primary service will contain data which will need to be restored to the Standby service before the replication can be set up. SkySQL performs full backup of your services every night. You can either use an existing nightly backup or create a schedule to perform a new full backup.
 
 !!! Note
-    Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service. If you have a recent backup (normally will be available) you can skip the step to create a new Backup. After we restore from the backup we have replay all the subsequent DB changes from the Source DB 'binlog'. Binlogs expire in 4 days, by default. 
+    Depending on the size of your databases, backing up a service can take substantial time. Creating a new backup is not necessary if you already have an existing full backup of your service. If you have a recent backup (usually available) you can skip the step. After we restore from the backup we have to replay all the subsequent DB changes from the Source DB 'binlog'. Binlogs expire in 4 days, by default. So, you cannot use a backup older than 4 days. 
 
 1\. Use the following API to list backups associated with the Primary service. Replace {id} with the database id of the Primary service. Look for a "FULL" backup or "snapshot". 
 
@@ -92,7 +89,7 @@ You can also look for recent "FULL" backups from the [Portal](https://app.skysql
 2\. Each backup also has a unique identifier. Make note of the identifier shown in the API response. Now use the following API to restore the backup to the Secondary service. 
 
 !!! Note
-   Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. 
+      Please note that restoring the backup on a SkySQL service will stop the service if it is running and will wipe out all existing data. 
 
 Replace {backup-id} with the backup id that you want to restore and {service-id} with the id of the Secondary service.
 
@@ -106,10 +103,10 @@ Replace {backup-id} with the backup id that you want to restore and {service-id}
    ```
 
 !!! Note
-   As of July 2024, you can only restore from Backups within the same Cloud provider. To restore to a different provider, you would need to explicitly Backup to your own S3/GCS bucket, copy the folder over to the other provider's bucket and initiate a Restore. Please refer to the [Backup Service](../Backup%20and%20Restore/README.md) docs.
+      As of July 2024, you can only restore from Backups within the same Cloud provider. To restore to a different provider, you would need to explicitly Backup to your own S3/GCS bucket, copy the folder over to the other provider's bucket and initiate a Restore. Please refer to the [Backup Service](../Backup%20and%20Restore/README.md) docs.
 
 !!! Note
-   Once the restore is complete, the default username and password displayed in "connect" window of the  Secondary service will not work. Restore overwrites this information with the username and password of the Primary service. Hence, you will have to use Primary service's username and password to connect to the Secondary service.
+      Once the restore is complete, the default username and password displayed in "connect" window of the  Secondary service will not work. Restore overwrites this information with the username and password of the Primary service. Hence, you will have to use Primary service's username and password to connect to the Secondary service.
 
 ### **Step 4: Set up Replication between the Primary and the Secondary**
 1\. Since we want to set up replication between the two SkySQL services, the Secondary service should be able to connect to the Primary service. Add the Outbound IP address of the Secondary service to the Allowlist of the Primary service. Outbound IP can be obtained from "Service Details" page in the SkySQL portal. Please add this IP to the allow list of Primary service in the portal.
