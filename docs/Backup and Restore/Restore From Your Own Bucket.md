@@ -55,7 +55,7 @@ curl --location 'https://api-test.skysql.com/skybackup/v1/restores' \
 - ID : the backup data file reference, available in your GCS bucket.
 <br><b> Note !!! </b> The backup data file needs to be encryped using  OpenSSL </br> 
 
-Sample Command to encrypt the backup file:
+<br> Sample Command to encrypt the backup file: </br> 
 
 ```bash
 openssl enc -aes-256-cbc -pbkdf2 -salt -in <Backup File> -out <ID> -pass <ENCRYPTION_KEY>
@@ -87,37 +87,12 @@ openssl enc -aes-256-cbc -pbkdf2 -salt -in <Backup File> -out <ID> -pass <ENCRYP
     } ' | base64
     ```
 
-Note:!!!
 
-
-curl --location 'https://api-test.skysql.com/skybackup/v1/backups?service_id=dbtgf04198097' \
-  --header 'Accept: application/json' \
-  --header "X-API-Key: skysql.1zzz.mh2oe85a.5aXjdyqgef7facjgAQ6DcLlVfx8imkkybIan.87c113e7"
-
-
-
-  encryption_key - 
-
-
-    The service account key will be in the following format:
-
-    ```json
-    {
-        "type": "service_account",
-        "project_id": "XXXXXXX",
-        "private_key_id": "XXXXXXX",
-        "private_key": "-----BEGIN PRIVATE KEY-----XXXXX-----END PRIVATE KEY-----",
-        "client_email": "XXXXXXXXXXXXXXXXXXXXXXXXXXXX.iam.gserviceaccount.com",
-        "client_id": "XXXXXXX",
-        "auth_uri": "<https://accounts.google.com/o/oauth2/auth>",
-        "token_uri": "<https://oauth2.googleapis.com/token>",
-        "auth_provider_x509_cert_url": "<https://www.googleapis.com/oauth2/v1/certs>",
-        "client_x509_cert_url": "<https://www.googleapis.com/robot/v1/metadata/x509/XXXXXXXXXXXXXX.iam.gserviceaccount.com>",
-        "universe_domain": "googleapis.com"
-    }
-    ```
-
-- For AWS, you must provide your own credentials. These include the AWS access key associated with an IAM account and the bucket region. For more information about AWS credentials, please refer to the [documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html). The required credentials are *aws_access_key_id* , *aws_secret_access_key* and *region*. For example your credentials should look like:
+### Restore from AWS Cloud Storage(S3) bucket 
+For AWS, you must provide your own credentials. These include the AWS access key associated with an IAM account and the bucket region.
+Please refer to the [documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) for detail. 
+The credentials required  are  *aws_access_key_id* , *aws_secret_access_key* and *region*. 
+Credentials Example:
 
     ```bash
     [default]

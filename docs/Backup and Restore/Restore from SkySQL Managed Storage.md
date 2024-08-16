@@ -51,4 +51,4 @@ curl --location 'https://api-test.skysql.com/skybackup/v1/backups?service_id=d<S
   --header 'Accept: application/json' \
   --header "X-API-Key: skysql.1zzz.mh2oe85a.5aXjdyqgef7facjgAQ6DcLlVfx8imkkybIan.87c113e7"
 ```
-Key Format: *:<SERVICE_ID>:*
+Key Format: \w\*SERVICE_ID\w\* , where \w*: Matches zero or more alphanumeric characters.
