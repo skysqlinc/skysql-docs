@@ -24,23 +24,6 @@ Use it on subsequent request, e.g:
 </ol>
 </details> 
 
-## Restore From Managed Storage
-
-You can restore your database from the backup located in the default SkySQL managed backup storage. In this case, you need to provide the backup ID when making the restore API call. Here is an example:
-
-```bash
-curl --location 'https://api.skysql.com/skybackup/v1/restores' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json' \
---header "X-API-Key: ${API_KEY}" \
---data '{
-  "key": "eda3b72460c8c0d9d61a7f01b6a22e32:dbtgf28216706:tx-filip-mdb-ms-0",
-  "service_id": "dbtgf28044362"
-}'
-```
-
-Inside the service_id parameter of your restore API request, you need to provide the id of the service, where you want to restore your data.
-
 ## Restore From your Bucket (External Storage)
 
 You can restore your data from external storage. Your external storage bucket data should be created via one of the following tools: ```mariabackup, mysqldump```. Credentials to external storage access could be fetched from:
