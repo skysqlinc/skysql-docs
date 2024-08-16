@@ -4,19 +4,15 @@ Databases can be migrated to SkySQL from many different database platforms, incl
 
 # Prerequisites
 
-- An active SkySQL account. Identify requirements for your SkySQL implementation, including:
-        - Topology - Enterprise Server Single node or with Replica(s)
-        - [Instance size](<../Reference Guide/Instance Size Choices.md>)
-        - Storage requirements
-        - Desired server version
+1. An active SkySQL account. Identify requirements for your SkySQL implementation, including:
+- Topology - Enterprise Server Single node or with Replica(s)
+- [Instance size](<../Reference Guide/Instance Size Choices.md>)
+- Storage requirements
+- Desired server version
   [Then deploy the desired configuration](<../Portal features/Launch page.md>) on SkySQL.
-- An existing source database.
+2. An existing source database.
 
 # Assisted Migration to SkySQL
-
-SkySQL customers can receive assistance from SkySQL Inc when migrating a database to SkySQL:
-
-- SkySQL Inc's [migration process](#migration-process) divides a migration into multiple well-defined stages with distinct validation criteria at each stage
 
 Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can help design a migration plan to suit your needs. We use a multi-step process to assist customers with migrations:
 
@@ -29,14 +25,6 @@ Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can he
 
 - Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
 - New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
-
-For additional information, see "[Migrate to MariaDB from Oracle](https://mariadb.com/resources/blog/a-typical-journey-migrating-to-mariadb-from-oracle/)".
-
----
-
-# Migrate to SkySQL using AWS DMS
-
-[This article details how to migrate RDS MySQL to SkySQL using the AWS Data Migration Service.](<./migrate-rds-mysql-to-skysql-using-amazon-data-migration-service_whitepaper_1109.pdf>)
 
 ---
 
@@ -52,7 +40,7 @@ Click [here](<./Replicating data from external DB.md>) for a detailed walk throu
 
 To minimize downtime during migration, set up live replication from your source database to the SkySQL database. Follow these steps:
 
-1. **Obtain Binlog File and Position**: On the source database (MySQL or MariaDB), obtain the Binlog file name and its current position to track all database changes from a specific point in time.
+1. **Obtain Binlog File and Position**: On the source database (MySQL or MariaDB), obtain the binlog file name and its current position to track all database changes from a specific point in time.
 
     ```sql
     SHOW MASTER STATUS;
@@ -139,4 +127,4 @@ To minimize downtime during migration, set up live replication from your source 
 - [Backup with mariadb-dump](https://mariadb.com/kb/en/mariadb-dump/)
 - [MariaDB Backup Documentation](https://mariadb.com/kb/en/mariadb-backup-overview/)
 - [Advanced Backup Techniques](https://mariadb.com/kb/en/backup-and-restore-overview/)
-
+- [Migrate RDS MySQL to SkySQL using the AWS Data Migration Service (DMS)](<./migrate-rds-mysql-to-skysql-using-amazon-data-migration-service_whitepaper_1109.pdf>)
