@@ -194,9 +194,9 @@ Users can instruct the restore of their SkySQL Database from their own SkySQL st
 
 SkySQL Users can fetch their already existing database restore schedules using the backup API. Check the provided API examples for details.
 
-#### List Restore Examples
+#### Restore List Examples
 
-- [Examples](List Restore Examples.md)
+- [Examples](Restore List Examples.md)
 
 ### **Create a Restore**
 
@@ -204,7 +204,7 @@ SkySQL Users can restore their databases using their own SkySQL managed backup s
 
 #### Database Restore Examples
 
-- [Examples](Database Restore Examples.md)
+- [Examples](Restore Examples.md)
     
 ### **Delete Restore Schedule**
 
@@ -212,5 +212,5 @@ SkySQL Users can delete their already defined database restore schedules with th
 
 #### Delete Restore Examples
 
-- [Examples](Delete Restore Examples.md)
+- [Examples](Restore Delete Examples.md)
  

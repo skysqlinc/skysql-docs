@@ -30,7 +30,7 @@ curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 --header 'X-API-Key: ${API_KEY}'
 ```
 
-#### Get Restore by ID
+## Get Restore by ID
 
 ```bash
 curl --location 'https://api.skysql.com/skybackup/v1/restores/12' \

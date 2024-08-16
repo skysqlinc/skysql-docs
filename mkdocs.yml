@@ -138,9 +138,10 @@ nav:
       - 'Backup and Restore/Binarylog Backup Examples.md'
       - 'Backup and Restore/Bring Your Own Bucket Examples.md'
       - 'Backup and Restore/Other backup API examples.md'
-      - 'Backup and Restore/List Restore Examples.md'
-      - 'Backup and Restore/Database Restore Examples.md'
-      - 'Backup and Restore/Delete Restore Examples.md'
+      - 'Backup and Restore/Restore Listing Examples.md'
+      - 'Backup and Restore/Restore from SkySQL Managed Storage.md'
+      - 'Backup and Restore/Restore From Your Own Bucket.md'
+      - 'Backup and Restore/Restore Delete Examples.md'
       - 'Backup and Restore/MariaDB Enterprise Backup.md'
   - 'Using AWS/GCP Private VPC Connections' :
       - 'Using AWS GCP private VPC connections/README.md'
