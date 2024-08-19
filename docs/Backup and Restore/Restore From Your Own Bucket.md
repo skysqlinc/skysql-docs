@@ -51,18 +51,9 @@ curl --location 'https://api-test.skysql.com/skybackup/v1/restores' \
 - SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx. 
   You can fetch your service ID from the Fully qualified domain name(FQDN) of your service.  
   E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID. You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
-- ENCRYPTION_KEY : plain text encryption password
 - ID : the backup data file reference, available in your GCS bucket.
-<br><b> Note !!! </b> The backup data file needs to be encryped using  OpenSSL </br> 
-
-<br> Sample Command to encrypt the backup file: </br> 
-
-```bash
-openssl enc -aes-256-cbc -pbkdf2 -salt -in <Backup File> -out <ID> -pass <ENCRYPTION_KEY>
-```
-
-
-- GCS_URI : the GCS bucket URI where the backup file is stored, format gs://BUCKET_NAME
+- GCS_URI : the GCS bucket URI where the backup file is stored, format gs://BUCKET_NAME/
+<b>!!! Note: </b> Make sure the BUCKET_NAME has a trailing slash. 
   
 - BACKUP_METHOD : the backup method used to create the backup file. 
   <br>Available options: ```mariabackup, mysqldump`` </br>
