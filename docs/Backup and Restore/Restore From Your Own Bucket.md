@@ -52,8 +52,18 @@ curl --location 'https://api-test.skysql.com/skybackup/v1/restores' \
   You can fetch your service ID from the Fully qualified domain name(FQDN) of your service.  
   E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID. You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
 - ID : the backup data file reference, available in your GCS bucket.
+  
+!!! Note
+    Gzip compressed file  expected.
+
+    Example:
+    ```bash
+    gzip <backup file> -c > <backup file>.gz
+    ```
+   
 - GCS_URI : the GCS bucket URI where the backup file is stored, format gs://BUCKET_NAME/
-<b>!!! Note: </b> Make sure the BUCKET_NAME has a trailing slash. 
+!!! Note
+    Make sure the BUCKET_NAME contains a trailing slash. 
   
 - BACKUP_METHOD : the backup method used to create the backup file. 
   <br>Available options: ```mariabackup, mysqldump`` </br>

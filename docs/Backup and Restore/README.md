@@ -196,7 +196,7 @@ SkySQL Users can fetch their already existing database restore schedules using t
 
 #### Restore List Examples
 
-- [Examples](Restore List Examples.md)
+- [Examples](Restore Listing Examples.md)
 
 ### **Create a Restore**
 
