@@ -26,9 +26,10 @@ Use it on subsequent request, e.g:
 
 ## Restore From your Bucket (External Storage)
 
-You can restore your data from external storage. Your external storage bucket data should be created via one of the following tools: ```mariabackup, mysqldump```. Credentials to external storage access could be fetched from:
+You can restore your data from external storage. SkySQL supports restoration from both Google Cloud Storage (GCS) and Amazon S3 cloud storage buckets. 
+Your backup data should be created using either `mariabackup` or `mysqldump`.
 
-### Restore from Google Cloud Storage(GCS) bucket 
+Below is a sample restore call:
 
 ```bash
 
@@ -60,18 +61,18 @@ curl --location 'https://api.skysql.com/skybackup/v1/restores' \
     gzip <backup file> -c > <backup file>.gz
     ```
    
-- GCS_URI/S3_URI : the GCS/S3 bucket URI where the backup file is stored, format gs://BUCKET_NAME/ or s3://BUCKET_NAME/
+- GCS_URI/S3_URI : the GCS/S3 bucket URI where the backup file is stored. 
+ 
+ Format gs://BUCKET_NAME/ or s3://BUCKET_NAME/
 !!! Note
     Make sure the BUCKET_NAME contains a trailing slash. 
   
 - BACKUP_METHOD : the backup method used to create the backup file. 
-  <br>Available options: ```mariabackup, mysqldump`` </br>
-- GCP_SERVICE_ACCOUNT_BASE64/AWS_ACCOUNT_ACCESS_KEY_BASE64 : the base64 encoded GCP service account or AWS account access key.
+  <br>Available options: ``mariabackup`` , ``mysqldump`` </br>
+- GCP_SERVICE_ACCOUNT_BASE64/AWS_ACCOUNT_ACCESS_KEY_BASE64 : Your base64 encoded GCP service account or AWS account access key.
   
-
   Sample GCP service account key and command to encode it: 
 
-    
     echo -n '
     {
         "type": "service_account",
