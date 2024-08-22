@@ -32,18 +32,17 @@ You can restore your data from external storage. Your external storage bucket da
 
 ```bash
 
-curl --location 'https://api-test.skysql.com/skybackup/v1/restores' \
+curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'X-API-Key: ${API_KEY}' \
 --data '{
     "service_id": "<SERVICE_ID>",
-    "encryption_key": "<ENCRYPTION_KEY>",
     "id": "<ID>",
     "external_source": {
-      "bucket": "<GCS_URI>",
+      "bucket": "<GCS_URI> оr <S3_URI> ",
       "method": "<BACKUP_METHOD>",
-      "credentials": "<GCP_SERVICE_ACCOUNT_BASE64>"
+      "credentials": "<GCP_SERVICE_ACCOUNT_BASE64> or AWS_ACCOUNT_ACCESS_KEY_BASE64"
     }
   }'
 ```
@@ -51,7 +50,7 @@ curl --location 'https://api-test.skysql.com/skybackup/v1/restores' \
 - SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx. 
   You can fetch your service ID from the Fully qualified domain name(FQDN) of your service.  
   E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID. You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
-- ID : the backup data file reference, available in your GCS bucket.
+- ID : the backup data file reference, available in your GCS or S3 bucket.
   
 !!! Note
     Gzip compressed file  expected.
@@ -61,17 +60,18 @@ curl --location 'https://api-test.skysql.com/skybackup/v1/restores' \
     gzip <backup file> -c > <backup file>.gz
     ```
    
-- GCS_URI : the GCS bucket URI where the backup file is stored, format gs://BUCKET_NAME/
+- GCS_URI/S3_URI : the GCS/S3 bucket URI where the backup file is stored, format gs://BUCKET_NAME/ or s3://BUCKET_NAME/
 !!! Note
     Make sure the BUCKET_NAME contains a trailing slash. 
   
 - BACKUP_METHOD : the backup method used to create the backup file. 
   <br>Available options: ```mariabackup, mysqldump`` </br>
-- GCP_SERVICE_ACCOUNT_BASE64 : the base64 encoded service account key.
+- GCP_SERVICE_ACCOUNT_BASE64/AWS_ACCOUNT_ACCESS_KEY_BASE64 : the base64 encoded GCP service account or AWS account access key.
   
-  Sample account key and command to encode it: 
 
-    ```json
+  Sample GCP service account key and command to encode it: 
+
+    
     echo -n '
     {
         "type": "service_account",
@@ -86,49 +86,16 @@ curl --location 'https://api-test.skysql.com/skybackup/v1/restores' \
         "client_x509_cert_url": "<https://www.googleapis.com/robot/v1/metadata/x509/XXXXXXXXXXXXXX.iam.gserviceaccount.com>",
         "universe_domain": "googleapis.com"
     } ' | base64
-    ```
+    
+  Sample AWS account access key and command to encode it: 
 
+    
+    echo -n '
+    {
+        [default]
+        aws_access_key_id = XXXXXXXXXXXXXEXAMPLE
+        aws_secret_access_key = XXXXXXXXXXXXX/XXXXXXXXXXXXX/XXXXXXXXXXXXXEXAMPLEKEY
+        region = XXXXXXXXXXXXX
+    } ' | base64
+    
 
-### Restore from AWS Cloud Storage(S3) bucket 
-For AWS, you must provide your own credentials. These include the AWS access key associated with an IAM account and the bucket region.
-Please refer to the [documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) for detail. 
-The credentials required  are  *aws_access_key_id* , *aws_secret_access_key* and *region*. 
-Credentials Example:
-
-    ```bash
-    [default]
-    aws_access_key_id = AKIAIOSFODNN7EXAMPLE
-    aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-    region = us-west-2
-    ```
-
-    You should encode your credentials base64 before passing it to the API. You can encode it directly from a command line itself. For example the execution of command ```echo '[default]\naws_access_key_id = AKIAIOSFODNN7EXAMPLE\naws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\nregion = us-west-2' | base64``` will produce the following ```W2RlZmF1bHRdCmF3c19hY2Nlc3Nfa2V5X2lkID0gQUtJQUlPU0ZPRE5ON0VYQU1QTEUKYXdzX3NlY3JldF9hY2Nlc3Nfa2V5ID0gd0phbHJYVXRuRkVNSS9LN01ERU5HL2JQeFJmaUNZRVhBTVBMRUtFWQpyZWdpb24gPSB1cy13ZXN0LTIK```.
-
-The following request demonstrates how to restore your data from an external storage:
-
-```json
-{
-  "service_id": "dbtgf28044362",
-  "key": "/backup.tar.gz",
-  "external_source": {
-    "bucket": "gs://my_backup_bucket",
-    "method": "mariabackup",
-    "credentials" "W2RlZmF1bHRdCmF3c19hY2Nlc3Nfa2V5X2lkID0gQUtJQUlPU0ZPRE5ON0VYQU1QTEUKYXdzX3NlY3JldF9hY2Nlc3Nfa2V5ID0gd0phbHJYVXRuRkVNSS9LN01ERU5HL2JQeFJmaUNZRVhBTVBMRUtFWQpyZWdpb24gPSB1cy13ZXN0LTIK"
-  }
-}
-```
-
-In case your backup data is encrypted you need to pass encryption key as well:
-
-```json
-{
-  "service_id": "dbtgf28044362",
-  "key": "/backup.tar.gz",
-  "external_source": {
-    "bucket": "gs://my_backup_bucket",
-    "method": "mariabackup",
-    "credentials": "W2RlZmF1bHRdCmF3c19hY2Nlc3Nfa2V5X2lkID0gQUtJQUlPU0ZPRE5ON0VYQU1QTEUKYXdzX3NlY3JldF9hY2Nlc3Nfa2V5ID0gd0phbHJYVXRuRkVNSS9LN01ERU5HL2JQeFJmaUNZRVhBTVBMRUtFWQpyZWdpb24gPSB1cy13ZXN0LTIK",
-    "encryption_key": "my_encryption_key"
-  }
-}
-```
