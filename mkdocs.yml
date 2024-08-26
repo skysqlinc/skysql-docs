@@ -157,7 +157,7 @@ nav:
       - 'Reference Guide/Region Choices.md'
       - 'Reference Guide/REST API Reference.md'
       - 'Reference Guide/Sky Stored Procedures.md'
-  - 'SkyCopilot Guide' :
+  - 'SkyCopilot Guide (Tech Preview)' :
       - 'SkyCopilot Guide/README.md'
 
 copyright: Copyright &copy; 2023 - 2024 SkySQL Inc

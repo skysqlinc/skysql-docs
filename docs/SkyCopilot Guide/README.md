@@ -1,4 +1,4 @@
-# SkyCopilot Guide
+# SkyCopilot Guide (Tech Preview)
 
 ## Overview
 
