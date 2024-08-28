@@ -64,9 +64,17 @@ To minimize downtime during migration, set up live replication from your source 
     mariadb -u [SkySQL username] -p -h [SkySQL hostname] --port 3306 --ssl-verify-server-cert < grants.sql
     ```
 
-4. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](<../Reference Guide/Sky Stored Procedures.md>) for details.
+4. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](<../Reference Guide/Sky Stored Procedures.md>) for details. The `dump.sql` file you created in step 1 will contain the GTID and binary log information needed for the `change_external_primary` procedure.
 
     ```sql
+    CALL sky.change_external_primary(
+   host VARCHAR(255),
+   port INT,
+   logfile TEXT,
+   logpos LONG ,
+   use_ssl_encryption BOOLEAN
+    );
+    
     CALL sky.replication_grants();
     CALL sky.start_replication();
     ```
