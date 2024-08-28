@@ -111,6 +111,8 @@ nav:
   - 'Data Offloading' :
       - 'Data offloading/README.md'
       - 'Data offloading/Replicating data from SkySQL to external database.md'
+  - 'AI Assistant' :
+      - 'SkyCopilot Guide/README.md'
   - 'High Availability, DR' :
       - 'High Availability, DR/README.md'
       - 'High Availability, DR/Setup Global Replication.md'
@@ -157,7 +159,5 @@ nav:
       - 'Reference Guide/Region Choices.md'
       - 'Reference Guide/REST API Reference.md'
       - 'Reference Guide/Sky Stored Procedures.md'
-  - 'SkyCopilot Guide (Tech Preview)' :
-      - 'SkyCopilot Guide/README.md'
 
 copyright: Copyright &copy; 2023 - 2024 SkySQL Inc
