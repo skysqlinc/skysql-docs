@@ -4,12 +4,11 @@ Databases can be migrated to SkySQL from many different database platforms, incl
 
 # Prerequisites
 
-1. An active SkySQL account. Identify requirements for your SkySQL implementation, including:
+1. An active SkySQL account. Identify requirements for your SkySQL implementation prior to [deployment](<../Portal features/Launch page.md>), including:
 - Topology - Enterprise Server Single node or with Replica(s)
 - [Instance size](<../Reference Guide/Instance Size Choices.md>)
 - Storage requirements
 - Desired server version
-  [Then deploy the desired configuration](<../Portal features/Launch page.md>) on SkySQL.
 2. An existing source database.
 
 # Assisted Migration to SkySQL
@@ -29,6 +28,7 @@ Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can he
 ---
 
 # Replicating data from an External DB
+
 Click [here](<./Replicating data from external DB.md>) for a detailed walk through of the steps involved. 
 
 
@@ -40,34 +40,31 @@ Click [here](<./Replicating data from external DB.md>) for a detailed walk throu
 
 To minimize downtime during migration, set up live replication from your source database to the SkySQL database. Follow these steps:
 
-1. **Obtain Binlog File and Position**: On the source database (MySQL or MariaDB), obtain the binlog file name and its current position to track all database changes from a specific point in time.
-
-    ```sql
-    SHOW MASTER STATUS;
-    ```
-
-2. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`, ensuring to skip the `mysql` table and handle the user dump separately to avoid issues with the default SkySQL user. Also, include triggers, procedures, views, and schedules in the dump.
+1. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`. Include triggers, procedures, views, and schedules in the dump, and ignore the system databases to avoid conflicts with the existing SkySQL schemas.
 
     ```bash
-    mysqldump -u [username] -p --all-databases --ignore-table=mysql.user \
-        --ignore-table=mysql.global_priv --routines --triggers --events  \
-        --skip-lock-tables > dump.sql
+    mysqldump --single-transaction --master-data=2 --routines --triggers --all-databases --ignore-database=mysql --ignore-database=information_schema --ignore-database=performance_schema --ignore-database=sys > dump.sql
     ```
 
-3. **Dump the User Table Separately**: Since the `mysql.user` view aggregates information from the `global_priv` table, you should dump the `global_priv` table separately to ensure that user privileges are preserved:
+2. **Create the Users and Grants Separately**: To avoid conflicts with the existing SkySQL users, use `SELECT CONCAT` on your source database to create users and grants in separate files. Note that you may need to create the schema and table grants separately as well.
 
     ```bash
-    mysqldump -u [username] -p mysql global_priv > global_priv.sql
+    mysql -u [username] -p -h [hostname] --silent --skip-column-names -e "SELECT CONCAT('CREATE USER \'', user, '\'@\'', host, '\' IDENTIFIED BY PASSWORD \'', authentication_string, '\';') FROM mysql.user;" > users.sql
+
+    mysql -h [hostname] -u [username] -p --silent --skip-column-names -e "SELECT CONCAT('GRANT ', privilege_type, ' ON ', table_schema, '.* TO \'', grantee, '\';') FROM information_schema.schema_privileges;" > grants.sql
+
+    mysql -h [hostname] -u [username] -p --silent --skip-column-names -e "SELECT CONCAT('GRANT ', privilege_type, ' ON ', table_schema, '.', table_name, ' TO \'', grantee, '\';') FROM information_schema.table_privileges;" >> grants.sql
     ```
 
-4. **Import the Dumps into SkySQL**: Import the logical dumps (SQL files) into your SkySQL database, ensuring to load the user dump after the main dump.
+3. **Import the Dumps into SkySQL**: Import the logical dumps (SQL files) into your SkySQL database, ensuring to load the user and grant dumps after the main dump.
 
     ```bash
-    mariadb -u [username] -p [database_name] < dump.sql
-    mariadb -u [username] -p mysql < global_priv.sql
+    mariadb -u [SkySQL username] -p -h [SkySQL hostname] --port 3306 --ssl-verify-server-cert < dump.sql
+    mariadb -u [SkySQL username] -p -h [SkySQL hostname] --port 3306 --ssl-verify-server-cert < users.sql
+    mariadb -u [SkySQL username] -p -h [SkySQL hostname] --port 3306 --ssl-verify-server-cert < grants.sql
     ```
 
-5. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](<../Reference Guide/Sky Stored Procedures.md>) for details.
+4. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](<../Reference Guide/Sky Stored Procedures.md>) for details.
 
     ```sql
     CALL sky.replication_grants();
