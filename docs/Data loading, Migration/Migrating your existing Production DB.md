@@ -9,7 +9,7 @@ Databases can be migrated to SkySQL from many different database platforms, incl
 - [Instance size](<../Reference Guide/Instance Size Choices.md>)
 - Storage requirements
 - Desired server version
-2. An existing source database.
+2. An existing source database with the IP added to your SkySQL allowlist.
 
 # Assisted Migration to SkySQL
 
