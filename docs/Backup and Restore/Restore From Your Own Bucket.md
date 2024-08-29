@@ -26,7 +26,8 @@ Use it on subsequent request, e.g:
 
 ## Restore From your Bucket (External Storage)
 
-You can restore your data from external storage. SkySQL supports restoration from both Google Cloud Storage (GCS) and Amazon S3 cloud storage buckets. 
+You can restore your data from external cloud storage. 
+SkySQL supports restoration from both Google Cloud Storage (GCS) and Amazon S3 cloud storage buckets. 
 Your backup data should be created using either `mariabackup` or `mysqldump`.
 
 Below is a sample restore call:
@@ -69,7 +70,10 @@ curl --location 'https://api.skysql.com/skybackup/v1/restores' \
   
 - BACKUP_METHOD : the backup method used to create the backup file. 
   <br>Available options: ``mariabackup`` , ``mysqldump`` </br>
-- GCP_SERVICE_ACCOUNT_BASE64/AWS_ACCOUNT_ACCESS_KEY_BASE64 : Your base64 encoded GCP service account or AWS account access key.
+- GCP_SERVICE_ACCOUNT_BASE64/AWS_ACCOUNT_ACCESS_KEY_BASE64 : Your base64 encoded GCP service account or AWS account access key. 
+  
+  Information on how to create a GCP service account <a href="https://cloud.google.com/iam/docs/keys-create-delete">here</a>
+  Storage Admin role is required for the service account attemping the restore.
   
   Sample GCP service account key and command to encode it: 
 
