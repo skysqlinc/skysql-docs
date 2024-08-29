@@ -64,6 +64,12 @@ To minimize downtime during migration, set up live replication from your source 
     mariadb -u [SkySQL username] -p -h [SkySQL hostname] --port 3306 --ssl-verify-server-cert < grants.sql
     ```
 
+If you encounter an error while importing your users, you may need to uninstall the `simple_password_check` plugin on your SkySQL instance.
+
+    ```sql
+    UNINSTALL PLUGIN simple_password_check;
+    ```
+
 4. **Start Replication**: Turn on replication using SkySQL stored procedures. There are procedures allowing you to set and start replication. See our [documentation](<../Reference Guide/Sky Stored Procedures.md>) for details. The `dump.sql` file you created in step 1 will contain the GTID and binary log information needed for the `change_external_primary` procedure.
 
     ```sql
