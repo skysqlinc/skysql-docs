@@ -1,0 +1,68 @@
+# Migrating your existing Production DB
+
+SkySQL provides a range of options to suit different migration scenarios.
+<ul>
+   <li> Databases can be migrated to SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more. </li>
+   <li> SkySQL supports migraion from both on-premise and cloud-based infrastructure and provides a range of options to suit different migration scenarios. </li>
+</ul>
+
+Below are the most common scenarios for database migration to SkySQL.
+
+---
+## Prerequisites
+
+1. An active SkySQL account. 
+2. An existing source database with the IP added to your SkySQL allowlist.
+
+<details>
+<summary>Considerations</summary>
+<br>
+
+Ensure that your SkySQL servce deploymned configuration is compatible with your existing source database one, including:
+<ul>
+   <li><b>Deployment region</b> - Ensure that the SkySQL deployment region is the same as the source database region.</li>
+   <li><b>Topology</b> - Enterprise Server Single node or with Replica(s)</li>
+   <li> <b>Server version</b> - Ensure that the SkySQL server version is compatible with the source database version. </li>
+   <li><b>Instance size</b> - Ensure that the SkySQL instance is compatible with the source database instance type and size</li>
+   <li><b>Storage</b> - Ensure that the SkySQL storage type and size is compatible with the source database</li>
+</br>
+</details>
+---
+## SkyDBA Assisted Migration 
+
+ - Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration.
+ - New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process.
+
+Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can help design a migration plan to suit your needs.
+
+<details>
+<summary>SkyDBA Assisted Migration Approach</summary>
+<br>
+ We use a multi-step process to assist customers with migrations:
+<ul>
+   <li><b>Assessment</b> of application requirements, inventory, and identified challenges</li>
+   <li><b>Schema Migration</b> including tables, constraints, indexes, and views</li>
+   <li><b>Application Code Migration</b> by porting and testing SQL and application code</li>
+   <li><b>Data Migration and Replication</b> with import of data, with conversion to the new schema, and ongoing inbound replication of new data</li>
+   <li><b>Quality Assurance</b> to assess data validity, data integrity, performance, accuracy of query results, stored code, and running code such as client applications, APIs, and batch jobs</li>
+   <li><b>Cutover</b> including final database preparation, fallback planning, switchover, and decommissioning of old databases</li>
+</br>
+</details>
+---
+## Self-Service Migration to SkySQL
+
+SkySQL provides two diffeent options for self-service migration 
+
+### Option 1 SkySQL Managed Migration 
+SkySQL Managed Migration is a fully managed service that handles the entire migration process, including data migration, schema migration, and user migration.
+
+- [Sky SQL Managed Migration Tutorial](./SkySQL-managed-migration.md)
+
+### Option 2: SkySQL Custom Migration
+
+For most small, mid-size and large migrations SkySQL Managed Migration is the quickest and safest option. However, for large migrations or migrations with specific requirements, you and your team may require more flexibility and control over the migration process. In these cases, you can opt for a custom migration where you and your team can design a custoemmigration plan considering the steps suggested below.
+
+- [Sky SQL Custom Migration Tutorial](./SkySQL-custom-migration.md)
+
+SkyDBA could be engaged to assist with the custom migration plan design and execution.
+
