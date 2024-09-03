@@ -107,6 +107,7 @@ nav:
       - 'Data loading, Migration/Install Mariadb-dump.md'
       - 'Data loading, Migration/Install-mariadb-import.md'
       - 'Data loading, Migration/Migrating your existing Production DB.md'
+      - 'Data loading, Migration/(WIP)Migrate-your-database-to-SkySQL.md'
       - 'Data loading, Migration/Replicating data from external DB.md'
   - 'Data Offloading' :
       - 'Data offloading/README.md'
