@@ -4,9 +4,7 @@
 
 [Install mariadb-import](<Install mariadb-import>)
 
-[Import data from external DB](<Import data from external DB>)
-
 [Import CSV data](<Import CSV data>)
 
-[Migrating your existing Production DB](<Migrating your existing Production DB>)
+[Migrating your existing Production DB](<Migrating Using a Logical Dump and Replication>)
 
