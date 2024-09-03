@@ -106,20 +106,6 @@ If you encounter an error while importing your users, you may need to uninstall 
 
 - **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability. See our [monitoring documentation](<../Portal features/Service Monitoring Panels.md>) for details.
 
-### Assisted Migration to SkySQL
-
-Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can help design a migration plan to suit your needs. We use a multi-step process to assist customers with migrations:
-
-1. **Assessment** of application requirements, inventory, and identified challenges
-2. **Schema Migration** including tables, constraints, indexes, and views
-3. **Application Code Migration** by porting and testing SQL and application code
-4. **Data Migration and Replication** with import of data, with conversion to the new schema, and ongoing inbound replication of new data
-5. **Quality Assurance** to assess data validity, data integrity, performance, accuracy of query results, stored code, and running code such as client applications, APIs, and batch jobs
-6. **Cutover** including final database preparation, fallback planning, switchover, and decommissioning of old databases
-
-- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
-- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
-
 ### Additional Resources
 
 - [Backup with mariadb-dump](https://mariadb.com/kb/en/mariadb-dump/)
