@@ -6,5 +6,5 @@
 
 [Import CSV data](<Import CSV data>)
 
-[Migrating your existing Production DB](<Migrating Using a Logical Dump and Replication>)
+[Migrating Using a Logical Dump and Replication](<Migrating Using a Logical Dump and Replication>)
 
