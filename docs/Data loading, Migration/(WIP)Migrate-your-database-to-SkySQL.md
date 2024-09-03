@@ -1,4 +1,4 @@
-# (WIP) Migrate your database to SkySQL
+# Migrate your database to SkySQL
 
 SkySQL provides a range of options to suit different migration scenarios.
 <ul>
