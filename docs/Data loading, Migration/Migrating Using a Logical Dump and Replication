@@ -1,6 +1,6 @@
-# Migrating your existing Production DB
+# Migrating Using a Logical Dump and Replication
 
-Databases can be migrated to SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more.
+To minimize downtime during migration, you can set up live replication from your source database to the SkySQL database.
 
 # Prerequisites
 
@@ -11,34 +11,7 @@ Databases can be migrated to SkySQL from many different database platforms, incl
 - Desired server version
 2. An existing source database with the IP added to your SkySQL allowlist.
 
-# Assisted Migration to SkySQL
-
-Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can help design a migration plan to suit your needs. We use a multi-step process to assist customers with migrations:
-
-1. **Assessment** of application requirements, inventory, and identified challenges
-2. **Schema Migration** including tables, constraints, indexes, and views
-3. **Application Code Migration** by porting and testing SQL and application code
-4. **Data Migration and Replication** with import of data, with conversion to the new schema, and ongoing inbound replication of new data
-5. **Quality Assurance** to assess data validity, data integrity, performance, accuracy of query results, stored code, and running code such as client applications, APIs, and batch jobs
-6. **Cutover** including final database preparation, fallback planning, switchover, and decommissioning of old databases
-
-- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
-- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
-
----
-
-# Replicating data from an External DB
-
-Click [here](<./Replicating data from external DB.md>) for a detailed walk through of the steps involved. 
-
-
-## Best Practices
-
----
-
-### Live Replication for Minimal Downtime
-
-To minimize downtime during migration, set up live replication from your source database to the SkySQL database. Follow these steps:
+# Steps
 
 1. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`. Include triggers, procedures, views, and schedules in the dump, and ignore the system databases to avoid conflicts with the existing SkySQL schemas.
 
@@ -121,7 +94,7 @@ If you encounter an error while importing your users, you may need to uninstall 
 - **Parallel Dump and Import**: Use tools that support parallel processing for dumping and importing data.
 
     ```bash
-    mysqlpump -u [username] -p --default-parallelism=4 --add-drop-database \
+    mysqldump -u [username] -p --default-parallelism=4 --add-drop-database \
         --databases [database_name] > dump.sql
     ```
 
@@ -132,6 +105,20 @@ If you encounter an error while importing your users, you may need to uninstall 
 - **Enable Detailed Logging**: Enable detailed logging while testing the migration process to monitor and troubleshoot effectively. The slow_log can be enabled in the SkySQL configuration manager.
 
 - **Resource Monitoring**: Use monitoring tools to track resource usage (CPU, memory, I/O) during the migration to ensure system stability. See our [monitoring documentation](<../Portal features/Service Monitoring Panels.md>) for details.
+
+### Assisted Migration to SkySQL
+
+Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can help design a migration plan to suit your needs. We use a multi-step process to assist customers with migrations:
+
+1. **Assessment** of application requirements, inventory, and identified challenges
+2. **Schema Migration** including tables, constraints, indexes, and views
+3. **Application Code Migration** by porting and testing SQL and application code
+4. **Data Migration and Replication** with import of data, with conversion to the new schema, and ongoing inbound replication of new data
+5. **Quality Assurance** to assess data validity, data integrity, performance, accuracy of query results, stored code, and running code such as client applications, APIs, and batch jobs
+6. **Cutover** including final database preparation, fallback planning, switchover, and decommissioning of old databases
+
+- Existing customers can submit a [support case](https://support.skysql.com) to request assistance with a migration
+- New customers can [contact us](mailto:support@skysql.com) to begin the migration planning process
 
 ### Additional Resources
 
