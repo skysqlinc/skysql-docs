@@ -64,5 +64,5 @@ SkySQL Managed Migration is a REST-based service that handles the migration proc
 
 For most small, mid-size and large migrations SkySQL Managed Migration is the quickest and safest option. However, for large migrations or migrations with specific requirements, you and your team may require more flexibility and control over the migration process. In these cases, you and your team can design a custom migration plan considering the steps suggested below.
 
-- [Migrating Using a Logical Dump and Replication](./Migrating Using a Logical Dump and Replication.md)
-- [Replicating Data from an External DB](./Replicating data from external DB.md)
+- [Migrating Using a Logical Dump and Replication](https://skysqlinc.github.io/skysql-docs/Data%20loading,%20Migration/Migrating%20Using%20a%20Logical%20Dump%20and%20Replication/)
+- [Replicating Data from an External DB](https://skysqlinc.github.io/skysql-docs/Data%20loading,%20Migration/Replicating%20data%20from%20external%20DB/)
