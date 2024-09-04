@@ -55,7 +55,7 @@ Our [SkyDBA team](https://skysqlinc.github.io/skysql-docs/FractionalDBA/) can he
 
 SkySQL provides two diffeent options for self-service migration 
 
-### Option 1 Migrate using the SkySQL REST API
+### Option 1: Migrate using the SkySQL REST API
 SkySQL Managed Migration is a REST-based service that handles the migration process, including data migration, schema migration, and user migration. It provides a follow us steps to set up a live replication of your database to SkySQL and various insights to monitor the migration process.
 
 - [Sky SQL Managed Migration Tutorial](./SkySQL-managed-migration.md)
@@ -64,6 +64,6 @@ SkySQL Managed Migration is a REST-based service that handles the migration proc
 
 For most small, mid-size and large migrations SkySQL Managed Migration is the quickest and safest option. However, for large migrations or migrations with specific requirements, you and your team may require more flexibility and control over the migration process. In these cases, you can opt for a custom migration where you and your team can design a custoemmigration plan considering the steps suggested below.
 
-- [Sky SQL Custom Migration Tutorial](./Migrating your existing Production DB.md)
+- [SkySQL Custom Migration Tutorial](./Migrating Using a Logical Dump and Replication.md)
 
 
