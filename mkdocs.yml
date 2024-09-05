@@ -102,7 +102,7 @@ nav:
       - 'Connecting to Sky DBs/Connect using Connector R2DBC.md'
   - 'Data Loading, Migrations' :
       - 'Data loading, Migration/README.md'
-      - 'Data loading, Migration/Migrate-your-database-to-SkySQL.md
+      - 'Data loading, Migration/Migrate-your-database-to-SkySQL.md'
       - 'Data loading, Migration/Import-CSV-data.md'
       - 'Data loading, Migration/Install Mariadb-dump.md'
       - 'Data loading, Migration/Install-mariadb-import.md'
