@@ -1,6 +1,6 @@
 # Launch page
 
-Launch page can be accessed at [Launch](https://skysql.mariadb.com/launch-service)
+Launch page can be accessed at [Launch](https://app.skysql.com/launch-service)
 
 ![launch](launch.png)
 
