@@ -8,7 +8,7 @@
 5. Check the **Use SSL** option if SSL is enabled for your SkySQL instance.
 6. Click **Test Connection** to ensure everything is set up correctly.
 
-*Picture of SSL settings here*
+![image (1)](https://github.com/user-attachments/assets/fead6067-9a5a-4e75-bcf2-2d20e0a4b727)
 
 ## Notes:
 - Ensure you are using the latest MariaDB driver in DBeaver to avoid compatibility issues.
