@@ -66,17 +66,7 @@ Most of the SQL clients and editors natively support MariaDB. Most often you can
 
 - [Connecting using Java clients like Squirrel SQL](https://squirrel-sql.sourceforge.io/)  
     - All you need to do is to make sure the "useSsl" property is set to 'true' if SSL is ON. 
-- [TablePlus](https://tableplus.com/download) 
-    - If SSL was configured, you should set the SSL Mode option to 'ENFORCE' and not 'VERIFY-SERVER-CERT'. 
-    - When using the "ENFORCE" SSL mode in TablePlus or any MySQL client, the client will still verify that the SSL certificate presented by the server is valid and trusted. This includes verifying that the certificate is issued by a trusted Certificate Authority (CA) and that it has not expired or been revoked.
-    - In the "ENFORCE" mode, the client requires the server to present a valid SSL certificate during the SSL handshake process. - The client will then verify the following aspects of the certificate:
-    - Certificate Chain: The client will check if the server's SSL certificate is part of a valid certificate chain, leading back to a trusted root CA certificate.
-    - Certificate Expiry: The client will verify that the server's SSL certificate has not expired.
-    - Certificate Revocation: The client may also check if the certificate has been revoked by the issuing CA.
-    - If any of these checks fail, the client will not establish the SSL connection and may display an error indicating that the certificate is not valid or trusted.
 - MariaDB CLI
-- [DBGate](https://dbgate.org/) 
-    - When using SSL, you only have to switch to the SSL Tab in the Connection window and select 'use SSL' and click Connect. 
 - [Sequel Ace](https://sequel-ace.com/) - Connect to MariaDB from MacOS
     - In the connection window, you should select 'Require SSL' if your SkySQL database has SSL turned ON (the default). 
 
