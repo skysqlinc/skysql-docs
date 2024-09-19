@@ -79,3 +79,12 @@ Most of the SQL clients and editors natively support MariaDB. Most often you can
     - When using SSL, you only have to switch to the SSL Tab in the Connection window and select 'use SSL' and click Connect. 
 - [Sequel Ace](https://sequel-ace.com/) - Connect to MariaDB from MacOS
     - In the connection window, you should select 'Require SSL' if your SkySQL database has SSL turned ON (the default). 
+
+### Graphical User Interfaces (GUIs)
+
+The following GUI clients have been tested to properly connect with SkySQL and execute queries. Most SQL clients and editors natively support MariaDB. You can often select 'MySQL' as the connection type to connect to your SkySQL DB service.
+
+- [Connect using DBeaver](Connect%20using%20DBeaver.md)
+- [Connect using DBGate](Connect%20using%20DBGate.md)
+- [Connect using HeidiSQL](Connect%20using%20HeidiSQL.md)
+- [Connect using TablePlus](Connect%20using%20TablePlus.md)
