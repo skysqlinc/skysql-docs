@@ -50,6 +50,7 @@ Services are currently available with a range of [instance sizes](<../Reference
 
 - Amazon AWS (Amazon Web Services)
 - Google GCP (Google Cloud Platform)
+- Microsoft Azure
 
 Transactional services (such as our Replicated Transactions topology) operate on:
 
