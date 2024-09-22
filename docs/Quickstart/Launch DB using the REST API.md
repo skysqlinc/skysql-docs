@@ -1,6 +1,6 @@
 # Launch DB using the REST API
 
-This walkthrough explains how to launch database services and manage the lifecycle of database services using the SkySQL DBaaS REST API.
+This walkthrough explains how to launch database services and manage the lifecycle of database services using the [SkySQL DBaaS REST API](https://apidocs.skysql.com/).
 
 ## Launch a Service
 
