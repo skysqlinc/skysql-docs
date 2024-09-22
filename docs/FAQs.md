@@ -107,7 +107,7 @@ Our platform features:
 
 - Support from SkySQL Inc, including Enterprise and Platinum tiers optionally with SkyDBA for reactive and proactive assistance
 - Vendor managed infrastructure and platform
-- SkySQL Portal and SkySQL DBaaS API for instance management
+- SkySQL Portal and [SkySQL DBaaS API](https://apidocs.skysql.com/) for instance management
 - Compatibility with most programming languages and clients that work with MariaDB or MySQL, for off-the-shelf integration to your stack
 - Scheduled upgrades to database software
 - Automated nightly backups
@@ -243,7 +243,7 @@ If you stop a SkySQL service, you will continue to be charged for storage, sinc
 
 ### **How can I see my current charges?**
 
-Current month's estimated charges can be viewed on the SkySQL portal dashboard. Detailed information is also available under ‘Billing’ where you can see the breakdown for all your current charges - you can see resource usage by Service Name (your individual DB clusters) or by resource type. Variable charges such as object storage and network egress are updated the day prior to the last day of the month and are available in the invoice. You can also use the SkySQL REST API to fetch usage and billing data.
+Current month's estimated charges can be viewed on the SkySQL portal dashboard. Detailed information is also available under ‘Billing’ where you can see the breakdown for all your current charges - you can see resource usage by Service Name (your individual DB clusters) or by resource type. Variable charges such as object storage and network egress are updated the day prior to the last day of the month and are available in the invoice. You can also use the [SkySQL REST API](https://apidocs.skysql.com/) to fetch usage and billing data.
 
 ### **How can I see detailed billing reports?**
 
@@ -309,7 +309,7 @@ No. Backup retention is not customer configurable. SkySQL Power Tier customers s
 
 ### **How do I restore my data from a SkySQL backup?**
 
-Request data restore by creating a support case in the [Customer Support Portal](https://support.skysql.com/). Please state what you need restored, and the desired restore point. Self service Restore functionality is available using the Backup service and API (in Preview as of Dec 2023)
+Request data restore by creating a support case in the [Customer Support Portal](https://support.skysql.com/). Please state what you need restored, and the desired restore point. Self service Restore functionality is available using the Backup service and [API](https://apidocs.skysql.com/) (in Preview as of Dec 2023)
 
 ### **Can I request a partial restore of data from backup?**
 
@@ -354,7 +354,7 @@ Yes. By default, SkySQL requires client connections via TLS (TLS 1.2, TLS 1.3).
 
 ### **Does SkySQL support unencrypted client connections?**
 
-SkySQL supports disabling SSL/TLS via the Portal or using the API.
+SkySQL supports disabling SSL/TLS via the Portal or using the [API](https://apidocs.skysql.com/).
 
 ### **What encryption algorithms are used for on-disk encryption?**
 
