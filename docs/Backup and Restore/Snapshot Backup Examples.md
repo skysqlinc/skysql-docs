@@ -30,14 +30,12 @@ Use it on subsequent request, e.g:
 
         curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
         --header 'Content-Type: application/json' \
-        --header 'Accept: application/json' \
-        --header "X-API-Key: $API_KEY" \
-        --data "{
-            \"backup_type\": \"snapshot\",
-            \"schedule\": \"once\",
-            \"service_id\": \"$SERVICE_ID\"
-            }"
-
+        --header 'X-API-Key: $API_KEY' \
+        --data '{
+            "backup_type": "snapshot",
+            "schedule": "once",
+            "service_id": "$SERVICE_ID"
+        }'
     
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
 - SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx. You can fetch the service ID from the Fully qualified domain name(FQDN) of your service. E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID.You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
@@ -45,19 +43,18 @@ Use it on subsequent request, e.g:
 #### Cron Snapshot Example
 
 
-        curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules'
+        curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
         --header 'Content-Type: application/json' \
-        --header 'Accept: application/json' \
-        --header "X-API-Key: $API_KEY" \
-        --data "{
-        \"backup_type\": \"snapshot\",
-        \"schedule\": \"0 3 * * *\",
-        \"service_id\": \"$SERVICE_ID\"
-        }"
+        --header 'X-API-Key: $API_KEY' \
+        --data '{
+            "backup_type": "snapshot",
+            "schedule": "0 3 * * *",
+            "service_id": "$SERVICE_ID"
+        }'
 
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
 - SCHEDULE : Cron schedule, see [Cron](https://en.wikipedia.org/wiki/Cron)
-- SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx
+- SERVICE_ID : SkySQL serivce identifier, format dbxxxxxx
 
 
 ##### Backup status can be fetch using 'https://api.skysql.com/skybackup/v1/backups'. See the 'Backup Status' section for an example.

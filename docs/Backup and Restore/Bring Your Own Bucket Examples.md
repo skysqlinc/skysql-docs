@@ -87,7 +87,7 @@ To set up an external storage backup, you need to make the following API call:
     --data '{
         "backup_type": "full",
         "schedule": "0 2 ** *",
-        "service_id": "dbtgf28044362",
+        "service_id": "dbpgf28044362",
         "external_storage": {
             "bucket": {
                 "path": "s3://my_backup_bucket",
