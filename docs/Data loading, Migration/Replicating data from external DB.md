@@ -15,17 +15,9 @@ GTID (Global Transaction ID) is not supported. Inbound replication must be confi
 
 ## 1) Obtain Binary Log File and Position
 
-**On the external primary server**, obtain the binary log file and position from which to start replication.
+**From you logical dump or mariabackup xtrabackup_binlog_info file**, obtain the binary log file and position from which to start replication.
 
-When you want to start replication from the most recent transaction, the current binary log file position can be obtained by executing the `SHOW MASTER STATUS` statement:
-
-**`SHOW** MASTER STATUS**;**`
-
-`+------------------+----------+--------------+------------------+-------------------+
-| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
-+------------------+----------+--------------+------------------+-------------------+
-| mysql-bin.000001 |      154 |              |                  |                   |
-+------------------+----------+--------------+------------------+-------------------+`
+If source database is completly idle the current binary log file position can be obtained by executing the `SHOW MASTER STATUS` statement:
 
 ## 2) Configure Binary Log File and Position
 
@@ -141,17 +133,10 @@ When replicating from another MariaDB DB you can directly use GTID based replica
 
 ## 1) Obtain GTID Position
 
-**On the external primary server**, obtain the GTID position from which to start replication.
+**From you logical dump or mariabackup xtrabackup_binlog_info file**, obtain the binary log file and position from which to start replication.
 
-When you want to start replication from the most recent transaction, the current GTID position can be obtained by querying the value of the `[gtid_current_pos](https://mariadb.com/docs/skysql-previous-release/ref/mdb/system-variables/gtid_current_pos/)` system variable with the `[SHOW GLOBAL VARIABLES](https://mariadb.com/docs/skysql-previous-release/ref/mdb/sql-statements/SHOW_VARIABLES/)` statement:
+If source database is completly idle the current binary log file position can be obtained by executing the `select @@current_gtid_pos` statement
 
-**`SHOW** **GLOBAL** VARIABLES   **LIKE** 'gtid_current_pos'**;**`
-
-`+------------------+---------+
-| Variable_name    | Value   |
-+------------------+---------+
-| gtid_current_pos | 0-100-1 |
-+------------------+---------+`
 
 ## 2) Configure GTID Position
 
