@@ -1,50 +1,68 @@
-i# Replicating data from external DB
+# Replicating Data from an External Database to SkySQL
 
-# From a MySQL Database
+MariaDB SkySQL customers can configure inbound replication from both **MySQL** and **MariaDB** to a compatible MariaDB running in SkySQL. This guide will walk you through setting up replication for both MySQL and MariaDB as the source databases.
 
-MariaDB SkySQL customers can configure inbound replication from MySQL 5.7 to a compatible MariaDB running in SkySQL.
+For additional information about the stored procedures used to configure replication with Replicated Transactions services, see [SkySQL Replication Helper Procedures for Replicated Transactions](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/).
 
-For additional information about the stored procedures used to configure replication with Replicated Transactions services, see "[SkySQL Replication Helper Procedures for Replicated Transactions](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/)".
+## Requirements
+1. **For MySQL**: 
+   - Replication must be configured using the binary log file and position (GTID is not supported).
+   
+2. **For MariaDB**: 
+   - GTID-based replication can be used instead of binary log for complex replication setups.
+   
+Ensure that the external primary server is compatible with the version of MariaDB used in SkySQL.
 
-<aside>
-💡 To configure inbound replication from an external primary server using MySQL 5.7 to your Replicated Transactions service in SkySQL, the following requirements must be met
+## Step 1: Obtain the Log File and Position
 
-GTID (Global Transaction ID) is not supported. Inbound replication must be configured using the binary log file and position.
+### MySQL:  
+If using MySQL, obtain the binary log file and position from which to start replication. This can be retrieved from a logical dump or `xtrabackup_binlog_info` file.  
+If the source database is idle, use the `SHOW MASTER STATUS` statement to get the current binary log file and position:
 
-</aside>
+```sql
+SHOW MASTER STATUS;
+```
 
-## 1) Obtain Binary Log File and Position
+### MariaDB:  
+For MariaDB, replication can be done using GTID. Obtain the GTID position using the `@@current_gtid_pos` variable:
 
-**From you logical dump or mariabackup xtrabackup_binlog_info file**, obtain the binary log file and position from which to start replication.
+```sql
+SELECT @@current_gtid_pos;
+```
 
-If source database is completly idle the current binary log file position can be obtained by executing the `SHOW MASTER STATUS` statement:
+## Step 2: Configure the Log File and Position
 
-## 2) Configure Binary Log File and Position
+### For MySQL (Binary Log Position Based)
 
-**On the SkySQL service**, configure the binary log file and position from which to start replication.
-
-The binary log file and position can be configured using the `[sky.change_external_primary()` stored procedure](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#change_external_primary):
+Configure the binary log file and position on the SkySQL service using the following stored procedure:
 
 ```sql
 CALL sky.change_external_primary('mysql1.example.com', 3306, 'mysql-bin.000001', 154, false);
-
 ```
 
-######
-## This procedure will return the GRANT COMMAND you must run on the source DB
-######
-## Run_this_grant_on_your_external_primary with data stored in sky.replication_credentials
-`GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';`
+This procedure can be referenced in the official documentation:  
+[sky.change_external_primary()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#change_external_primary)
+
+This will return a `GRANT` statement that needs to be executed on the external MySQL server:
+
+```sql
+GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';
+```
+
+For MariaDB (GTID Based) if preferred refer to [sky.change_external_primary_gtid()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#change_external_primary_gtid)
 
 
-## 3) Start Replication
+## Step 3: Start Replication
 
-**On the SkySQL service**, start replication.
-
-Replication can be started using the `[sky.start_replication()` stored procedure](https://skysqlinc.github.io/skysql-docs/Reference%20Guide/Sky%20Stored%20Procedures/#start_replication):
+Once the configuration is complete, start replication on the SkySQL service using the following command:
 
 ```sql
 CALL sky.start_replication();
+```
+
+This will return a confirmation message such as:
+
+```sql
 +----------------------------------------+
 | Message                                |
 +----------------------------------------+
@@ -52,17 +70,20 @@ CALL sky.start_replication();
 +----------------------------------------+
 ```
 
-## 4) Check Replication Status
+You can find the documentation for this procedure here:  
+[sky.start_replication()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#start_replication)
 
-**On the SkySQL service**, check replication status.
+## Step 4: Check Replication Status
 
-Replication status can be checked using the `[sky.replication_status()` stored procedure](https://skysqlinc.github.io/skysql-docs/Reference%20Guide/Sky%20Stored%20Procedures/#replication_status):
+To verify the status of replication, you can run the following stored procedure on SkySQL:
 
 ```sql
-**CALL** sky**.**replication_status**()\G**
+CALL sky.replication_status()\G;
 ```
 
-```
+The output will provide detailed information about the replication process, including the position of the replication logs and the state of the slave threads. An example output is shown below:
+
+```sql
 *************************** 1. row ***************************
                 Slave_IO_State: Waiting for master to send event
                    Master_Host: mariadb1.example.com
@@ -117,59 +138,24 @@ Replication status can be checked using the `[sky.replication_status()` stored
               Slave_DDL_Groups: 0
 Slave_Non_Transactional_Groups: 0
     Slave_Transactional_Groups: 0
-
 ```
 
-# From a MariaDB Database
+You can reference the replication status procedure here:  
+[sky.replication_status()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#replication_status)
 
-When replicating from another MariaDB DB you can directly use GTID based replication. The first two steps are different than MySQL.
+## Compatibility Notes
 
-## 1) Obtain GTID Position
+- **For MySQL**: Only binary log-based replication is supported; GTID is not available.
+  
+- **For MariaDB**: GTID-based replication can be used.
 
-**From you logical dump or mariabackup xtrabackup_binlog_info file**, obtain the binary log file and position from which to start replication.
+### Supported MariaDB Versions for Replication
 
-If source database is completly idle the current binary log file position can be obtained by executing the `select @@current_gtid_pos` statement
+Ensure that the external primary server uses a supported version of MariaDB, which must be the same or older than the SkySQL service version.
 
-
-## 2) Configure GTID Position
-
-**On the SkySQL service**, configure the GTID position from which to start replication.
-
-The GTID position can be configured using the `[sky.change_external_primary_gtid()` stored procedure](https://skysqlinc.github.io/skysql-docs/Reference%20Guide/Sky%20Stored%20Procedures/#change_external_primary_gtid):
-
-**`CALL** sky**.**change_external_primary_gtid**(**'mariadb1.example.com'**,** 3306**,** '0-100-1'**,** **false);**`
-
-`+--------------------------------------------------------------------------------------------------------------+
-| Run_this_grant_on_your_external_primary                                                                      |
-+--------------------------------------------------------------------------------------------------------------+
-| GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';                  |
-+--------------------------------------------------------------------------------------------------------------+`
-
-The stored procedure returns a `[GRANT] statement` that is used in the next step.
-
-<aside>
-💡 The remaining steps (3) thru (5) are the same as described for MySQL above.
-
-</aside>
-
-## Compatibility
-
-To configure inbound replication from an external primary server using MariaDB Server to your Replicated Transactions service in SkySQL, the following requirements must be met:
-
-- The external primary server must use a supported version of MariaDB Server, and the external primary server must use a version in the same or older release series as the version used by the SkySQL service.
-- When the SkySQL service uses **ES 10.6**, the following versions are supported for the external primary server:
-    - MariaDB Server 10.2
-    - MariaDB Server 10.3
-    - MariaDB Server 10.4
-    - MariaDB Server 10.5
-    - MariaDB Server 10.6
-- When the SkySQL service uses **ES 10.5**, the following versions are supported for the external primary server:
-    - MariaDB Server 10.2
-    - MariaDB Server 10.3
-    - MariaDB Server 10.4
-    - MariaDB Server 10.5
-- When the SkySQL service uses **ES 10.4**, the following versions are supported for the external primary server:
-    - MariaDB Server 10.2
-    - MariaDB Server 10.3
-    - MariaDB Server 10.4
-
+- **For SkySQL using ES 10.6**:
+    - MariaDB Server 10.2, 10.3, 10.4, 10.5, 10.6
+- **For SkySQL using ES 10.5**:
+    - MariaDB Server 10.2, 10.3, 10.4, 10.5
+- **For SkySQL using ES 10.4**:
+    - MariaDB Server 10.2, 10.3, 10.4
