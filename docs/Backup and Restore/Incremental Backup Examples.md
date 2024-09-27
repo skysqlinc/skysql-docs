@@ -40,7 +40,7 @@ curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --data '{
     "backup_type": "incremental",
     "schedule": "once",
-    "service_id": "dbtgf28044362"
+    "service_id": "$SERVICE_ID"
 }'
 ```
 
@@ -59,7 +59,7 @@ curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 --data '{
     "backup_type": "incremental",
     "schedule": "0 3 * * *",
-    "service_id": "dbtgf28044362"
+    "service_id": "$SERVICE_ID"
 }'
 ```
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
