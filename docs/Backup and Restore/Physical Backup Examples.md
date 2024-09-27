@@ -30,13 +30,12 @@ Use it on subsequent request, e.g:
 
         curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
         --header 'Content-Type: application/json' \
-        --header 'Accept: application/json' \
-        --header "X-API-Key: $API_KEY" \
-        --data "{
-            \"backup_type\": \"full\",
-            \"schedule\": \"once\",
-            \"service_id\": \"$SERVICE_ID\"
-            }"
+        --header 'X-API-Key: $API_KEY' \
+        --data '{
+        "backup_type": "full",
+        "schedule": "once",
+        "service_id": "$SERVICE_ID"
+        }'"
 
     
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
@@ -44,16 +43,14 @@ Use it on subsequent request, e.g:
 
 #### Cron Full(physical) Example
 
-
-        curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules'
+        curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
         --header 'Content-Type: application/json' \
-        --header 'Accept: application/json' \
-        --header "X-API-Key: $API_KEY" \
-        --data "{
-        \"backup_type\": \"full\",
-        \"schedule\": \"0 3 * * *\",
-        \"service_id\": \"$SERVICE_ID\"
-        }"
+        --header 'X-API-Key: $API_KEY' \
+        --data '{
+        "backup_type": "full",
+        "schedule": "0 3 * * *",
+        "service_id": "$SERVICE_ID"
+        }'"
 
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
 - SCHEDULE : Cron schedule, see [Cron](https://en.wikipedia.org/wiki/Cron)
