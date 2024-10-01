@@ -32,35 +32,35 @@ Use it on subsequent request, e.g:
 To set up an one-time *binarylog* backup:
 
 ```
+```bash
 curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
-        --header 'Content-Type: application/json' \
-        --header 'Accept: application/json' \
-        --header "X-API-Key: $API_KEY" \
-        --data "{
-            \"backup_type\": \"full\",
-            \"schedule\": \"once\",
-            \"service_id\": \"$SERVICE_ID\"
-            }"
-
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'X-API-Key: ${API_KEY}' \
+--data '{
+    "backup_type": "binarylog",
+    "schedule": "once",
+    "service_id": "$SERVICE_ID"
+}'
 ```
+
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
 - SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx. You can fetch the service ID from the Fully qualified domain name(FQDN) of your service. E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID.You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
-
+  
 ##### Schedule Binarylog backup 
 
 To set up an cron *incremental* backup:
 
 ```
-
-       curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules'
-        --header 'Content-Type: application/json' \
-        --header 'Accept: application/json' \
-        --header "X-API-Key: $API_KEY" \
-        --data "{
-        \"backup_type\": \"binarylog\",
-        \"schedule\": \"0 3 * * *\",
-        \"service_id\": \"$SERVICE_ID\"
-        }"
+curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'X-API-Key: ${API_KEY}' \
+--data '{
+    "backup_type": "binarylog",
+    "schedule": "0 3 * * *",
+    "service_id": "$SERVICE_ID"
+}'
 ```
 
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
