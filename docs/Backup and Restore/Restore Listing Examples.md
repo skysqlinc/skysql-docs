@@ -33,10 +33,11 @@ curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 ## Get Restore by ID
 
 ```bash
-curl --location 'https://api.skysql.com/skybackup/v1/restores/12' \
+curl --location 'https://api.skysql.com/skybackup/v1/restores/<ID>' \
 --header 'Accept: application/json' \
 --header 'X-API-Key: ${API_KEY}'
 ```
+- ID : the SkySQL Restore ID. aTo get the restore id, check the above sample call listing all 
 
 Typical response of those two apis should look like:
 

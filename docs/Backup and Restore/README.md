@@ -1,5 +1,5 @@
-# **Backup and Restore**
-
+# **Back up and instance**
+<!-- Commenting the backups pricing until it's finalzied
 ## **Pricing**
 > While daily automated backups are provided, using the SkySQL Backup and Restore API may incur nominal additional charges. For more information, please contact info@skysql.com."
 
@@ -9,8 +9,7 @@ The following documentation describes the API for the SkySQL Backup Service. Thi
 The Backup and Restore service provides SkySQL customers with a comprehensive list of features through a secure API and a user-friendly portal. The service extends the automated nightly backups with a number of self-service features. Users can automatically create and store backups of their databases to ensure additional data safety or provide a robust disaster recovery solution. The backups are stored on reliable and secure cloud storage, ensuring they are readily available when needed. The backup process is seamless and does not affect the database performance. SkySQL also offers the flexibility to customize backup schedule according to your specific needs. Backups on large data sets can take time.
 
 You instruct the creation of a backup using a "schedule". You can either schedule a one-time backup (schedule now) or set up automatic backups using a cron schedule. A backup schedule results in a backup job which can be tracked using the status API. We support the following types of backups: snapshot, full (physical), incremental (physical), binary log, and dump (logical).
-
-## Backup 
+-->
 ### **SkySQL Snapshot Backups**
 
 <details>
