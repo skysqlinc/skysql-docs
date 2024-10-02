@@ -212,4 +212,8 @@ SkySQL Users can delete their already defined database restore schedules with th
 #### Delete Restore Examples
 
 - [Examples](Restore Delete Examples.md)
+
+## Limitations 
+
+- At present, SkySQL services deplyoed in Azure can only be backed up and restored using [SkySQL Snapshots](Snapshot Backup Examples.md).
  
