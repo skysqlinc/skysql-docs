@@ -101,6 +101,21 @@ nav:
       - 'Connecting to Sky DBs/Connect from MongoDB clients.md'
       - 'Connecting to Sky DBs/Connect using ODBC.md'
       - 'Connecting to Sky DBs/Connect using Connector R2DBC.md'
+  - 'Backup and Restore' :
+      - 'Backup and Restore/README.md'
+      - Backup Examples:
+          - 'Backup and Restore/Snapshot Backup Examples.md'
+          - 'Backup and Restore/Physical Backup Examples.md'
+          - 'Backup and Restore/Logical Backup Examples.md'
+          - 'Backup and Restore/Incremental Backup Examples.md'
+          - 'Backup and Restore/Binarylog Backup Examples.md'
+          - 'Backup and Restore/Other backup API examples.md'
+      - Restore Examples: 
+          - 'Backup and Restore/Restore Listing Examples.md'
+          - 'Backup and Restore/Restore from SkySQL Managed Storage.md'
+          - 'Backup and Restore/Restore From Your Own Bucket.md'
+          - 'Backup and Restore/Restore Delete Examples.md'
+      - 'Backup and Restore/MariaDB Enterprise Backup.md'
   - 'Data Loading, Migrations' :
       - 'Data loading, Migration/README.md'
       - 'Data loading, Migration/Migrate-your-database-to-SkySQL.md'
@@ -132,21 +147,6 @@ nav:
       - 'config/Enterprise-Server-Single-Node.md'
       - 'config/Enterprise-Server-with-Replica(s).md'
       - 'config/SkySQL-Intelligent-Proxy.md'
-  - 'Backup and Restore' :
-      - 'Backup and Restore/README.md'
-      - Backup Examples:
-          - 'Backup and Restore/Snapshot Backup Examples.md'
-          - 'Backup and Restore/Physical Backup Examples.md'
-          - 'Backup and Restore/Logical Backup Examples.md'
-          - 'Backup and Restore/Incremental Backup Examples.md'
-          - 'Backup and Restore/Binarylog Backup Examples.md'
-          - 'Backup and Restore/Other backup API examples.md'
-      - Restore Examples: 
-          - 'Backup and Restore/Restore Listing Examples.md'
-          - 'Backup and Restore/Restore from SkySQL Managed Storage.md'
-          - 'Backup and Restore/Restore From Your Own Bucket.md'
-          - 'Backup and Restore/Restore Delete Examples.md'
-      - 'Backup and Restore/MariaDB Enterprise Backup.md'
   - 'Using AWS/GCP Private VPC Connections' :
       - 'Using AWS GCP private VPC connections/README.md'
       - 'Using AWS GCP private VPC connections/Setting up AWS Private Link.md'
