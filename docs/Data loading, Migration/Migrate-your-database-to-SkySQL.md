@@ -25,7 +25,6 @@ Ensure that your SkySQL servce deploymned configuration is compatible with your 
    <li> <b>Server version</b> - Ensure that the SkySQL server version is compatible with the source database version. </li>
    <li><b>Instance size</b> - Ensure that the SkySQL instance is compatible with the source database instance type and size</li>
    <li><b>Storage</b> - Ensure that the SkySQL storage type and size is compatible with the source database</li>
-</br>
 </details>
 ---
 
@@ -62,7 +61,9 @@ SkySQL Managed Migration is a REST-based service that handles the migration proc
 
 ### Option 2: Custom Migration
 
-For most small, mid-size and large migrations SkySQL Managed Migration is the quickest and safest option. However, for large migrations or migrations with specific requirements, you and your team may require more flexibility and control over the migration process. In these cases, you and your team can design a custom migration plan considering the steps suggested below.
+For most small, mid-size and large migrations SkySQL Managed Migration is the quickest and safest option. However, for large migrations or migrations with specific requirements, you and your team may require more flexibility and control over the migration process. In these cases, you and your team can design a custom migration plan considering the options suggested below.
 
 - [Migrating Using a Logical Dump and Replication](https://skysqlinc.github.io/skysql-docs/Data%20loading,%20Migration/Migrating%20Using%20a%20Logical%20Dump%20and%20Replication/)
+- [Importing data using Mariadb Import](./Install-mariadb-import.md)
+- [Importing using CSV Data](./Import-CSV-data.md)
 - [Replicating Data from an External DB](https://skysqlinc.github.io/skysql-docs/Data%20loading,%20Migration/Replicating%20data%20from%20external%20DB/)

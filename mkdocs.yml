@@ -117,13 +117,15 @@ nav:
           - 'Backup and Restore/Restore Delete Examples.md'
       - 'Backup and Restore/MariaDB Enterprise Backup.md'
   - 'Data Loading, Migrations' :
-      - 'Data loading, Migration/README.md'
-      - 'Data loading, Migration/Migrate-your-database-to-SkySQL.md'
-      - 'Data loading, Migration/Import-CSV-data.md'
-      - 'Data loading, Migration/Install Mariadb-dump.md'
-      - 'Data loading, Migration/Install-mariadb-import.md'
-      - 'Data loading, Migration/Migrating Using a Logical Dump and Replication.md'
-      - 'Data loading, Migration/Replicating data from external DB.md'
+      - 'Data loading':
+          - 'Data loading, Migration/Import-CSV-data.md'
+          - 'Data loading, Migration/Install Mariadb-dump.md'
+          - 'Data loading, Migration/Install-mariadb-import.md'
+          - 'Data loading, Migration/Replicating data from external DB.md'
+      - 'Migrations' :
+          - 'Data loading, Migration/README.md'
+          - 'Data loading, Migration/SkySQL-managed-migration.md'
+          - 'Data loading, Migration/Migrating Using a Logical Dump and Replication.md'
   - 'Data Offloading' :
       - 'Data offloading/README.md'
       - 'Data offloading/Replicating data from SkySQL to external database.md'
