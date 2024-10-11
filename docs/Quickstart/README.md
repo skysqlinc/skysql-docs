@@ -16,7 +16,7 @@ For users who prefer other interfaces, SkySQL offers the following alternatives:
 
 Goto [app.skysql.com](https://app.skysql.com) to sign up. You can sign up using your Google, Github or LinkedIn credentials. Or, just use your Email address to sign up. 
 
-![skysql-id](skysql-id.png)
+[![skysql-id](skysql-id.png)](skysql-id.png)
 
 ## Step 2: Launch a Service
 
@@ -35,7 +35,7 @@ Goto [app.skysql.com](https://app.skysql.com) to sign up. You can sign up using 
     - Select `Add my current IP: 99.43.xxx.xxx` in the `Security` section
     - Then, click the `Launch Service` button.
         
-    ![launch-service](launch-service.png)
+    [![launch-service](launch-service.png)](launch-service.png)
         
     For additional information on available selections, see "[Service Launch](<../Portal features/Launch page.md>)".
         
@@ -57,7 +57,7 @@ To see expanded status and metrics information:
 2. From the Monitoring Dashboard, you can choose to view service (`Service Overview`) or server details from the navigation tabs.
 3. Specific views are provided for different sets of metrics. These views can be accessed using the buttons in the upper-right corner. From the service overview, views include `Status`, `Lags`, `Queries`, `Database` and `System`.
     
-    ![monitoring](monitoring.png)
+    [![monitoring](monitoring.png)](monitoring.png)
     
     *Monitoring Dashboard*
     
@@ -67,13 +67,13 @@ SkySQL features automatic rule-based scaling (Autonomous) and manual on-demand s
 
 With automatic scaling, node count (horizontal) and node size (vertical) changes can be triggered based on load. Additionally, storage capacity expansion can be triggered based on usage. These Autonomous features are opt-in. For additional information, see "[Autonomous](<../Autonomously scale Compute, Storage/>)".
 
-![autonomous](autonomous.png)
+[![autonomous](autonomous.png)](autonomous.png)
 
 *Autonomous*
 
 With manual scaling, you can perform horizontal scaling (In/Out), vertical scaling (Up/Down), and storage expansion on-demand using Self-Service Operations. For additional information, see "[Self-Service Operations](<../Portal features/Manage your Service.md>)".
 
-![scaling](scaling.png)
+[![scaling](scaling.png)](scaling.png)
 
 *Self-Service Scaling of Nodes*
 

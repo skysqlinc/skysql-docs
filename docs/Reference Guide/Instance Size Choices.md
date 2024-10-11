@@ -3,7 +3,7 @@
 Instance size choices are specific to the cloud provider, topology, region, and hardware architecture.
 
 <aside>
-💡 the list below provides available sizes as of July 2024. Likely to evolve over time. The SkySQL portal is the best place for accurate information.
+💡 the list below provides available sizes as of Sept 2024. Likely to evolve over time. The SkySQL portal is the best place for accurate information.
 </aside>
 
 ### MariaDB Server
@@ -37,6 +37,10 @@ For Power tier:
 | sky-32x256 | aws, gcp, azure | 32 vCPU | 256 GB |
 | sky-64x256 | aws, gcp, azure | 64 vCPU | 256 GB |
 | sky-64x512 | aws, gcp, azure | 64 vCPU | 512 GB |
+| sky-96x384 | aws | 96 vCPU | 384 GB |
+| sky-96x768 | aws | 96 vCPU | 768 GB |
+| sky-128x512 | aws | 128 vCPU | 512 GB |
+| sky-128x1024 | aws | 128 vCPU | 1024 GB |
 
 ### **MaxScale**
 

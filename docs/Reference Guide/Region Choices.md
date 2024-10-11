@@ -47,6 +47,12 @@
 | Region | Location |
 | --- | --- |
 | eastus | Richmond, Virginia, USA |
-| northeurope | Dublin, Ireland, USA |
+| eastus2 | Virginia, USA |
+| westus2 | Seattle, Washington, USA |
+| uksouth | London, England, UK |
+| francecentral | Paris, France |
+| northeurope | Dublin, Ireland |
+| germanywestcentral | Frankfurt, Germany |
+| southeastasia | Jurong West, Singapore |
 
 Please [contact us](<../Support.md>) if any aspect of service does not align to your intended use case.

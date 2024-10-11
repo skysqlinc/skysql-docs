@@ -30,10 +30,10 @@ The real time benefits come every day after, when you're operating at scale. A f
 
 SkySQL provides services backed by:
 
-- MariaDB Enterprise Server 10.5
-- MariaDB Enterprise Server 10.6
-- MariaDB Community Server 10.11
 - MariaDB Community Server 11.4
+- MariaDB Community Server 10.11
+- MariaDB Enterprise Server 10.6
+- MariaDB Enterprise Server 10.5
 - MariaDB MaxScale
 
 ### **Are other databases supported?**
@@ -50,16 +50,17 @@ Services are currently available with a range of [instance sizes](<../Reference
 
 - Amazon AWS (Amazon Web Services)
 - Google GCP (Google Cloud Platform)
-- Microsoft Azure
+- Microsoft Azure (Cloud Computing Services)
 
 Transactional services (such as our Replicated Transactions topology) operate on:
 
 - AWS with [EBS Provisioned SSD (gp2, gp3, io1 type)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html) with [Amazon EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 - GCP with [Zonal SSD Persistent Disk](https://cloud.google.com/compute/docs/disks/performance) with [Google's default encryption](https://cloud.google.com/security/encryption-at-rest/default-encryption)
+- Azure with [Azure Standard and Premium Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview) with [Azure's default encryption](https://docs.microsoft.com/en-us/azure/virtual-machines/disk-encryption)
 
 ### **What software stack does SkySQL run on?**
 
-SkySQL runs on Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine (GKE), and MariaDB database products - Enterprise Server, MaxScale. MariaDB Enterprise Server enables a predictable development and operations experience through optimized builds, predictable release behavior, and vendor support.
+SkySQL runs on Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine (GKE), and Azure Kubernetes Service (AKS). MariaDB database products - MariaDB Server, MaxScale.
 
 ### **How long has SkySQL existed?**
 
@@ -70,7 +71,7 @@ supported the SkySQL product.
 
 ### **Is SkySQL ready for production use?**
 
-Yes. SkySQL delivers enterprise-grade cloud database services for mission-critical applications. SkySQL is built to make MariaDB Enterprise ready - optimized for security, stability, and reliability in demanding production environments. Multi-node database deployments feature a comprehensive [SLA](<../Autonomously scale Compute, Storage/Uptime SLA>), High Availability (HA) features, and operations features. [Enterprise support](https://skysql.com/support-policy/) options extend support to 24x7, with the additional option of [SkyDBA](<../FractionalDBA>) for reactive and proactive assistance from a team of expert DBAs. [Security features](../Security) are designed to meet the GRC and infosec challenges faced by modern applications. [//]: # , and [DPA (GDPR) and BAA (HIPAA)](https://mariadb.com/trust/) are available.
+Yes. SkySQL delivers enterprise-grade cloud database services for mission-critical applications. SkySQL is built to make MariaDB enterprise ready - optimized for security, stability, and reliability in demanding production environments. Multi-node database deployments feature a comprehensive [SLA](<../Autonomously scale Compute, Storage/Uptime SLA>), High Availability (HA) features, and operations features. [Enterprise support](https://skysql.com/support-policy/) options extend support to 24x7, with the additional option of [SkyDBA](<../FractionalDBA>) for reactive and proactive assistance from a team of expert DBAs. [Security features](../Security) are designed to meet the GRC and infosec challenges faced by modern applications. [//]: # , and [DPA (GDPR) and BAA (HIPAA)](https://skysql.com/trust/) are available.
 
 ## **SkySQL Features**
 
@@ -88,15 +89,14 @@ You can choose [topologies to match your workload requirements, cloud regions t
 Our platform features:
 
 - Availability in a range of database instance sizes and storage sizes
-- Availability from multiple AWS (Amazon Web Services) and GCP (Google Cloud Platform) [regions](<../Reference Guide/Region Choices>).
+- Availability from multiple AWS (Amazon Web Services), GCP (Google Cloud Platform), and Azure (Cloud Computing Services) [regions](<../Reference Guide/Region Choices>).
 - Load Balancing features included with Replicated Transactions topologies allow for read-scaling through read-write splitting.
 - Custom instance sizes (for [Power Tier](<../Billing and Power Tier>) customers)
 - Range of [support options](Support.md)
 
 ### **What reliability features are available on SkySQL?**
 
-- SkySQL is operated by a global team of Site Reliability Engineers (SRE), expert DBAs, and MariaDB software engineers. Platform problems are escalated to our team 24x7.
-- Support from MariaDB Corporation, including Enterprise and Platinum tiers optionally with SkyDBA for reactive and proactive assistance
+- SkySQL is operated by a global team of Site Reliability Engineers (SRE), and expert DBAs. Platform problems are escalated to our team 24x7.
 - [Service Level Agreement](https://skysql.com/sla/), including an elevated SLA for [Power Tier](<../Billing and Power Tier>) customers
 - Kubernetes self-healing - Databases run in containers in kubernetes clusters and auto-heal.
 - Load balancing for multi-node configurations using MariaDB MaxScale
@@ -123,9 +123,8 @@ Our platform features:
 - Firewall protection, including dedicated IP allowlists to access databases and to access monitoring features
 - Data-at-rest encryption
 - Data-in-transit encryption by default
-- VPC peering, AWS PrivateLink and GCP Private Service Connect options
+- VPC peering, AWS PrivateLink, GCP Private Service Connect and Azure Private Link options
 - Standard or enterprise authentication for management portal
-- Standard, LDAP, or 2FA database authentication
 - Business Associate Addendum (BAA) for HIPAA
 - Data Processing Addendum (DPA) for GDPR
 
@@ -276,15 +275,15 @@ Contact [info@skysql.com](mailto:info@skysql.com) with billing questions.
 
 ### **How do I backup my data on SkySQL?**
 
-SkySQL runs full backups automatically each night. SkySQL also allows on-demand backups (a Preview feature)
+SkySQL runs full backups automatically each night. SkySQL also allows on-demand backups (a Preview feature).
 
 ### **Can I set the frequency or schedule of automated backups?**
 
-No. Backup frequency and schedule are not customer configurable. SkySQL Power Tier customers should contact us if alternate backup frequency or schedule is required.
+Yes. Backup frequency and schedule can be customized using the [API](https://apidocs.skysql.com/) or [Portal](https://app.skysql.com/backups/service-backups). See [Backup and Restore](../Backup and Restore) for more information.
 
 ### **Are automated backups sent offsite? Will my data be sent to another country?**
 
-No. Data is not sent to another country. All data is managed within the same region where your database is running for data sovereignty.
+No. Data is not sent to another country. All data is managed within the same region by default where your database is running for data sovereignty.
 
 ### **Does SkySQL guarantee an RTO and RPO?**
 
@@ -294,23 +293,23 @@ No.
 
 No.
 
-MariaDB Enterprise Backup (mariabackup) is used for Replicated Transactions and Single Node Transactions service backups. MariaDB Enterprise Backup breaks up backups into non-blocking stages so writes and schema changes can occur during backups.
+MariaDB Backup (mariabackup) is used for Replicated Transactions and Single Node Transactions service backups. MariaDB Backup breaks up backups into non-blocking stages so writes and schema changes can occur during backups.
 
 ### **Are incremental backups available?**
 
-The backup service provides support for incremental backups. It is in preview state (Dec 2023).
+The backup service provides support for incremental backups. It is in preview state (October 2024).
 
 ### **How long are backups retained?**
 
-Backups for running and stopped services are retained for 30 days. If a service is deleted, no further backups for that service are produced and backups on hand are purged after 7 days.
+Backups for running and stopped services are retained for 7 days.
 
 ### **Can I set the retention window for automated backups?**
 
-No. Backup retention is not customer configurable. SkySQL Power Tier customers should contact us if an alternate retention schedule is required.
+No. Currently, backup retention is not customer configurable. SkySQL Power Tier customers should contact us if an alternate retention schedule is required.
 
 ### **How do I restore my data from a SkySQL backup?**
 
-Request data restore by creating a support case in the [Customer Support Portal](https://support.skysql.com/). Please state what you need restored, and the desired restore point. Self service Restore functionality is available using the Backup service and [API](https://apidocs.skysql.com/) (in Preview as of Dec 2023)
+Request data restore by creating a support case in the [Customer Support Portal](https://support.skysql.com/). Please state what you need restored, and the desired restore point. Self service Restore functionality is available using the Backup service and [API](https://apidocs.skysql.com/) (in Preview as of Oct 2024)
 
 ### **Can I request a partial restore of data from backup?**
 
@@ -322,11 +321,11 @@ By default, full and complete backup restoration is available. To enable point-i
 
 ### **Can I request restore of my data to a different region?**
 
-Yes, by [support case](https://support.skysql.com)
+Yes, self service restore is available using the Backup service and [API](https://apidocs.skysql.com/) (in Preview as of Oct 2024).
 
 ### **Can I request restore of my data to a different topology?**
 
-Yes, by [support case](https://support.skysql.com)
+Yes, self service restore is available using the Backup service and [API](https://apidocs.skysql.com/) (in Preview as of Oct 2024).
 
 ### **Can I retrieve my database backup from SkySQL? Is there vendor lock?**
 
@@ -340,6 +339,7 @@ Yes. All SkySQL data is encrypted on disk.
 
 - SkySQL on Amazon AWS benefits from [Amazon EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html).
 - SkySQL on Google GCP benefits from [encryption by default](https://cloud.google.com/security/encryption-at-rest/default-encryption).
+- SkySQL on Microsoft Azure leverages Azure's [default encryption](https://docs.microsoft.com/en-us/azure/virtual-machines/disk-encryption).
 
 ### **Does SkySQL support data-in-transit encryption (over the network encryption)?**
 
@@ -363,29 +363,27 @@ SkySQL on Amazon AWS benefits from [Amazon EBS encryption](https://docs.aws.ama
 
 SkySQL on Google GCP leverages Google's [default encryption](https://cloud.google.com/security/encryption-at-rest/default-encryption), which is AES256 or AES128.
 
+SkySQL on Microsoft Azure leverages Azure's [default encryption](https://docs.microsoft.com/en-us/azure/virtual-machines/disk-encryption), which is AES256.
+
 ### **What versions of SSL or TLS are supported?**
 
 TLS 1.2, and TLS 1.3 are supported.
 
 ### **When do TLS certificates expire?**
 
-TLS certificates expire every two years.
+TLS certificates expire every 90 days but are automatically renewed without customer action and without service interruption.
 
 ### **How are TLS certificates and encryption keys managed?**
 
-MariaDB Corporation leverages HashiCorp Vault for certificate and key management. Certificates and keys are not customer-configurable.
+SkySQL leverages HashiCorp Vault for certificate and key management. Certificates and keys are not customer-configurable at this time.
 
 ### **Are client certificates supported?**
 
-No. SkySQL supports server-side certificates. Database users are authenticated by standard password authentication, LDAP, and/or Two-Factor Authentication (2FA).
+No. SkySQL supports server-side certificates. Database users are authenticated by standard password authentication.
 
 ### **Is ed25519 authentication supported?**
 
-No. While MariaDB Enterprise Server includes ed25519 support, SkySQL leverages a version of MariaDB MaxScale which is not ed25519-compatible.
-
-### **Why do I need to download a certificate authority chain?**
-
-A certificate authority chain is provided to allow your client to establish a secure and encrypted connection to a SkySQL database service, confirming the authenticity of the server certificate.
+No.
 
 ### **How frequently are cryptography libraries (like OpenSSL) updated?**
 
@@ -419,6 +417,7 @@ No. SkySQL is hosted on public cloud provider systems.
 
 - SkySQL on Amazon AWS benefits from [Amazon EBS encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html) and [Amazon's data destruction controls](https://aws.amazon.com/compliance/data-center/data-layer/).
 - SkySQL on Google Cloud benefits from [encryption by default](https://cloud.google.com/security/encryption-at-rest/default-encryption) and [Google's data destruction controls](https://www.google.com/about/datacenters/data-security/).
+- SkySQL on Microsoft Azure leverages Azure's [default encryption](https://docs.microsoft.com/en-us/azure/virtual-machines/disk-encryption), and Azure's [data destruction controls](https://learn.microsoft.com/en-us/azure/security/fundamentals/protection-customer-data).
 
 ### **Can data be purged from backups?**
 
@@ -500,9 +499,7 @@ Billing questions can be directed to [Billing Team](mailto:billing@skysql.com).
 
 ### **How do I provide feedback about SkySQL Documentation?**
 
-To aid our continuous improvement efforts, we encourage you to provide feedback on our documentation and your experiences using it via the following:
-
-- Email [info@skysql.com](mailto:info@skysql.com)
+To aid our continuous improvement efforts, we encourage you to provide feedback on our documentation and your experiences using it via emailing [info@skysql.com](mailto:info@skysql.com)
 
 ### **I am a SkySQL customer. How do I get support?**
 
