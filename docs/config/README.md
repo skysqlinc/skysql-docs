@@ -2,7 +2,7 @@
 
 Database server configuration, including system variables, is managed through the Configuration Manager.
 
-![configuration-manager.png](configuration-manager.png)
+[![configuration-manager.png](configuration-manager.png)](configuration-manager.png)
 
 
 ## **Access to Configuration Manager**

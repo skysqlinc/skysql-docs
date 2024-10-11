@@ -18,7 +18,7 @@ Usage information can be shown by service or by resource.
 
 Click the resource name or service name to expand the view.
 
-![current-usage.png](current-usage.png)
+[![current-usage.png](current-usage.png)](current-usage.png)
 
 *Billing - Current Usage*
 

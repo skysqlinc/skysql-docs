@@ -8,7 +8,7 @@ It relies on a built-in Vector Database to semantically search SkySQL documentat
 !!! Note
     This is currently in Tech Preview. It is Free to use. We may impose usage limits or request you to upgrade to a paid plan as we finalize the product.  
 
-![](quickstart.png)
+[![](quickstart.png)](quickstart.png)
 
 
 
@@ -90,9 +90,9 @@ Clean Alternative Fuel Vehicle Eligible,75,0,23,214384901,POINT (-122.6113649999
 
 This will produce results like this … 
 
-<img src="ama1.png" width="600" alt="AMA example 1">
-<img src="ama2.png" width="600" alt="AMA example 2">
-<img src="ama3.png" width="600" alt="AMA example 3">
+[![](ama1.png)](ama1.png)
+[![](ama2.png)](ama2.png)
+[![](ama3.png)](ama3.png)
 
 
 ## ‘DBA Assist’ mode
@@ -128,7 +128,7 @@ It is also useful to turn ON 'Performance\_schema' (though, note that this optio
 
 Once you have followed the above steps you have to connect to a DB server to start using this mode. 
 
-<img src="dba1.png" width="600" alt="DBA Assist example">
+[![](dba1.png)](dba1.png)
 
 **Sample questions:**
 
@@ -167,7 +167,7 @@ Before you can start chatting, you must first connect and select a DB schema to 
 * *Step 3*: Select the Tables for more selective context.   
   * To get higher accuracy, when your schema has many tables (even if it is just \> 10\) you should select just the few tables you need. 
 
-<img src="app1.png" width="600" alt="Chat with App Data example">
+[![](app1.png)](app1.png)
 
 ## Getting accurate answers requires some discipline
 

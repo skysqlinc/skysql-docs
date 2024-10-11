@@ -6,7 +6,7 @@ Self-service [user management](<../Security/Managing Portal Users.md>) feature
 
 # Stop a Service
 
-![stop-service.png](stop-service.png)
+[![stop-service.png](stop-service.png)](stop-service.png)
 
 *Stop Service*
 
@@ -23,7 +23,7 @@ The service will be stopped. You will only be charged for storage on a stopped s
 
 # Start a Service
 
-![start-service.png](start-service.png)
+[![start-service.png](start-service.png)](start-service.png)
 
 *Start Service*
 
@@ -40,7 +40,7 @@ The service will be started. Service start may take up to 10-15 minutes. The nor
 
 # Scale Nodes In/Out
 
-![scale-in-out.png](scale-in-out.png)
+[![scale-in-out.png](scale-in-out.png)](scale-in-out.png)
 
 *Service - Horizontal Scaling*
 
@@ -62,7 +62,7 @@ The service immediately goes into scaling status.
 
 # Scale Nodes Up/Down
 
-![scale-up-down.png](scale-up-down.png)
+[![scale-up-down.png](scale-up-down.png)](scale-up-down.png)
 
 *Service - Vertical Scaling*
 
@@ -84,7 +84,7 @@ The service immediately goes into scaling status.
 
 # Scale Storage
 
-![scale-storage.png](scale-storage.png)
+[![scale-storage.png](scale-storage.png)](scale-storage.png)
 
 *Service - Scale Storage*
 
@@ -103,7 +103,7 @@ Storage upgrades are not reversible.
 
 # Delete a Service
 
-![delete-service.png](delete-service.png)
+[![delete-service.png](delete-service.png)](delete-service.png)
 
 *Service - Delete*
 

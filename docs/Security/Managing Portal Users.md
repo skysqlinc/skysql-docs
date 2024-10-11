@@ -18,7 +18,7 @@ To access the User Management interface:
 2. Click the "Settings" link in the main menu (left navigation in the Portal).
 3. Click the [User Management](https://app.skysql.com/settings/user-management) button.
 
-![user-management.png](user-management.png)
+[![user-management.png](user-management.png)](user-management.png)
 
 *User Management*
 
@@ -33,7 +33,7 @@ Each Team member has one of the following roles:
 
 ## **Add a Team Member**
 
-![user-management-invite.png](user-management-invite.png)
+[![user-management-invite.png](user-management-invite.png)](user-management-invite.png)
 
 *User Management - Invite*
 

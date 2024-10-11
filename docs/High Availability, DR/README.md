@@ -25,7 +25,7 @@ While hardware failures are a possibility, a more common scenario we see in prac
 
 Behind the scenes, SkySQL consistently directs SQL through its intelligent proxy. This proxy not only continuously monitors servers for failures but also remains acutely aware of any replication lags in the replica servers. Should a primary server fail, an immediate election process ensues to select a replica with the least lag. Simultaneously, attempts are made to flush any pending events, ensuring synchronization and full data consistency. Any pending transactions on the primary server are also replayed. Collectively, these measures enable applications to operate without connection-level interruptions or SQL exceptions. Achieving heightened levels of High Availability (HA) is effortlessly attainable by expanding the number of replicas. Replication can even extend across different cloud providers or to a self-managed (ˮpeace of mindˮ) replica within a customerʼs own environment.
 
-![HA in a Single Region](HA_in_single_region.drawio.png)
+[![HA in a Single Region](HA_in_single_region.drawio.png)](HA_in_single_region.drawio.png)
     
 *HA in a single region*
 
@@ -79,7 +79,7 @@ The major cloud providers tout disaster recover across regions, ensuring resilie
 
 One effective strategy to mitigate such risks is to replicate data to a data center owned by a different cloud provider within the same geographical area, minimizing network latencies. Disaster recovery across cloud providers is of course something an individual provider such as AWS or GCP simply donʼt support. Alternatively, customers can maintain their own “standby” database for emergencies—an environment entirely under their control, ensuring a near-real time copy of the data at all times.
 
-![Failover to another Region](Failover_to_another_region.drawio.png)
+[![Failover to another Region](Failover_to_another_region.drawio.png)](Failover_to_another_region.drawio.png)
     
 *Failover when entire region becomes unavailable*
 

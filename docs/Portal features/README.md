@@ -8,7 +8,7 @@ You can access the Portal [here](https://app.skysql.com/dashboard)
 
 ## Dashboard
 
-![dashboard](dashboard.png)
+[![dashboard](dashboard.png)](dashboard.png)
 
 
 From the Dashboard, you can see a list of your SkySQL services and status information for each service.

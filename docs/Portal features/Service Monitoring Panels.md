@@ -2,7 +2,7 @@
 
 The available panels are :
 
-![monitoring.png](monitoring.png)
+[![monitoring.png](monitoring.png)](monitoring.png)
 *Monitoring page*
 
 ## Current SQL Commands (service)
@@ -37,7 +37,7 @@ This panel shows the amount of storage space used (as the usage percentage, actu
 
 This panel shows the amount of storage space used by each server node during the selected time interval.
 
-![lags-panel.png](lags-panel.png)
+[![lags-panel.png](lags-panel.png)](lags-panel.png)
 
 ## GTID Replication Position (service,replicas)
 
@@ -55,7 +55,7 @@ This panel shows the current binary log position of the replica SQL thread for e
 
 This panel shows the current binary log position of the replica I/O thread for each ES node during the selected time interval.
 
-![queries-panel.png](queries-panel.png)
+[![queries-panel.png](queries-panel.png)](queries-panel.png)
 
 ## Top Command Counters (service,queries)
 
@@ -97,7 +97,7 @@ This panel shows the number of client threads running on all ES nodes during the
 
 This panel shows the number of client threads connected and running on the ES node during the selected time interval.
 
-![database-panel.png](database-panel.png)
+[![database-panel.png](database-panel.png)](database-panel.png)
 
 ## MaxScale Service Connections
 
@@ -136,7 +136,7 @@ This panel shows the number of tables opened by the database server on the ES no
 This panel shows the number of tables that have been opened by all ES nodes during the selected time interval.
 
 
-![system-panel.png](system-panel.png)
+[![system-panel.png](system-panel.png)](system-panel.png)
 
 ## CPU Load
 

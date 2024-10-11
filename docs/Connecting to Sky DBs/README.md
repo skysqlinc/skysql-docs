@@ -33,7 +33,7 @@ Connection parameters include:
 !!! Note
     💡 **There is a default config change in the 11.4.2 MariaDB client that requires SSL. This needs to be disabled by setting ```--ssl-verify-server-cert=0```.**
 
-![Connect window example](connect_window.png)
+[![Connect window example](connect_window.png)](connect_window.png)
 
 
 ### Install and Connect using the MariaDB client
