@@ -149,10 +149,11 @@ nav:
       - 'config/Enterprise-Server-Single-Node.md'
       - 'config/Enterprise-Server-with-Replica(s).md'
       - 'config/SkySQL-Intelligent-Proxy.md'
-  - 'Using AWS/GCP Private VPC Connections' :
-      - 'Using AWS GCP private VPC connections/README.md'
-      - 'Using AWS GCP private VPC connections/Setting up AWS Private Link.md'
-      - 'Using AWS GCP private VPC connections/Setting up GCP Private Service Connect.md'
+  - 'Using AWS/Azure/GCP Private VPC Connections' :
+      - 'Using AWS Azure GCP private VPC connections/README.md'
+      - 'Using AWS Azure GCP private VPC connections/Setting up AWS Private Link.md'
+      - 'Using AWS Azure GCP private VPC connections/Setting up GCP Private Service Connect.md'
+      - 'Using AWS Azure GCP private VPC connections/Setting up Azure Private Link.md'
   - 'Power Tier' :
       - 'Billing and Power Tier/README.md'
   - 'FractionalDBA.md'

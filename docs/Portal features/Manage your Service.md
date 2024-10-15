@@ -126,6 +126,6 @@ Your service and all its data will be deleted. This operation is non-reversible.
 - [Firewall Management](<../Security/Configuring Firewall.md>)
 - [Configuration Management](<../config/>)
 - Private Connections:
-    - [AWS PrivateLink](<../Using AWS GCP private VPC connections/Setting up AWS Private Link.md>)
-    - [GCP Private Service Connect](<../Using AWS GCP private VPC connections/Setting up GCP Private Service Connect.md>)
+    - [AWS PrivateLink](<../Using AWS Azure GCP private VPC connections/Setting up AWS Private Link.md>)
+    - [GCP Private Service Connect](<../Using AWS Azure GCP private VPC connections/Setting up GCP Private Service Connect.md>)
 - [User Management](<../Security/Managing Portal Users.md>)
