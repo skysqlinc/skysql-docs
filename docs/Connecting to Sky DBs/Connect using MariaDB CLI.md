@@ -1,9 +1,29 @@
 
-MariaDB Client is available for Linux and Windows
+MariaDB Client is available for all major operating systems.
 
 
 ## 1. Installation
 Installation of MariaDB Client varies by operating system.
+
+### MacOS
+
+1. Install Homebrew if you don't have it already:
+
+    ```bash
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+
+2. Install MariaDB Client:
+
+    ```bash
+    brew install mariadb
+    ```
+
+3. Verify the installation:
+
+    ```bash
+    mariadb --version
+    ```
 
 ### CentOS / RHEL
 

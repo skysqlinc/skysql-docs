@@ -38,7 +38,7 @@ Connection parameters include:
 
 ### Install and Connect using the MariaDB client
 
-After [installing the MariaDB client](https://mariadb.com/docs/server/connect/clients/mariadb-client/) according to your operating system, simply copy/paste the MariaDB CLI command as displayed in the Connect window. 
+After [installing the MariaDB client](./Connect%20using%20MariaDB%20CLI.md) according to your operating system, simply copy/paste the MariaDB CLI command as displayed in the Connect window. 
 
 ## Connecting from your Application
 
