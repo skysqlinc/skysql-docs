@@ -69,7 +69,7 @@ resource "skysql_service" "example" {
 - The `endpoint_mechanism` field must be set to `privateconnect`
 - The `endpoint_allowed_accounts` field must be set to a list of one or more customer subscription IDs in Azure that will be allowed to establish a private connection to the SkySQL service.  These IDs should be in the guid format.
 
-A complete example Terraform template that creates a new SkySQL service with Azure Private Link enabled can be found in the [terraform provider examples](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples/auzre-private-link).
+A complete example Terraform template that creates a new SkySQL service with Azure Private Link enabled can be found in the [terraform provider examples](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples/azure-private-link).
 
 
 For more information on using the SkySQL Terraform Provider, see ["SkySQL Terraform Provider"](https://registry.terraform.io/providers/skysqlinc/skysql/latest/docs).
@@ -132,8 +132,9 @@ To connect to a SkySQL service using Azure Private Link, you must create an endp
     - This ID can be found in the "Connect" window of the SkySQL portal.
     - This ID references the "Alias" field of the Azure created Private Link service.
     - If using the SkySQL DBaaS API, the ID can be found in the response of the service details API call.
-    ```
-    curl https://api.skysql.com/provisioning/v1/services/{SERVICE_ID} | jq ".endpoints[0].endpoint_service"
+    ```bash
+    curl https://api.skysql.com/provisioning/v1/services/{SERVICE_ID} \
+         | jq ".endpoints[0].endpoint_service"
     ```
 
 ### Private Link Endpoint Creation Steps
@@ -191,7 +192,7 @@ The following links will help guide you through the process of setting up Privat
 
 
 Since Private DNS setup is a complex process, we have provided a terraform example that can help with the process.  We highly advise that you explore this example if you organization requires this type of setup.
-The example can be found in the [terraform provider examples](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples/auzre-private-link)
+The example can be found in the [terraform provider examples](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples/azure-private-link)
 
 
 ### **Disabling Azure Private Link**
