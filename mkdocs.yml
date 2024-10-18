@@ -146,6 +146,7 @@ nav:
       - 'Security/Portal Single Sign-On.md'
   - 'Configure your Database Server(s)' :
       - 'config/README.md'
+      - 'config/Mariadb-Serverless-Single-Node.md'
       - 'config/Enterprise-Server-Single-Node.md'
       - 'config/Enterprise-Server-with-Replica(s).md'
       - 'config/SkySQL-Intelligent-Proxy.md'
