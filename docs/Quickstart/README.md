@@ -1,6 +1,6 @@
 # Quickstart
 
-It only takes a few minutes to launch a standalone or clustered database on SkySQL. You can pick from about 30 global regions and launch on AWS or GCP. 
+The SkySQL database deployment time varies based on your preferences: a Serverless standalone instance can be ready in a few seconds, whereas a Provisioned standalone or clustered database may take a few minutes. Users can select from approximately 50 global regions and deploy on either AWS, GCP and Azure.
 
 You have three choices to provision a DB on SkySQL :
 
@@ -20,28 +20,29 @@ Goto [app.skysql.com](https://app.skysql.com) to sign up. You can sign up using 
 
 ## Step 2: Launch a Service
 
+
 1. [Log in to the SkySQL Portal](https://app.skysql.com/) and from the Dashboard, click the [+ Launch New Service](https://app.skysql.com/launch-service) button.
 
 2. From the launch interface, select the choices detailed below.
         
-    Select:
-    
-    - Transactions and then `Enterprise Server with Replicas`
-    - `AWS` and `Ohio, USA (us-east-2)`, or `Google Cloud` and `Iowa, USA (us-central1)`, or a region of your choice
-    - Since this Quickstart is a simple test, select:
-        - The smallest instance size `ARM64`, `Sky-2x8` for AWS 
-        - `100GB` of `gp3` storage with default `3000 IOPS` and `125 MB/s` throughput
-    - Name the service "`quickstart-1`
-    - Select `Add my current IP: 99.43.xxx.xxx` in the `Security` section
-    - Then, click the `Launch Service` button.
-        
+   - Choose between `Provisioned` or `Serverless`: Options include `MariaDB Server with Replicas`, `MariaDB Server Single Node`, or `MariaDB Serverless Single Node`.
+
+   - Select your cloud provider and region:
+     - `AWS` with `Ohio, USA (us-east-2)`
+     - `Google Cloud` with `Iowa, USA (us-central1)`
+     - Or choose a region of your preference.
+
+   - Service Naming: Name the service "`quickstart-1`" or retain the suggested service name.
+
+   - Click the `Launch Service` button.
+
     [![launch-service](launch-service.png)](launch-service.png)
         
     For additional information on available selections, see "[Service Launch](<../Portal features/Launch page.md>)".
         
-3. You will be returned to the Dashboard where your service will be in a `Creating` state. 
+3. You will then be redirected to the Dashboard. If you chose a Serverless deployment, your service will be in a 'Healthy' state and ready for use. For other deployment types, the service will initially be in a 'Creating' state. Please wait until it transitions to a 'Healthy' state before proceeding to the next step. Typically, launching a new Provisioned database takes about 5 minutes or less.
 
-When the service reaches "Healthy" state, go to the next step. It typically takes about 5 mins or less to launch a new DB. 
+
 
 ## Step 3: Observe, Scale
 
@@ -64,6 +65,8 @@ To see expanded status and metrics information:
 ### Scaling
 
 SkySQL features automatic rule-based scaling (Autonomous) and manual on-demand scaling.
+
+**Note:** Scaling is not applicable to Serverless deployments.
 
 With automatic scaling, node count (horizontal) and node size (vertical) changes can be triggered based on load. Additionally, storage capacity expansion can be triggered based on usage. These Autonomous features are opt-in. For additional information, see "[Autonomous](<../Autonomously scale Compute, Storage/>)".
 
