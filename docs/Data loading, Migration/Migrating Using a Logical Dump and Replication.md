@@ -16,7 +16,7 @@ To minimize downtime during migration, you can set up live replication from your
 1. **Dump the Source Database**: Take a dump of your source database using `mysqldump` or `mariadb-dump`. Include triggers, procedures, views, and schedules in the dump, and ignore the system databases to avoid conflicts with the existing SkySQL schemas.
 
     ```bash
-    mysqldump --single-transaction --master-data=2 --routines --triggers --ignore-database=mysql --ignore-database=information_schema --ignore-database=performance_schema --ignore-database=sys > dump.sql
+    mysqldump --single-transaction --master-data=2 --routines --triggers --all-databases --ignore-database=mysql --ignore-database=information_schema --ignore-database=performance_schema --ignore-database=sys > dump.sql
     ```
 
 2. **Create the Users and Grants Separately**: To avoid conflicts with the existing SkySQL users, use `SELECT CONCAT` on your source database to create users and grants in separate files. Note that you may need to create the schema and table grants separately as well.
