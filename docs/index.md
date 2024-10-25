@@ -3,9 +3,9 @@
 
 MariaDB stands as one of the world's leading open-source relational databases, renowned for its maturity and widespread adoption. Born as a fork of MySQL, MariaDB maintains high compatibility with its predecessor while offering enhanced features and performance.
 
-SkySQL is a multi-cloud, fully managed Database-as-a-Service (DBaaS), designed to orchestrate MariaDB across diverse environments including multiple data centers, regions, and cloud providers. 
+SkySQL is a multi-cloud, fully managed Database-as-a-Service (DBaaS), designed to deploy MariaDB across diverse environments including multiple data centers, regions, and cloud providers. It now offers both traditional provisioned and serverless deployment options, catering to a wide range of use cases and workload patterns while preventing over-provisioning.
 
-Originally developed by [MariaDB](http://mariadb.com), SkySQL aimed to be the most comprehensive cloud platform for MariaDB. Its robust feature set is the result of years of insights gathered from hundreds of customers running mission-critical workloads. In late 2023, the core team behind SkySQL formed an independent company, named **SkySQL**, to further advance the platform.
+Originally developed by [MariaDB](http://mariadb.com), SkySQL aimed to be the most comprehensive cloud platform for MariaDB. Its robust feature set is the result of years of insights gathered from hundreds of customers running mission-critical workloads. In late 2023, the core team behind SkySQL formed an independent company, named  **SkySQL**, to further advance the platform.
 
 SkySQL elevates MariaDB to enterprise-grade with production-ready features:
 
@@ -15,6 +15,7 @@ SkySQL elevates MariaDB to enterprise-grade with production-ready features:
     . Automated backups
     . Advanced security with end-to-end encryption
     . Compliance and governance
+    . Serverless deployment option for instant scalability
     . And numerous other powerful features.
 
 [![architecture](architecture.png)](architecture.png)
@@ -22,7 +23,7 @@ SkySQL elevates MariaDB to enterprise-grade with production-ready features:
 ## **Key Features of SkySQL**
 
 ### **Global Multi-Cloud Presence**
-Available in 30+ regions across AWS, GCP, and Azure, offering unparalleled flexibility and reach.
+Available in 40+ regions across AWS, GCP, and Azure, offering unparalleled flexibility and reach.
 
 ### **Robust High Availability (HA)**
 - **Resilient Infrastructure:** Multi-layered protection across disks, compute, zones/regions, network, and load balancing.
@@ -33,6 +34,8 @@ Available in 30+ regions across AWS, GCP, and Azure, offering unparalleled flexi
 - **Intelligent Load Balancing:** Maintains consistency via smart proxy-based load balancing and read-write splitting.
 - **Flexible Consistency:** Offers both causal and strong global consistency models.
 - **Custom Query Routing:** Allows fine-tuned performance optimization through customizable routing rules.
+- **Serverless Scaling:** Provides near instantaneous scaling from zero to defined upper limit and back down to zero, adapting dynamically to workloads without manual intervention.
+
 
 ### **Disaster Recovery**
 - **Multi-Region Replication:** Spans across regions and cloud providers for maximum resilience.
@@ -45,6 +48,7 @@ Available in 30+ regions across AWS, GCP, and Azure, offering unparalleled flexi
 ### **Dynamic Auto-scaling**
 - **Predictive Scaling:** Anticipates and adjusts storage needs based on usage patterns.
 - **Cost-Efficient Scaling:** Proactively scales resources up and down to match demand and optimize costs.
+- **Serverless Elasticity:** Offers effortless cold start and the ability to scale down to zero during idle times, significantly reducing costs when not in use.
 
 ### **Fractional DBA Service**
 - **SkyDBA Service:** Provides access to skilled DBAs for proactive database optimization.
