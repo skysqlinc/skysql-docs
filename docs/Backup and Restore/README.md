@@ -216,4 +216,4 @@ SkySQL Users can delete their already defined database restore schedules with th
 ## Limitations 
 
 - Currently, SkySQL services deployed in Azure can only be backed up and restored using [SkySQL Snapshots](Snapshot Backup Examples.md).
-- SkySQL Managed backups can only be restored within the same cloud provider. If you need to restore to a SkySQL service hosted on a different cloud provider, you must export your backup to S3 or GCS storage and follow the steps described [here](/docs/Backup%20and%20Restore/Restore%20From%20Your%20Own%20Bucket.md).
+- SkySQL Managed backups can only be restored within the same cloud provider. If you need to restore to a SkySQL service hosted on a different cloud provider, you must export your backup to S3 or GCS storage and follow the steps described [here](Restore From Your Own Bucket.md).
