@@ -1,4 +1,14 @@
-# Instance Size Choices
+# SkySQL Instance Size 
+
+## Serverless Intance Sizes
+
+
+SkySQL users are not required to specify any instance sizes when launching a serverelss database. 
+The Serverless deployment continuously estimates workload requirements and dynamically resizes the database instance to the appropriate size to ensure optimal workload execution.
+
+During the "Tech Preview" phase, all Serverless instances will utilize between 1 and 2 SCUs(Sky Compute Units) during script execution time. Each SCU is equivalent to 0.5 vCPU and 2GB of memory.
+
+## Provisoned Instances Size Choices
 
 Instance size choices are specific to the cloud provider, topology, region, and hardware architecture.
 
