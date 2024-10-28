@@ -11,9 +11,9 @@ While making launch-time selections, your selections and estimated costs are sho
 To launch a SkySQL service from the Portal:
 
 1. From the Dashboard, click the `+ Launch New Service` button.
-2. Choose Service Type: `Transations`
+2. Choose Service Type: `Transactions`
 3. Choose the desired Topology: `MariaDB Server Single Node` or `MariaDB Server With Replica(s)`
-4. Choose the desired Cloud Provider: `aws`, `Google Cloud` or `Azure`
+4. Choose the desired Cloud Provider: `AWS`, `Google Cloud` or `Azure`
 5. Choose the desired [Region](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_regions).
     - Each region has a scheduled maintenance window.
 6. Choose the desired [Instance Size](https://apidocs.skysql.com/#/Offering/get_provisioning_v1_sizes).
