@@ -90,7 +90,7 @@ nav:
       - 'Portal features/Notifications.md'
       - 'Portal features/Service Monitoring Panels.md'
       - 'Portal features/Billing.md'
-  - 'Connecting to Sky DBs' :
+  - 'Connecting to SkySQL DBs' :
       - 'Connecting to Sky DBs/README.md'
       - 'Connecting to Sky DBs/Connect using MariaDB CLI.md'
       - 'Connecting to Sky DBs/Connect from Node js App.md'
