@@ -3,7 +3,7 @@ SkySQL offers a robust platform for managing databases in the cloud and supports
 
 - Provisioning APIs: To launch primary and secondary SkySQL services.
 - Backup APIs: To backup the primary service and restore the data to the secondary service.
-- Replication Procedures: To setup active replication between the primary and the secondarymservices.
+- Replication Procedures: To setup active replication between the primary and the secondary services.
 
 ### **Step 1: Generate SkySQL API Key**
 1\. Go to the [User Profile](https://app.skysql.com/user-profile/api-keys/) page of the SkySQL Portal to generate an API key.
@@ -106,10 +106,10 @@ Replace {backup-id} with the backup id that you want to restore and {service-id}
       As of July 2024, you can only restore from Backups within the same Cloud provider. To restore to a different provider, you would need to explicitly Backup to your own S3/GCS bucket, copy the folder over to the other provider's bucket and initiate a Restore. Please refer to the [Backup Service](../Backup%20and%20Restore/README.md) docs.
 
 !!! Note
-      Once the restore is complete, the default username and password displayed in "connect" window of the  Secondary service will not work. Restore overwrites this information with the username and password of the Primary service. Hence, you will have to use Primary service's username and password to connect to the Secondary service.
+      Once the restore is complete, the default username and password displayed in the "connect" window of the Secondary service will not work. Restore overwrites this information with the username and password of the Primary service. Hence, you will have to use Primary service's username and password to connect to the Secondary service.
 
 ### **Step 4: Set up Replication between the Primary and the Secondary**
-1\. Since we want to set up replication between the two SkySQL services, the Secondary service should be able to connect to the Primary service. Add the Outbound IP address of the Secondary service to the Allowlist of the Primary service. Outbound IP can be obtained from "Service Details" page in the SkySQL portal. Please add this IP to the allow list of Primary service in the portal.
+1\. Since we want to set up replication between the two SkySQL services, the Secondary service should be able to connect to the Primary service. Add the Outbound IP address of the Secondary service to the Allowlist of the Primary service. Outbound IP can be obtained from the"Service Details" page in the SkySQL portal. Please add this IP to the allowlist of Primary service in the portal.
 
 2\. Next, obtain the GTID position from which to start the replication by using the following API. Please replace {service_id} with the service id of the primary service.
 ```bash
@@ -118,7 +118,7 @@ curl --location --request GET "https://api.skysql.com/skybackup/v1/backups?servi
 ```
 Make  note of the gtid position ("binlog_gtid_position") in the API response output. 
 
-3\. Now configure the Secondary service by calling the following stored procedure. Replace 'host' and 'port' with the Primary service's hostname and port. Replace 'gtid' with the GTID position obtained from the previous setp. Use true/false for whether to use SSL.
+3\. Now configure the Secondary service by calling the following stored procedure. Replace 'host' and 'port' with the Primary service's hostname and port. Replace 'gtid' with the GTID position obtained from the previous step. Use true/false for whether to use SSL.
 
 ```bash
 CALL sky.change_external_primary_gtid(host, port, gtid, use_ssl_encryption);
@@ -135,7 +135,7 @@ CALL sky.change_external_primary
 ```
 
 
-If successfull, you should see an output similar to below. 
+If successful, you should see an output similar to below. 
 
 ```bash
 
