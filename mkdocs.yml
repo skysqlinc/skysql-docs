@@ -131,6 +131,7 @@ nav:
       - 'Data offloading/Replicating data from SkySQL to external database.md'
   - 'SkyAI Agents' :
       - 'SkyAI Agents/README.md'
+  - 'SkyCopilot Guide' : 'SkyAI Agents/README.md'
   - 'High Availability, DR' :
       - 'High Availability, DR/README.md'
       - 'High Availability, DR/Setup Global Replication.md'
