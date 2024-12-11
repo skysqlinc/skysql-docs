@@ -402,7 +402,7 @@ Recovering from a backup restores the data directory at a specific point-in-time
     
     `$ sudo mariabackup --prepare --target-dir=/data/backups/full`
     
-2. When MariaDB Enterprise Backup runs on a MariaDB Enterprise Server where binary logs is enabled, it stores binary log information in the `xtrabackup_binlog_info` file. Consult this file to find the name of the binary log position to use. In the following example, the log position is `321`.
+2. When MariaDB Enterprise Backup runs on a MariaDB Enterprise Server where binary logs are enabled, it stores binary log information in the `xtrabackup_binlog_info` file. Consult this file to find the name of the binary log position to use. In the following example, the log position is `321`.
     
     `$ sudo cat /data/backups/full/xtraback_binlog_info
     

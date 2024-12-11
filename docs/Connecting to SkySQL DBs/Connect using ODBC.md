@@ -161,7 +161,7 @@ Windows 10 was used to prepare these instructions. When using other versions of 
     - In the "Server Name" field, provide the IP address or domain name for the Server.
     - In the "User name" field, provide the username for the database user account.
     - In the "Password" field, provide the password for that user.
-    - In the "Database" field, provide the the default database to use.
+    - In the "Database" field, provide the default database to use.
     - Then, click the "Next" button.
     
 ![wodbc2](https://github.com/skysqlinc/skysql-docs/assets/164920395/a31181a5-efc9-47c1-83ea-2a3fe8da73dd)
@@ -218,7 +218,7 @@ An example of a failover host string:
 | PORT | TCP port of the database server. | 3306 |
 | USER | The username to use for authentication. |  |
 | PASSWORD | User password. |  |
-| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by default. |  |
+| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors were created as SQL_CURSOR_STATIC by default. |  |
 | NO_CACHE | When enabled, result set streaming is enabled, which enables the application to fetch result sets from the server row-by-row instead of caching the entire result set on the client side. Since the application is not caching the entire result set, the application is less likely to run out of memory when working with large result sets. |  |
 | STREAMRS | Alias for the NO_CACHE connection parameter. |  |
 | OPTIONS | See [OPTIONS Bitmask](#options-bitmask) |  |
@@ -234,7 +234,7 @@ An example of a failover host string:
 | PASSWORD | Default password in the Service Credentials view, the password you set on the default user, or the password for the user you created |
 | SSLVERIFY | Set to 1 to connect with SSL |
 | FORCETLS | Set to 1 to enable TLS |
-| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors are created as SQL_CURSOR_STATIC by default. |
+| FORWARDONLY | When enabled, cursors are created as SQL_CURSOR_FORWARD_ONLY, so they can only move forward. Starting in Connector/ODBC 3.2, cursors are SQL_CURSOR_FORWARD_ONLY by default. In previous releases, cursors were created as SQL_CURSOR_STATIC by default. |
 | NO_CACHE | When enabled, result set streaming is enabled, which enables the application to fetch result sets from the server row-by-row instead of caching the entire result set on the client side. Since the application is not caching the entire result set, the application is less likely to run out of memory when working with large result sets. |
 | STREAMRS | Alias for the NO_CACHE connection parameter. |
 | OPTIONS | See [OPTIONS Bitmask](#options-bitmask)  |

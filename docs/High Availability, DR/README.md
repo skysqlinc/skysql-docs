@@ -5,9 +5,9 @@
 
 ----
 
-## **Use 'Replicated Topoplogy' for HA**
+## **Use 'Replicated Topology' for HA**
 
-For HA and Load balancing client requests there is no configuration required. Just launch a `replicated topology` DB service. SkySQL automatically starts a intelligent proxy that does all the heavy lifting. Detecting failures and replaying transactions, awareness of who the primary is at all times, balancing load and much more. 
+For HA and Load balancing client requests there is no configuration required. Just launch a `replicated topology` DB service. SkySQL automatically starts an intelligent proxy that does all the heavy lifting. Detecting failures and replaying transactions, awareness of who the primary is at all times, balancing load and much more. 
 
 You should be aware of the `causal_reads` configuration as outlined below. The sections below provide a more detailed description of how SkySQL delivers on HA and scaling across replicas. 
 

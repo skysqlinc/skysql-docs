@@ -28,7 +28,7 @@ Use it on subsequent request, e.g:
 
 You can restore your data from external storage. Your external storage bucket data should be created via one of the following tools: ```mariabackup, mysqldump```. Credentials to external storage access could be fetched from:
 
-- For *GCP* you need to create an service account key. Please follow the steps from this [documentation](https://cloud.google.com/iam/docs/keys-create-delete). Once you have created the service account key you will need to base64 encode it. You can encode it directly from a command line itself. For example the execution of command ```echo -n 'service-account-key' | base64``` will produce the following ```c2VydmljZS1hY2NvdW50LWtleQ==```
+- For *GCP* you need to create a service account key. Please follow the steps from this [documentation](https://cloud.google.com/iam/docs/keys-create-delete). Once you have created the service account key you will need to encode it with base64. You can encode it directly from the command line itself. For example the execution of command ```echo -n 'service-account-key' | base64``` will produce the following ```c2VydmljZS1hY2NvdW50LWtleQ==```
 
     ```bash
     curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \

@@ -24,7 +24,7 @@ And if you need ultimate control, and have the necessary skills and resources to
 
 In Foundation Tier smaller databases launch in 2-4 mins. Power Tier deployments with isolated, dedicated Kubernetes environments can take up to 25 minutes. Subsequent database deployments will use the same Kubernetes environment and usually launch in 2-4 minutes.
 
-The real time benefits come every day after, when you're operating at scale. A failed database node can recover in a matter of seconds using Kubernetes self-healing, or instantly failover to alternate replicated server. Instead of an eight-hour bare metal rebuild as you might see on-premises or on other cloud platforms.
+The real time benefits come every day after, when you're operating at scale. A failed database node can recover in a matter of seconds using Kubernetes self-healing, or instantly failover to an alternate replicated server. Instead of an eight-hour bare metal rebuild as you might see on-premises or on other cloud platforms.
 
 ### **What version of MariaDB does SkySQL support?**
 
@@ -319,11 +319,11 @@ Yes, by [support case](https://support.skysql.com).
 
 By default, full and complete backup restoration is available. To enable point-in-time recovery, services must be configured in advance for additional binary log retention. [Point-in-time recovery (PITR)](<../Backup and Restore>) configuration is available to Power Tier customers.
 
-### **Can I request restore of my data to a different region?**
+### **Can I request a restore of my data to a different region?**
 
 Yes, self service restore is available using the Backup service and [API](https://apidocs.skysql.com/) (in Preview as of Oct 2024).
 
-### **Can I request restore of my data to a different topology?**
+### **Can I request a restore of my data to a different topology?**
 
 Yes, self service restore is available using the Backup service and [API](https://apidocs.skysql.com/) (in Preview as of Oct 2024).
 
@@ -471,7 +471,7 @@ Yes. [Enterprise Support](./Support.md) levels are available for customers requ
 
 Yes. SkySQL infrastructure is fully managed, including many typical operations features such as automated nightly backups and monitoring.
 
-Standard support is included with Foundation Tier services. Activities like performance tuning and assistance with schema change is not included in standard support. Power Tier customers choose between Enterprise and Platinum support options, which include consultative support.
+Standard support is included with Foundation Tier services. Activities like performance tuning and assistance with schema change are not included in standard support. Power Tier customers choose between Enterprise and Platinum support options, which include consultative support.
 
 Our optional [SkyDBA](FractionalDBA.md) service is available for Enterprise and Platinum support customers, and SkyDBA customers receive both reactive (break/fix) and proactive (analyze/enhance) assistance.
 
@@ -495,7 +495,7 @@ SkySQL is available for immediate use. [Get started now](https://app.skysql.com
 
 ### **Who do I contact with billing questions?**
 
-Billing questions can be directed to [Billing Team](mailto:billing@skysql.com).
+Billing questions can be directed to the [Billing Team](mailto:billing@skysql.com).
 
 ### **How do I provide feedback about SkySQL Documentation?**
 

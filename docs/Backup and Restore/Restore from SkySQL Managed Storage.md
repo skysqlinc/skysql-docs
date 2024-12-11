@@ -40,7 +40,7 @@ curl --location 'https://api.skysql.com/skybackup/v1/restores' \
 }'
 ```
 
-- SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx. 
+- SERVICE_ID : SkySQL service identifier, format dbtxxxxxx. 
   You can fetch your service ID from the Fully qualified domain name(FQDN) of your service.  
   E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID. You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
   

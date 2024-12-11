@@ -66,7 +66,7 @@ Determine the [connection information](<./README.md>) for your SkySQL database
 | password | The user's password, which might be the default password in the Service Credentials view if it was not yet customized |
 | database | Database name to establish a connection to. No default is configured. |
 | connectTimeout | Connection timeout in milliseconds. In Connector/Node.js 2.5.6, the default value changed to 1000. The default value for earlier versions is 10000. |
-| rowsAsArray | A boolean value to indicate whether to return result sets as array instead of the default JSON. Arrays are comparatively faster. |
+| rowsAsArray | A boolean value to indicate whether to return result sets as arrays instead of the default JSON. Arrays are comparatively faster. |
 
 # Code Example: Connect
 
@@ -146,7 +146,7 @@ Determine the [connection information](<./README.md>) for your SkySQL database
 | password | The user's password, which might be the default password in the Service Credentials view if it was not yet customized |
 | database | Database name to establish a connection to. No default is configured. |
 | connectTimeout | Connection timeout in milliseconds. In Connector/Node.js 2.5.6, the default value changed to 1000. The default value for earlier versions is 10000. |
-| rowsAsArray | A boolean value to indicate whether to return result sets as array instead of the default JSON. Arrays are comparatively faster. |
+| rowsAsArray | A boolean value to indicate whether to return result sets as arrays instead of the default JSON. Arrays are comparatively faster. |
 
 Create a file named `.env` to store your database credentials:
 

@@ -33,7 +33,7 @@ This walkthrough demonstrates a service configuration that is suitable for a qui
 2. Fill out a name for the API key
 3. Click the "Create" button.
 4. Click the copy button to copy the API key.
-5. Store the API key somewhere safe as it is showed only once during the creation. SkySQL platform does not store it anywhere.
+5. Store the API key somewhere safe as it is shown only once during the creation. The SkySQL platform does not store it anywhere.
 
 ### **Step 2: Create Terraform Project Directory**
 
@@ -192,7 +192,7 @@ variable "api_key" {
 variable "service_type" {
    type                 = string
    default              = "transactional"
-   description          = "Specify \"transactional\" or \"analytical\". For additiona information, See https://apidocs.skysql.com/#/Offering/get_provisioning_v1_service_types"
+   description          = "Specify \"transactional\" or \"analytical\". For additional information, See https://apidocs.skysql.com/#/Offering/get_provisioning_v1_service_types"
 }
 
 variable "topology" {

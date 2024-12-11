@@ -13,7 +13,7 @@ For detailed information about Azure Private Link, see ["Azure Private Link" (A
 - A list of Azure Subscription IDs that will be allowed to connect to the SkySQL service must be provided when enabling Azure Private Link.  This list can be updated at any time.
 - The SkySQL IP Allowlist is not used with Azure Private Link connections.  Access to the SkySQL service will be controlled by Security Groups in the connecting VNet. For detailed information, see ["Manage network policies for private endpoints"](https://learn.microsoft.com/en-us/azure/private-link/disable-private-endpoint-network-policy?tabs=network-policy-portal) (Azure documentation).
 - Connections to SkySQL services by features such as SkySQL backups, and monitoring do not depend on Azure Private Link.
-- The IP address of the SkySQL service will will be a private IP address in the range of the VNet that the Private Link endpoint is created in.  Because of this, SSL certificates will not match the IP address of the service.  To avoid this issue, you can either disable SSL on the SkySQL service, or setup Private DNS within your Azure VNet. See ["Enabling DNS for Azure Private Link"](#enabling-dns-for-azure-private-link) for more information.
+- The IP address of the SkySQL service will be a private IP address in the range of the VNet that the Private Link endpoint is created in.  Because of this, SSL certificates will not match the IP address of the service.  To avoid this issue, you can either disable SSL on the SkySQL service, or setup Private DNS within your Azure VNet. See ["Enabling DNS for Azure Private Link"](#enabling-dns-for-azure-private-link) for more information.
 - Query Editor is not supported when Azure Private Link is enabled.
 
 
@@ -128,7 +128,7 @@ To connect to a SkySQL service using Azure Private Link, you must create an endp
 
 ### Pre-requisites
 - You must have a Virtual Network in the same region as the SkySQL service.
-- You will need to lookup the Endpoint Service ID that SkySQL provisioned for you when you created your SkySQL Service.
+- You will need to look up the Endpoint Service ID that SkySQL provisioned for you when you created your SkySQL Service.
     - This ID can be found in the "Connect" window of the SkySQL portal.
     - This ID references the "Alias" field of the Azure created Private Link service.
     - If using the SkySQL DBaaS API, the ID can be found in the response of the service details API call.
@@ -167,7 +167,7 @@ To connect to a SkySQL service using Azure Private Link, you must create an endp
 12. After reviewing the settings, click the "Create" button.
 
 
-After creation, Azure will begin provisioning the new Endopint.  Once the provisioning is complete, you can inspect the details of your newly created endpoint by clicking the "Go to Resource" button, or by navigating again to the "Private Link Center | Private endpoints" page.
+After creation, Azure will begin provisioning the new Endpoint.  Once the provisioning is complete, you can inspect the details of your newly created endpoint by clicking the "Go to Resource" button, or by navigating again to the "Private Link Center | Private endpoints" page.
 On the details page, you will see a link to the "Network Interface" that was created for the endpoint.  This network interface will have a private IP address that you can use to connect to the SkySQL service.
 
 
@@ -191,7 +191,7 @@ The following links will help guide you through the process of setting up Privat
 > When linking a DNS zone for your skysql.com domain, you will delegate all DNS resolution for that domain to Azure.  This means that all DNS queries for that domain will be resolved by Azure DNS servers.  If you have other public services that use the same domain, these hostnames will no longer resolve to services inside your linked VNet.
 
 
-Since Private DNS setup is a complex process, we have provided a terraform example that can help with the process.  We highly advise that you explore this example if you organization requires this type of setup.
+Since Private DNS setup is a complex process, we have provided a terraform example that can help with the process.  We highly advise that you explore this example if your organization requires this type of setup.
 The example can be found in the [terraform provider examples](https://github.com/skysqlinc/terraform-provider-skysql/tree/main/examples/azure-private-link)
 
 

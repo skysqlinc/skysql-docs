@@ -144,7 +144,7 @@ The [SkySQL Backup service API](<../Backup and Restore/README.md>) allows you to
 - Obtain the necessary credentials for your S3 bucket.
 - Ensure you have access to the SkySQL Backup service API. You need to generate the API Key from the portal. 
 - Obtain the service ID for your SkySQL instance.
-- Base64 encode your S3 credentials.
+- Base64 encodes your S3 credentials.
 
 ###  **Performing a Logical Dump to an S3 Bucket**
 To perform a logical dump of a SkySQL database to an S3 bucket, you need to make an API call to the SkySQL Backup service. Below is an example of how to do this.

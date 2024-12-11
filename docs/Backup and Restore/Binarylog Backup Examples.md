@@ -24,12 +24,12 @@ Use it on subsequent request, e.g:
 </ol>
 </details>  
 
-## Binarylog Backup
+## Binary log Backup
 
 
-### One-time Binarylog
+### One-time Binary log
 
-To set up an one-time *binarylog* backup:
+To set up an one-time *binary log* backup:
 
 ```
 ```bash
@@ -47,7 +47,7 @@ curl --location 'https://api.skysql.com/skybackup/v1/backups/schedules' \
 - API_KEY : SKYSQL API KEY, see [SkySQL API Keys](https://app.skysql.com/user-profile/api-keys/)
 - SERVICE_ID : SkySQL serivce identifier, format dbtxxxxxx. You can fetch the service ID from the Fully qualified domain name(FQDN) of your service. E.g: in dbpgf17106534.sysp0000.db2.skysql.com, 'dbpgf17106534' is the service ID.You will find the FQDN in the [Connect window](https://app.skysql.com/dashboard) 
   
-##### Schedule Binarylog backup 
+##### Schedule Binary log backup 
 
 To set up an cron *incremental* backup:
 

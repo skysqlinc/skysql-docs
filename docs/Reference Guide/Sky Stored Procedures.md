@@ -1,7 +1,7 @@
 
 ## change_external_primary
 
-Executes the [CHANGE MASTER TO](https://mariadb.com/kb/en/change-master-to/) statement to configures inbound replication from an external primary server based on binary log file and position.
+Executes the [CHANGE MASTER TO](https://mariadb.com/kb/en/change-master-to/) statement to configure inbound replication from an external primary server based on binary log file and position.
 
 ```sql
 CALL sky.change_external_primary(
@@ -32,7 +32,7 @@ If the value is NULL, a default retry interval of 60 seconds will be used.
 
 ## change_external_primary_gtid
 
-Executes the [CHANGE MASTER TO](https://mariadb.com/kb/en/change-master-to/) statement to configures inbound replication from an external primary server based on the provided GTID.
+Executes the [CHANGE MASTER TO](https://mariadb.com/kb/en/change-master-to/) statement to configure inbound replication from an external primary server based on the provided GTID.
 
 ```sql
 CALL sky.change_external_primary_gtid(

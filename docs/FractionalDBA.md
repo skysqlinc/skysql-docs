@@ -40,8 +40,8 @@ With a SkyDBA Subscription, our database experts can assist with tasks such as a
 
 ### **Tailored Backup/Restore Strategies**
 
-Partner with SkyDBAs to create tailored backup stratagies to meet your organization's Recovery Time Objective (RTO) and Recovery Point Objective (RPO) goals.
+Partner with SkyDBAs to create tailored backup strategies to meet your organization's Recovery Time Objective (RTO) and Recovery Point Objective (RPO) goals.
 
 ### **Data Recovery Assistance and Validation**
 
-SkyDBAs can assists in data recovery from backups or other sources, providing expertise for analysis. Additionally, as requestied, SkyDBA can conduct annual Disaster Recovery exercises upon request to ensure preparedness. It's important to note that running a recovery to a secondary service may require additional compute resources.
+SkyDBAs can assist in data recovery from backups or other sources, providing expertise for analysis. Additionally, as requested, SkyDBA can conduct annual Disaster Recovery exercises upon request to ensure preparedness. It's important to note that running a recovery to a secondary service may require additional compute resources.
