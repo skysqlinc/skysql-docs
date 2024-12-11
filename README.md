@@ -24,5 +24,5 @@ When making changes:
 4. Push your changes to the remote repository: `git push origin new-branch-name`
 5. Create a pull request for your changes to be reviewed and merged into the main branch.
 
-### Sample Pull Request Recodring 
+### Sample Pull Request Recording 
 [Download Video Tutorial](usingtherepoexample.mov)
