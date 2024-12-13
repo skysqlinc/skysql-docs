@@ -109,7 +109,7 @@ Replace {backup-id} with the backup id that you want to restore and {service-id}
       Once the restore is complete, the default username and password displayed in the "connect" window of the Secondary service will not work. Restore overwrites this information with the username and password of the Primary service. Hence, you will have to use Primary service's username and password to connect to the Secondary service.
 
 ### **Step 4: Set up Replication between the Primary and the Secondary**
-1\. Since we want to set up replication between the two SkySQL services, the Secondary service should be able to connect to the Primary service. Add the Outbound IP address of the Secondary service to the Allowlist of the Primary service. Outbound IP can be obtained from the"Service Details" page in the SkySQL portal. Please add this IP to the allowlist of Primary service in the portal.
+1\. Since we want to set up replication between the two SkySQL services, the Secondary service should be able to connect to the Primary service. Add the Outbound IP address of the Secondary service to the Allowlist of the Primary service. Outbound IP can be obtained from the "Service Details" page in the SkySQL portal. Please add this IP to the allowlist of Primary service in the portal.
 
 2\. Next, obtain the GTID position from which to start the replication by using the following API. Please replace {service_id} with the service id of the primary service.
 ```bash
