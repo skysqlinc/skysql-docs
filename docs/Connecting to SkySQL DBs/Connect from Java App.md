@@ -11,7 +11,7 @@ To download the JAR file manually:
 3. In the "Version" dropdown, choose the desired version.
 4. Click the "Download" button to download the JAR file.
 5. When the JAR file finishes downloading, place it into the relevant directory on your system.
-6. Similarly, install dependency JAR files, if any used.
+6. Similarly, install dependency JAR files, if any are used.
 
 # Install MariaDB Connector/J via Maven
 

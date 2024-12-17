@@ -40,7 +40,7 @@ Goto [app.skysql.com](https://app.skysql.com) to sign up. You can sign up using 
         
     For additional information on available selections, see "[Service Launch](<../Portal features/Launch page.md>)".
         
-3. You will then be redirected to the Dashboard. If you chose a Serverless deployment, your service will be in a 'Healthy' state and ready for use. For other deployment types, the service will initially be in a 'Creating' state. Please wait until it transitions to a 'Healthy' state before proceeding to the next step. Typically, launching a new Provisioned database takes about 5 minutes or less.
+3. You will then be redirected to the Dashboard. If you choose a Serverless deployment, your service will be in a 'Healthy' state and ready for use. For other deployment types, the service will initially be in a 'Creating' state. Please wait until it transitions to a 'Healthy' state before proceeding to the next step. Typically, launching a new Provisioned database takes about 5 minutes or less.
 
 
 
