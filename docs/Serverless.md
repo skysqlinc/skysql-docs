@@ -11,11 +11,13 @@ Follow the [Quickstart](./Quickstart/) guide to launch a Serverless service. Mak
 - **Developer-Friendly Free Tier**: A forever free tier is available, ideal for development and testing environments, allowing teams to innovate without infrastructure management concerns.
 
 ## Technical Overview
+SkySQL Serverless employs cloud-native techniques to achieve its capabilities:
 - **Cloud-Native Scaling**: Utilizes Kubernetes with custom-built controllers for fine-grained resource control, enabling rapid and non-disruptive vertical and horizontal scaling.
 - **Efficient Resource Management**: Maintains “hot” micro DB servers that can be restored seamlessly, facilitating efficient scaling from zero and ensuring consistent performance.
 - **Persistent Connections**: Ensures always-on connections, even when database servers scale to zero, providing uninterrupted service for applications.
 
 ## Provisioned vs Serverless: What to Choose?
+For consistent workloads that require steady, always-on database performance and predictable cost, launch your service with the provisioned option. Provisioned databases are ideal for production systems with predictable demand, ensuring optimal performance. Consider using Serverless option for following use cases: 
 - **Development and Testing**: The free tier allows developers to build and test applications without incurring costs, focusing on innovation rather than infrastructure management.
 - **Unpredictable Workloads**: Applications with variable or unpredictable demand benefit from automatic scaling, ensuring performance during peak times and cost savings during low activity periods.
 - **Microservices Architectures**: Serverless databases complement microservices by providing scalable, independent data stores that align with the dynamic nature of microservices environments.
