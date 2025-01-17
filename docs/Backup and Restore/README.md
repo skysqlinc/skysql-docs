@@ -184,8 +184,8 @@ Binlogs record database changes (data modifications, table structure changes) in
 
 ## Restores
 
-**WARNING**
-> Restoring from a backup will erase all data in your target DB service. If you are uncertain, it is advisable to first create a backup of the DB service before initiating the restore process. Consider restoring to a new database instance as a preferred approach. The database being restored will be temporarily stopped during the restoration.
+### Warning
+> Restoring from a backup will, by default, erase all data in your target DB service. If you are uncertain, it is advisable to first create a backup of the DB service before initiating the restore process. Consider restoring to a new database instance as a preferred approach. For restores other than logical dumps, the database being restored will be temporarily stopped during the restoration.
 
 Users can instruct the restore of their SkySQL Database from their own SkySQL storage or from an external storage they own. The restore API provides options for listing, adding, and deleting a scheduled restore operation.
 
@@ -213,7 +213,17 @@ SkySQL Users can delete their already defined database restore schedules with th
 
 - [Examples](Restore Delete Examples.md)
 
-## Limitations 
+### **GTID Considerations for Logical Dumps**
+
+When restoring from a logical dump in MariaDB:
+
+- The GTID state is not preserved by default in logical dumps
+- If you're using replication, you'll need to:
+    1. Either reset the GTID state after restore
+    2. Or use `mysqldump --dump-slave` to include GTID information in the backup
+- Consider using physical backups (mariabackup) instead, as they preserve GTID state
+
+## Limitations
 
 - Currently, SkySQL services deployed in Azure can only be backed up and restored using [SkySQL Snapshots](Snapshot Backup Examples.md).
 - SkySQL Managed backups can only be restored within the same cloud provider. If you need to restore to a SkySQL service hosted on a different cloud provider, you must export your backup to S3 or GCS storage and follow the steps described [here](Restore From Your Own Bucket.md).
