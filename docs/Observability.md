@@ -2,7 +2,7 @@
 
 This page provides a high-level overview of the Observability functionality in SkySQL.
 
-In order to interact with our Observability APIs, an [API KEY](https://app.skysql.com/user-profile/api-keys) must be generated.
+In order to interact with our Observability APIs, an [API KEY](https://skysqlinc.github.io/skysql-docs/Security/Managing%20API%20keys/) must be generated.
 Throughout this document, we will refer to it as `{{SKYSQL_API_KEY}}`.
 
 Additionally, you will need the SkySQL Database ID, available by clicking on any of your existing services from the [SkySQL Console](https://app.skysql.com/), and navigating to the Details page.
