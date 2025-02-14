@@ -26,7 +26,7 @@ The cost estimate may vary from your actual costs for several reasons, including
 
 - **Rounding**: Estimated fees include mathematical rounding of pricing data.
 
-- **Scale fabric**: Scale fabric costs represent the additional network, host, and backup infrastructure needed to support multi-node topologies. In addition to multi-node topologies, this cost also applies to the Distributed Transactions topology when deployed with 1 Xpand node, since infrastructure is present to support scale-up to a multi-node configuration.
+- **Scale fabric**: Scale fabric costs represent the additional network, host, and backup infrastructure needed to support multi-node topologies.
 
 - **Previous services**: The estimate is only for the service being launched and does not account for other current or previous charges to the SkySQL account.
 
