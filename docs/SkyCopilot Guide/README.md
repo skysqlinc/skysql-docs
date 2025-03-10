@@ -165,11 +165,11 @@ Once relevant tables are selected, we refine them further by pruning unnecessary
 
 **Reduces data processing overhead:** The fewer columns included in queries, the less data the system needs to process, leading to faster execution times and reduced computational load.
 
-Optimizes LLM token usage: Large language models (LLMs) have token limits. Including unnecessary columns increases token consumption, which can degrade performance and inflate costs.
+**Optimizes LLM token usage:** Large language models (LLMs) have token limits. Including unnecessary columns increases token consumption, which can degrade performance and inflate costs.
 
-Focuses the agent on essential attributes: Keeping only the necessary columns ensures the agent provides accurate results while avoiding irrelevant data that could introduce noise or inaccuracies in query generation.
+**Focuses the agent on essential attributes:** Keeping only the necessary columns ensures the agent provides accurate results while avoiding irrelevant data that could introduce noise or inaccuracies in query generation.
 
-How to Prune Unnecessary Columns:
+**How to Prune Unnecessary Columns**
 
 Identify Core Columns – Determine which columns contain critical information for answering relevant queries. These may include primary keys, foreign keys, and commonly queried attributes (e.g., movie_title, release_year, rating).
 
@@ -181,16 +181,46 @@ Optimize for Query Performance – Retaining only essential columns improves dat
 
 By following this structured pruning approach, we ensure the agent remains efficient, cost-effective, and highly accurate in generating SQL queries.
 
-### Step 5: Ensuring Essential Categorical Columns
+### Step 5: Ensuring Essential Categorical Columns are Selected
 
-Categorical columns provide context for structured data. For example, in IMDB:
 
-Genre (Comedy, Western, Horror, etc.)
+Categorical columns provide structured context, making it easier for the agent to generate accurate queries by filtering and grouping data efficiently. These columns contain distinct, non-numeric values representing different categories or labels.
 
-Role Type (Lead, Supporting, Cameo)
+**Why Categorical Columns Matter**
 
-These are indexed automatically for efficient query generation.
+**Enable accurate filtering and segmentation:** Queries often require filtering by categories, such as listing all movies of a particular genre or finding actors who have played a specific type of role.
 
+**Improve query performance:** When categorical columns are indexed properly, queries run significantly faster since the system can quickly locate relevant data.
+
+**Ensure context-aware SQL generation:**  By retaining key categorical columns, the agent can correctly interpret and structure SQL queries based on user input.
+
+Examples of Categorical Columns in IMDB:
+
+Genre – (e.g., Comedy, Western, Horror, Drama)
+
+Useful for queries like “Find all horror movies released in the 1990s.”
+
+Role Type – (e.g., Lead, Supporting, Cameo)
+
+Helps answer questions like “List all actors who had lead roles in more than 10 movies.”
+
+Director Names – (e.g., Steven Spielberg, Christopher Nolan)
+
+Enables searches like “Find all movies directed by Stephen Speelberg.”
+
+Production Company – (e.g., Warner Bros., Universal Pictures)
+
+Assists in queries such as “Show all movies produced by Pixar.”
+
+**How the Agent Uses Categorical Columns**
+
+**Indexing for Efficient Queries:** The agent sets up auto-indexing for categorical columns to speed up search and retrieval.
+
+**Semantic Search for Relevance:** When a user query includes a category (e.g., “Find all sci-fi movies directed by Ridley Scott”), the agent automatically matches relevant indexed values and optimizes the SQL generation.
+
+**Dynamic Filtering & Grouping:** The agent can refine search results based on category selections, ensuring accurate and structured responses.
+
+By ensuring categorical columns are selected and indexed properly, the agent can efficiently process natural language queries and return meaningful results.
 
 ### Step 6: Testing and refining by running Sample Queries
 
@@ -204,7 +234,7 @@ Monitor outputs and fine-tune table/column context as necessary.
 
 ### Step 7: Establishing 'Golden SQL' Benchmarks
 
-Golden SQL queries serve as accuracy benchmarks. When an agent consistently generates correct SQL for a given prompt, it is marked as Golden SQL, ensuring future queries follow the same logic.
+Golden SQL queries serve as accuracy benchmarks. When an agent consistently generates correct SQL for a given prompt, the prompt/sql pair can be marked as Golden SQL, ensuring future queries follow the same logic.
 
 
 Your trained agent is now ready for deployment—capable of transforming natural language queries into efficient SQL with high accuracy.
@@ -222,21 +252,33 @@ Agent Process: Identifies relevant tables (movies, actors, ratings), constructs 
 
 # Understanding Query Mechanics
 
-The agent uses semantic search to interpret user intent.
+The agent uses semantic search to interpret user intent, ensuring that the most relevant tables and columns are selected dynamically based on the query's meaning rather than just keyword matching.
 
-For example, when asked:
+**For example, when asked:**
 
-*"Find the top 10 actors who played a pirate"*.
+*"Find the top 10 actors who played a pirate."*"
 
-The agent:
+The agent follows a structured approach:
 
-Identifies 'pirate' as a character archetype.
+**Recognizing ‘pirate’ as a character archetype** – Instead of treating ‘pirate’ as a generic keyword, the agent understands it as a character type that appears in movie roles.
 
-Joins actor, character, and movie tables.
+**Identifying relevant tables** – The agent determines that information on actors, characters, and movie appearances is stored in separate tables (actors, characters, and movies).
 
-Filters results based on role counts.
+**Constructing table joins** – Since data about actors and their roles is distributed across multiple tables, the agent correctly generates JOIN operations between actors, characters, and movies.
 
-This structured approach ensures high-accuracy SQL generation.
+**Filtering by role counts** – The query requires counting occurrences of actors playing pirate roles. The agent aggregates results and orders them by frequency to produce the desired ranking.
+
+**Generating an optimized SQL query** – The final SQL query ensures that only relevant data is fetched, reducing execution time and improving efficiency.
+
+**How This Improves SQL Generation**
+
+**Context-Aware Query Processing** – The agent can dynamically adjust queries based on user input, ensuring that queries are precise and relevant.
+
+**Enhanced Accuracy** – By using semantic search, the agent minimizes incorrect mappings and ensures that only appropriate data is retrieved.
+
+**Optimized Performance** – Queries are structured to avoid unnecessary data retrieval, ensuring faster response times.
+
+This structured approach ensures high-accuracy SQL generation, even for complex multi-table queries, making the agent highly effective in handling real-world text-to-SQL challenges.
 
 
 
