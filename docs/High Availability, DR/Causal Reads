@@ -2,11 +2,9 @@
 
 Achieving global read consistency can be difficult without performance/load balancing implications. Here are our guidelines.
 
-<aside>
 We do not advise adjusting `causal_reads` unless absolutely necessary.
 Adjust the `max_slave_replication_lag` to manage stale reads. By default, this is unbounded.
 Make sure none of the replicas ever cross 70-80% CPU in a sustained manner.
-</aside>
 
 In general, if the application is not performing large transactions or batch writes, given our default semi-sync replication, the replica SQL threads will keep up - i.e. getting an inconsistent read is unlikely.
 
