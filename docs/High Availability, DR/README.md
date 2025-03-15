@@ -43,18 +43,20 @@ Causal consistency ensures that ‘reads’ are fresh only concerning the writes
 This model functions optimally when application clients utilize sticky SQL connections. However, in the modern landscape where applications are often distributed (micro services) and rely on connection pooling frameworks, a ‘write’ and the subsequent ‘read’ might occur on different connections. To ensure consistent reads, awareness of the ‘lag’ at a global level is imperative. Fortunately, this is seamlessly achieved with a simple switch in SkySQL. If the ‘write’ rate is moderate and the replicas can keep up (a prevalent scenario in practice), clients continue to uniformly utilize the entire cluster.
 
 ### Configuring Causal Read in SkySQL 
-Causal consistency is configured in the SkySQL Configuration Manager, maxscale settings (applies to Replicated clusters only)
+Causal consistency is configured in the SkySQL [Configuration Manager](https://app.skysql.com/settings/configuration-manager), under Maxscale Variables (applies to Replicated clusters only). Search for [causal reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads).
 
 !!! Note
-    You can configure [causal reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) using the SkySQL configuration Manager. Look for maxscale properties and search for causal_reads. 
+    We do not advise adjusting `causal_reads` unless absolutely necessary.
+Adjust the [max_slave_replication_lag](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#max_slave_replication_lag), which determines the max lag for any read. The load balancer will only routes to slaves with a lag less than this value. By default, this is unbounded.
+Make sure none of the replicas ever cross 70-80% CPU in a sustained manner.
 
-    - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'local' to achieve consistency at a connection/session level. 
-    - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'global' for strict consistency across all connections. 
-    - set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'fast' to achieve consistency at a connection/session level but is faster than 'local' but at the cost of load balancing. 
+In general, if the application is not performing large transactions or batch writes, given our default semi-sync replication, the replica SQL threads will keep up - i.e. getting an inconsistent read is unlikely.
 
-You can also configure [causal_reads_timeout](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads_timeout) so any reads on replicas don't wait too long for a consistent read. 
+Our replication model is fast as it is configured to be parallel and optimistic - on the replica multiple SQL threads process incoming writes concurrently. It is designed to detect conflicts and revert to proper sequencing, thus being transparent to the app and ensuring consistency.
 
-Finally, you can configure the [max_slave_replication_lag](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#max_slave_replication_lag) which determines the max lag for any read. The load balancer will only routes to slaves with a lag less than this value. 
+    - We recommend first exploring to see if `causal_reads` set to `local` will suffice. This is quite fast (minimal to no tradeoff) and ensures read consistency at a connection/session level. If the app is using a connection pool, it is important to understand how it is being used. Set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'local' to achieve consistency at a connection/session level. 
+    - If global read consistency is a must, first try `global`. To use this, you will also need to tune the [causal_reads_timeout](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads_timeout). Reads will be load balanced, and a reader will wait a max of this timeout before giving up and retrying on the primary node. That is, if the replica is lagging, it will wait for this time to see if the replica catches up. Set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'global' for strict consistency across all connections. 
+    - If and only if your application is very read heavy, you should consider `fast_global`. This relies on `monitor_interval` (Maxscale tracks each replica once in this interval) to know if the replicas have caught up or are behind. This will likely need to be configured in milliseconds. Set [causal_reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads) to 'fast' to achieve consistency at a connection/session level but is faster than 'local' but at the cost of load balancing. 
 
 ### **Increased throughput using Active-Active**
 
