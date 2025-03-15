@@ -2,7 +2,7 @@
 
 Achieving global read consistency can be difficult without performance/load balancing implications. Here are our guidelines.
 
-Settings related to causal reads can be changed within the Configuration Manager, under Maxscale Variables:
+Settings related to causal reads can be changed within the [Configuration Manager](https://app.skysql.com/settings/configuration-manager), under Maxscale Variables:
 
 ![causal.png](docs/High Availability, DR/causal.png)
 
