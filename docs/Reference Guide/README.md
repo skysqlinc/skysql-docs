@@ -23,5 +23,3 @@
 ## [MaxScale Reference Guide](https://mariadb.com/docs/skysql-previous-release/ref/mxs22.08/)
 
 ## [Setting up MariaDB Enterprise Server, ColStore, MaxScale in your Env](https://mariadb.com/downloads/repo-setup/)
-
-## [Causal Reads](http://docs.skysql.com/Reference%20Guide/Causal%20Reads/)
