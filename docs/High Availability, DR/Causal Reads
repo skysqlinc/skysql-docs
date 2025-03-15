@@ -2,6 +2,11 @@
 
 Achieving global read consistency can be difficult without performance/load balancing implications. Here are our guidelines.
 
+Settings related to causal reads can be changed within the Configuration Manager, under Maxscale Variables:
+
+![causal.png](docs/High Availability, DR/causal.png)
+
+NOTE:
 We do not advise adjusting `causal_reads` unless absolutely necessary.
 Adjust the `max_slave_replication_lag` to manage stale reads. By default, this is unbounded.
 Make sure none of the replicas ever cross 70-80% CPU in a sustained manner.
