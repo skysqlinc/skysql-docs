@@ -45,7 +45,7 @@ This model functions optimally when application clients utilize sticky SQL conne
 ### Configuring Causal Read in SkySQL 
 Causal consistency is configured in the SkySQL [Configuration Manager](https://app.skysql.com/settings/configuration-manager), under Maxscale Variables (applies to Replicated clusters only). Search for [causal reads](https://mariadb.com/kb/en/mariadb-maxscale-2208-readwritesplit/#causal_reads).
 
-![causal](https://github.com/skysqlinc/skysql-docs/blob/7e4d8f942a9f2168a7ae27f9e2a84c7b93df27a8/docs/High%20Availability%2C%20DR/causal.png)
+[![Setting Causal Reads](causal.png)](causal.png)
 
 > [!IMPORTANT]
 > We do not advise adjusting `causal_reads` unless absolutely necessary.
