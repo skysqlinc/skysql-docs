@@ -1,3 +1,5 @@
+# Point-in-Time Restore
+
 <details>
 <summary>
 Authentication
@@ -57,7 +59,7 @@ To perform a Point-in-Time Restore through the SkySQL Portal:
 
 <ol>
   <li>Navigate to Backups→Restores</li>
-  <li>Click the "Point-in-time Restore" Button</li>
+  <li>Click the "Point-in-Time Restore" Button</li>
   <li>In the restore form, provide:
     <ol>
       <li>Database restore target service</li>
