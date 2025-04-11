@@ -115,6 +115,7 @@ nav:
           - 'Backup and Restore/Restore Listing Examples.md'
           - 'Backup and Restore/Restore from SkySQL Managed Storage.md'
           - 'Backup and Restore/Restore From Your Own Bucket.md'
+          - 'Backup and Restore/Point-in-Time Restore.md'
           - 'Backup and Restore/Restore Delete Examples.md'
       - 'Backup and Restore/MariaDB Enterprise Backup.md'
   - 'Migrations, Data Loading' :
