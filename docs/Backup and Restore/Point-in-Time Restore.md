@@ -74,3 +74,4 @@ To perform a Point-in-Time Restore through the SkySQL Portal:
 
 - Cross-cloud restore is not supported. Your restore target service must be in the same cloud provider as your backup source service.
 - Only SkySQL native snapshots can be used as restore source. External backups are not supported for Point-in-Time Restore.
+- Point-in-Time Restore requires [MariaDB 10.8](https://mariadb.com/kb/en/changes-improvements-in-mariadb-108/#mysqlbinlog-gtid-support) or later, which introduced the binary log search functionality needed for this feature.
