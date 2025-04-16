@@ -27,10 +27,12 @@ curl --request GET 'https://api.skysql.com/skybackup/v1/backups/schedules' --hea
 </details>
 
 ### Important Note
+
 For Point-in-Time Restore to work, you must have a pre-configured backup schedule that ensures:
-- You must ensure your backup schedule creates snapshots with a time gap shorter than your `expire_logs_days` database configuration setting
-- Your selected restore point in time must be between two consecutive snapshots
-- By default, SkySQL sets `expire_logs_days` to 4 days, but you can configure this value to match your backup schedule requirements
+
+* Your backup schedule creates snapshot backups with a time gap shorter than your `expire_logs_days` database configuration setting (required for binary log availability)
+* Your selected restore point must be between two consecutive snapshot backups from this schedule
+* By default, SkySQL sets `expire_logs_days` to 4 days, but you can configure this value to match your backup schedule requirements
 
 ## Usage Examples
 
