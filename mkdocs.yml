@@ -164,6 +164,7 @@ nav:
   - 'Reference Guides' :
       - 'Reference Guide/README.md'
       - 'Reference Guide/Instance Size Choices.md'
+      - 'Reference Guide/Backup Support.md'
       - 'Reference Guide/Monitoring Metrics Reference.md'
       - 'Reference Guide/Region Choices.md'
       - 'Reference Guide/REST API Reference.md'

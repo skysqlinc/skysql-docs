@@ -14,6 +14,8 @@
 
 ## [SkySQL supported Cloud regions](<./Region Choices.md>)
 
+## [SkySQL supported Backup types](./Backup%20Support.md)
+
 ## [Sky Stored Procedures](<./Sky Stored Procedures.md>)
 
 ## [SkySQL Monitoring Metrics Reference](<./Monitoring Metrics Reference.md>)
