@@ -1,4 +1,4 @@
-# Region Choices
+# SkySQL Region Choices
 
 ## **AWS Regions**
 
