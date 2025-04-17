@@ -1,13 +1,13 @@
-# Backup Support
+# SkySQL Supported Backup Types 
 
 ## **MariaDB Server Versions and Backup Support**
 
 | Server Version | Full Backup | Incremental Backup | Dump(mariadb-dump) Backup | Snapshot Backup |
 | --- | --- | --- | --- | --- |
-| 10.5.25 | ✓ | ✓ | ✓ | ✓ |
-| 10.6.20 | ✓ | ✓ | ✓ | ✓ |
-| 10.11.11 | ✓ | ✓ | ✓ | ✓ |
-| 11.4.5 | ✓ | ✓ | ✓ | ✓ |
+| 11.4.x | ✓ | ✓ | ✓ | ✓ |
+| 10.11.x | ✓ | ✓ | ✓ | ✓ |
+| 10.6.x | ✓ | ✓ | ✓ | ✓ |
+| 10.5.x | ✓ | ✓ | ✓ | ✓ |
 | 11.6.2 (Vector Preview) | ✗ | ✗ | ✗ | ✓ |
 | 11.7.1 (Release Candidate) | ✗ | ✗ | ✗ | ✓ |
 

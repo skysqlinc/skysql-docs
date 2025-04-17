@@ -1,4 +1,4 @@
-# Monitoring Metrics Reference
+# SkySQL Monitoring Metrics Reference
 
 |Panel Name|UI Tab|Scope|Panel Type|Description|
 |---|---|---|---|---|
