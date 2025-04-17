@@ -139,7 +139,7 @@ No. MariaDB Backup (mariabackup) is used for Replicated Transactions and Single 
 SkySQL's nightly backups as well as self-service backups are retained for 7 days.
 
 ### Does SkySQL support Point-in-Time Recovery (PITR)?
-By default, full and complete backup restoration is available. To enable point-in-time recovery, services must be configured in advance for additional binary log retention. [Point-in-time recovery (PITR)](<../Backup and Restore>) configuration is available to Power Tier customers.
+By default, full and complete backup restoration is available. To enable point-in-time recovery, services must be configured in advance for additional binary log retention. [Point-in-time recovery (PITR)](<../Backup and Restore/Point-in-Time Restore/>) configuration is available to Power Tier customers.
 
 ### How long do you keep my data when I delete a service?
 All data residing on a service's storage is deleted at time of service deletion. Backups for deleted services are purged after 7 days.
