@@ -3,7 +3,7 @@
 SkySQL provides a range of options to suit different migration scenarios.
 <ul>
    <li> Databases can be migrated to SkySQL from many different database platforms, including Oracle, MySQL, PostgreSQL, Microsoft SQL Server, IBM DB2, and more. </li>
-   <li> SkySQL supports migraion from both on-premise and cloud-based infrastructure and provides a range of options to suit different migration scenarios. </li>
+   <li> SkySQL supports migration from both on-premise and cloud-based infrastructure and provides a range of options to suit different migration scenarios. </li>
 </ul>
 
 Below are the most common scenarios for database migration to SkySQL.
