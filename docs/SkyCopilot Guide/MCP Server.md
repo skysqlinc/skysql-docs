@@ -1,4 +1,4 @@
-# SkySQL MCP Server: AI Powered Database Management 
+# SkySQL MCP Server
 
 The **SkySQL Model Context Protocol (MCP) Server** offers a powerful interface for managing your SkySQL database instances and interacting with **SkyAI Agents**. It bridges the gap between your databases and AI-powered development tools.
 
