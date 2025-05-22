@@ -2,7 +2,6 @@
 
 !!! Note
     - This capability is currently in Tech Preview.
-    - Documentation is terse and incomplete.
     - Currently it is free to use. 
     - We provide upto a million tokens of free usage per month per account.
     - Our "free usage" policy is subject to change as we finalize the product.
