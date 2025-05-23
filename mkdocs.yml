@@ -102,6 +102,12 @@ nav:
       - 'Connecting to SkySQL DBs/Connect from MongoDB clients.md'
       - 'Connecting to SkySQL DBs/Connect using ODBC.md'
       - 'Connecting to SkySQL DBs/Connect using Connector R2DBC.md'
+  - 'Integrations':
+    - 'Database Tools':
+      - 'Integrations/DBeaver.md'
+      - 'Integrations/DBGate.md'
+      - 'Integrations/HeidiSQL.md'
+      - 'Integrations/TablePlus.md'
   - 'Backup and Restore' :
       - 'Backup and Restore/README.md'
       - Backup Examples:
