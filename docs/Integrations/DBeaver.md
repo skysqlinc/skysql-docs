@@ -1,4 +1,4 @@
-# Connecting to SkySQL Using [DBeaver](https://dbeaver.io/download/)
+# [DBeaver](https://dbeaver.io/download/)
 
 ## Steps:
 1. Open DBeaver and create a new connection.

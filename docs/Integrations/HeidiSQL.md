@@ -1,4 +1,4 @@
-# Connecting to SkySQL Using [HeidiSQL](https://www.heidisql.com/download.php)
+# [HeidiSQL](https://www.heidisql.com/download.php)
 
 ## Steps:
 1. Open HeidiSQL and create a new session.

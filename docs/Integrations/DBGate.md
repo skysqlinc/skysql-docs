@@ -1,4 +1,4 @@
-# Connecting to SkySQL Using [DBGate](https://dbgate.org/)
+# [DBGate](https://dbgate.org/)
 
 ## Steps:
 1. Open DBGate and create a new connection.

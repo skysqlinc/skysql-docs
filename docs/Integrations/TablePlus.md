@@ -1,4 +1,4 @@
-# Connecting to SkySQL Using [TablePlus](https://tableplus.com/download)
+# [TablePlus](https://tableplus.com/download)
 
 ## Steps:
 1. Open TablePlus and create a new connection.
