@@ -2,13 +2,13 @@
 SkySQL Serverless is the first true serverless database solution for the MySQL and MariaDB ecosystem, uniquely built to meet the dynamic demands of modern applications. Unlike other “serverless” offerings, SkySQL combines instant scalability with cost efficiency, scaling down to zero when idle—saving you from paying for unused capacity. When workloads resume, Serverless service is ready in milliseconds, ensuring a seamless, uninterrupted experience for applications and users. 
 
 ## Get Started
-Follow the [Quickstart](./Quickstart/) guide to launch a Serverless service. Make sure to select 'Serverless' as the service type.
+Follow the [Quickstart](Quickstart/README.md) guide to launch a Serverless service. Make sure to select 'Serverless' as the service type.
 
 ## Key Features
+- **Forever Free Database**: Each SkySQL account gets one perpetually free serverless database, ideal for development and testing environments, allowing teams to innovate without infrastructure management concerns.
 - **Instantaneous Scaling**: SkySQL Serverless launches databases in milliseconds, allocating compute and memory resources precisely as needed to prevent over-provisioning.
 - **Cost Efficiency**: The service scales down to zero during idle periods, eliminating costs associated with unused resources. When demand resumes, it instantly scales up to handle workloads, ensuring optimal performance without unnecessary expenses.
 - **Seamless Integration**: Built without forking the trusted open-source database, SkySQL Serverless maintains full compatibility with existing MariaDB and MySQL applications, facilitating easy migration and integration.
-- **Developer-Friendly Free Tier**: A forever free tier is available, ideal for development and testing environments, allowing teams to innovate without infrastructure management concerns.
 
 ## Technical Overview
 SkySQL Serverless employs cloud-native techniques to achieve its capabilities:
@@ -24,4 +24,4 @@ For consistent workloads that require steady, always-on database performance and
 - **Unpredictable Workloads**: Applications with variable or unpredictable demand benefit from automatic scaling, ensuring performance during peak times and cost savings during low activity periods.
 - **Microservices Architectures**: Serverless databases complement microservices by providing scalable, independent data stores that align with the dynamic nature of microservices environments.
 
-For a closer look into the technical design that enables Serverless instant autoscaling, please read the [Serverless](https://skysql.com/2024/11/06/what-sets-skysql-serverless-apart/) blog.
+For a closer look into the technical design that enables Serverless instant autoscaling, please read the [Serverless](https://skysql.com/blog/what-sets-skysql-serverless-apart) blog.
