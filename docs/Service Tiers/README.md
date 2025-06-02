@@ -1,9 +1,4 @@
-# Billing and Power Tier
-
-!!! Note
-    COMING SOON … a complete feature checklist of both the tiers ...
-    A full description of billing and invoicing (FAQ covers a bit)
-
+# Service Tiers
 
 Power Tier is a premium service offering who have the most critical requirements for uptime, availability, performance, and support.
 
