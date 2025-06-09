@@ -1,4 +1,4 @@
-# SkySQL Serverless Architecture
+# Serverless Architecture
 
 This document provides a comprehensive technical overview of SkySQL Serverless architecture, explaining how it achieves true serverless capabilities while maintaining full compatibility with MySQL and MariaDB.
 

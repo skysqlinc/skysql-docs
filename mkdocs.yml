@@ -78,7 +78,7 @@ nav:
     - 'Uptime SLA.md'
   - Serverless:
     - 'Serverless/README.md'
-    - 'Serverless/Architecture.md'
+    - Architecture: Serverless/Architecture.md
   - 'FAQs.md'
   - 'Quickstart' : 
       - 'Quickstart/README.md'
