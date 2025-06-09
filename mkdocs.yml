@@ -76,7 +76,9 @@ nav:
   - Introduction to SkySQL:
     - 'index.md'
     - 'Uptime SLA.md'
-  - 'Serverless.md'
+  - Serverless:
+    - 'Serverless/README.md'
+    - 'Serverless/Architecture.md'
   - 'FAQs.md'
   - 'Quickstart' : 
       - 'Quickstart/README.md'
