@@ -125,7 +125,7 @@ nav:
           - 'Backup and Restore/Restore From Your Own Bucket.md'
           - 'Backup and Restore/Point-in-Time Restore.md'
           - 'Backup and Restore/Restore Delete Examples.md'
-      - 'Backup and Restore/MariaDB Enterprise Backup.md'
+      - 'Backup and Restore/MariaDB Backup.md'
   - 'Migrations, Data Loading' :
       - 'Migrations' :
           - 'Data loading, Migration/README.md'

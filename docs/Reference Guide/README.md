@@ -4,9 +4,9 @@
 
 ## [Configurable MariaDB Server variables:](<../config/README.md>)
 
--  [MariaDB Server Single Node](<../config/Enterprise-Server-Single-Node.md>)
+-  [MariaDB Server Single Node](<../config/Mariadb-Server-Single-Node.md>)
 
--  [MariaDB Server With Replica(s)](<../config/Enterprise-Server-with-Replica(s).md>)
+-  [MariaDB Server With Replica(s)](<../config/Mariadb-Server-with-Replica(s).md>)
 
 -  [SkySQL Intelligent Proxy Configuration](<../config/SkySQL-Intelligent-Proxy.md>)
 
@@ -20,8 +20,8 @@
 
 ## [SkySQL Monitoring Metrics Reference](<./Monitoring Metrics Reference.md>)
 
-## [MariaDB Enterprise Server Reference Guide](https://mariadb.com/docs/server/ref/mdb/)
+## [MariaDB Server Reference Guide](https://mariadb.com/kb/en/documentation/)
 
 ## [MaxScale Reference Guide](https://mariadb.com/docs/skysql-previous-release/ref/mxs22.08/)
 
-## [Setting up MariaDB Enterprise Server, ColStore, MaxScale in your Env](https://mariadb.com/downloads/repo-setup/)
+## [Setting up MariaDB Server, ColStore, MaxScale in your Env](https://mariadb.org/download/)

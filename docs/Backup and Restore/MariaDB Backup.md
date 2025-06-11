@@ -1,18 +1,18 @@
 # MariaDB Backup
 
 
-Regular and reliable backups are essential to successful recovery of mission critical applications. [MariaDB Server](https://mariadb.org/en/#mariadb-server) backup and restore operations are performed using [MariaDB Backup](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/).
+Regular and reliable backups are essential to successful recovery of mission critical applications. [MariaDB Server](https://mariadb.org/en/#mariadb-server) backup and restore operations are performed using [MariaDB Backup](https://mariadb.com/docs/server/ref/mdb/cli/mariadb-backup/), an [open source backup tool](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/).
 
-[MariaDB Backup](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/) is compatible with MariaDB Server 10.2, 10.3, 10.4, 10.5, 10.6, 10.11, 11.4 and 11.8
+[MariaDB Backup](https://mariadb.com/docs/server/ref/mdb/cli/mariadb-backup/) is compatible with MariaDB Server 10.2, 10.3, 10.4, 10.5, and 10.6.
 
 - [Storage Engines and Backup Types](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Storage_Engines_and_Backup_Types)
 - [Hot Online Backups](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Hot_Online_Backups)
-- [Understanding Recovery](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Understanding_Recovery)
-- [Creating the Backup User](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Creating_the_Backup_User)
-- [Full Backup and Restore](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Full_Backup_and_Restore)
-- [Incremental Backup and Restore](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Incremental_Backup_and_Restore)
-- [Partial Backup and Restore](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Partial_Backup_and_Restore)
-- [Point-in-Time Recoveries](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Point-in-Time_Recoveries)
+- [Understanding Recovery](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Understanding_Recovery)
+- [Creating the Backup User](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Creating_the_Backup_User)
+- [Full Backup and Restore](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Full_Backup_and_Restore)
+- [Incremental Backup and Restore](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Incremental_Backup_and_Restore)
+- [Partial Backup and Restore](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Partial_Backup_and_Restore)
+- [Point-in-Time Recoveries](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Point-in-Time_Recoveries)
 
 ## **Storage Engines and Backup Types**
 
@@ -116,7 +116,7 @@ Subsequent to the above example, the backup is now available in the designated `
 
 ### **Preparing a Full Backup for Recovery**
 
-A raw full backup is not [point-in-time consistent](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Preparing_Backups_for_Recovery) and must be prepared before it can be used for a restore. The backup can be prepared any time after the backup is created and before the backup is restored. However, MariaDB recommends preparing a backup immediately after taking the backup to ensure that the backup is consistent.
+A raw full backup is not [point-in-time consistent](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Preparing_Backups_for_Recovery) and must be prepared before it can be used for a restore. The backup can be prepared any time after the backup is created and before the backup is restored. However, MariaDB recommends preparing a backup immediately after taking the backup to ensure that the backup is consistent.
 
 The backup should be prepared with the same version of MariaDB Backup that was used to create the backup.
 
@@ -128,12 +128,12 @@ For best performance, the `--use-memory` option should be set to the server's `[
 
 ### **Restoring from Full Backups**
 
-Once a full backup has been [prepared](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Preparing_a_Full_Backup_for_Recovery) to be point-in-time consistent, MariaDB Backup is used to copy backup data to the MariaDB Server data directory.
+Once a full backup has been [prepared](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Preparing_a_Full_Backup_for_Recovery) to be point-in-time consistent, MariaDB Backup is used to copy backup data to the MariaDB Server data directory.
 
 To restore from a full backup:
 
 1. Stop the MariaDB Server
-2. [Empty](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Restore_Requires_Empty_Data_Directory) the data directory
+2. [Empty](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Restore_Requires_Empty_Data_Directory) the data directory
 3. Restore from the "full" directory using the `--copy-back` option:
     
     `$ sudo mariabackup --copy-back --target-dir=/data/backups/full`
@@ -183,7 +183,7 @@ Once the incremental backup has been applied to the full backup, the full backup
 
 ### **Restoring from Incremental Backups**
 
-Once you have prepared the full backup directory with all the incremental changes you need (as described above), stop the MariaDB Server, [empty](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup/#Restore_Requires_Empty_Data_Directory) its data directory, and restore from the original full backup directory using the `--copy-back` option:
+Once you have prepared the full backup directory with all the incremental changes you need (as described above), stop the MariaDB Server, [empty](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Restore_Requires_Empty_Data_Directory) its data directory, and restore from the original full backup directory using the `--copy-back` option:
 
 `$ sudo mariabackup --copy-back --target-dir=/data/backups/full`
 
@@ -193,56 +193,11 @@ MariaDB Backup writes files into the data directory using either the current use
 
 Then, start MariaDB Server. When the Server starts, it works from the restored data directory.
 
-## **Partial Backup and Restore**
-
-In a partial backup, MariaDB Backup copies a specified subset of tablespaces from the MariaDB Server data directory. Partial backups are useful in establishing a higher frequency of backups on specific data, at the expense of increased recovery complexity. In selecting tablespaces for a partial backup, please consider referential integrity.
-
-### **Performing a Partial Backup**
-
-Command-line options can be used to narrow the set of databases or tables to be included within a backup:
-
-| Option | Description |
-| --- | --- |
-| --databases | List of databases to include |
-| --databases-exclude | List of databases to omit from the backup |
-| --databases-file | Path to file listing the databases to include |
-| --tables | List of tables to include |
-| --tables-exclude | List of tables to exclude |
-| --tables-file | Path to file listing the tables to include |
-
-For example, you may wish to produce a partial backup, which excludes a specific database:
-
-`$ sudo mariabackup --backup \      --target-dir=/data/backups/part \      --user=mariabackup \      --password=mbu_passwd \      --database-exclude=test`
-
-Partial backups can also be incremental:
-
-`$ sudo mariabackup --backup \      --incremental-basedir=/data/backups/part \      --target-dir=/data/backups/part_inc1 \      --user=mariabackup \      --password=mbu_passwd  \      --database-exclude=test`
-
-### **Preparing a Backup Before a Partial Restore**
-
-As with full and incremental backups, partial backups are not point-in-time consistent. A partial backup must be prepared before it can be used for recovery.
-
-A partial restore can be performed from a full backup or partial backup.
-
-The preparation step for either partial or full backup restoration requires the use of transportable tablespaces for InnoDB. As such, each prepare operation requires the `--export` option:
-
-`$ sudo mariabackup --prepare --export --target-dir=/data/backups/part`
-
-When using a partial incremental backup for restore, the incremental data must be applied to its prior partial backup data before its data is complete. If performing partial incremental backups, run the prepare statement again to apply the incremental changes onto the partial backup that served as the base.
-
-`$ sudo mariabackup --prepare --export \      --target-dir=/data/backups/part \      --incremental-dir=/data/backups/part_inc1`
-
-### **Performing a Partial Restore**
-
-Unlike full and incremental backups, you cannot restore partial backups directly using MariaDB Backup. Further, as a partial backup does not contain a complete data directory, you cannot restore MariaDB Server to a startable state solely with a partial backup.
-
-To restore from a partial backup, you need to prepare a table on the MariaDB Server, then manually copy the files into the data directory.
-
 The details of the restore procedure depend on the characteristics of the table:
 
-- [Partial Restore Non-partitioned Tables](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Partial_Restore_Non-partitioned_Tables)
-- [Partial Restore Partitioned Tables](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Partial_Restore_Partitioned_Tables)
-- [Partial Restore of Tables with Full-Text Indexes](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Partial_Restore_of_Tables_with_Full-Text_Indexes)
+- [Partial Restore Non-partitioned Tables](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Partial_Restore_Non-partitioned_Tables)
+- [Partial Restore Partitioned Tables](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Partial_Restore_Partitioned_Tables)
+- [Partial Restore of Tables with Full-Text Indexes](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Partial_Restore_of_Tables_with_Full-Text_Indexes)
 
 As partial restores are performed while the server is running, not stopped, care should be taken to prevent production workloads during restore activity.
 
@@ -398,7 +353,7 @@ For example, to restore table `t1` with FTS index from database `db1`:
 
 Recovering from a backup restores the data directory at a specific point-in-time, but it does not restore the binary log. In a point-in-time recovery, you begin by restoring the data directory from a full or incremental backup, then use the `mysqlbinlog` utility to recover the binary log data to a specific point in time.
 
-1. First, prepare the backup as you normally would for a [full](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Preparing_a_Full_Backup_for_Recovery) or [incremental](https://mariadb.com/docs/server/data-operations/backups/enterprise-server/mariadb-enterprise-backup/#Preparing_an_Incremental_Backup) backup:
+1. First, prepare the backup as you normally would for a [full](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Preparing_a_Full_Backup_for_Recovery) or [incremental](https://mariadb.com/docs/server/data-operations/backups/community-server/mariadb-backup//#Preparing_an_Incremental_Backup) backup:
     
     `$ sudo mariabackup --prepare --target-dir=/data/backups/full`
     
