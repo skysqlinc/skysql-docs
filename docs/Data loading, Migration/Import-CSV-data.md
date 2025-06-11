@@ -17,13 +17,13 @@ Support for local infiles must be enabled on the client side and on the SkySQL s
 
 To execute the [`LOAD DATA LOCAL INFILE`](https://mariadb.com/kb/en/load-data-infile/) statement, most clients and connectors require a specific option to be enabled.
 
-If you are using `mariadb` client, the [`--local-infile` option](https://mariadb.com/docs/server/data-operations/data-import/enterprise-server/load-data-local-infile/) must be specified.
+If you are using `mariadb` client, the [`--local-infile` option](https://mariadb.com/docs/skysql-previous-release/data-operations/data-import/load-data-local-infile/) must be specified.
 
 ### **Enable Local Infiles in SkySQL**
 
 Support for local infiles must be enabled on the SkySQL service.
 
-For SkySQL services that use MariaDB Enterprise Server, the [local_infile system variable](https://mariadb.com/kb/en/server-system-variables/#local_infile) must be enabled:
+For SkySQL services that use MariaDB Server, the [local_infile system variable](https://mariadb.com/kb/en/server-system-variables/#local_infile) must be enabled:
 
 - For Replicated Transactions and Single Node Transactions services, the `local_infile` system variable is `OFF` by default
 
@@ -32,7 +32,7 @@ For SkySQL services that use MariaDB Enterprise Server, the [local_infile syst
 ## **Import Data**
 
 1. Determine the [connection parameters](<../../Connecting to Sky DBs/>) for your SkySQL service.
-2. Connect with the `mariadb` client and specify the [-local-infile option](https://mariadb.com/docs/server/data-operations/data-import/enterprise-server/load-data-local-infile/), which is needed by the next step:
+2. Connect with the `mariadb` client and specify the [-local-infile option](https://mariadb.com/docs/skysql-previous-release/data-operations/data-import/load-data-local-infile/), which is needed by the next step:
 
 ```bash
 mariadb --host FULLY_QUALIFIED_DOMAIN_NAME --port TCP_PORT \

@@ -1,11 +1,14 @@
-For cloud databases with the Enterprise Server Single Node topology, the following Configuration Manager parameters are used to configure MariaDB Enterprise Server behavior:
+For cloud databases with the Mariadb Server With Replica(s) topology, Configuration Manager can be used to configure MariaDB Server behavior and MariaDB MaxScale behavior.
+
+The following Configuration Manager parameters are used to configure MariaDB Server behavior:
 
 | Name | Default Value |
 |------|---------------|
 | [auto_increment_increment](https://r.mariadb.com/skysql-system-variables/auto_increment_increment/) | 1 |
 | [autocommit](https://r.mariadb.com/skysql-system-variables/autocommit/) | ON |
 | [binlog_cache_size](https://r.mariadb.com/skysql-system-variables/binlog_cache_size/) | 32768 |
-| [binlog_format](https://r.mariadb.com/skysql-system-variables/binlog_format/) | ROW |
+| [binlog_commit_wait_count](https://r.mariadb.com/skysql-system-variables/binlog_commit_wait_count/) | 0 |
+| [binlog_commit_wait_usec](https://r.mariadb.com/skysql-system-variables/binlog_commit_wait_usec/) | 100000 |
 | [connect_timeout](https://r.mariadb.com/skysql-system-variables/connect_timeout/) | 5 |
 | [cracklib_password_check](https://r.mariadb.com/skysql-system-variables/cracklib_password_check/) | OFF |
 | [default_password_lifetime](https://r.mariadb.com/skysql-system-variables/default_password_lifetime/) | 0 |
@@ -77,11 +80,17 @@ For cloud databases with the Enterprise Server Single Node topology, the followi
 | [performance_schema_max_thread_instances](https://r.mariadb.com/skysql-system-variables/performance_schema_max_thread_instances/) | -1 |
 | [performance_schema_session_connect_attrs_size](https://r.mariadb.com/skysql-system-variables/performance_schema_session_connect_attrs_size/) | -1 |
 | [performance_schema_users_size](https://r.mariadb.com/skysql-system-variables/performance_schema_users_size/) | -1 |
-| [proxy_protocol_networks](https://r.mariadb.com/skysql-system-variables/proxy_protocol_networks/) |  |
+| [proxy_protocol_networks](https://r.mariadb.com/skysql-system-variables/proxy_protocol_networks/) | 10.0.0.0/8 |
 | [read_buffer_size](https://r.mariadb.com/skysql-system-variables/read_buffer_size/) | 131072 |
 | [read_only](https://r.mariadb.com/skysql-system-variables/read_only/) | OFF |
 | [read_rnd_buffer_size](https://r.mariadb.com/skysql-system-variables/read_rnd_buffer_size/) | 262144 |
-| [require_secure_transport](https://r.mariadb.com/skysql-system-variables/require_secure_transport/) | AUTO_GENERATED |
+| [rpl_semi_sync_master_enabled](https://r.mariadb.com/skysql-system-variables/rpl_semi_sync_master_enabled/) | ON |
+| [rpl_semi_sync_master_timeout](https://r.mariadb.com/skysql-system-variables/rpl_semi_sync_master_timeout/) | 10000 |
+| [rpl_semi_sync_master_wait_no_slave](https://r.mariadb.com/skysql-system-variables/rpl_semi_sync_master_wait_no_slave/) | ON |
+| [rpl_semi_sync_master_wait_point](https://r.mariadb.com/skysql-system-variables/rpl_semi_sync_master_wait_point/) | AFTER_COMMIT |
+| [rpl_semi_sync_slave_delay_master](https://r.mariadb.com/skysql-system-variables/rpl_semi_sync_slave_delay_master/) | OFF |
+| [rpl_semi_sync_slave_enabled](https://r.mariadb.com/skysql-system-variables/rpl_semi_sync_slave_enabled/) | ON |
+| [rpl_semi_sync_slave_kill_conn_timeout](https://r.mariadb.com/skysql-system-variables/rpl_semi_sync_slave_kill_conn_timeout/) | 5 |
 | [server_audit](https://mariadb.com/docs/skysql-previous-release/ref/mdb/plugins/SERVER_AUDIT,server_audit2.so/) | ON |
 | [server_audit_file_rotate_size](https://r.mariadb.com/skysql-system-variables/server_audit_file_rotate_size/) | 1000000 |
 | [server_audit_logging](https://r.mariadb.com/skysql-system-variables/server_audit_logging/) | OFF |
@@ -90,11 +99,18 @@ For cloud databases with the Enterprise Server Single Node topology, the followi
 | [simple_password_check_letters_same_case](https://r.mariadb.com/skysql-system-variables/simple_password_check_letters_same_case/) | 1 |
 | [simple_password_check_minimal_length](https://r.mariadb.com/skysql-system-variables/simple_password_check_minimal_length/) | 8 |
 | [simple_password_check_other_characters](https://r.mariadb.com/skysql-system-variables/simple_password_check_other_characters/) | 1 |
+| [slave_compressed_protocol](https://r.mariadb.com/skysql-system-variables/slave_compressed_protocol/) | OFF |
+| [slave_parallel_mode](https://r.mariadb.com/skysql-system-variables/slave_parallel_mode/) | optimistic |
+| [slave_parallel_threads](https://r.mariadb.com/skysql-system-variables/slave_parallel_threads/) | AUTO_GENERATED |
+| [slave_parallel_workers](https://r.mariadb.com/skysql-system-variables/slave_parallel_workers/) | 0 |
 | [slow_query_log](https://r.mariadb.com/skysql-system-variables/slow_query_log/) | OFF |
 | [sort_buffer_size](https://r.mariadb.com/skysql-system-variables/sort_buffer_size/) | 2097152 |
 | [sql_mode](https://r.mariadb.com/skysql-system-variables/sql_mode/) | ERROR_FOR_DIVISION_BY_ZERO, NO_AUTO_CREATE_USER, NO_ENGINE_SUBSTITUTION, STRICT_TRANS_TABLES |
 | [strict_password_validation](https://r.mariadb.com/skysql-system-variables/strict_password_validation/) | ON |
 | [sync_binlog](https://r.mariadb.com/skysql-system-variables/sync_binlog/) | 1 |
+| [sync_master_info](https://r.mariadb.com/skysql-system-variables/sync_master_info/) | 1 |
+| [sync_relay_log](https://r.mariadb.com/skysql-system-variables/sync_relay_log/) | 0 |
+| [sync_relay_log_info](https://r.mariadb.com/skysql-system-variables/sync_relay_log_info/) | 0 |
 | [system_versioning_alter_history](https://r.mariadb.com/skysql-system-variables/system_versioning_alter_history/) | ERROR |
 | [table_open_cache](https://mariadb.com/docs/skysql-previous-release/ref/mdb/system-variables/table_open_cache/) | AUTO_GENERATED |
 | [thread_cache_size](https://r.mariadb.com/skysql-system-variables/thread_cache_size/) | 256 |
