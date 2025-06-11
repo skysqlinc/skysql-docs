@@ -1,4 +1,4 @@
-For cloud databases with the Enterprise Server Single Node topology, the following Configuration Manager parameters are used to configure MariaDB Enterprise Server behavior:
+For cloud databases with the Enterprise Server Single Node topology, the following Configuration Manager parameters are used to configure MariaDB Server behavior:
 
 | Name | Default Value |
 |------|---------------|
