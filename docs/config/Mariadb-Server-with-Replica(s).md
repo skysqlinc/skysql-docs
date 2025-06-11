@@ -1,4 +1,4 @@
-For cloud databases with the Enterprise Server With Replica(s) topology, Configuration Manager can be used to configure MariaDB Server behavior and MariaDB MaxScale behavior.
+For cloud databases with the Mariadb Server With Replica(s) topology, Configuration Manager can be used to configure MariaDB Server behavior and MariaDB MaxScale behavior.
 
 The following Configuration Manager parameters are used to configure MariaDB Server behavior:
 
