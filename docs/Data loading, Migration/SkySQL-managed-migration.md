@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. An active SkySQL account. Identify requirements for your SkySQL implementation prior to [deployment](../Portal%20features/Launch%20page.md), including:
-    - Topology: Enterprise Server Single node or with Replica(s)
+    - Topology: Mariadb Server Single node or with Replica(s)
     - [Instance size](../Reference%20Guide/Instance%20Size%20Choices.md)
     - Storage requirements
     - Desired server version

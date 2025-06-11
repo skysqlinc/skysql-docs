@@ -5,7 +5,7 @@ To minimize downtime during migration, you can set up live replication from your
 # Prerequisites
 
 1. An active SkySQL account. Identify requirements for your SkySQL implementation prior to [deployment](<../Portal features/Launch page.md>), including:
-- Topology - Enterprise Server Single node or with Replica(s)
+- Topology - Mariadb Server Single node or with Replica(s)
 - [Instance size](<../Reference Guide/Instance Size Choices.md>)
 - Storage requirements
 - Desired server version

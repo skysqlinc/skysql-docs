@@ -12,7 +12,7 @@ For information on how to connect with TLS, see ["Connect and Query"](<../../Con
 The "Disable SSL/TLS" option may be appropriate for some customers when also using AWS PrivateLink or GCP VPC Peering.
 
 ### Server-to-Server
-SkySQL services perform server-to-server communication between MariaDB MaxScale, MariaDB Enterprise Server, MariaDB Xpand nodes, and SkySQL infrastructure.
+SkySQL services perform server-to-server communication between MariaDB MaxScale, MariaDB Server, and SkySQL infrastructure.
 
 By default, these server-to-server communications are protected with data-in-transit encryption:
 

@@ -21,7 +21,7 @@ Below are the most common scenarios for database migration to SkySQL.
 Ensure that your SkySQL servce deploymned configuration is compatible with your existing source database one, including:
 <ul>
    <li><b>Deployment region</b> - Ensure that the SkySQL deployment region is the same as the source database region.</li>
-   <li><b>Topology</b> - Enterprise Server Single node or with Replica(s)</li>
+   <li><b>Topology</b> - Mariadb Server Single node or with Replica(s)</li>
    <li> <b>Server version</b> - Ensure that the SkySQL server version is compatible with the source database version. </li>
    <li><b>Instance size</b> - Ensure that the SkySQL instance is compatible with the source database instance type and size</li>
    <li><b>Storage</b> - Ensure that the SkySQL storage type and size is compatible with the source database</li>

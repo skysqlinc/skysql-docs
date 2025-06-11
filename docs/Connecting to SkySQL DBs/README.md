@@ -55,7 +55,7 @@ Applications can connect to SkySQL using any of the below MariaDB supported conn
 
 
 !!! Note
-    💡 For Enterprise Server With Replica(s), you can also use any MongoDB client and use the [NoSQL Interface](Connect%20from%20MongoDB%20clients.md)
+    💡 For <Mariadb> Server With Replica(s), you can also use any MongoDB client and use the [NoSQL Interface](Connect%20from%20MongoDB%20clients.md)
 
 
 ## Connecting from SQL tools

@@ -17,8 +17,8 @@ To access the Configuration Manager interface:
 
 Available configuration parameters differ by cloud database topology.
 
-[1. Enterprise Server Single Node](./Enterprise-Server-Single-Node.md)
+[1. Mariadb Server Single Node](./Mariadb-Server-Single-Node.md)
 
-[2. Enterprise Server With Replica(s)](./Enterprise-Server-with-Replica(s).md)
+[2. Mariadb Server With Replica(s)](./Mariadb-Server-with-Replica(s).md)
 
 [3. SkySQL Intelligent Proxy Configuration](./SkySQL-Intelligent-Proxy.md)

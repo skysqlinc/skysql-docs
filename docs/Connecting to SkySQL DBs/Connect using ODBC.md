@@ -213,7 +213,7 @@ An example of a failover host string:
 | --- | --- | --- |
 | DRIVER | • On Linux, the name of the driver, which is configured in the unixODBC driver template file. On macOS, the path to the driver's shared library, which is installed at /Library/MariaDB/MariaDB-Connector-ODBC/libmaodbc.dylib by default. |  |
 | SERVER | Host name, IPv4 address, or IPv6 address of the database server. | localhost |
-| SOCKET | The path to the socket file. On Linux, MariaDB Enterprise Server uses different default socket files on different Linux distributions. On Debian / Ubuntu, the default socket file is /var/run/mysqld/mysqld.sock or /run/mysqld/mysqld.sock. On CentOS / RHEL / Rocky Linux, the default socket file is /var/lib/mysql/mysql.sock. | /tmp/mysql.sock |
+| SOCKET | The path to the socket file. On Linux, MariaDB Mariadb Server uses different default socket files on different Linux distributions. On Debian / Ubuntu, the default socket file is /var/run/mysqld/mysqld.sock or /run/mysqld/mysqld.sock. On CentOS / RHEL / Rocky Linux, the default socket file is /var/lib/mysql/mysql.sock. | /tmp/mysql.sock |
 | DATABASE | Database name to select upon successful connection. The database must already exist, and the user account must have privileges to select it. |  |
 | PORT | TCP port of the database server. | 3306 |
 | USER | The username to use for authentication. |  |
