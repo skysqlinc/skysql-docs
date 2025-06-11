@@ -111,7 +111,7 @@ To analyze slow queries, you need to turn on 'Slow query' logging. The `slow_que
 
 It is recommended you start with a high `slow_query_time`, implement a `log_slow_rate_limit`, and disable logging when not in use.
 
-If using SkySQL, go to Config Manager to see all the current configuration templates. If you are using the default config ("SkySQL Default - Enterprise Server..."), click the 'Create New' button, and change the following settings:
+If using SkySQL, go to Config Manager to see all the current configuration templates. If you are using the default config ("SkySQL Default - Mariadb Server..."), click the 'Create New' button, and change the following settings:
 
   * Change 'slow\_query\_log' to `ON`. Change 'log\_output' to `TABLE` (defaults to `FILE`).
   * Adjust the 'long\_query\_time' if required (Defaults to 10 secs). **Caution:** If 'long\_query\_time' is set too low, you could substantially increase the load. You can check the global status variable `slow_queries` to tune the `long_query_time`.
