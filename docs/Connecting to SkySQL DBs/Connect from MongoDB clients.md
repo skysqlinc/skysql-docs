@@ -11,7 +11,7 @@ For detailed information on supported commands, see "[NoSQL Protocol Module](htt
 
 # Enable Support for NoSQL
 
-1. When [launching](<../Portal features/Launch page.md>) Enterprise Server With Replica(s), after defining the service name, expand the "Additional options" section.
+1. When [launching](<../Portal features/Launch page.md>) Mariadb Server With Replica(s), after defining the service name, expand the "Additional options" section.
 2. Check the "Enable support for NoSQL" checkbox.
 
 # Available Clients
