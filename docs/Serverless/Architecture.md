@@ -15,7 +15,7 @@ SkySQL Serverless is built on the principle: **"Don't change what works"**. Inst
 
 ## High-Level Architecture
 
-[![architecture](serverless-architecture.png)]( serverless-architecture.png)
+[![architecture](../Serverless/serverless_architecture.png)]( ../Serverless/serverless_architecture.png)
 
 ## Core Components
 
