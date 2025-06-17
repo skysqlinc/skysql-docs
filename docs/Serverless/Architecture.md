@@ -15,43 +15,7 @@ SkySQL Serverless is built on the principle: **"Don't change what works"**. Inst
 
 ## High-Level Architecture
 
-```mermaid
-graph TB
-    A[Application] --> B[Intelligent Proxy]
-    B --> C[Kubernetes Cluster]
-    
-    subgraph "SkySQL Control Plane"
-        D[Resource Monitor]
-        E[Scaling Controller] 
-        F[Migration Controller]
-        G[Backup Controller]
-    end
-    
-    subgraph "Kubernetes Cluster"
-        H[Database Pod 1]
-        I[Database Pod 2]
-        J[Database Pod N]
-        K[Storage Volumes]
-    end
-    
-    subgraph "Pre-Fabricated Pool"
-        L[Warm DB Pool]
-        M[Micro Databases]
-    end
-    
-    C --> D
-    D --> E
-    E --> H
-    E --> I
-    E --> J
-    
-    H --> K
-    I --> K
-    J --> K
-    
-    L --> C
-    M --> L
-```
+[![architecture](serverless-architecture.png)]( serverless-architecture.png)
 
 ## Core Components
 
