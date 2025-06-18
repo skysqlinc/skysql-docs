@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     script.setAttribute("crossorigin", "true");
     script.setAttribute("runllm-keyboard-shortcut", "Mod+j");
     script.setAttribute("runllm-name", "SkyDocs Assistant");
-    script.setAttribute("runllm-position", "BOTTOM_RIGHT | BOTTOM_LEFT | TOP_LEFT | TOP_RIGHT");
+    script.setAttribute("runllm-position", "BOTTOM_RIGHT");
     script.setAttribute("runllm-assistant-id", "978");
   
     script.async = true;
