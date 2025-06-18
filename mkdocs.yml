@@ -72,6 +72,9 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/skysql
 
+extra_javascript:
+    - "js/runllm-widget.js"
+    
 nav:
   - Introduction to SkySQL:
     - 'index.md'
@@ -182,4 +185,4 @@ nav:
       - 'Reference Guide/Sky Stored Procedures.md'
 
 
-copyright: Copyright &copy; 2024 SkySQL Inc
+copyright: Copyright &copy; 2025 SkySQL Inc.
