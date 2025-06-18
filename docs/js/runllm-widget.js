@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     script.setAttribute("version", "stable");
     script.setAttribute("crossorigin", "true");
     script.setAttribute("runllm-keyboard-shortcut", "Mod+j");
-    script.setAttribute("runllm-name", "<ASSISTANT_NAME>");
+    script.setAttribute("runllm-name", "SkyDocs Assistant");
     script.setAttribute("runllm-position", "BOTTOM_RIGHT | BOTTOM_LEFT | TOP_LEFT | TOP_RIGHT");
-    script.setAttribute("runllm-assistant-id", "<ASSISTANT_ID>");
+    script.setAttribute("runllm-assistant-id", "SkySQL Web Docs");
   
     script.async = true;
     document.head.appendChild(script);
