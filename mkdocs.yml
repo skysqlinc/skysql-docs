@@ -113,6 +113,8 @@ nav:
       - 'Integrations/DBGate.md'
       - 'Integrations/HeidiSQL.md'
       - 'Integrations/TablePlus.md'
+    - 'SkyAI Tools':
+      - 'Integrations/skyai/SkySQL DB Agents.md'
   - 'Backup and Restore' :
       - 'Backup and Restore/README.md'
       - Backup Examples:
