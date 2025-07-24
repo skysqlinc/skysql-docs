@@ -10,6 +10,12 @@ Infrastructure upgrades are a critical component of maintaining a secure, perfor
 - **Infrastructure Upgrades**: Update the underlying Kubernetes nodes, container runtime, and cloud provider components that host your database
 - **Database Upgrades**: Update the MariaDB or MySQL database software version itself
 
+## Service Impact During Upgrades
+
+**Multi-node databases** (with high availability configurations) experience **no downtime** during infrastructure upgrades. The rolling upgrade process maintains continuous database availability and service connectivity.
+
+**Single-node databases** will experience a brief downtime during the database restart, typically lasting 2-5 minutes.
+
 Infrastructure upgrades ensure your service continues to receive:
 
 - Security patches and vulnerability fixes
@@ -42,10 +48,10 @@ SkySQL supports infrastructure versions up to **3 versions behind** the current 
 ### Upgrade Process
 1. **Customer-Initiated**: You can trigger infrastructure upgrades immediately through the SkySQL Portal
 2. **Automatic Fallback**: If not upgraded by the deadline, SkySQL will automatically perform the upgrade to maintain compliance
-3. **Database Restart**: Infrastructure upgrades require a database restart, typically taking 2-5 minutes
+3. **Database Restart**: For single-node databases, infrastructure upgrades require a database restart, typically taking 2-5 minutes. Multi-node databases use rolling upgrades with no downtime.
 
-!!! warning "Service Interruption Required"
-    Infrastructure upgrades require a database restart. Plan accordingly and perform upgrades during low-traffic periods when possible.
+!!! warning "Service Interruption for Single-Node Databases"
+    Single-node database infrastructure upgrades require a database restart. Multi-node databases experience no downtime during upgrades. Plan accordingly for single-node services and perform upgrades during low-traffic periods when possible.
 
 ## Managing Infrastructure Upgrades in the Portal
 
@@ -72,14 +78,14 @@ Monitor your upgrade progress through:
 ## Best Practices
 
 ### Planning Your Upgrades
-- **Upgrade During Low Traffic**: Since upgrades happen immediately, perform them during low-traffic periods
+- **Upgrade During Low Traffic**: For single-node databases, perform upgrades during low-traffic periods since they require a restart
 - **Monitor Notifications**: Regularly check the Portal and email notifications for upgrade requirements
-- **Plan for Downtime**: Coordinate with your team about the brief service interruption during restart
+- **Plan for Single-Node Services**: Coordinate with your team about the brief service interruption for single-node database restarts. Multi-node databases can be upgraded anytime without service impact.
 
 ## Frequently Asked Questions
 
 **Q: How long does an infrastructure upgrade take?**
-A: Most infrastructure upgrades complete within 2-5 minutes, including the database restart time.
+A: Multi-node databases experience no downtime during infrastructure upgrades. Single-node databases complete upgrades within 2-5 minutes, including the database restart time.
 
 **Q: Can I schedule an upgrade for later?**
 A: No, infrastructure upgrades begin immediately when initiated. Plan to perform them during appropriate maintenance windows.
