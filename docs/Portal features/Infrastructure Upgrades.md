@@ -12,12 +12,11 @@ Infrastructure upgrades are a critical component of maintaining a secure, perfor
 
 ## Service Impact During Upgrades
 
-**Multi-node databases** (with high availability configurations) experience **no downtime** during infrastructure upgrades. The rolling upgrade process maintains continuous database availability and service connectivity.
+**MariaDB Server with Replicas** experience a brief service interruption while connections are cycled on the Load Balancer.
 
-**Single-node databases** will experience a brief downtime during the database restart, typically lasting 2-5 minutes.
+**MariaDB Server Single Node** will experience a brief downtime during the database restart, typically lasting 2-5 minutes.
 
 Infrastructure upgrades ensure your service continues to receive:
-
 - Security patches and vulnerability fixes
 - Performance improvements and optimizations  
 - Continued support from cloud providers (AWS, GCP, Azure)
@@ -28,30 +27,16 @@ Infrastructure upgrades ensure your service continues to receive:
 ### Cloud Provider Requirements
 Our cloud providers (AWS, GCP, Azure) enforce strict upgrade schedules for Kubernetes infrastructure:
 
-- **Extended Support Fees**: Cloud providers charge additional fees for nodes running on older, end-of-life Kubernetes versions
 - **Security Compliance**: Outdated infrastructure versions may not receive critical security updates
 - **Support Limitations**: Cloud providers eventually discontinue support for older infrastructure versions
-
-### SkySQL Platform Stability
-Since all customer services share the same underlying control plane infrastructure, we must coordinate upgrades across all services to maintain platform stability and cost-effectiveness.
 
 ## How Infrastructure Upgrades Work
 
 ### Notification Timeline
-1. **3 Months Prior**: SkySQL sends initial notification about upcoming infrastructure upgrade requirements
+1. **3 Months Prior to Automated Upgrade**: SkySQL sends initial notification about upcoming infrastructure upgrade requirements
 2. **Regular Reminders**: Follow-up notifications are sent as the deadline approaches
 3. **Grace Period**: Customers have time to perform upgrades before the automatic deadline
-
-### Upgrade Support Policy
-SkySQL supports infrastructure versions up to **3 versions behind** the current control plane version. This provides flexibility in when you choose to upgrade while ensuring security and support compliance.
-
-### Upgrade Process
-1. **Customer-Initiated**: You can trigger infrastructure upgrades immediately through the SkySQL Portal
-2. **Automatic Fallback**: If not upgraded by the deadline, SkySQL will automatically perform the upgrade to maintain compliance
-3. **Database Restart**: For single-node databases, infrastructure upgrades require a database restart, typically taking 2-5 minutes. Multi-node databases use rolling upgrades with no downtime.
-
-!!! warning "Service Interruption for Single-Node Databases"
-    Single-node database infrastructure upgrades require a database restart. Multi-node databases experience no downtime during upgrades. Plan accordingly for single-node services and perform upgrades during low-traffic periods when possible.
+4. **Automated Upgrade Deadline**: If not upgraded by the deadline, SkySQL will automatically perform the upgrade to maintain compliance
 
 ## Managing Infrastructure Upgrades in the Portal
 
@@ -84,9 +69,6 @@ Monitor your upgrade progress through:
 
 ## Frequently Asked Questions
 
-**Q: How long does an infrastructure upgrade take?**
-A: Multi-node databases experience no downtime during infrastructure upgrades. Single-node databases complete upgrades within 2-5 minutes, including the database restart time.
-
 **Q: Can I schedule an upgrade for later?**
 A: No, infrastructure upgrades begin immediately when initiated. Plan to perform them during appropriate maintenance windows.
 
@@ -95,9 +77,6 @@ A: SkySQL will automatically perform the upgrade to maintain cloud provider comp
 
 **Q: Will my data be affected during the upgrade?**
 A: No, infrastructure upgrades only restart the database service. Your data remains intact and unchanged.
-
-**Q: How often do infrastructure upgrades occur?**
-A: Infrastructure upgrade requirements vary based on cloud provider schedules and your current version. SkySQL supports up to 3 versions behind the current control plane, giving you flexibility in upgrade timing.
 
 **Q: Can I opt out of infrastructure upgrades?**
 A: No, infrastructure upgrades are mandatory to maintain security, compliance, and cloud provider support.
