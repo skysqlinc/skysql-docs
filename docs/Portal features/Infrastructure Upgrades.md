@@ -8,7 +8,7 @@ Infrastructure upgrades are a critical component of maintaining a secure, perfor
 **Infrastructure upgrades** are different from database software upgrades:
 
 - **Infrastructure Upgrades**: Update the underlying Kubernetes nodes, container runtime, and cloud provider components that host your database
-- **Database Upgrades**: Update the MariaDB or MySQL database software version itself
+- **Database Upgrades**: Update the MariaDB database software version itself
 
 ## Service Impact During Upgrades
 
