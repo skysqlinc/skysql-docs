@@ -84,7 +84,7 @@ The simplest way to get started is by using our Demo DB in the "DataSource" drop
 
 You can begin by exploring some of the sample questions provided below. Alternatively, connect to any MariaDB server running on SkySQL or another platform to experiment with your own workloads.
 
-Note: The default DB user created in SkySQL (eg. “dbpgf12345678”) already has the required privileges pre-create. 
+Note: The default DB user created in SkySQL (eg. “dbpgf12345678”) already has the required privileges pre-created. 
 
 **Steps to follow when using a non-SkySQL Datasource:**
 
