@@ -82,28 +82,23 @@ When a user asks a question, it breaks the query down into discrete steps, each 
 
 The simplest way to get started is by using our Demo DB in the "DataSource" drop down. It features a standalone MariaDB server preloaded with sample data and includes logged slow queries for testing.
 
-You can begin by exploring some of the sample questions provided below. Alternatively, connect to any of the list of SkySQL Services you've launched in SkySQL.
+You can begin by exploring some of the sample questions provided below. Alternatively, connect to any MariaDB server running on SkySQL or another platform to experiment with your own workloads.
 
-Note the following:
+Note: The default DB user created in SkySQL (eg. “dbpgf12345678”) already has the required privileges pre-create. 
 
-  
-  * The DB user used by DBA Copilot needs the privileges as noted below. Create the following user and grant the privileges as shown below. Please note, Copilot doesn't require write privileges to your schema.
+Steps to follow when using a non-SkySQL Datasource:
+  * First, add a Datasource and test the connectivity.
+  * We recommend testing with a Development/Test DB first.
+  * The DB user specified in this Datasource needs the privileges as noted below.
 
 <!-- end list -->
+Grant the privileges as shown below. Please note, Copilot doesn’t require write privileges to your schema. Remember to replace “your_datasource_username” with the username you specified during the Copilot Datasource creation.
+  
 
 ```sql
-CREATE USER IF NOT EXISTS 'skyai'@'%' IDENTIFIED BY 'some_compliant_password';
-GRANT SELECT, PROCESS, SHOW VIEW, SHOW DATABASES ON *.* TO `skyai`@`%`;
-GRANT CREATE, DROP, CREATE VIEW ON `sky_sys_catalog`.* TO `skyai`@`%`;
+GRANT SELECT, PROCESS, SHOW VIEW, SHOW DATABASES ON *.* TO `your_datasource_username`@`%`;
+GRANT CREATE, DROP, CREATE VIEW ON `sky_sys_catalog`.* TO `your_datasource_username`@`%`;
 ```
-
-These SQL statements:
-
-  * Create a new user named 'skyai' that can connect from any host ('%')
-  * Grant read-only privileges plus some system-level viewing permissions on all databases
-  * Grant create/drop privileges specifically on the `sky_sys_catalog` database
-
-Remember to replace 'some\_compliant\_password' with a secure password of your choice.
 
 ### Slow Query Analysis
 
