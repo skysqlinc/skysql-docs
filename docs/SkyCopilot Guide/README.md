@@ -87,9 +87,11 @@ You can begin by exploring some of the sample questions provided below. Alternat
 Note: The default DB user created in SkySQL (eg. “dbpgf12345678”) already has the required privileges pre-create. 
 
 **Steps to follow when using a non-SkySQL Datasource:**
-  * First, add a Datasource and test the connectivity.
-  * We recommend testing with a Development/Test DB first.
-  * The DB user specified in this Datasource needs the privileges as noted below.
+
+- First, add a Datasource and test the connectivity.
+- We recommend testing with a Development/Test DB first.
+- The DB user specified in this Datasource needs the privileges as noted below.
+
 
 Grant the privileges as shown below. Please note, Copilot doesn’t require write privileges to your schema. Remember to replace “your_datasource_username” with the username you specified during the Copilot Datasource creation.
   
