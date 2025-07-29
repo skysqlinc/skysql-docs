@@ -60,14 +60,9 @@ Monitor your upgrade progress through:
 - Email notifications at key milestones
 - Service monitoring panels showing restart progress
 
-## Best Practices
-
-### Planning Your Upgrades
-- **Upgrade During Low Traffic**: For single-node databases, perform upgrades during low-traffic periods since they require a restart
-- **Monitor Notifications**: Regularly check the Portal and email notifications for upgrade requirements
-- **Plan for Single-Node Services**: Coordinate with your team about the brief service interruption for single-node database restarts. Multi-node databases can be upgraded anytime without service impact.
-
 ## Frequently Asked Questions
+**Q: Best time to upgrade**
+A: Plan according to your maintenance windows.
 
 **Q: Can I schedule an upgrade for later?**
 A: No, infrastructure upgrades begin immediately when initiated. Plan to perform them during appropriate maintenance windows.
