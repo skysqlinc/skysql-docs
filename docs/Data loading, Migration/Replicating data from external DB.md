@@ -2,7 +2,7 @@
 
 MariaDB SkySQL customers can configure inbound replication from both **MySQL** and **MariaDB** to a compatible MariaDB running in SkySQL. This guide will walk you through setting up replication for both MySQL and MariaDB as the source databases.
 
-For additional information about the stored procedures used to configure replication with Replicated Transactions services, see [SkySQL Replication Helper Procedures for Replicated Transactions](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/).
+For additional information about the stored procedures used to configure replication with Replicated Transactions services, see [SkySQL Replication Helper Procedures for Replicated Transactions](https://docs.skysql.com/Reference%20Guide/Sky%20Stored%20Procedures/).
 
 ## Requirements
 1. **For MySQL** :
@@ -41,7 +41,7 @@ CALL sky.change_external_primary('mysql1.example.com', 3306, 'mysql-bin.000001',
 ```
 
 This procedure can be referenced in the official documentation:  
-[sky.change_external_primary()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#change_external_primary)
+[sky.change_external_primary()](https://docs.skysql.com/Reference%20Guide/Sky%20Stored%20Procedures/#change_external_primary)
 
 This will return a `GRANT` statement that needs to be executed on the external MySQL server:
 
@@ -49,7 +49,7 @@ This will return a `GRANT` statement that needs to be executed on the external M
 GRANT REPLICATION SLAVE ON *.* TO 'skysql_replication'@'%' IDENTIFIED BY '<password_hash>';
 ```
 
-For MariaDB (GTID Based) if preferred refer to [sky.change_external_primary_gtid()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#change_external_primary_gtid)
+For MariaDB (GTID Based) if preferred refer to [sky.change_external_primary_gtid()](https://docs.skysql.com/Reference%20Guide/Sky%20Stored%20Procedures/#change_external_primary_gtid)
 
 ## Step 3: Start Replication
 
@@ -70,7 +70,7 @@ This will return a confirmation message such as:
 ```
 
 You can find the documentation for this procedure here:  
-[sky.start_replication()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#start_replication)
+[sky.start_replication()](https://docs.skysql.com/Reference%20Guide/Sky%20Stored%20Procedures/#start_replication)
 
 ## Step 4: Check Replication Status
 
@@ -140,7 +140,7 @@ Slave_Non_Transactional_Groups: 0
 ```
 
 You can reference the replication status procedure here:  
-[sky.replication_status()](https://mariadb.com/docs/skysql-previous-release/ref/replication-procedures/replicated-transactions/#replication_status)
+[sky.replication_status()](https://docs.skysql.com/Reference%20Guide/Sky%20Stored%20Procedures/#replication_status)
 
 ## Compatibility Notes
 
