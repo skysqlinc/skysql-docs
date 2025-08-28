@@ -172,8 +172,8 @@ nav:
       - 'Using AWS Azure GCP private VPC connections/Setting up GCP Private Service Connect.md'
       - 'Using AWS Azure GCP private VPC connections/Setting up Azure Private Link.md'
   - 'Observability.md'
-  - 'Power Tier' :
-      - 'Billing and Power Tier/README.md'
+  - 'Service Tiers' :
+      - 'Service Tiers/README.md'
   - 'FractionalDBA.md'
   - 'Reference Guides' :
       - 'Reference Guide/MariaDB Server Versions.md'
