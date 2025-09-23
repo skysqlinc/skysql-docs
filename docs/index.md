@@ -1,4 +1,4 @@
-# **Introduction to SkySQL**
+# **Introduction to MariaDB Cloud (formerly known as SkySQL)**
 
 
 MariaDB stands as one of the world's leading open-source relational databases, renowned for its maturity and widespread adoption. Born as a fork of MySQL, MariaDB maintains high compatibility with its predecessor while offering enhanced features and performance.
