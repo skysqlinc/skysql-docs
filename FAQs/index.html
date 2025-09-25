@@ -1,0 +1,4412 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Serverless/Architecture/">
+      
+      
+        <link rel="next" href="../Quickstart/">
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>FAQs - MariaDB Cloud Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#faqs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MariaDB Cloud Documentation" class="md-header__button md-logo" aria-label="MariaDB Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/skysqllogo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MariaDB Cloud Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAQs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4a5 5 0 0 0 5-5 5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5M7 15a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MariaDB Cloud Documentation" class="md-nav__button md-logo" aria-label="MariaDB Cloud Documentation" data-md-component="logo">
+      
+  <img src="../assets/skysqllogo.png" alt="logo">
+
+    </a>
+    MariaDB Cloud Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href=".." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Introduction to SkySQL
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction to SkySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Uptime%20SLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Uptime SLA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Serverless/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Serverless
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Serverless
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Serverless/Architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    FAQs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQs
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-history-of-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the history of SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-is-skysql-available-what-instance-and-storage-options-are-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where is SkySQL available? What instance and storage options are available?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I get started?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-quickly-can-i-launch-a-new-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      How quickly can I launch a new database?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-skysql-ready-for-production-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is SkySQL ready for production use?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-history-of-skysql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the history of SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skysql-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      SkySQL Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SkySQL Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-services-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What services are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-options-are-available-for-scaling-and-right-sizing-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What options are available for scaling and right-sizing SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-reliability-features-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What reliability features are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-operations-features-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What operations features are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-governance-risk-compliance-and-information-security-features-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What governance, risk, compliance, and information security features are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pricing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pricing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-much-does-skysql-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      How much does SkySQL cost?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-purchase-a-separte-mariadb-license-or-subscription-to-use-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do I need to purchase a separte MariaDB license or subscription to use SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-optional-in-skysql-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is optional in SkySQL pricing?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-discounted-pricing-available-for-a-longer-term-commitment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is discounted pricing available for a longer-term commitment?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#billing-and-payment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Billing and Payment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Billing and Payment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-see-my-current-charges" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I see my current charges?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-will-i-be-billed" class="md-nav__link">
+    <span class="md-ellipsis">
+      When will I be billed?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-forms-of-payment-does-skysql-accept" class="md-nav__link">
+    <span class="md-ellipsis">
+      What forms of payment does SkySQL accept?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-procure-skysql-through-cloud-marketplaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I procure SkySQL through Cloud Marketplaces?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-i-be-charged-vat-or-taxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Will I be charged VAT or taxes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-do-i-contact-with-billing-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who do I contact with billing questions?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-restore-and-deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup, Restore and Deletion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup, Restore and Deletion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-backup-my-data-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I backup my data on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-automated-backups-sent-offsite-will-my-data-be-sent-to-another-country" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are automated backups sent offsite? Will my data be sent to another country?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-backup-operations-impact-application-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do backup operations impact application performance?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-long-are-backups-retained" class="md-nav__link">
+    <span class="md-ellipsis">
+      How long are backups retained?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#does-skysql-support-point-in-time-recovery-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Does SkySQL support Point-in-Time Recovery (PITR)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-long-do-you-keep-my-data-when-i-delete-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      How long do you keep my data when I delete a service?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#will-all-my-data-be-encrypted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Will all my data be encrypted?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-client-certificates-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are client certificates supported?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-contact-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I contact support?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-support-options-are-available-for-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What support options are available for SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-24x7x365-support-available-for-mission-critical-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is 24x7x365 support available for mission-critical applications?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-professional-services-are-available-for-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What professional services are available for SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Quickstart
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quickstart/Launch%20DB%20using%20the%20REST%20API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch DB using the REST API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quickstart/Launch%20DB%20using%20the%20Terraform%20Provider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch DB using the Terraform Provider
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quickstart/Launch%20DB%20using%20Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch DB using Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Portal%20features/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    UI Portal Features
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            UI Portal Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Portal%20features/Launch%20page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch page
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Portal%20features/Manage%20your%20Service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Manage your Service
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Portal%20features/Service%20Details%20page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Service Details page
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Portal%20features/Infrastructure%20Upgrades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure Upgrades
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Portal%20features/Notifications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notifications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Portal%20features/Service%20Monitoring%20Panels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Service Monitoring Panels
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Portal%20features/Billing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Billing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Connecting%20to%20SkySQL%20DBs/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Connecting to SkySQL DBs
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Connecting to SkySQL DBs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20using%20MariaDB%20CLI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect using MariaDB CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20from%20Node%20js%20App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect from Node.js App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20from%20Java%20App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect from Java App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20from%20Python%20App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect from Python App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20from%20%E2%80%98C%E2%80%99%20App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect from ‘C’ App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20from%20%E2%80%98C%2B%2B%E2%80%99%20App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect from ‘C++’ App
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20from%20MongoDB%20clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect from MongoDB clients
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20using%20ODBC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect using ODBC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Connecting%20to%20SkySQL%20DBs/Connect%20using%20Connector%20R2DBC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connect using Connector/R2DBC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Integrations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Database Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integrations/DBeaver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DBeaver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integrations/DBGate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DBGate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integrations/HeidiSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HeidiSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Integrations/TablePlus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TablePlus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Backup%20and%20Restore/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Backup and Restore
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backup Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Backup Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Snapshot%20Backup%20Examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Snapshot Backup Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Physical%20Backup%20Examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Physical Backup Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Logical%20Backup%20Examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Logical Backup Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Incremental%20Backup%20Examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incremental Backup Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Binarylog%20Backup%20Examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Binarylog Backup Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Other%20backup%20API%20examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Other backup API examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Restore Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Restore Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Restore%20Listing%20Examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore Listing Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Restore%20from%20SkySQL%20Managed%20Storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore from SkySQL Managed Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Restore%20From%20Your%20Own%20Bucket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore From Your Own Bucket
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Point-in-Time%20Restore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Point-in-Time Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/Restore%20Delete%20Examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Restore Delete Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backup%20and%20Restore/MariaDB%20Backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MariaDB Backup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Migrations, Data Loading
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Migrations, Data Loading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Data%20loading%2C%20Migration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Migrations
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Migrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20loading%2C%20Migration/SkySQL-managed-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL Managed Migration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20loading%2C%20Migration/Migrating%20Using%20a%20Logical%20Dump%20and%20Replication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migrating Using a Logical Dump and Replication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Data loading
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data loading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20loading%2C%20Migration/Import-CSV-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Import CSV data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20loading%2C%20Migration/Install%20Mariadb-dump/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install Mariadb-dump
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20loading%2C%20Migration/Install-mariadb-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install mariadb-import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20loading%2C%20Migration/Replicating%20data%20from%20external%20DB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Replicating Data from an External Database to SkySQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Data%20offloading/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Data Offloading
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Data Offloading
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20offloading/Replicating%20data%20from%20SkySQL%20to%20external%20database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Replicating data from SkySQL to external database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../SkyCopilot%20Guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    SkyAI Agents
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            SkyAI Agents
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SkyCopilot%20Guide/SkyAI%20API%20Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkyAI Agent API – User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SkyCopilot%20Guide/MCP%20Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL MCP Server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../High%20Availability%2C%20DR/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    High Availability, DR
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            High Availability, DR
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../High%20Availability%2C%20DR/Setup%20Global%20Replication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setup Global Replication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Autonomously%20scale%20Compute%2C%20Storage/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Autonomously scale Compute/Storage
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Autonomously scale Compute/Storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14" id="__nav_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security/Managing%20Portal%20Users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing Portal Users
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security/Configuring%20Firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuring Firewall
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security/Encryption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Encryption
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security/Managing%20API%20keys/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing API keys
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security/Private%20VPC%20connections/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Private VPC connections
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security/Portal%20Single%20Sign-On/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portal Single Sign-On
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../config/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Configure your Database Server(s)
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_15" id="__nav_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Configure your Database Server(s)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/Mariadb-Serverless-Single-Node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mariadb Serverless Single Node
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/Mariadb-Server-Single-Node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mariadb Server Single Node
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/Mariadb-Server-with-Replica%28s%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mariadb Server with Replica(s)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/SkySQL-Intelligent-Proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL Intelligent Proxy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Using%20AWS%20Azure%20GCP%20private%20VPC%20connections/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Using AWS/Azure/GCP Private VPC Connections
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_16" id="__nav_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Using AWS/Azure/GCP Private VPC Connections
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Using%20AWS%20Azure%20GCP%20private%20VPC%20connections/Setting%20up%20AWS%20Private%20Link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up AWS Private Link
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Using%20AWS%20Azure%20GCP%20private%20VPC%20connections/Setting%20up%20GCP%20Private%20Service%20Connect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up GCP Private Service Connect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Using%20AWS%20Azure%20GCP%20private%20VPC%20connections/Setting%20up%20Azure%20Private%20Link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Setting up Azure Private Link
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Service%20Tiers/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Service Tiers
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            Service Tiers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FractionalDBA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fractional DBA Service - SkyDBA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../Reference%20Guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Reference Guides
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_20" id="__nav_20_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            Reference Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference%20Guide/MariaDB%20Server%20Versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MariaDB Server Versions Support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference%20Guide/Backup%20Support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL Supported Backup Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference%20Guide/Instance%20Size%20Choices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL Instance Sizes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference%20Guide/Monitoring%20Metrics%20Reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL Monitoring Metrics Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference%20Guide/Region%20Choices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL Region Choices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference%20Guide/REST%20API%20Reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL REST API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reference%20Guide/Sky%20Stored%20Procedures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SkySQL Stored Procedures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-history-of-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the history of SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-is-skysql-available-what-instance-and-storage-options-are-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where is SkySQL available? What instance and storage options are available?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I get started?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-quickly-can-i-launch-a-new-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      How quickly can I launch a new database?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-skysql-ready-for-production-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is SkySQL ready for production use?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-history-of-skysql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the history of SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skysql-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      SkySQL Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SkySQL Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-services-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What services are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-options-are-available-for-scaling-and-right-sizing-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What options are available for scaling and right-sizing SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-reliability-features-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What reliability features are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-operations-features-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What operations features are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-governance-risk-compliance-and-information-security-features-are-available-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What governance, risk, compliance, and information security features are available on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pricing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pricing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-much-does-skysql-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      How much does SkySQL cost?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-purchase-a-separte-mariadb-license-or-subscription-to-use-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do I need to purchase a separte MariaDB license or subscription to use SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-optional-in-skysql-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is optional in SkySQL pricing?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-discounted-pricing-available-for-a-longer-term-commitment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is discounted pricing available for a longer-term commitment?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#billing-and-payment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Billing and Payment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Billing and Payment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-see-my-current-charges" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I see my current charges?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-will-i-be-billed" class="md-nav__link">
+    <span class="md-ellipsis">
+      When will I be billed?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-forms-of-payment-does-skysql-accept" class="md-nav__link">
+    <span class="md-ellipsis">
+      What forms of payment does SkySQL accept?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-procure-skysql-through-cloud-marketplaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can I procure SkySQL through Cloud Marketplaces?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-i-be-charged-vat-or-taxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Will I be charged VAT or taxes?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-do-i-contact-with-billing-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who do I contact with billing questions?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-restore-and-deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup, Restore and Deletion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup, Restore and Deletion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-backup-my-data-on-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I backup my data on SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-automated-backups-sent-offsite-will-my-data-be-sent-to-another-country" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are automated backups sent offsite? Will my data be sent to another country?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-backup-operations-impact-application-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do backup operations impact application performance?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-long-are-backups-retained" class="md-nav__link">
+    <span class="md-ellipsis">
+      How long are backups retained?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#does-skysql-support-point-in-time-recovery-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Does SkySQL support Point-in-Time Recovery (PITR)?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-long-do-you-keep-my-data-when-i-delete-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      How long do you keep my data when I delete a service?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#will-all-my-data-be-encrypted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Will all my data be encrypted?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-client-certificates-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Are client certificates supported?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-contact-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do I contact support?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-support-options-are-available-for-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What support options are available for SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-24x7x365-support-available-for-mission-critical-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is 24x7x365 support available for mission-critical applications?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-professional-services-are-available-for-skysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      What professional services are available for SkySQL?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="faqs">FAQs</h1>
+<h2 id="overview">Overview</h2>
+<h3 id="what-is-skysql">What is SkySQL?</h3>
+<p>SkySQL is a modern database as a service (DBaaS) solution for production MySQL and MariaDB workloads. It simplifies database management with automated configuration, autonomous scaling, global replication, enterprise-grade security, real-time observability, automated backups and more. SkySQL delivers ultimate flexibility, reliability, performance and effortless management for your databases allowing you to focus on your application features. SkySQL provides both provisioned servers and serverless deployment options to handle a variety of use cases from mission-critical, always-on production to experimental, spiky workloads.</p>
+<h3 id="what-is-the-history-of-skysql">What is the history of SkySQL?</h3>
+<p>SkySQL is a database-as-a-service (DBaaS) that was originally developed and managed by MariaDB Corporation. The cloud division (SkySQL) was later spun out of MariaDB into a independent company -  <a href="https://skysql.com">SkySQL Inc</a>.  The team that developed SkySQL transitioned over to the new company.</p>
+<h3 id="where-is-skysql-available-what-instance-and-storage-options-are-available">Where is SkySQL available? What instance and storage options are available?</h3>
+<p>SkySQL is available across 40+ global regions on Amazon AWS, Google Cloud and Microsoft Azure. Database services on SkySQL support a range of <a href="../Reference Guide/Instance Size Choices">instance</a> sizes. Storage starts at 10GB and can scale up to 9000GB. SkySQL's autonomous scaling takes the guesswork out of provisioning. You can start small and scale automatically as your needs evolve. </p>
+<h3 id="how-do-i-get-started">How do I get started?</h3>
+<p>You can sign up for a free account at <a href="https://app.skysql.com/">https://app.skysql.com</a>. There is no credit card required to start and you get $100 in free credit. Once registered, you can get started right away by <a href="../Quickstart">launching a service</a>, <a href="../Connecting to Sky DBs">connecting</a>, and <a href="../Data loading, Migration">loading data</a>.</p>
+<h3 id="how-quickly-can-i-launch-a-new-database">How quickly can I launch a new database?</h3>
+<p>Launching a new database service with SkySQL is quick and easy. Serverless database services start in miliseconds. Provisioned Database services start in 2-4 min. </p>
+<h3 id="is-skysql-ready-for-production-use">Is SkySQL ready for production use?</h3>
+<p>Yes. SkySQL delivers enterprise-grade cloud database service for your mission-critical applications. Multi-node databases feature a comprehensive <a href="/Uptime SLA">SLA</a>, High Availability (HA) features, and operations features. <a href="https://skysql.com/support-policy/">Enterprise support</a> options extend support to 24x7, with the additional option of <a href="../FractionalDBA">SkyDBA</a> for proactive assistance from a team of expert DBAs.</p>
+<h3 id="what-is-the-history-of-skysql_1">What is the history of SkySQL?</h3>
+<p>SkySQL was originally developed and <a href="https://mariadb.com/newsroom/press-releases/mariadb-skysql-launches-delivers-next-generation-cloud-database/">launched in early 2020</a> by MariaDB Corporation. In December 2023, MariaDB completed the spinoff of its SkySQL business to SkySQL Inc., as a new independent entity founded by the former MariaDB team that built and supported the SkySQL product. </p>
+<h2 id="skysql-features">SkySQL Features</h2>
+<h3 id="what-services-are-available-on-skysql">What services are available on SkySQL?</h3>
+<p>SkySQL is primarily designed for online applications and offers two topologies -</p>
+<ul>
+<li>Replicated: Useful for mission-critical, production workloads requiring read scaling. Replicated services feature 1 primary and up to 4 replicas and uses MariaDB MaxScale for load balancing and automatic zero-interruption failover.</li>
+<li>Single Node: Useful for low-cost development and test transactional workloads. Single Node services cannot be scaled to Replicated topologies.</li>
+</ul>
+<h3 id="what-options-are-available-for-scaling-and-right-sizing-skysql">What options are available for scaling and right-sizing SkySQL?</h3>
+<p>You can choose <a href="../Portal features/Launch page">topologies to match your workload requirements, cloud regions to match your latency and operating requirements, instance sizes</a>, and <a href="../Support/">support plan</a>.</p>
+<p>Our platform features:
+- Availability in a range of database instance sizes and storage sizes
+- Availability from multiple AWS (Amazon Web Services), GCP (Google Cloud Platform), and Azure (Cloud Computing Services) <a href="../Reference Guide/Region Choices">regions</a>.
+- Load Balancing features included with Replicated Transactions topologies allow for read-scaling through read-write splitting.
+- Custom instance sizes (for <a href="../Billing and Power Tier">Power Tier</a> customers)
+- Range of <a href="../Support/">support options</a></p>
+<h3 id="what-reliability-features-are-available-on-skysql">What reliability features are available on SkySQL?</h3>
+<ul>
+<li>SkySQL is operated by a global team of Site Reliability Engineers (SRE), and expert DBAs. Platform problems are escalated to our team 24x7.</li>
+<li><a href="https://skysql.com/sla/">Service Level Agreement</a>, including an elevated SLA for <a href="../Billing and Power Tier">Power Tier</a> customers</li>
+<li>Kubernetes self-healing - Databases run in containers in kubernetes clusters and auto-heal.</li>
+<li>Load balancing for multi-node configurations using MariaDB MaxScale</li>
+<li>High Availability (HA) for multi-node configurations</li>
+<li>MaxScale Redundancy option</li>
+<li>Inbound and outbound replication - you can replicate to your self managed MariaDB anywhere.</li>
+</ul>
+<h3 id="what-operations-features-are-available-on-skysql">What operations features are available on SkySQL?</h3>
+<ul>
+<li>Support from SkySQL Inc, including Enterprise and Platinum tiers optionally with SkyDBA for reactive and proactive assistance</li>
+<li>Vendor managed infrastructure and platform</li>
+<li>SkySQL Portal and <a href="https://apidocs.skysql.com/">SkySQL DBaaS API</a> for instance management</li>
+<li>Compatibility with most programming languages and clients that work with MariaDB or MySQL, for off-the-shelf integration to your stack</li>
+<li>Scheduled upgrades to database software</li>
+<li>Automated nightly backups</li>
+<li>Configuration management</li>
+<li>On-demand backups and Snapshots</li>
+<li>Monitoring</li>
+<li>Ability to deploy additional services to support application migrations and testing on the same configuration used in production</li>
+<li>On-demand tear-down of unneeded services</li>
+</ul>
+<h3 id="what-governance-risk-compliance-and-information-security-features-are-available-on-skysql">What governance, risk, compliance, and information security features are available on SkySQL?</h3>
+<ul>
+<li>Firewall protection, including dedicated IP allowlists to access databases and to access monitoring features</li>
+<li>Data-at-rest encryption</li>
+<li>Data-in-transit encryption by default</li>
+<li>VPC peering, AWS PrivateLink, GCP Private Service Connect and Azure Private Link options</li>
+<li>Standard or enterprise authentication for management portal</li>
+<li>Business Associate Addendum (BAA) for HIPAA</li>
+<li>Data Processing Addendum (DPA) for GDPR</li>
+</ul>
+<h2 id="pricing">Pricing</h2>
+<h3 id="how-much-does-skysql-cost">How much does SkySQL cost?</h3>
+<p>You can get started on SkySQL at no cost for experimenting and early development using the forever-free serverless option. Provisioned database services on SkySQL are billed based on the topology, cloud region, instance and storage sizes. For example, you can run a single 2 vCPU, 4 GB RAM instance with 100GB storage on AWS us-east-1 region 24/7 for for little over $100 a month. </p>
+<p>When you <a href="../Portal features/Launch page">launch a database service</a>, SkySQL provides a handy estimate of how much your service selections will cost. Multi-node database services incur charge for running our intelligent proxy. Data Transfer charges associated with your service vary based on the usage and are not included in the estimates. We passthrough data transfer charges levied by cloud providers with no additional markup. </p>
+<p>If you stop a service, you will continue to be charged for storage, since your data is not deleted. Instance and egress charges will stop until the instance is started again.</p>
+<p>Your database service cost includes Standard support and nightly backups. See the <a href="./Billing and Power Tier/Pricing.md">Pricing</a> page for additional details on pricing.</p>
+<h3 id="do-i-need-to-purchase-a-separte-mariadb-license-or-subscription-to-use-skysql">Do I need to purchase a separte MariaDB license or subscription to use SkySQL?</h3>
+<p>No additional licenses are necessary to use SkySQL.</p>
+<h3 id="what-is-optional-in-skysql-pricing">What is optional in SkySQL pricing?</h3>
+<p>Add-ons are available to optimize your SkySQL experience:</p>
+<ul>
+<li><a href="../Billing and Power Tier">SkySQL Power Tier</a> is a premium service offering for SkySQL customers who have the most critical requirements for uptime, availability, performance, and support.</li>
+<li>While all Foundation Tier services include Standard Support, Power Tier customers are offered the  <a href="../Support/">Enterprise support plan</a>.</li>
+<li>An optional add-on, <a href="../FractionalDBA">SkyDBA</a>, further extends the premium support experience and the capabilities of your in-house DBAs with the backing from a global team of expert MariaDB DBAs, available 24/7 for the most severe (P1) issues. SkySQL's SkyDBAs manage your  SkySQL databases both proactively and reactively so you can focus on your core business.</li>
+</ul>
+<h3 id="is-discounted-pricing-available-for-a-longer-term-commitment">Is discounted pricing available for a longer-term commitment?</h3>
+<p>Yes. Discounts are typically offered for one-year and three-year commitments. Please <a href="https://skysql.com/contact/">contact us</a> for more information.</p>
+<h2 id="billing-and-payment">Billing and Payment</h2>
+<h3 id="how-can-i-see-my-current-charges">How can I see my current charges?</h3>
+<p>Current month's estimated charges can be viewed on the <a href="https://app.skysql.com/billing/usage">Billing</a> page. Billing history for the prior months are available on the <a href="https://app.skysql.com/billing/history">Billing History</a> page.</p>
+<h3 id="when-will-i-be-billed">When will I be billed?</h3>
+<p>Customers are billed monthly and an invoice for your SkySQL usage will be sent via email. Accounts using credit card will automatically be charged.</p>
+<h3 id="what-forms-of-payment-does-skysql-accept">What forms of payment does SkySQL accept?</h3>
+<p>SkySQL accepts payment by <a href="../Portal%20features/Billing/">all major credit card and through remittance accounts</a>. <a href="https://skysql.com/contact/">Contact us</a> to have your account set up for payment by wire transfer or ACH.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SkySQL does not store any of your credit card information. We use Stripe to manage all credit card transactions. <a href="https://stripe.com">Stripe</a> is a widely used payment processing platform that enables businesses to accept credit card payments securely</p>
+</div>
+<h3 id="can-i-procure-skysql-through-cloud-marketplaces">Can I procure SkySQL through Cloud Marketplaces?</h3>
+<p>Yes. SkySQL is available for procurement on Amazon AWS, Google Cloud and Microsoft Azure marketplaces. You can either purchase direct or we can generate a private offer to customize a subscription.</p>
+<ul>
+<li><a href="https://aws.amazon.com/marketplace/pp/prodview-txge2dgyj4ieg">Amazon AWS Listing</a></li>
+<li><a href="https://console.cloud.google.com/marketplace/details/skysql-public/skysql-gcp-mp">Google Cloud Listing</a></li>
+<li>[Microsoft Azure Listing] (https://azuremarketplace.microsoft.com/en-us/marketplace/apps/skysqlinc.skysql-fully-managed-cloud-database?tab=Overview)</li>
+</ul>
+<h3 id="will-i-be-charged-vat-or-taxes">Will I be charged VAT or taxes?</h3>
+<p>SkySQL will bill for VAT and/or taxes in applicable jurisdictions. Customers are responsible for paying all applicable taxes and fees. See the <a href="https://skysql.com/tos/">SkySQL Terms of Use</a> for additional information.</p>
+<h3 id="who-do-i-contact-with-billing-questions">Who do I contact with billing questions?</h3>
+<p>Contact <a href="mailto:billing@skysql.com">billing@skysql.com</a> with billing questions.</p>
+<h2 id="backup-restore-and-deletion">Backup, Restore and Deletion</h2>
+<h3 id="how-do-i-backup-my-data-on-skysql">How do I backup my data on SkySQL?</h3>
+<p>SkySQL performs full backup of your database services each night. You can also use SkySQL's <a href="./Backup and Restore/">Backup Service</a> to schedule backups and perform restores. The Backup Service supports Snapshot, Full, Incremental and Logical Dump backups. You can perform restore on the same database or another database in the same or different region using the Backup Service.</p>
+<h3 id="are-automated-backups-sent-offsite-will-my-data-be-sent-to-another-country">Are automated backups sent offsite? Will my data be sent to another country?</h3>
+<p>No. All data is managed within the same region by default where your database is running for data sovereignty.</p>
+<h3 id="do-backup-operations-impact-application-performance">Do backup operations impact application performance?</h3>
+<p>No. MariaDB Backup (mariabackup) is used for Replicated Transactions and Single Node Transactions service backups. MariaDB Backup breaks up backups into non-blocking stages so writes and schema changes can occur during backups.</p>
+<h3 id="how-long-are-backups-retained">How long are backups retained?</h3>
+<p>SkySQL's nightly backups as well as self-service backups are retained for 7 days.</p>
+<h3 id="does-skysql-support-point-in-time-recovery-pitr">Does SkySQL support Point-in-Time Recovery (PITR)?</h3>
+<p>By default, full and complete backup restoration is available. To enable point-in-time recovery, services must be configured in advance for additional binary log retention. <a href="../Backup and Restore/Point-in-Time Restore/">Point-in-time recovery (PITR)</a> configuration is available to Power Tier customers.</p>
+<h3 id="how-long-do-you-keep-my-data-when-i-delete-a-service">How long do you keep my data when I delete a service?</h3>
+<p>All data residing on a service's storage is deleted at time of service deletion. Backups for deleted services are purged after 7 days.</p>
+<h2 id="security">Security</h2>
+<h3 id="will-all-my-data-be-encrypted">Will all my data be encrypted?</h3>
+<p>Yes. By default, SkySQL encrypts all data-in-transit using standard SSL/TSL. While not recommended, you can disable SSL/TLS connections while launching a database service. SkySQL leverages HashiCorp Vault for certificate and key management. Certificates and keys are not customer-configurable at this time.</p>
+<p>All data-at-rest is encrypted using standard cloud encryption options.
+- Amazon AWS<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS encryption</a>.
+- Google Cloud <a href="https://cloud.google.com/security/encryption-at-rest/default-encryption">encryption by default</a>.
+- Microsoft Azure <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/disk-encryption">default encryption</a>.</p>
+<h3 id="are-client-certificates-supported">Are client certificates supported?</h3>
+<p>No. SkySQL supports server-side certificates. Database users are authenticated by standard password authentication.</p>
+<h2 id="support">Support</h2>
+<h3 id="how-do-i-contact-support">How do I contact support?</h3>
+<p>You can contact Support using the <a href="https://support.skysql.com/">Support Portal</a> or by emailing <a href="mailto:support@skysql.com">support@skysql.com</a>.</p>
+<h3 id="what-support-options-are-available-for-skysql">What support options are available for SkySQL?</h3>
+<p>All customers with a valid payment profile receive Standard Support which includes 24x5, 2-hours response for P1 incidents. Standard Support is available at no extra charge. Enterprise Support provides 24x7, 30-min response for P1 incidents and is suitable for mission-critical workloads. <a href="../FractionalDBA/">SkyDBA</a> is our premiere fractional DBA service that gives you direct access to our highly skilled DBA team who can provide technical expertise, guidance, and troubleshooting assistance when needed.
+See the <a href="../Support/">Support</a> page for full details on our support options.</p>
+<h3 id="is-24x7x365-support-available-for-mission-critical-applications">Is 24x7x365 support available for mission-critical applications?</h3>
+<p>Yes. <a href="../Support/">Enterprise Support</a> levels are available for customers requiring 24x7x365 support (24 hours per day, 7 days per week, 365 (or 366) days per year).</p>
+<h3 id="what-professional-services-are-available-for-skysql"><strong>What professional services are available for SkySQL?</strong></h3>
+<p>SkySQL offers a full range of professional services, including:</p>
+<ul>
+<li><a href="../FractionalDBA/">SkyDBA</a> for proactive and reactive support</li>
+<li><a href="../Data%20loading%2C%20Migration/nr-support-assisted/">Migration</a> assistance</li>
+<li>Assistance with your SkySQL proof-of-concept (<a href="https://skysql.com/contact/">contact us for more information</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Serverless/Architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Architecture
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Quickstart/" class="md-footer__link md-footer__link--next" aria-label="Next: Quickstart">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Quickstart
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 MariaDB
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/skysqlinc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/skysql" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/skysql" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.left", "navigation.tracking", "navigation.path", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../js/runllm-widget.js"></script>
+      
+    
+  </body>
+</html>
