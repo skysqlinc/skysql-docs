@@ -1,4 +1,4 @@
-site_name: SkySQL Documentation
+site_name: MariaDB Cloud Documentation
 theme:
   name: material
   logo: assets/skysqllogo.png
@@ -186,4 +186,4 @@ nav:
       - 'Reference Guide/Sky Stored Procedures.md'
 
 
-copyright: Copyright &copy; 2025 SkySQL Inc.
+copyright: Copyright &copy; 2025 MariaDB
